@@ -1,68 +1,189 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# DAAY-mall
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Deployed Link
 
-### `npm start`
+[DAAY-mall website](https://daaymall-401-project.herokuapp.com/)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Web Application
 
-### `npm test`
+DAAY-mall is an online platform for stores owners to display and sell their products for users all around the world in an **easy**, **efficient** and **secure** process. The website earns client’s trust with its robust system that verifies stores and a direct customers’ service that have a live chat with website admins offering a continuous feedback.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Users:
 
-### `npm run build`
+- Admins: 
+  * Verify stores, customers' service and manage payments and refunds.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Owners: 
+  * Register their stores, add products, manage orders.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- Registered Users:
+  * Add to cart and checkout (payment), reviews stores and products and have a favorite stores list and wish list.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Public Users:
+  * Navigate website to view stores and products.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**Minimum MVP** 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Authentication features**:
+  * Sign-up and sign-in with Facebook.
+  * Sign-up and sign-in with Google.
+  * Normal signup and sign in.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- **Store registration**:
+o The user can add his own store to be registered and then to be verified by the admin (with the ability to shop from other stores).
+o When the store is verified the user will be the admin (owner) of his store and he can add employees (for customer service, data entry).
+o Their stores can be sub stores.
+• Shop
+o Each user will have their own cart to add items to.
+o Users can search for specific stores or products.
+o Users can chat with support agents if they have an inquiry.
+o Users can pay online.
+• Data Entry
+o Add products to the store
+• Owner
+o Register stores (create)/update store’s info/data
+o Add/update employees
+o Add/update products to the store
+o Chat with customers
+o Delete stores
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
-## Learn More
+## Tools Used
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Microsoft Visual Studio
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Node.js
+- Express
+- Socket.io
 
-### Code Splitting
+---
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Wireframes
 
-### Analyzing the Bundle Size
+  **Part 1 :** https://wireframe.cc/pro/pp/22d596ce5359155
+  **Part 2 :** https://wireframe.cc/pro/edit/359450
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+  **1- Profile-page-same-user:**
+  
+  ![1-Profile-page-same-user](assets/1-Profile-page-same-user-2x.png)
 
-### Making a Progressive Web App
+  **2- Profile-page-another-user:**
+  
+  ![2-Profile-page-another-user](assets/2-Profile-page-another-user-2x.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+  **3- Store-page-user:**
+  ![3-Store-page-user](assets/3-Store-page-user-2x.png)
 
-### Advanced Configuration
+  **4- Homepage:**
+  
+  ![4-Homepage](assets/4-Homepage.png)
+  
+  **5- Store-page-owner:**
+  
+  ![5-Store-page-owner](assets/5-Store-page-owner-2x.png)
+  
+  **6- Product:**
+  
+  ![6-Product](assets/6-Product.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+  **7- Search page:**
+  
+  ![7-Search-page](assets/7-Search-page.png)
+  
+  **8- Help-center:**
+  
+  ![8-Help-center](assets/8-Help-center.png)
+  
+  **9- Sign-up:**
+  
+  ![9-Sign-up](assets/9-Sign-up.png)
+  
 
-### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `npm run build` fails to minify
+## Getting Started
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Clone this repository to your local machine.
+
+```
+git clone https://github.com/YourRepo/YourProject.git
+```
+
+Once downloaded, you can either use the dotnet CLI utilities or Visual Studio 2017 (or greater) to build the web application.
+
+```
+cd DAAY-mall
+`npm i`
+```
+
+Install all dependencies needed for the project.
+
+```
+Database
+```
+
+- explain how to use the database \*
+
+```
+cd YourRepo/YourProject
+npm start
+```
+
+---
+
+<!-- ## Usage
+
+***[Provide some images of your app that shows how it can be used with brief description as title]***
+
+### Overview of Recent Posts
+
+![Overview of Recent Posts](https://via.placeholder.com/500x250)
+
+### Creating a Post
+
+![Post Creation](https://via.placeholder.com/500x250)
+
+### Enriching a Post
+
+![Enriching Post](https://via.placeholder.com/500x250)
+
+### Viewing Post Details
+
+![Details of Post](https://via.placeholder.com/500x250)
+
+---------------------------
+
+## Data Flow (Frontend, Backend, REST API)
+
+***[Add a clean and clear explanation of what the data flow is. Walk me through it.]***
+![Data Flow Diagram](/assets/img/Flowchart.png)
+
+--------------------------- -->
+
+## Auth/ask for store (UML)
+
+![auth](/assets/umlauth.PNG)
+
+## Data Model
+
+### Overall Project Schema
+
+**Description of the DB schema]**
+![Database Schema](./assets/schemas.png)
+
+---
+
+## Authors
+
+Yazan Alaiwah
+Diana Al azzam
+Anolla Haddad
+Ahmed Abu samaan
+
+---
