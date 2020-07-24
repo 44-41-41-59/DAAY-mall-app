@@ -1,10 +1,6 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import FormControl from 'react-bootstrap/FormControl';
+import './footer.css';
 
 
 
@@ -13,71 +9,46 @@ function Footer() {
     <footer>
 
       <Navbar bg="dark" expand="lg" >
-
-        
         <div class='container'>
+
           <div class='about'>  
             <h6>About</h6>
             <p>
-        Lorem ipsum dolor sit amet, vis et tollit ocurreret, eu nec exerci expetenda elaboraret. Per dicit quaestio an. Eos in verear scriptorem.
+            DAAY-mall is an online platform for stores owners to display and sell their products in an easy, efficient and secure process.
             </p>
           </div>
+
           <div class='connect'>
-            <h6>Stay Connected </h6>
+            <h6>Stay Updated </h6>
             <p>
-        Lorem ipsum dolor sit amet, vis et tollit ocurreret, eu nec exerci expetenda elaboraret. Per dicit quaestio an. Eos in verear scriptorem.
+               Every Sunday arrives new collocetion and <br/>
+               every Thusrsday there are coupons for every 50 JOD spent.
             </p>
           </div>
+
           <div class='socialMedia'>
             <h6>Find us on</h6>
             <p>
-              <a href="#" class="fa fa-facebook"></a>
-              <a href="#" class="fa fa-twitter"></a>
-              <a href="#" class="fa fa-google"></a>
-              <a href="#" class="fa fa-yahoo"></a>
+              <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+              <a href="https://www.twitter.com/" class="fa fa-twitter"></a>
+              <a href="https://www.google.com/" class="fa fa-google"></a>
+              <a href="https://www.yahoo.com/" class="fa fa-yahoo"></a>
             </p>
           </div>
+
           <div class='help'>
             <h6>Help Center</h6>
             <p>
-        Lorem ipsum dolor sit amet, vis et tollit ocurreret, eu nec exerci expetenda elaboraret. Per dicit quaestio an. Eos in verear scriptorem.
+                 FAQ <br/>
+                Online Service
             </p> 
           </div>
+
         </div>
-        
       </Navbar>
+    
     </footer>
-    // <footer>
-    //   <div class='container'>
-    //     <div class='about'>  
-    //       <h6>About</h6>
-    //       <p>
-    //       Lorem ipsum dolor sit amet, vis et tollit ocurreret, eu nec exerci expetenda elaboraret. Per dicit quaestio an. Eos in verear scriptorem.
-    //       </p>
-    //     </div>
-    //     <div class='connect'>
-    //       <h6>Stay Connected </h6>
-    //       <p>
-    //       Lorem ipsum dolor sit amet, vis et tollit ocurreret, eu nec exerci expetenda elaboraret. Per dicit quaestio an. Eos in verear scriptorem.
-    //       </p>
-    //     </div>
-    //     <div class='socialMedia'>
-    //       <h6>Find us on</h6>
-    //       <p>
-    //         <a href="#" class="fa fa-facebook"></a>
-    //         <a href="#" class="fa fa-twitter"></a>
-    //         <a href="#" class="fa fa-google"></a>
-    //         <a href="#" class="fa fa-yahoo"></a>
-    //       </p>
-    //     </div>
-    //     <div class='help'>
-    //       <h6>Help Center</h6>
-    //       <p>
-    //       Lorem ipsum dolor sit amet, vis et tollit ocurreret, eu nec exerci expetenda elaboraret. Per dicit quaestio an. Eos in verear scriptorem.
-    //       </p> 
-    //     </div>
-    //   </div>
-    // </footer>
+
   );
 }
   
