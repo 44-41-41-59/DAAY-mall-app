@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import Aside from '../src/components/header';
-// import { Route } from 'react-router-dom';
+import Header from '../src/components/header';
+import Footer from '../src/components/footer';
 
 function App() {
   return (
     <div className="App">
-      <Aside />
-      <h1>HELLO WORLD!!</h1>
+      <Header />
+      <Footer />
     </div>
   );
 }

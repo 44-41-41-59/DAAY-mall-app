@@ -1,0 +1,21 @@
+.mr-auto, .mx-auto {
+    margin-right: auto!important;
+    margin-left: 20vw;
+}
+
+.navbar-nav .nav-link {
+    margin-right: 1vw;
+}
+
+.form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    margin-left: 25vw;
+}
+
+img {
+    width: 2vw;
+    height: 4vh;
+    margin-top: 0.8vw;
+}
