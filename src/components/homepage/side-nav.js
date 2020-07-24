@@ -35,7 +35,7 @@ function SideNav(props) {
   //   </div>
   // </div>
 
-    <ProSidebar>
+    <ProSidebar >
       <Menu >
         <MenuItem>Dashboard</MenuItem>
         <SubMenu title="Home, Pet & Appliances" >
