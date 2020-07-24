@@ -6,7 +6,7 @@ import './footer.css';
 
 function Footer() {
   return (
-    <footer>
+    <footer class='page-footer'>
 
       <Navbar bg="dark" expand="lg" >
         <div class='container'>
