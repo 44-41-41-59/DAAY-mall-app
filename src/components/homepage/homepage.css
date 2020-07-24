@@ -1,0 +1,17 @@
+.pro-sidebar {
+  width: 20vw!important;
+  padding: 0px!important;
+  margin: 0px!important;
+}
+
+#right-section {
+  min-width: 80vw;
+}
+
+#title-card {
+  justify-content: center;
+}
+
+.card-title {
+  text-align: center;
+}
