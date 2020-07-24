@@ -5,12 +5,8 @@ import MainCrousel from './main-crousel';
 import TopSections from './top-sections';
 import { Sale, TopRanked, NewArrivals, Recommended } from './sections';
 
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
-
-
 
 import './homepage.css';
 
@@ -42,20 +38,6 @@ function Homepage(props) {
       <Row>
         <Recommended />
       </Row>
-
-
-      {/* <div style={{ display: 'flex' }}>
-        <SideNav />
-        <div id='adv-main-sections'>
-          <MainCrousel />
-          <TopSections />
-        </div>
-      </div>
-
-      <Sale />
-      <TopRanked />
-      <NewArrivals />
-      <Recommended /> */}
     </>
   );
 }
