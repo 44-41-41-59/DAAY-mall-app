@@ -1,17 +1,26 @@
 import React from 'react';
 import './App.css';
-import Aside from '../src/components/header';
-import { Route } from 'react-router-dom';
 import Auth from './components/auth';
+import { Route } from 'react-router-dom';
+import Products from './components/product/';
+import Homepage from './components/homepage/';
+import Header from '../src/components/header';
+import Footer from '../src/components/footer';
 
 function App() {
   return (
     <div className="App">
-      <Route exact path="/auth">
+      <Header />
+  <Route exact path="/auth">
         <Auth />
       </Route>
-      <Aside />
-      <h1>HELLO WORLD!!</h1>
+      <Route exact path="/">
+        <Homepage />
+      </Route>
+      <Route exact path="/product">
+        <Products />
+      </Route>
+      <Footer />
     </div>
   );
 }
