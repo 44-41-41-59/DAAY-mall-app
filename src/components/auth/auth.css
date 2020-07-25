@@ -1,6 +1,7 @@
 #authcontainer {
   display: flex;
   justify-content: space-evenly;
+  margin-top: 2%;
 }
 #authbuttons {
   margin: 4% 0;
