@@ -1,18 +1,12 @@
 let initialState = {
-  username: '',
-  email: '',
-  avatar: '',
-  role: '',
-  acl: [],
-  paymentsHistory: [],
-  confirmed: false,
+  currentPage:1,
+  itemsPerPage:12,
 };
 
 export default (state = initialState, action) => {
   const { type, payload } = action;
-  let carts;
   switch (type) {
-  case 'LOGIN':
+  case 'PAGINATION':
     return { ...state, ...payload };
   default:
     return state;

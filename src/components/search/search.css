@@ -1,0 +1,15 @@
+#searchPage {
+  display: flex;
+  justify-content: center;
+}
+
+#searchResultsBox {
+  width: 60vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+#product-list {
+  width: 220px;
+}

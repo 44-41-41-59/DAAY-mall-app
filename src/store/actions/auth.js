@@ -1,6 +1,8 @@
 import axios from 'axios';
 import base64 from 'base-64';
-const api = 'http://localhost:3001';
+// const api = 'http://localhost:3001';
+// https://daaymall-401-project.herokuapp.com/
+const api = 'https://daaymall-401-project.herokuapp.com';
 
 export const auth = (userInfo) => ({
   type: 'LOGIN',
