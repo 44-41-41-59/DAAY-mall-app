@@ -3,6 +3,7 @@ import React from 'react';
 import SideNav from './side-nav';
 import MainCrousel from './main-crousel';
 import TopSections from './top-sections';
+
 import { Sale, TopRanked, NewArrivals, Recommended } from './sections';
 
 import Row from 'react-bootstrap/Row';
@@ -18,10 +19,10 @@ function Homepage(props) {
           <SideNav />
         </Col>
         <Col id='right-section'>
-          <Row>
+          <Row id='crousel-id'>
             <MainCrousel />
           </Row>
-          <Row>
+          <Row id='top-sections-id'>
             <TopSections />
           </Row>
         </Col>
