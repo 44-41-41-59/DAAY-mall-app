@@ -15,7 +15,7 @@ function Summer (){
       </Card.Header>
       <Accordion.Collapse eventKey="2">
         <Card.Body>
-        <Row>
+          <Row>
             <Card>
               <Card.Img variant="top" src="holder.js/200x200" />
               <Card.Title>Card Title</Card.Title>
