@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/actions/auth';
 import Login from './login';
 import SignUp from './signup';
+import Button from 'react-bootstrap/Button';
+import './auth.css';
 
 function Auth(props) {
   const [body, setBody] = useState({});
@@ -20,16 +22,29 @@ function Auth(props) {
   }
   return (
     <>
-      <SignUp
-        handelChange={handelChange}
-        body={body}
-        handleSubmit={handleSubmit}
-      />
-      <Login
-        handelChange={handelChange}
-        body={body}
-        handleSubmitLogin={handleSubmitLogin}
-      />
+      <div id="authcontainer">
+        <Login
+          handelChange={handelChange}
+          body={body}
+          handleSubmitLogin={handleSubmitLogin}
+        />
+        <SignUp
+          handelChange={handelChange}
+          body={body}
+          handleSubmit={handleSubmit}
+        />
+      </div>
+      <hr></hr>
+      <div id="authbuttons">
+        <h3 id="or">OR</h3>
+        <hr></hr>
+        <Button className="authbuttons" variant="primary">
+          FACEBOOK
+        </Button>{' '}
+        <Button className="authbuttons" variant="danger">
+          GOOGLE
+        </Button>
+      </div>
     </>
   );
 }
