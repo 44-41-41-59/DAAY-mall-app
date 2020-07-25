@@ -6,12 +6,13 @@ import Products from './components/product/';
 import Homepage from './components/homepage/';
 import Header from '../src/components/header';
 import Footer from '../src/components/footer';
+import Storepage from '../src/components/storepage';
 
 function App() {
   return (
     <div className="App">
       <Header />
-  <Route exact path="/auth">
+      <Route exact path="/auth">
         <Auth />
       </Route>
       <Route exact path="/">
@@ -19,6 +20,9 @@ function App() {
       </Route>
       <Route exact path="/product">
         <Products />
+      </Route>
+      <Route exact path="/store">
+        <Storepage />
       </Route>
       <Footer />
     </div>
