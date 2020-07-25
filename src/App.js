@@ -7,6 +7,7 @@ import Homepage from './components/homepage/';
 import Header from '../src/components/header';
 import Footer from '../src/components/footer';
 import Storepage from '../src/components/storepage';
+import Profilepage from '../src/components/profilepage';
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
       </Route>
       <Route exact path="/store">
         <Storepage />
+      </Route>
+      <Route exact path="/profile">
+        <Profilepage />
       </Route>
       <Footer />
     </div>
