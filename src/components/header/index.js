@@ -11,7 +11,7 @@ import './header.css';
 export default function Header(props) {
   return (
     <header>
-      <Navbar bg="light" expand="lg" >
+      <Navbar bg="light" expand="lg" id='header' >
         <Navbar.Brand href="#home" >
           DAAY-mall
         </Navbar.Brand>
