@@ -11,6 +11,7 @@ import Products from './components/product/';
 import Homepage from './components/homepage/';
 import Header from '../src/components/header';
 import Footer from '../src/components/footer';
+import SearchResults from '../src/components/search/';
 import Storepage from '../src/components/storepage';
 import Profilepage from '../src/components/profilepage';
 // import Image from './components/imagetest';
@@ -50,9 +51,13 @@ class App extends Component {
       <Route exact path="/profile">
         <Profilepage />
       </Route>
+      <Route exact path="/search">
+        <SearchResults />
+      </Route>
       <Footer />
+      </div>
 }
-
+      }
 const mapStateToProps = (state) => {
   return { user: state.user };
 };

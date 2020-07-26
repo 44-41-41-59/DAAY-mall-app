@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import store from './store';
 import App from './App';
+import './reset.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-pro-sidebar/dist/css/styles.css';
 ReactDOM.render(
