@@ -1,0 +1,8 @@
+/* #userInfoBox{
+    margin-left: 1%;
+} */
+
+.userInfo{
+    display: flex;
+}
+

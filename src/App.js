@@ -12,8 +12,8 @@ import Homepage from './components/homepage/';
 import Header from '../src/components/header';
 import Footer from '../src/components/footer';
 import Storepage from '../src/components/storepage';
+import Profilepage from '../src/components/profilepage';
 // import Image from './components/imagetest';
-
 
 class App extends Component {
   constructor(props) {
@@ -47,10 +47,10 @@ class App extends Component {
         <Route exact path="/store">
         <Storepage />
       </Route>
-        <Footer />
-      </div>
-    );
-  }
+      <Route exact path="/profile">
+        <Profilepage />
+      </Route>
+      <Footer />
 }
 
 const mapStateToProps = (state) => {
