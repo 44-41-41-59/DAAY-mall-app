@@ -3,9 +3,10 @@ import './profilepage.css';
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
 import Tabs from './tabs';
-// import Sonnet from 'react-bootstrap/Sonnet'; 
+import { connect } from 'react-redux';
 
-function Profilepage() {
+
+function Profilepage(props) {
   return (
     <>
       <div class="userInfo">
@@ -14,7 +15,8 @@ function Profilepage() {
           <Card.Header as="h5">Featured</Card.Header>
           <Card.Body>
             {/* <Card.Title>Special title treatment</Card.Title> */}
-            <Card.Text>
+            <Card.Text >
+              {props.user.username}
       With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in
             </Card.Text>
           </Card.Body>
@@ -25,5 +27,9 @@ function Profilepage() {
     </>
   );
 }
-    
-export default Profilepage;
+
+const mapStateToProps = (state) => {
+  return { user: state.user};
+};
+
+export default connect(mapStateToProps)(Profilepage);    

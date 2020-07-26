@@ -6,6 +6,10 @@ let initialState = {
   acl: [],
   paymentsHistory: [],
   confirmed: false,
+  whishlist: [],
+  favoriteStores: [],
+  orders: [],
+  viewedProducts: [],
 };
 
 export default (state = initialState, action) => {

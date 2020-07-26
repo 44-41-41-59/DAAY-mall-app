@@ -7,26 +7,24 @@ import OnSale from './onsale';
 import New from './new';
 import Summer from './summer';
 import InStock from './instock';
-import Row from 'react-bootstrap/Row';
 
 function Storepage() {
   return (
     <>
       <div class="storeInfo">
-        <Row>
-          
-            <Card.Img variant="top" src="holder.js/225x180" />
-          
-          <Card>
-            <Card.Header as="h5">Featured  <Button variant="warning">Add to favorite</Button> </Card.Header>
-            <Card.Body>
-              {/* <Card.Title>Special title treatment</Card.Title> */}
-              <Card.Text>
+      
+        <Card >
+          <Card.Img variant="top" src="holder.js/225x180" />
+        </Card>
+        <Card>
+          <Card.Header as="h5">Featured  <Button variant="warning">Add to favorite</Button> </Card.Header>
+          <Card.Body>
+            {/* <Card.Title>Special title treatment</Card.Title> */}
+            <Card.Text>
       With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Row>
+            </Card.Text>
+          </Card.Body>
+        </Card>
       </div>
       
       <div class='categoryButtons' >

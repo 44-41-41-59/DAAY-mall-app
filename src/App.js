@@ -21,11 +21,6 @@ class App extends Component {
     super(props);
   }
   componentWillMount() {
-    // cookie.save(
-    //   'auth',
-    //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMWI2MDVkMzc0MDQ2Mzc2YzU1Y2E0NCIsImlhdCI6MTU5NTcwNTIzOCwiZXhwIjoxNTk2NTY5MjM4fQ.RfOzQ70WC7_zJzJnkJ9TDAFMt_l0R1oV2IweFRYlE-w',
-    //   { path: '/' }
-    // );
     let auth = cookie.load('auth');
     if (auth) {
       this.props.checkRemoteUser(auth);
@@ -46,18 +41,19 @@ class App extends Component {
           <Products />
         </Route>
         <Route exact path="/store">
-        <Storepage />
-      </Route>
-      <Route exact path="/profile">
-        <Profilepage />
-      </Route>
-      <Route exact path="/search">
-        <SearchResults />
-      </Route>
-      <Footer />
+          <Storepage />
+        </Route>
+        <Route exact path="/profile">
+          <Profilepage />
+        </Route>
+        <Route exact path="/search">
+          <SearchResults />
+        </Route>
+        <Footer />
       </div>
+    );
+  }
 }
-      }
 const mapStateToProps = (state) => {
   return { user: state.user };
 };
