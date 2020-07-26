@@ -15,7 +15,7 @@ function Storepage() {
       <div class="storeInfo">
         <Row>
           
-            <Card.Img variant="top" src="holder.js/225x180" />
+          <Card.Img variant="top" src="holder.js/225x180" />
           
           <Card>
             <Card.Header as="h5">Featured  <Button variant="warning">Add to favorite</Button> </Card.Header>
@@ -38,6 +38,7 @@ function Storepage() {
         <Button variant="outline-secondary">Secondary</Button>{' '}
         <Button variant="outline-secondary">Secondary</Button>{' '}
         <Button variant="outline-secondary">Secondary</Button>{' '}
+        <Button variant="outline-secondary">+</Button>{' '}
       </div>
 
       <Accordion defaultActiveKey="0" >
