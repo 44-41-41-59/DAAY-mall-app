@@ -7,9 +7,6 @@ import App from './App';
 import './reset.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-pro-sidebar/dist/css/styles.css';
-import 'font-awesome/css/font-awesome.min.css';
-
-
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -18,5 +15,5 @@ ReactDOM.render(
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );

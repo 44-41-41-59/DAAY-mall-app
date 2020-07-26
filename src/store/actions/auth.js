@@ -1,8 +1,11 @@
 import axios from 'axios';
 import base64 from 'base-64';
+
 // const api = 'http://localhost:3001';
 // https://daaymall-401-project.herokuapp.com/
 const api = 'https://daaymall-401-project.herokuapp.com';
+
+import getHeader from '../header';
 
 export const auth = (userInfo) => ({
   type: 'LOGIN',
@@ -32,12 +35,23 @@ export const loginRemoteUser = function (email, password) {
 };
 export const signUpRemoteUser = function (username, email, password) {
   return async (dispatch) => {
-    const headers = {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    };
     return axios
-      .post(api + '/auth', { username, email, password }, { headers })
+      .post(
+        api + '/auth',
+        { username, email, password },
+        { headers: getHeader() }
+      )
+      .then((response) => {
+        dispatch(auth(getUserData(response.data)));
+      })
+      .catch(console.log);
+  };
+};
+
+export const checkRemoteUser = function () {
+  return async (dispatch) => {
+    return axios
+      .get(api + '/auth/check', { headers: getHeader() })
       .then((response) => {
         dispatch(auth(getUserData(response.data)));
       })
