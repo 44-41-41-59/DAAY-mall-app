@@ -6,9 +6,6 @@ import store from './store';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-pro-sidebar/dist/css/styles.css';
-
-
-
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -17,5 +14,5 @@ ReactDOM.render(
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );
