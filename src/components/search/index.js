@@ -5,7 +5,7 @@ import { getProducts } from '../../store/actions/products';
 import Sorting from './sorting-section';
 import Results from './search-results';
 
-import './search.css'
+import './search.css';
 
 function SearchResults(props) {
   useEffect(() => {

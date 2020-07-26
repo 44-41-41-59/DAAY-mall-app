@@ -1,15 +1,36 @@
 #searchPage {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 #searchResultsBox {
   width: 60vw;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 #product-list {
   width: 220px;
 }
+
+#sorting-div {
+  display: flex;
+  flex-direction: row;
+  margin: 1vh 5vw 1vh;
+}
+
+.sort-box-1 {
+  margin-right: 2vw;
+  margin-left: 2vw;
+}
+.input-group-text {
+  padding: 0.2vw;
+  font-size: 0.8rem;
+}
+.range-width {
+  width: 35vw;
+}
+
+
