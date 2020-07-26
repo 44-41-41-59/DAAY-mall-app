@@ -20,7 +20,6 @@ function SearchResults(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log('mapStateToProps', state.products.results);
   return { data: state.products.results };
 };
 const mapDispatchToProps = (dispatch) => ({
