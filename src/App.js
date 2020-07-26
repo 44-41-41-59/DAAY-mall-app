@@ -1,4 +1,7 @@
 // import React, { useEffect } from 'react';
+import React, { Component } from 'react';
+import { checkRemoteUser } from './store/actions/auth';
+
 import './App.css';
 import Auth from './components/auth';
 import { Route } from 'react-router-dom';
@@ -6,11 +9,11 @@ import { connect } from 'react-redux';
 import cookie from 'react-cookies';
 import Products from './components/product/';
 import Homepage from './components/homepage/';
-import Header from './components/header';
-import Footer from './components/footer';
+import Header from '../src/components/header';
+import Footer from '../src/components/footer';
+import Storepage from '../src/components/storepage';
 // import Image from './components/imagetest';
-import React, { Component } from 'react';
-import { checkRemoteUser } from './store/actions/auth';
+
 
 class App extends Component {
   constructor(props) {
@@ -41,11 +44,15 @@ class App extends Component {
         <Route exact path="/product">
           <Products />
         </Route>
+        <Route exact path="/store">
+        <Storepage />
+      </Route>
         <Footer />
       </div>
     );
   }
 }
+
 const mapStateToProps = (state) => {
   return { user: state.user };
 };

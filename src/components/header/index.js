@@ -8,6 +8,8 @@ import FormControl from 'react-bootstrap/FormControl';
 import Image from 'react-bootstrap/Image';
 import './header.css';
 
+//  (REPLACE WITH DROPDOWN instead of an image and a dropdown next to it)
+
 export default function Header(props) {
   return (
     <header>
