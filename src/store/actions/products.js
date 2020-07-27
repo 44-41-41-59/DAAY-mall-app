@@ -24,7 +24,7 @@ export const getSearchedProducts = function (searchTerm) {
   };
 };
 
-export const sortProducts = function (sortBy, sortPriceRange, sortRating ) {
+export const getSortingSetting = function (sortBy, sortPriceRange, sortRating ) {
   return (dispatch) => {
     dispatch(getSearchedProductsAction({ sortBy, sortPriceRange, sortRating}));
   };
@@ -44,7 +44,8 @@ export const getSearchedProductsAction = (payload) => {
   };
 };
 
-export const sortProductsAction = (payload) => {
+export const getSortingSettingAction = (payload) => {
+  console.log('action', payload);
   return {
     type: 'SORTPRODUCTS',
     payload: payload,

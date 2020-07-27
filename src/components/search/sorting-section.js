@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { getSortingSetting } from '../../store/actions/products';
 
 import { FaStar } from 'react-icons/fa';
 import Form from 'react-bootstrap/Form';
@@ -13,7 +15,20 @@ function Sorting(props) {
   // sortBy, sortPriceRange, sortRating
 
   let changeHandler = (e) => {
-    console.log('sooooooooooooooooooorting', e.target.sortby);
+    let sortingName = e.target.name;
+    let sortingValue = e.target.value;
+    console.log('sooooooooooooooooooorting', sortingValue);
+    if(sortingName === 'sortby') {
+      props.getSortingSetting(sortingValue, '', '');
+    } else if (sortingName === 'rating') {
+      props.getSortingSetting('', '', sortingValue);
+    } else if (sortingName === 'priceRangeDropdown') {
+      props.getSortingSetting('', sortingValue, '');
+    } else if (sortingName === 'minPrice') {
+      props.getSortingSetting('', sortingValue, '');
+    } else if (sortingName === 'maxPrice') {
+      props.getSortingSetting('', sortingValue, '');
+    }
   };
 
   return (
@@ -37,7 +52,7 @@ function Sorting(props) {
             const ratingValue = i + 1;
             return (
               <label>
-                <input type="radio" name="ratting" value={ratingValue} onClick={() => setRating(ratingValue)} />
+                <input type="radio" name="rating" value={ratingValue} onClick={() => setRating(ratingValue)} onChange={changeHandler}/>
 
                 <FaStar class="star" color={ratingValue <= (hover || rating) ? '#ffc107' : '#e4e5e9'} size={25} onMouseEnter={() => setHover(ratingValue)} onMouseLeave={() => setHover(null)} />
               </label>
@@ -50,7 +65,7 @@ function Sorting(props) {
       <section class="sort-box-1">
 
         <h6 class="font-weight-bold form-field">Price</h6>
-        <select class="custom-select" name='priceRange-dropdown' onChange={changeHandler}>
+        <select class="custom-select" name='priceRangeDropdown' onChange={changeHandler}>
           <option selected>Open this select menu</option>
           <option value="0-25">UNDER 25$</option>
           <option value="25-50">$25 TO $50</option>
@@ -65,13 +80,13 @@ function Sorting(props) {
 
         <InputGroup size="sm" className="mb-3">
           <InputGroup.Prepend>
-            <InputGroup.Text id="inputGroup-sizing-sm" name='minPrice' onChange={changeHandler}>MIN</InputGroup.Text>
+            <InputGroup.Text id="inputGroup-sizing-sm">MIN</InputGroup.Text>
           </InputGroup.Prepend>
-          <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+          <FormControl aria-label="Small" name='minPrice' aria-describedby="inputGroup-sizing-sm"  onChange={changeHandler} />
           <InputGroup.Prepend>
-            <InputGroup.Text id="inputGroup-sizing-sm" name='maxPrice' onChange={changeHandler}>MAX</InputGroup.Text>
+            <InputGroup.Text id="inputGroup-sizing-sm" >MAX</InputGroup.Text>
           </InputGroup.Prepend>
-          <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+          <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name='maxPrice' onChange={changeHandler}/>
         </InputGroup>
 
       </section>
@@ -80,5 +95,14 @@ function Sorting(props) {
   );
 }
 
+const mapStateToProps = (state) => {
+  let products = state.products;
+  return { data: products.results, searchTerm: products.searchTerm, searchedProducts: products.searchedProducts };
+};
 
-export default Sorting;
+
+const mapDispatchToProps = (dispatch) => ({
+  getSortingSetting: (sortBy, sortPriceRange, sortRating) => dispatch(getSortingSetting(sortBy, sortPriceRange, sortRating)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sorting);
