@@ -4,7 +4,6 @@ import getHeader from '../header';
 import cookie from 'react-cookies';
 
 const api = 'http://localhost:3001';
-// https://daaymall-401-project.herokuapp.com/
 // const api = 'https://daaymall-401-project.herokuapp.com';
 
 export const auth = (userInfo) => ({
@@ -53,6 +52,7 @@ export const signUpRemoteUser = function (username, email, password) {
 
 export const checkRemoteUser = function () {
   return async (dispatch) => {
+    console.log('helo');
     return axios({
       url: api + '/auth/check',
       headers: getHeader(),
