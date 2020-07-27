@@ -1,174 +1,93 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { getSortingSetting } from '../../store/actions/products';
+
+import { FaStar } from 'react-icons/fa';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
+
 import './search.css';
 
 function Sorting(props) {
+  const [rating, setRating] = useState(null);
+  const [hover, setHover] = useState(null);
+  // sortBy, sortPriceRange, sortRating
+
+  let changeHandler = (e) => {
+    let sortingName = e.target.name;
+    let sortingValue = e.target.value;
+    console.log('sooooooooooooooooooorting', sortingValue);
+    if(sortingName === 'sortby') {
+      props.getSortingSetting(sortingValue, '', '');
+    } else if (sortingName === 'rating') {
+      props.getSortingSetting('', '', sortingValue);
+    } else if (sortingName === 'priceRangeDropdown') {
+      props.getSortingSetting('', sortingValue, '');
+    } else if (sortingName === 'minPrice') {
+      props.getSortingSetting('', sortingValue, '');
+    } else if (sortingName === 'maxPrice') {
+      props.getSortingSetting('', sortingValue, '');
+    }
+  };
 
   return (
     <div id='sorting-div'>
-
       <section class="sort-box-1">
-
         <h6 class="font-weight-bold form-field">Sort by:</h6>
         <div class='sortby-wrapper'>
-          <div class="form-check pl-0 form-field nextto">
-            <input type="checkbox" class="form-check-input filled-in" id="new" />
-            <label class="form-check-label small text-uppercase card-link-secondary" for="new">Best Match</label>
-          </div>
-          <div class="form-check pl-0 form-field">
-            <input type="checkbox" class="form-check-input filled-in" id="used" />
-            <label class="form-check-label small text-uppercase card-link-secondary" for="used">Orders</label>
-          </div>
-          <div class="form-check pl-0 form-field">
-            <input type="checkbox" class="form-check-input filled-in" id="collectible" />
-            <label class="form-check-label small text-uppercase card-link-secondary" for="collectible">Newest</label>
-          </div>
-          <div class="form-check pl-0 form-field pb-1">
-            <input type="checkbox" class="form-check-input filled-in" id="renewed" />
-            <label class="form-check-label small text-uppercase card-link-secondary" for="renewed">Price</label>
-          </div>
+          <Form.Check custom type='radio' id='custom-radio' label='PRICE' name='sortby' onChange={changeHandler} value='price' />
+          <Form.Check custom type='radio' id='custom-radio' label='NEW' name='sortby' onChange={changeHandler} />
+          <Form.Check custom type='radio' id='custom-radio' label='TOP RANKED' name='sortby' onChange={changeHandler} />
         </div>
 
       </section>
 
-      {/* <section class="sort-box-1">
+      <section class="sort-box-1">
 
         <h6 class="font-weight-bold form-field">Avg. Customer Review</h6>
 
-        <a href="#!">
-          <ul class="rating">
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="far fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <p class="small text-uppercase card-link-secondary px-2">& Up</p>
-            </li>
-          </ul>
-        </a>
-        <a href="#!">
-          <ul class="rating">
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="far fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="far fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <p class="small text-uppercase card-link-secondary px-2">& Up</p>
-            </li>
-          </ul>
-        </a>
-        <a href="#!">
-          <ul class="rating">
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="far fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="far fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="far fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <p class="small text-uppercase card-link-secondary px-2">& Up</p>
-            </li>
-          </ul>
-        </a>
-        <a href="#!">
-          <ul class="rating">
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="far fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="far fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="far fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="far fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <p class="small text-uppercase card-link-secondary px-2">& Up</p>
-            </li>
-          </ul>
-        </a>
+        <div class="rating">
+          {[...Array(5)].map((star, i) => {
+            const ratingValue = i + 1;
+            return (
+              <label>
+                <input type="radio" name="rating" value={ratingValue} onClick={() => setRating(ratingValue)} onChange={changeHandler}/>
 
-      </section> */}
+                <FaStar class="star" color={ratingValue <= (hover || rating) ? '#ffc107' : '#e4e5e9'} size={25} onMouseEnter={() => setHover(ratingValue)} onMouseLeave={() => setHover(null)} />
+              </label>
+            );
+          })}
+          {/* <p>{rating}</p> */}
+        </div>
+      </section>
 
       <section class="sort-box-1">
 
         <h6 class="font-weight-bold form-field">Price</h6>
+        <select class="custom-select" name='priceRangeDropdown' onChange={changeHandler}>
+          <option selected>Open this select menu</option>
+          <option value="0-25">UNDER 25$</option>
+          <option value="25-50">$25 TO $50</option>
+          <option value="50-100">$50 TO $100</option>
+          <option value="100-200">$100 TO $200</option>
+          <option value="200">$200 & ABOVE</option>
 
-        <div class="input-group sort-box-1">
-          <div class="input-group-prepend">
-            <div class="input-group-text">
-              <input type="checkbox" aria-label="Checkbox for following text input" />
-              <p> UNDER 25$ </p>
-            </div>
-          </div>
-          <div class="input-group-prepend">
-            <div class="input-group-text">
-              <input type="checkbox" aria-label="Checkbox for following text input" />
-              <p> $25 TO $50 </p>
-            </div>
-          </div>
-          <div class="input-group-prepend">
-            <div class="input-group-text">
-              <input type="checkbox" aria-label="Checkbox for following text input" />
-              <p> $50 TO $100 </p>
-            </div>
-          </div>
-          <div class="input-group-prepend">
-            <div class="input-group-text">
-              <input type="checkbox" aria-label="Checkbox for following text input" />
-              <p> $100 TO $200 </p>
-            </div>
-          </div>
-          <div class="input-group-prepend">
-            <div class="input-group-text">
-              <input type="checkbox" aria-label="Checkbox for following text input" />
-              <p> $200 & ABOVE </p>
-            </div>
-          </div>
+        </select>
+        <div id='price-range'>
+
         </div>
 
-        <div class="slider-price d-flex align-items-center my-4">
-          <span class="font-weight-normal small text-muted mr-2">$0</span>
-          <form class="multi-range-field w-100 mb-1">
-            <input id="multi" class="multi-range range-width" type="range" />
-          </form>
-          <span class="font-weight-normal small text-muted ml-2">$100</span>
-        </div>
+        <InputGroup size="sm" className="mb-3">
+          <InputGroup.Prepend>
+            <InputGroup.Text id="inputGroup-sizing-sm">MIN</InputGroup.Text>
+          </InputGroup.Prepend>
+          <FormControl aria-label="Small" name='minPrice' aria-describedby="inputGroup-sizing-sm"  onChange={changeHandler} />
+          <InputGroup.Prepend>
+            <InputGroup.Text id="inputGroup-sizing-sm" >MAX</InputGroup.Text>
+          </InputGroup.Prepend>
+          <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name='maxPrice' onChange={changeHandler}/>
+        </InputGroup>
 
       </section>
 
@@ -176,5 +95,14 @@ function Sorting(props) {
   );
 }
 
+const mapStateToProps = (state) => {
+  let products = state.products;
+  return { data: products.results, searchTerm: products.searchTerm, searchedProducts: products.searchedProducts };
+};
 
-export default Sorting;
+
+const mapDispatchToProps = (dispatch) => ({
+  getSortingSetting: (sortBy, sortPriceRange, sortRating) => dispatch(getSortingSetting(sortBy, sortPriceRange, sortRating)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sorting);
