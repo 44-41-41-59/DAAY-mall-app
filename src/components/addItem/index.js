@@ -1,11 +1,10 @@
 import React from 'react';
-import Cart from './cart';
+import Item from './addProduct';
 
-
-function App() {
+function App() {  
   return (
     <div className="App">
-      <Cart />
+      <Item />
     </div>
   );
 }
