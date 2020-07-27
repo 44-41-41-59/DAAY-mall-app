@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import cookie from 'react-cookies';
 import Products from './components/product/';
 import Carts from './components/cart/';
+import AddProducts from './components/addItem/';
 import Homepage from './components/homepage/';
 import Header from '../src/components/header';
 import Footer from '../src/components/footer';
@@ -46,6 +47,9 @@ class App extends Component {
         </Route>
         <Route exact path="/product">
           <Products />
+        </Route>
+        <Route exact path="/addItem">
+          <AddProducts />
         </Route>
         <Route exact path="/cart">
           <Carts />
