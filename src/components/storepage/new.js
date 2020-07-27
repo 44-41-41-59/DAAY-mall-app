@@ -61,8 +61,7 @@ function New (){
               <Card.Title>Card Title</Card.Title>
             </Card>
             <Card >
-              <Card.Img variant="top" src="holder.js/200x200" />
-              <Card.Title>Card Title</Card.Title>
+              <Card.Img variant="top" id="upload" src="https://digitalsynopsis.com/wp-content/uploads/2015/10/gif-icons-menu-transition-animations-attachment.gif" />
             </Card>
           </Row>
         </Card.Body>

@@ -10,6 +10,7 @@ import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import cookie from 'react-cookies';
 import Products from './components/product/';
+import Carts from './components/cart/';
 import Homepage from './components/homepage/';
 import Header from '../src/components/header';
 import Footer from '../src/components/footer';
@@ -45,6 +46,9 @@ class App extends Component {
         </Route>
         <Route exact path="/product">
           <Products />
+        </Route>
+        <Route exact path="/cart">
+          <Carts />
         </Route>
         <Route exact path="/store">
           <Storepage />

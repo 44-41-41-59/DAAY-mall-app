@@ -12,7 +12,6 @@ function Storepage() {
   return (
     <>
       <div class="storeInfo">
-      
         <Card >
           <Card.Img variant="top" src="holder.js/225x180" />
         </Card>
@@ -36,6 +35,7 @@ function Storepage() {
         <Button variant="outline-secondary">Secondary</Button>{' '}
         <Button variant="outline-secondary">Secondary</Button>{' '}
         <Button variant="outline-secondary">Secondary</Button>{' '}
+        <Button variant="outline-secondary">+</Button>{' '}
       </div>
 
       <Accordion defaultActiveKey="0" >
