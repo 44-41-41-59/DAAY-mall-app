@@ -19,6 +19,7 @@ import Profilepage from '../src/components/profilepage';
 // import Image from './components/imagetest';
 
 class App extends Component {
+  // eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
   }
