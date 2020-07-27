@@ -46,18 +46,19 @@ class App extends Component {
           <Products />
         </Route>
         <Route exact path="/store">
-        <Storepage />
-      </Route>
-      <Route exact path="/profile">
-        <Profilepage />
-      </Route>
-      <Route exact path="/search">
-        <SearchResults />
-      </Route>
-      <Footer />
+          <Storepage />
+        </Route>
+        <Route exact path="/profile">
+          <Profilepage />
+        </Route>
+        <Route exact path="/search">
+          <SearchResults />
+        </Route>
+        <Footer />
       </div>
+    );
+  }
 }
-      }
 const mapStateToProps = (state) => {
   return { user: state.user };
 };

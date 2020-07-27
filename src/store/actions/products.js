@@ -7,9 +7,26 @@ export const getProducts = function () {
       method: 'get',
       url: `${api}/products`,
     }).then(function (response) {
-      console.log('res', response.data);
-      dispatch(getProductsAction({ results: response.data.resultes })); //change resultes to results
+      dispatch(getProductsAction({ results: response.data.results }));
     });
+  };
+};
+
+export const getSearchedProducts = function (searchTerm) {
+  return (dispatch) => {
+    return axios ({
+      method: 'get',
+      url: `${api}/products?searchText=${searchTerm}`,
+    }).then(function (response) {
+      console.log('res', response.data.results);
+      dispatch(getSearchedProductsAction({ searchTerm, searchedProducts: response.data.results }));
+    });
+  };
+};
+
+export const sortProducts = function (sortBy, sortPriceRange, sortRating ) {
+  return (dispatch) => {
+    dispatch(getSearchedProductsAction({ sortBy, sortPriceRange, sortRating}));
   };
 };
 
@@ -19,3 +36,18 @@ export const getProductsAction = (payload) => {
     payload: payload,
   };
 };
+
+export const getSearchedProductsAction = (payload) => {
+  return {
+    type: 'GETSEARCHEDPRODUCTS',
+    payload: payload,
+  };
+};
+
+export const sortProductsAction = (payload) => {
+  return {
+    type: 'SORTPRODUCTS',
+    payload: payload,
+  };
+};
+
