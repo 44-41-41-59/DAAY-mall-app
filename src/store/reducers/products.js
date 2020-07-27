@@ -2,6 +2,7 @@ let initialState = {
   results: [],
   searchTerm: '',
   searchedProducts: [],
+  mainProducts: {},
 };
 
 export default (state = initialState, action) => {
@@ -14,7 +15,10 @@ export default (state = initialState, action) => {
   case 'SORTPRODUCTS':
     console.log('reducerrrrrrrrrrrrrrrrr', payload);
     return { ...state.searchedProducts};
-  default:
-    return state;
+    case 'GET MAIN PAGE PRODUCTS':
+      state.mainProducts = payload;
+      return { ...state };
+    default:
+      return state;
   }
 };
