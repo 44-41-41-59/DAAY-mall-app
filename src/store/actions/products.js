@@ -7,11 +7,20 @@ export const getProducts = function () {
       method: 'get',
       url: `${api}/products`,
     }).then(function (response) {
-      console.log('res', response.data);
-      dispatch(getProductsAction({ results: response.data.resultes })); //change resultes to results
+      dispatch(getProductsAction({ results: response.data.results }));
     });
   };
 };
+
+export const getSearchedProducts = function (searchTerm) {
+  return (dispatch) => {
+    return axios ({
+      method: 'get',
+      url: `${api}/products?searchText=${searchTerm}`,
+    }).then(function (response) {
+      console.log('res', response.data.results);
+      dispatch(getSearchedProductsAction({ searchTerm, searchedProducts: response.data.results }));
+})}}
 
 export const getMainPageProducts = function () {
   return (dispatch) => {
@@ -27,9 +36,31 @@ export const getMainPageProducts = function () {
   };
 };
 
+export const getSortingSetting = function (sortBy, sortPriceRange, sortRating ) {
+  return (dispatch) => {
+    dispatch(getSearchedProductsAction({ sortBy, sortPriceRange, sortRating}));
+  };
+};
+
+
 export const getProductsAction = (payload) => {
   return {
     type: 'GETPRODUCTS',
+    payload: payload,
+  };
+};
+
+export const getSearchedProductsAction = (payload) => {
+  return {
+    type: 'GETSEARCHEDPRODUCTS',
+    payload: payload,
+  };
+};
+
+export const getSortingSettingAction = (payload) => {
+  console.log('action', payload);
+  return {
+    type: 'SORTPRODUCTS',
     payload: payload,
   };
 };
@@ -40,3 +71,4 @@ export const getMainPageProductsAction = (payload) => {
     payload: payload,
   };
 };
+

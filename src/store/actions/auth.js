@@ -39,7 +39,7 @@ export const signUpRemoteUser = function (username, email, password) {
       .post(
         api + '/auth',
         { username, email, password },
-        { headers: getHeader() }
+        { headers: getHeader() },
       )
       .then((response) => {
         cookie.save('auth', response.data.data.token, { path: '/' });
