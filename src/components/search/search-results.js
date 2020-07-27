@@ -6,7 +6,6 @@ import Card from 'react-bootstrap/Card';
 import './search.css';
 
 function Results(props) {
-
   return (
     <>
       <div id='searchResultsBox'>
@@ -17,6 +16,7 @@ function Results(props) {
               <Card.Img variant="top" src={product.images[0]} />
               <Card.Body>
                 <Card.Title>{product.name}</Card.Title>
+                <Card.Text>{product.price}$</Card.Text>
               </Card.Body>
             </Card>
           );
@@ -35,10 +35,3 @@ function Results(props) {
 }
 
 export default Results;
-
-// const mapStateToProps = (state) => {
-//   return { pagination: state.pagination };
-// };
-
-
-// export default connect(mapStateToProps)(Results);

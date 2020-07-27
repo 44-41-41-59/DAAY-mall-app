@@ -4,8 +4,9 @@ import thunk from 'redux-thunk';
 import user from './reducers/users';
 import products from './reducers/products';
 import files from './reducers/files';
-const rootReducer = combineReducers({ user, files,products });
 
+import ads from './reducers/ads';
+const rootReducer = combineReducers({ user, files, products, ads });
 
 export default createStore(
   rootReducer,

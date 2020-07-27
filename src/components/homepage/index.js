@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import SideNav from './side-nav';
 import MainCrousel from './main-crousel';
 import TopSections from './top-sections';
+import { connect } from 'react-redux';
+import { getMainPageProducts } from '../../store/actions/products';
 
 import { Sale, TopRanked, NewArrivals, Recommended } from './sections';
 
@@ -18,30 +20,36 @@ function Homepage(props) {
         <Col>
           <SideNav />
         </Col>
-        <Col id='right-section'>
-          <Row id='crousel-id'>
-            <MainCrousel />
+        <Col id="right-section">
+          <Row id="crousel-id">
+            <MainCrousel ads={props.ads} />
           </Row>
-          <Row id='top-sections-id'>
+          <Row id="top-sections-id">
             <TopSections />
           </Row>
         </Col>
       </Row>
       <Row>
-        <Sale />
+        <Sale products={props.mainProducts} />
       </Row>
       <Row>
-        <TopRanked />
+        <TopRanked products={props.mainProducts} />
       </Row>
       <Row>
-        <NewArrivals />
+        <NewArrivals products={props.mainProducts} />
       </Row>
       <Row>
-        <Recommended />
+        <Recommended products={props.mainProducts} />
       </Row>
     </>
   );
 }
 
-export default Homepage;
-
+const mapStateToProps = (state) => {
+  console.log(state.products, 'mapState');
+  return { mainProducts: state.products, ads: state.ads };
+};
+const actionCreater = (dispatch) => ({
+  getMainPageProducts: () => dispatch(getMainPageProducts()),
+});
+export default connect(mapStateToProps, actionCreater)(Homepage);

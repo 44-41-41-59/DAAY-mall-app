@@ -1,6 +1,9 @@
 // import React, { useEffect } from 'react';
 import React, { Component } from 'react';
 import { checkRemoteUser } from './store/actions/auth';
+import { getMainPageProducts } from './store/actions/products';
+import { getAdvertising } from './store/actions/ads';
+
 import './App.css';
 import Auth from './components/auth';
 import { Route } from 'react-router-dom';
@@ -17,19 +20,18 @@ import Profilepage from '../src/components/profilepage';
 // import Image from './components/imagetest';
 
 class App extends Component {
+  // eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
   }
-  componentWillMount() {
-    // cookie.save(
-    //   'auth',
-    //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMWI2MDVkMzc0MDQ2Mzc2YzU1Y2E0NCIsImlhdCI6MTU5NTcwNTIzOCwiZXhwIjoxNTk2NTY5MjM4fQ.RfOzQ70WC7_zJzJnkJ9TDAFMt_l0R1oV2IweFRYlE-w',
-    //   { path: '/' }
-    // );
+  async componentWillMount() {
+    console.log('hiiiiiiiiiiiiiiiiiiii');
     let auth = cookie.load('auth');
     if (auth) {
       this.props.checkRemoteUser(auth);
     }
+    await this.props.getMainPageProducts();
+    await this.props.getAdvertising();
   }
   render() {
     return (
@@ -58,13 +60,17 @@ class App extends Component {
           <SearchResults />
         </Route>
         <Footer />
-      </div>);
+      </div>
+    );
   }
 }
+
 const mapStateToProps = (state) => {
   return { user: state.user };
 };
 const actionCreater = (dispatch) => ({
   checkRemoteUser: () => dispatch(checkRemoteUser()),
+  getMainPageProducts: () => dispatch(getMainPageProducts()),
+  getAdvertising: () => dispatch(getAdvertising()),
 });
 export default connect(mapStateToProps, actionCreater)(App);
