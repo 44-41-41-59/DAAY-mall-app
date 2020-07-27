@@ -33,7 +33,7 @@ function Signup(props) {
             placeholder="Enter username"
           />
           <Form.Text className="text-muted">
-            We'll never share your email with anyone else. 😇
+            We'll never share your email with anyone else.<span role="img" aria-label="Angel">😇</span>
           </Form.Text>
         </Form.Group>
 
