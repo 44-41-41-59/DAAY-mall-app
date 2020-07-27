@@ -12,10 +12,10 @@ function SearchResults(props) {
     props.get();
   }, []);
   return (
-    <div id="searchPage">
+    <div id='searchPage'>
       <Sorting />
-      <Results products={props.data} />
-    </div>
+      <Results products={props.data}/>
+    </div>    
   );
 }
 
