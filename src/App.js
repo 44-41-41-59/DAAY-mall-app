@@ -1,6 +1,8 @@
 // import React, { useEffect } from 'react';
 import React, { Component } from 'react';
 import { checkRemoteUser } from './store/actions/auth';
+import { getMainPageProducts } from './store/actions/products';
+import { getAdvertising } from './store/actions/ads';
 
 import './App.css';
 import Auth from './components/auth';
@@ -21,11 +23,14 @@ class App extends Component {
   constructor(props) {
     super(props);
   }
-  componentWillMount() {
+  async componentWillMount() {
+    console.log('hiiiiiiiiiiiiiiiiiiii');
     let auth = cookie.load('auth');
     if (auth) {
       this.props.checkRemoteUser(auth);
     }
+    await this.props.getMainPageProducts();
+    await this.props.getAdvertising();
   }
   render() {
     return (
@@ -61,5 +66,7 @@ const mapStateToProps = (state) => {
 };
 const actionCreater = (dispatch) => ({
   checkRemoteUser: () => dispatch(checkRemoteUser()),
+  getMainPageProducts: () => dispatch(getMainPageProducts()),
+  getAdvertising: () => dispatch(getAdvertising()),
 });
 export default connect(mapStateToProps, actionCreater)(App);

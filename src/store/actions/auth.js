@@ -53,6 +53,7 @@ export const signUpRemoteUser = function (username, email, password) {
 
 export const checkRemoteUser = function () {
   return async (dispatch) => {
+    console.log('helo');
     return axios({
       url: api + '/auth/check',
       headers: getHeader(),
