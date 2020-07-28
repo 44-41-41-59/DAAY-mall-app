@@ -73,8 +73,8 @@ export const getMainPageProducts = function () {
 };
 
 export const getSortingSetting = function (sortBy, sortPriceRange, sortRating) {
-  return (dispatch) => {
-    dispatch(getSearchedProductsAction({ sortBy, sortPriceRange, sortRating }));
+  return (dispatch) => { 
+    dispatch(getSortingSettingAction({ sortBy, sortPriceRange, sortRating }));
   };
 };
 

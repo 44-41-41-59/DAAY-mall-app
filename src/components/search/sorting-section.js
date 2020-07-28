@@ -17,7 +17,6 @@ function Sorting(props) {
   let changeHandler = (e) => {
     let sortingName = e.target.name;
     let sortingValue = e.target.value;
-    console.log('sooooooooooooooooooorting', sortingValue);
     if(sortingName === 'sortby') {
       props.getSortingSetting(sortingValue, '', '');
     } else if (sortingName === 'rating') {
