@@ -2,8 +2,9 @@ let initialState = {
   results: [],
   searchTerm: '',
   searchedProducts: [],
-  sortBy:'',
-  sortedProducts:[],
+  sortBy: '',
+  sortedProducts: [],
+  mainProducts: {},
 };
 
 export default (state = initialState, action) => {
@@ -20,7 +21,7 @@ export default (state = initialState, action) => {
     let sortPriceRange = payload.sortPriceRange;
     let sortRating = payload.sortRating;
     let sorted = [];
-    if(sortBy) {
+    if (sortBy) {
       if (sortBy === 'price') {
         sortCondition = 'price';
         sorted = state.searchedProducts.sort((a, b) => (a.price > b.price) ? 1 : -1);
@@ -31,7 +32,7 @@ export default (state = initialState, action) => {
         sortCondition = 'top-ranked';
         sorted = state.searchedProducts.sort((a, b) => (a.views > b.views) ? 1 : -1);
       }
-    } 
+    }
     if (sortPriceRange) {
       sortCondition = 'priceRange';
       let min = sortPriceRange.split('-')[0];
@@ -43,7 +44,10 @@ export default (state = initialState, action) => {
       sorted = state.searchedProducts.filter(product => (product.review === sortRating));
     }
     console.log('sorted', sorted);
-    return { ...state, sortBy:sortCondition, sortedProducts:sorted};
+    return { ...state, sortBy: sortCondition, sortedProducts: sorted };
+  case 'GET MAIN PAGE PRODUCTS':
+    state.mainProducts = payload;
+    return { ...state };
   default:
     return state;
   }
