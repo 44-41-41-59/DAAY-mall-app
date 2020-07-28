@@ -21,27 +21,33 @@ export default (state = initialState, action) => {
     let sortPriceRange = payload.sortPriceRange;
     let sortRating = payload.sortRating;
     let sorted = [];
+    let productList = [];
+    if (state.searchedProducts) {
+      productList = state.searchedProducts;
+    } else {
+      productList = state.results;
+    }
     if (sortBy) {
       if (sortBy === 'price') {
         sortCondition = 'price';
-        sorted = state.searchedProducts.sort((a, b) => (a.price > b.price) ? 1 : -1);
+        sorted = productList.sort((a, b) => (a.price > b.price) ? 1 : -1);
       } else if (sortBy === 'new') {
         sortCondition = 'new';
-        sorted = state.searchedProducts.sort((a, b) => (a.Timestamp > b.Timestamp) ? 1 : -1);
+        sorted = productList.sort((a, b) => (a.Timestamp > b.Timestamp) ? 1 : -1);
       } else if (sortBy === 'top-ranked') {
         sortCondition = 'top-ranked';
-        sorted = state.searchedProducts.sort((a, b) => (a.views > b.views) ? 1 : -1);
+        sorted = productList.sort((a, b) => (a.views > b.views) ? 1 : -1);
       }
     }
     if (sortPriceRange) {
       sortCondition = 'priceRange';
       let min = sortPriceRange.split('-')[0];
       let max = sortPriceRange.split('-')[1];
-      sorted = state.searchedProducts.filter(product => (product.price < max) && (product.price > min));
+      sorted = productList.filter(product => (product.price < max) && (product.price > min));
     }
     if (sortRating) {
       sortCondition = 'rating';
-      sorted = state.searchedProducts.filter(product => (product.review === sortRating));
+      sorted = productList.filter(product => (product.review === sortRating));
     }
     console.log('sorted', sorted);
     return { ...state, sortBy: sortCondition, sortedProducts: sorted };
