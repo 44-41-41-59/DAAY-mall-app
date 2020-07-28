@@ -17,7 +17,10 @@ export default (state = initialState, action) => {
   switch (type) {
   case 'LOGIN':
     return { ...state, ...payload };
+  // case 'GETWISHLIST':
+  //   return {...state, ...payload };
   default:
     return state;
   }
+ 
 };

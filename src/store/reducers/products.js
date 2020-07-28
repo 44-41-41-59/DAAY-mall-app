@@ -15,10 +15,10 @@ export default (state = initialState, action) => {
   case 'SORTPRODUCTS':
     console.log('reducerrrrrrrrrrrrrrrrr', payload);
     return { ...state.searchedProducts};
-    case 'GET MAIN PAGE PRODUCTS':
-      state.mainProducts = payload;
-      return { ...state };
-    default:
-      return state;
+  case 'GET MAIN PAGE PRODUCTS':
+    state.mainProducts = payload;
+    return { ...state };
+  default:
+    return state;
   }
 };

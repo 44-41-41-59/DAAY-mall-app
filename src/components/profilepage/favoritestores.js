@@ -4,16 +4,17 @@ import Card from 'react-bootstrap/Card';
 import Tab from 'react-bootstrap/Tab'; 
 import Row from 'react-bootstrap/Row'; 
 
-function Wishlist(props) {
+function FavoriteStores(props) {
+  console.log('proooops',props);
   return (
     <>
-      <Tab.Pane eventKey="second">
+      <Tab.Pane >
         <Row>
-          {props.user.wishlist.map((product)=>{
+          {props.favoriteStores && props.favoriteStores.map((favoriteStore)=>{
             return(
-              <Card>
-                <Card.Img variant="top" src={product.image} />
-                <Card.Title>{product.title}</Card.Title>
+              <Card style={{ width: '25%' }} >
+                <Card.Img variant="top" src="https://cdn.vox-cdn.com/thumbor/8xiKPwd_p50lmJzdhV8_2Pbq5gA=/0x0:792x528/1200x800/filters:focal(333x201:459x327)/cdn.vox-cdn.com/uploads/chorus_image/image/65322102/amazonlineup.0.jpg" />
+                <Card.Title>{favoriteStore.stores.name}</Card.Title>
               </Card>
             );
           })}
@@ -23,4 +24,4 @@ function Wishlist(props) {
   );
 }
 
-export default Wishlist;
+export default FavoriteStores;

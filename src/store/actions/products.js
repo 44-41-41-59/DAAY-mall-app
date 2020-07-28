@@ -1,5 +1,6 @@
 import axios from 'axios';
-const api = 'http://localhost:3001';
+// const api = 'http://localhost:3001';
+const api = 'https://daaymall-401-project.herokuapp.com';
 
 export const getProducts = function () {
   return (dispatch) => {
@@ -20,7 +21,7 @@ export const getSearchedProducts = function (searchTerm) {
     }).then(function (response) {
       console.log('res', response.data.results);
       dispatch(getSearchedProductsAction({ searchTerm, searchedProducts: response.data.results }));
-})}}
+    });};};
 
 export const getMainPageProducts = function () {
   return (dispatch) => {
