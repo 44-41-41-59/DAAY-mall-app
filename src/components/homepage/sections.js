@@ -47,7 +47,6 @@ export const TopRanked = (props) => {
 };
 
 export const NewArrivals = (props) => {
-  console.log(props, 'bsbs');
   return (
     <CardGroup style={{ width: '100vw' }}>
       <Card id="title-card">

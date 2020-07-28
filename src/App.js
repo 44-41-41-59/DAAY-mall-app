@@ -38,13 +38,14 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        {/* <Image /> */}
         <Route exact path="/auth">
           <Auth />
         </Route>
         <Route exact path="/">
           <Homepage />
         </Route>
-        <Route exact path="/product">
+        <Route exact path="/product/:id">
           <Products />
         </Route>
         <Route exact path="/cart/user/:id">
