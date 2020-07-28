@@ -17,7 +17,7 @@ import Footer from '../src/components/footer';
 import SearchResults from '../src/components/search/';
 import Storepage from '../src/components/storepage';
 import Profilepage from '../src/components/profilepage';
-// import Image from './components/imagetest';
+import Image from './components/imagetest';
 
 class App extends Component {
   // eslint-disable-next-line no-useless-constructor
@@ -37,7 +37,8 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        {/* <Image /> */}
+
+        <Image />
         <Route exact path="/auth">
           <Auth />
         </Route>

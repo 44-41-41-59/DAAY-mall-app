@@ -41,12 +41,14 @@ export const getSearchedProducts = function (searchTerm) {
   };
 };
 
-export const payedUserCart = function (body) {
+export const payedUserCart = function (data) {
   return (dispatch) => {
+    console.log('action', data);
     return axios({
       method: 'post',
       url: `${api}/charge`,
       headers: headers(),
+      data,
     })
       .then(function (response) {
         console.log(response);
