@@ -12,8 +12,8 @@ export const Sale = (props) => {
         {/* <Card.Img variant="top" src="holder.js/100px200" /> */}
       </Card>
       <Container id="slide-container">
-        {props.products.mainProducts.onSeal &&
-          props.products.mainProducts.onSeal.map((item) => {
+        {props.products.mainProducts.onSale &&
+          props.products.mainProducts.onSale.map((item) => {
             return (
               <Card>
                 <Card.Img variant="top" src={item.images} />
@@ -47,7 +47,6 @@ export const TopRanked = (props) => {
 };
 
 export const NewArrivals = (props) => {
-  console.log(props, 'bsbs');
   return (
     <CardGroup style={{ width: '100vw' }}>
       <Card id="title-card">
@@ -55,8 +54,8 @@ export const NewArrivals = (props) => {
         {/* <Card.Img variant="top" src="holder.js/100px200" /> */}
       </Card>
       <Container id="slide-container">
-        {props.products.mainProducts.newst &&
-          props.products.mainProducts.newst.map((item) => {
+        {props.products.mainProducts.newest &&
+          props.products.mainProducts.newest.map((item) => {
             return (
               <Card>
                 <Card.Img variant="top" src={item.images} />
