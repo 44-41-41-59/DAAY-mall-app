@@ -12,6 +12,94 @@ export const getProducts = function () {
     });
   };
 };
+export const addCart = function (data) {
+  return (dispatch) => {
+    return axios({
+      method: 'post',
+      url: `${api}/cart`,
+      headers: headers(),
+      data,
+    })
+      .then(function (response) {
+        console.log(response, 'cart');
+        // dispatch(getProductsAction({ results: response.data.results }));
+      })
+      .catch(console.log);
+  };
+};
+export const addLike = function (data) {
+  return (dispatch) => {
+    return axios({
+      method: 'post',
+      url: `${api}/likes`,
+      headers: headers(),
+      data,
+    })
+      .then(function (response) {
+        console.log(response, 'cart');
+        // dispatch(getProductsAction({ results: response.data.results }));
+      })
+      .catch(console.log);
+  };
+};
+
+export const addWishlist = function (data) {
+  return (dispatch) => {
+    return axios({
+      method: 'post',
+      url: `${api}/wishlist`,
+      headers: headers(),
+      data,
+    })
+      .then(function (response) {
+        console.log(response, 'cart');
+        // dispatch(getProductsAction({ results: response.data.results }));
+      })
+      .catch(console.log);
+  };
+};
+export const getProduct = function (id) {
+  return (dispatch) => {
+    console.log(id);
+    return axios({
+      method: 'get',
+      url: `${api}/products/${id}`,
+      headers: headers(),
+    }).then(function (response) {
+      if (response.data[0]) {
+        const {
+          name,
+          Timestamp,
+          amount,
+          category,
+          description,
+          images,
+          price,
+          sale,
+          storeID,
+          views,
+        } = response.data[0];
+
+        console.log(response, 'product response');
+        dispatch({
+          type: 'GET PRODUCT',
+          payload: {
+            name,
+            Timestamp,
+            amount,
+            category,
+            description,
+            images,
+            price,
+            sale,
+            storeID,
+            views,
+          },
+        });
+      }
+    });
+  };
+};
 
 export const getCartProducts = function (id) {
   return (dispatch) => {
@@ -93,6 +181,12 @@ export const getCartProductsAction = (payload) => {
     payload: payload,
   };
 };
+export const getCartProductAction = (payload) => {
+  return {
+    type: 'GET CART PRODUCTS',
+    payload: payload,
+  };
+};
 export const getSearchedProductsAction = (payload) => {
   return {
     type: 'GETSEARCHEDPRODUCTS',
@@ -108,6 +202,13 @@ export const getSortingSettingAction = (payload) => {
 };
 
 export const getMainPageProductsAction = (payload) => {
+  return {
+    type: 'GET MAIN PAGE PRODUCTS',
+    payload: payload,
+  };
+};
+
+export const getProductAction = (payload) => {
   return {
     type: 'GET MAIN PAGE PRODUCTS',
     payload: payload,
