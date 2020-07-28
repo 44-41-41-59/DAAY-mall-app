@@ -3,9 +3,8 @@ import base64 from 'base-64';
 import getHeader from '../header';
 import cookie from 'react-cookies';
 
-// const api = 'http://localhost:3001';
-// https://daaymall-401-project.herokuapp.com/
-const api = 'https://daaymall-401-project.herokuapp.com';
+const api = 'http://localhost:3001';
+// const api = 'https://daaymall-401-project.herokuapp.com';
 export const auth = (userInfo) => ({
   type: 'LOGIN',
   payload: userInfo,
@@ -28,9 +27,10 @@ export const loginRemoteUser = function (email, password) {
       .get(api + '/auth', { headers })
       .then((response) => {
         cookie.save('auth', response.data.data.token, { path: '/' });
+        console.log(response);
         dispatch(auth(getUserData(response.data)));
       })
-      .catch(console.log);
+      .catch((err) => console.log(err.response));
   };
 };
 export const signUpRemoteUser = function (username, email, password) {
@@ -39,7 +39,7 @@ export const signUpRemoteUser = function (username, email, password) {
       .post(
         api + '/auth',
         { username, email, password },
-        { headers: getHeader() },
+        { headers: getHeader() }
       )
       .then((response) => {
         cookie.save('auth', response.data.data.token, { path: '/' });
@@ -59,7 +59,6 @@ export const checkRemoteUser = function () {
       method: 'get',
     })
       .then((response) => {
-        console.log(response.data);
         dispatch(auth(getUserData(response.data)));
       })
       .catch(console.log);
