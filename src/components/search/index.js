@@ -26,35 +26,46 @@ function SearchResults(props) {
 
   console.log('conso++++++++++++++++++++++++', props.searchedProducts);
   return (
-    <div id='searchPage'>
+    <div id='search-page-cont'>
 
-      <Form inline onSubmit={search}>
-        <FormControl type="text" placeholder="Search" className="mr-sm-2" name='searchTermInput' />
-        <Button variant="outline-success" type="submit" >Search</Button>
-      </Form>
+      <div id='left-sort-section'>
 
-      <Sorting />
-      <If condition={props.searchTerm}>
-        <Then>
-          <If condition={props.sortBy}>
-            <p>Results for: {props.searchTerm}..., Filters: {props.sortBy}</p>
-            <Then>
-              <div>
-                <Results products={props.sortedProducts} />
-              </div>
-            </Then>
-            <Else>
-              <div>
-                <Results products={props.searchedProducts} />
-              </div>
-            </Else>
-          </If>
-        </Then>
-        <Else>
-          <Results products={props.data} />
-        </Else>
-      </If>
+        {/* <Form inline onSubmit={search} id='search-form-side'>
+          <FormControl type="text" placeholder="Search" className="mr-sm-2" name='searchTermInput' id='searchInput-side' />
+          <Button variant="info" type="submit" size="md" id='searchBtn-side' >Search</Button>
+        </Form> */}
+        <form class="form-group has-search" id='search-form-side' onSubmit={search}>
+          <button type="submit" class="fa fa-search form-control-feedback" id='searchIcon-side'/>
+          <input type="text" class="form-control" placeholder="Search" name='searchTermInput' id='searchInput-side'/>
+          {/* <Button variant="info" type="submit" size="md" id='searchBtn-side' >Search</Button> */}
+        </form>
 
+        <Sorting />
+      </div>
+
+      <div id='searchPage'>
+        <If condition={props.searchTerm}>
+          <Then>
+            <If condition={props.sortBy}>
+              {/* <p>Results for: {props.searchTerm}..., Filters: {props.sortBy}</p> */}
+              <Then>
+                <div>
+                  <Results products={props.sortedProducts} />
+                </div>
+              </Then>
+              <Else>
+                <div>
+                  <Results products={props.searchedProducts} />
+                </div>
+              </Else>
+            </If>
+          </Then>
+          <Else>
+            <Results products={props.data} />
+          </Else>
+        </If>
+
+      </div>
     </div>
   );
 }
