@@ -46,7 +46,6 @@ function Homepage(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state, 'mapState');
   return { mainProducts: state.products, ads: state.ads };
 };
 const actionCreater = (dispatch) => ({

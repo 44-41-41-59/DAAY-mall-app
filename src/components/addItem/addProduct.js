@@ -2,11 +2,13 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import './addProduct.scss';
 
 export default function addProduct(props) {
   return (
-    <div>
+    <div class="productForm">
       <Form>
+        <h1>Add Product</h1>
         <Form.Group controlId="exampleForm.ControlInput1">
           <Form.Label>Product Name</Form.Label>
           <Form.Control type="text" placeholder="Normal text" />
@@ -43,8 +45,8 @@ export default function addProduct(props) {
           <Form.File id="exampleFormControlFile1" label="Upload product Photo" />
         </Form.Group>
         <Button variant="primary" type="submit">
-    Submit
-  </Button>
+          Submit
+        </Button>
       </Form>
     </div>
   );
