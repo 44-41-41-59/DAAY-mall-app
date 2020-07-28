@@ -1,3 +1,4 @@
+import headers from '../header';
 import axios from 'axios';
 const api = 'http://localhost:3001';
 
@@ -12,25 +13,60 @@ export const getProducts = function () {
   };
 };
 
+export const getCartProducts = function (id) {
+  return (dispatch) => {
+    return axios({
+      method: 'get',
+      url: `${api}/cart/user/${id}`,
+      headers: headers(),
+    }).then(function (response) {
+      dispatch(getCartProductsAction({ cart: response.data }));
+    });
+  };
+};
+
 export const getSearchedProducts = function (searchTerm) {
   return (dispatch) => {
-    return axios ({
+    return axios({
       method: 'get',
       url: `${api}/products?searchText=${searchTerm}`,
     }).then(function (response) {
-      console.log('res', response.data.results);
-      dispatch(getSearchedProductsAction({ searchTerm, searchedProducts: response.data.results }));
-})}}
+      dispatch(
+        getSearchedProductsAction({
+          searchTerm,
+          searchedProducts: response.data.results,
+        })
+      );
+    });
+  };
+};
+
+export const payedUserCart = function (body) {
+  return (dispatch) => {
+    return axios({
+      method: 'post',
+      url: `${api}/charge`,
+      headers: headers(),
+    })
+      .then(function (response) {
+        console.log(response);
+        // dispatch(
+        //   getSearchedProductsAction({
+        //     searchTerm,
+        //     searchedProducts: response.data.results,
+        //   })
+        // );
+      })
+      .catch((err) => console.log(err.response));
+  };
+};
 
 export const getMainPageProducts = function () {
   return (dispatch) => {
-    console.log('product');
     return axios({
       method: 'get',
       url: `${api}/products/main`,
     }).then(function (response) {
-      console.log('res', response.data);
-      // return null;
       dispatch(getMainPageProductsAction(response.data)); //change resultes to results
     });
   };
@@ -42,7 +78,6 @@ export const getSortingSetting = function (sortBy, sortPriceRange, sortRating) {
   };
 };
 
-
 export const getProductsAction = (payload) => {
   return {
     type: 'GETPRODUCTS',
@@ -50,6 +85,12 @@ export const getProductsAction = (payload) => {
   };
 };
 
+export const getCartProductsAction = (payload) => {
+  return {
+    type: 'GET CART PRODUCTS',
+    payload: payload,
+  };
+};
 export const getSearchedProductsAction = (payload) => {
   return {
     type: 'GETSEARCHEDPRODUCTS',
@@ -58,7 +99,6 @@ export const getSearchedProductsAction = (payload) => {
 };
 
 export const getSortingSettingAction = (payload) => {
-  console.log('action', payload);
   return {
     type: 'SORTPRODUCTS',
     payload: payload,
@@ -71,4 +111,3 @@ export const getMainPageProductsAction = (payload) => {
     payload: payload,
   };
 };
-
