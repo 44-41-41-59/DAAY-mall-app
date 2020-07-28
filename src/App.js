@@ -38,8 +38,6 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-
-        <Image />
         <Route exact path="/auth">
           <Auth />
         </Route>
@@ -50,9 +48,8 @@ class App extends Component {
           <Products />
         </Route>
         <Route exact path="/cart/user/:id">
-         <Carts />
+          <Carts />
         </Route>
-
         <Route exact path="/addItem">
           <AddProducts />
         </Route>
