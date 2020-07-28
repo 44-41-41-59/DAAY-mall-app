@@ -7,7 +7,6 @@ export const getAdvertising = function () {
       method: 'get',
       url: `${api}/advertising`,
     }).then(function (response) {
-      console.log('res', response.data);
       dispatch(getAdvertisingAction({ ads: response.data })); //change resultes to results
     });
   };
