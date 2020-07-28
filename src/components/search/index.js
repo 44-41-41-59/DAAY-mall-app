@@ -24,6 +24,7 @@ function SearchResults(props) {
     props.get();
   }, []);
 
+  console.log('conso++++++++++++++++++++++++', props.searchedProducts);
   return (
     <div id='searchPage'>
 
@@ -35,16 +36,23 @@ function SearchResults(props) {
       <Sorting />
       <If condition={props.searchTerm}>
         <Then>
-          <p>Results for: {props.searchTerm}...</p>
-          <div>
-            <Results products={props.searchedProducts} />
-          </div>
+          <If condition={props.sortBy}>
+            <p>Results for: {props.searchTerm}..., Filters: {props.sortBy}</p>
+            <Then>
+              <div>
+                <Results products={props.sortedProducts} />
+              </div>
+            </Then>
+            <Else>
+              <div>
+                <Results products={props.searchedProducts} />
+              </div>
+            </Else>
+          </If>
         </Then>
-
         <Else>
           <Results products={props.data} />
         </Else>
-
       </If>
 
     </div>
@@ -52,8 +60,9 @@ function SearchResults(props) {
 }
 
 const mapStateToProps = (state) => {
+  console.log('hello', state);
   let products = state.products;
-  return { data: products.results, searchTerm: products.searchTerm, searchedProducts: products.searchedProducts };
+  return { data: products.results, searchTerm: products.searchTerm, searchedProducts: products.searchedProducts, sortBy: products.sortBy, sortedProducts: products.sortedProducts };
 };
 const mapDispatchToProps = (dispatch) => ({
   get: () => dispatch(getProducts()),

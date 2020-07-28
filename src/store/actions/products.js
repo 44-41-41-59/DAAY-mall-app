@@ -1,6 +1,8 @@
 import headers from '../header';
 import axios from 'axios';
-const api = 'http://localhost:3001';
+// const api = 'http://localhost:3001';
+const api = 'https://daaymall-401-project.herokuapp.com';
+
 
 export const getProducts = function () {
   return (dispatch) => {
@@ -123,7 +125,7 @@ export const getSearchedProducts = function (searchTerm) {
         getSearchedProductsAction({
           searchTerm,
           searchedProducts: response.data.results,
-        })
+        }),
       );
     });
   };
@@ -163,8 +165,8 @@ export const getMainPageProducts = function () {
 };
 
 export const getSortingSetting = function (sortBy, sortPriceRange, sortRating) {
-  return (dispatch) => {
-    dispatch(getSearchedProductsAction({ sortBy, sortPriceRange, sortRating }));
+  return (dispatch) => { 
+    dispatch(getSortingSettingAction({ sortBy, sortPriceRange, sortRating }));
   };
 };
 
