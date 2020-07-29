@@ -1,0 +1,51 @@
+.social-link {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    border-radius: 50%;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+  }
+  
+  .social-link:hover,
+  .social-link:focus {
+    background: #ddd;
+    text-decoration: none;
+    color: #555;
+  }
+
+  #abouttitle1{
+    color : white;
+  }
+  
+  #abouttitle2{
+    font-size: 1.5rem;
+  }
+
+  #abouttitle3{
+    font-size: 1.5rem;
+  }
+
+  #abouttitle4{
+    color : white;
+  }
+
+.personPostion{
+  margin: 5% 0 0 1%;
+}
+
+.nameSize{
+    font-size: 1.5rem;
+}
+
+.Socialicons{
+    width:100%;
+}
+
+.ourTeamPos{
+    margin-left: 5%;
+}
