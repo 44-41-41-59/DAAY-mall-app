@@ -15,6 +15,10 @@ export default (state = initialState, action) => {
   case 'GETSEARCHEDPRODUCTS':
     return { ...state, searchTerm: payload.searchTerm, searchedProducts: payload.searchedProducts };
   case 'SORTPRODUCTS':
+<<<<<<< HEAD
+    console.log('reducerrrrrrrrrrrrrrrrr', payload);
+    return { ...state.searchedProducts};
+=======
     console.log('sort', payload);
     let sortCondition = '';
     let sortBy = payload.sortBy;
@@ -51,6 +55,7 @@ export default (state = initialState, action) => {
     }
     console.log('sorted', sorted);
     return { ...state, sortBy: sortCondition, sortedProducts: sorted };
+>>>>>>> 9608cf03d5f7ff646c928825f5a995e727b13f6d
   case 'GET MAIN PAGE PRODUCTS':
     state.mainProducts = payload;
     return { ...state };

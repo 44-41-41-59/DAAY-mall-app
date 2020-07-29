@@ -2,7 +2,10 @@ import headers from '../header';
 import axios from 'axios';
 // const api = 'http://localhost:3001';
 const api = 'https://daaymall-401-project.herokuapp.com';
+<<<<<<< HEAD
+=======
 
+>>>>>>> 9608cf03d5f7ff646c928825f5a995e727b13f6d
 
 export const getProducts = function () {
   return (dispatch) => {
@@ -121,6 +124,11 @@ export const getSearchedProducts = function (searchTerm) {
       method: 'get',
       url: `${api}/products?searchText=${searchTerm}`,
     }).then(function (response) {
+<<<<<<< HEAD
+      console.log('res', response.data.results);
+      dispatch(getSearchedProductsAction({ searchTerm, searchedProducts: response.data.results }));
+    });};};
+=======
       dispatch(
         getSearchedProductsAction({
           searchTerm,
@@ -152,6 +160,7 @@ export const payedUserCart = function (data) {
       .catch((err) => console.log(err.response));
   };
 };
+>>>>>>> 9608cf03d5f7ff646c928825f5a995e727b13f6d
 
 export const getMainPageProducts = function () {
   return (dispatch) => {
