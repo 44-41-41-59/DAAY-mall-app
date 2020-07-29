@@ -11,6 +11,8 @@ import {
   payedUserCart,
 } from '../../store/actions/products';
 import ProductPreview from './product-preview';
+import Comments from './commentCollection';
+
 
 // import BuyProductSecSlid from './buyProductSecSlide';
 function ProductPage(props) {
@@ -39,6 +41,7 @@ function ProductPage(props) {
       />
       {/* <BuyProductSecSlid /> */}
       <ProductPreview product={props.product} />
+      <Comments />
     </div>
   );
 }
@@ -53,4 +56,5 @@ const actionsCreater = (dispatch) => ({
   addWishlist: (body) => dispatch(addWishlist(body)),
   payedUserCart: (body) => dispatch(payedUserCart(body)),
 });
+
 export default connect(mapToState, actionsCreater)(withRouter(ProductPage));
