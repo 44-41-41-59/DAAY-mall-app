@@ -1,41 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Philosopher:wght@700&display=swap');
 
-
-body{
-    background-image: linear-gradient( 135deg, #acb7ae 10%, #82716e 100%);
-}
+// body{
+//     background-image: linear-gradient( 135deg, #acb7ae 10%, #82716e 100%);
+// }
 
 .productForm {
-    width :50%;
-    margin: auto;
-    margin-top: 50px;
-    background-image: linear-gradient( 135deg, #acb7ae 40%,  #82716e 80%) ;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 1.1rem;
-    padding: 5%;
-    color :#eeebe3;
-    border:3px solid whitesmoke;
-    font-family: 'Philosopher', sans-serif;
+  width: 50%;
+  margin: auto;
+  margin-top: 50px;
+  background-image: linear-gradient(135deg, #acb7ae 40%, #82716e 80%);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1.1rem;
+  padding: 5%;
+  color: #eeebe3;
+  border: 3px solid whitesmoke;
+  font-family: 'Philosopher', sans-serif;
 
-    
-    
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+  }
 
-    h1{
-        text-align: center;
-        font-size: 2rem;
-    }
+  Button {
+    width: 100%;
+    background-color: white;
+    color: black;
+  }
 
-    Button{
-        width: 100%;
-        background-color:white;
-        color:black;
-    }
-
-    Button:hover{
-        width: 100%;
-        background-color :#82716e;
-        color:white;
-    }
- 
+  Button:hover {
+    width: 100%;
+    background-color: #82716e;
+    color: white;
+  }
 }
-
