@@ -10,9 +10,18 @@ import product from './reducers/product';
 import favoriteStores from './reducers/favoritestores';
 import wishlist from './reducers/wishlist';
 
-const rootReducer = combineReducers({ user, files, products, ads, product, paginationوfavoriteStoresوwishlist });
+const rootReducer = combineReducers({
+  user,
+  files,
+  products,
+  ads,
+  product,
+  pagination,
+  favoriteStores,
+  wishlist,
+});
 
 export default createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(thunk)),
+  composeWithDevTools(applyMiddleware(thunk))
 );
