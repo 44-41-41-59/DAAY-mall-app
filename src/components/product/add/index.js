@@ -1,7 +1,7 @@
 import React from 'react';
 import Item from './addProduct';
 
-function App() {  
+function AddProduct() {  
   return (
     <div className="App">
       <Item />
@@ -9,4 +9,5 @@ function App() {
   );
 }
 
-export default App;
+export default AddProduct;
+
