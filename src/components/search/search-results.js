@@ -1,5 +1,4 @@
 import React from 'react';
-// import { connect } from 'react-redux';
 // import PaginationFunction from './pagination';
 import PaginationBar from './pagination';
 import Card from 'react-bootstrap/Card';
@@ -7,9 +6,14 @@ import { MDBIcon } from 'mdbreact';
 import Button from 'react-bootstrap/Button';
 
 
+
 import './search.css';
 
 function Results(props) {
+  // let idxOfLastItem = settingsContext.currentPage * settingsContext.itemPerpage;
+  // let idxOfFirstItem = idxOfLastItem - settingsContext.itemPerpage;
+  // let currentItems = ajaxHook.list.slice(idxOfFirstItem, idxOfLastItem);
+  
   return (
     <>
       <div id='searchResultsBox'>
@@ -63,10 +67,11 @@ function Results(props) {
         totalItems={props.fullList.length}
       /> */}
       </div>
-      <PaginationBar />
+      <PaginationBar products={props.products}/>
     </>
 
   );
 }
+
 
 export default Results;

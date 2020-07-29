@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getProducts, getSearchedProducts } from '../../store/actions/products';
-
 import Sorting from './sorting-section';
 import Results from './search-results';
 
@@ -12,6 +11,7 @@ import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 
 import './search.css';
+import { Pagination } from 'react-bootstrap';
 
 function SearchResults(props) {
   let search = (e) => {
@@ -35,8 +35,8 @@ function SearchResults(props) {
           <Button variant="info" type="submit" size="md" id='searchBtn-side' >Search</Button>
         </Form> */}
         <form class="form-group has-search" id='search-form-side' onSubmit={search}>
-          <button type="submit" class="fa fa-search form-control-feedback" id='searchIcon-side'/>
-          <input type="text" class="form-control" placeholder="Search" name='searchTermInput' id='searchInput-side'/>
+          <button type="submit" class="fa fa-search form-control-feedback" id='searchIcon-side' />
+          <input type="text" class="form-control" placeholder="Search" name='searchTermInput' id='searchInput-side' />
           {/* <Button variant="info" type="submit" size="md" id='searchBtn-side' >Search</Button> */}
         </form>
 
@@ -50,18 +50,24 @@ function SearchResults(props) {
               {/* <p>Results for: {props.searchTerm}..., Filters: {props.sortBy}</p> */}
               <Then>
                 <div>
-                  <Results products={props.sortedProducts} />
+                  <Results
+                    products={props.sortedProducts}
+                  />
                 </div>
               </Then>
               <Else>
                 <div>
-                  <Results products={props.searchedProducts} />
+                  <Results
+                    products={props.searchedProducts}
+                  />
                 </div>
               </Else>
             </If>
           </Then>
           <Else>
-            <Results products={props.data} />
+            <Results
+              products={props.data}
+            />
           </Else>
         </If>
 
@@ -73,7 +79,15 @@ function SearchResults(props) {
 const mapStateToProps = (state) => {
   console.log('hello', state);
   let products = state.products;
-  return { data: products.results, searchTerm: products.searchTerm, searchedProducts: products.searchedProducts, sortBy: products.sortBy, sortedProducts: products.sortedProducts };
+  return {
+    data: products.results,
+    searchTerm: products.searchTerm,
+    searchedProducts: products.searchedProducts,
+    sortBy: products.sortBy,
+    sortedProducts: products.sortedProducts,
+    currentPage: state.pagination.currentPage,
+    itemPerpage: state.pagination.itemPerpage,
+  };
 };
 const mapDispatchToProps = (dispatch) => ({
   get: () => dispatch(getProducts()),

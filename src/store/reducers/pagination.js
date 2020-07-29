@@ -1,6 +1,7 @@
 let initialState = {
   currentPage:1,
-  itemsPerPage:12,
+  itemPerPage:12,
+  currentItems: [],
 };
 
 export default (state = initialState, action) => {

@@ -23,7 +23,7 @@ export const Sale = (props) => {
                   <div class="card-body">
                     <div class="buy d-flex justify-content-between align-items-center">
                       <div class="price text-danger">
-                        <h5 class="mt-4">{item.price} JOD</h5>
+                        <h5 class="mt-4" id='price-home'>{item.price} JOD</h5>
                       </div>
                       <MDBIcon icon="shopping-cart" />
                     </div>
@@ -72,7 +72,7 @@ export const TopRanked = (props) => {
                   <div class="card-body">
                     <div class="buy d-flex justify-content-between align-items-center">
                       <div class="price text-danger">
-                        <h5 class="mt-4">{item.price} JOD</h5>
+                        <h5 class="mt-4" id='price-home'>{item.price} JOD</h5>
                       </div>
                       <MDBIcon icon="shopping-cart" />
                     </div>
@@ -104,7 +104,7 @@ export const NewArrivals = (props) => {
                   <div class="card-body">
                     <div class="buy d-flex justify-content-between align-items-center">
                       <div class="price text-danger">
-                        <h5 class="mt-4">{item.price} JOD</h5>
+                        <h5 class="mt-4" id='price-home'>{item.price} JOD</h5>
                       </div>
                       <MDBIcon icon="shopping-cart" />
                     </div>

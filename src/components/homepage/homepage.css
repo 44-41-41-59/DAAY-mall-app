@@ -139,3 +139,7 @@
   background: rgba(228, 228, 228, 0.568) !important;
   color: #1d1d1d !important;
 }
+
+#price-home {
+  margin-top: 0vw!important;
+}

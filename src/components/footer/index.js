@@ -1,7 +1,8 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import './footer.css';
-
+            
+import { MDBIcon } from 'mdbreact';
 
 
 function Footer() {
@@ -29,10 +30,12 @@ function Footer() {
           <div class='socialMedia'>
             <h6>Find us on</h6>
             <p>
-              <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
-              <a href="https://www.twitter.com/" class="fa fa-twitter"></a>
-              <a href="https://www.google.com/" class="fa fa-google"></a>
-              <a href="https://www.yahoo.com/" class="fa fa-yahoo"></a>
+              <a href="https://www.facebook.com/" class="genIcon fb"><MDBIcon fab icon="facebook-f" /></a>
+              <a href="https://www.twitter.com/" class="genIcon tw"><MDBIcon fab icon="twitter" /></a>
+              <a href="https://www.google.com/" class="genIcon go"><MDBIcon fab icon="google" /></a>
+              <a href="https://www.yahoo.com/" class="genIcon ya"><MDBIcon fab icon="yahoo" /></a>
+
+
             </p>
           </div>
 
