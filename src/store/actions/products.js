@@ -3,7 +3,6 @@ import axios from 'axios';
 // const api = 'http://localhost:3001';
 const api = 'https://daaymall-401-project.herokuapp.com';
 
-
 export const getProducts = function () {
   return (dispatch) => {
     return axios({
@@ -165,7 +164,7 @@ export const getMainPageProducts = function () {
 };
 
 export const getSortingSetting = function (sortBy, sortPriceRange, sortRating) {
-  return (dispatch) => { 
+  return (dispatch) => {
     dispatch(getSortingSettingAction({ sortBy, sortPriceRange, sortRating }));
   };
 };

@@ -15,13 +15,15 @@ import './header.css';
 export default function Header(props) {
   return (
     <header>
+
       <Navbar bg="light" expand="lg" id='header'>
         <div id='logoImg'>
-          <Navbar.Brand href="#home" >
+          <Navbar.Brand href="/" >
             <MDBIcon icon="weight-hanging" id='logoIcon' />
             DAAY-mall
           </Navbar.Brand>
         </div>
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <div class="form-group has-search" id='searchFormHeader'>

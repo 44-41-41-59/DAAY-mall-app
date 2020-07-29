@@ -13,3 +13,7 @@
   margin: 0 !important;
 } */
 
+#store-apply-form > * {
+  margin: 2vh;
+}
+

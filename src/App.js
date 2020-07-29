@@ -18,7 +18,7 @@ import Footer from '../src/components/footer';
 import SearchResults from '../src/components/search/';
 import Storepage from '../src/components/storepage';
 import Profilepage from '../src/components/profilepage';
-import Image from './components/imagetest';
+import StoreApplicationPage from './components/profilepage/store-application';
 
 class App extends Component {
   // eslint-disable-next-line no-useless-constructor
@@ -38,7 +38,6 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        {/* <Image /> */}
         <Route exact path="/auth">
           <Auth />
         </Route>
@@ -51,8 +50,11 @@ class App extends Component {
         <Route exact path="/cart/user/:id">
           <Carts />
         </Route>
-        <Route exact path="/addItem">
+        <Route exact path="/product/add">
           <AddProducts />
+        </Route>
+        <Route exact path="/user/applystore">
+          <StoreApplicationPage />
         </Route>
         <Route exact path="/store">
           <Storepage />

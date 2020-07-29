@@ -35,7 +35,7 @@ export const handleUpload = function (spaceName, files) {
         'state_changed',
         (snapshot) => {
           const progress = Math.round(
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100,
           );
           console.log(progress);
           dispatch(setProgress(progress));
@@ -54,7 +54,7 @@ export const handleUpload = function (spaceName, files) {
               dispatch(uploadImages(images));
               dispatch(setProgress(0));
             });
-        }
+        },
       );
     }
   };

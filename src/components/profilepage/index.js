@@ -1,73 +1,79 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './profilepage.css';
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
 import { connect } from 'react-redux';
 import Tab from 'react-bootstrap/Tab'; 
-import Row from 'react-bootstrap/Row'; 
-import Col from 'react-bootstrap/Col'; 
-import Nav from 'react-bootstrap/Nav';
+import Tabs from 'react-bootstrap/Tabs'; 
 import Wishlist from './wishlist';
 import FavoriteStores from './favoritestores';
 import Orders from './orders';
 import ViewedProducts from './viewesproducts';
+import Settings from './settings';
+import {getWishlist} from '../../store/actions/wishlist';
+import {getFavoriteStores} from '../../store/actions/favoritestore';
 
 
 function Profilepage(props) {
+
+  useEffect(() => {
+    props.getWishlist();
+    props.getFavoriteStores();
+  }, []);
+
+
   return (
     <>
-      <div class="userInfo">
-        <Image src={props.user.avatar} style={{width:'15%'}} roundedCircle />
-        <Card id='userInfoBox' >
+      <div id="container">
+        <Image id='userImg' src={props.user.avatar} style={{width:'15%'}} roundedCircle />
+        <Card id='userInfo'>     
           <Card.Header as="h5">User Information</Card.Header>
           <Card.Body>
             {/* <Card.Title>Special title treatment</Card.Title> */}
-            <Card.Text >
-              Name: {props.user.username} <br/>
-              Email: {props.user.email} <br/>
+            <Card.Text id='userInfo'>
+              Name: {props.user.username} <br/> <br/>
+              Email: {props.user.email} <br/> <br/>
               Role: {props.user.role}
             </Card.Text>
           </Card.Body>
         </Card>
       </div>
 
-      <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-        <Row>
-          <Col sm={3}>
-            <Nav variant="pills" className="flex-column">
-              <Nav.Item>
-                <Nav.Link eventKey="first">Wish-list</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="second">Favorite Stores</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="third">Orders</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="fourth">Viewed Products</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="fifth">Settings</Nav.Link>
-              </Nav.Item>
-            </Nav>
-          </Col>
-          <Col sm={9}>
-            <Tab.Content>
-              <Wishlist/>
-              <FavoriteStores/>
-              <Orders/>
-              <ViewedProducts/>
-            </Tab.Content>
-          </Col>
-        </Row>
-      </Tab.Container>
+      <div id='tabs' >
+        <Tabs defaultActiveKey="Wish-list" id="uncontrolled-tab-example">
+          <Tab eventKey="Wish-list" title="Wish-list">
+            <Wishlist wishlist={props.wishlist}/>
+          </Tab>
+          <Tab eventKey="Favorite Stores" title="Favorite Stores">
+            <FavoriteStores favoriteStores={props.favoriteStores.favoriteStores} />
+          </Tab>
+          <Tab eventKey="Orders" title="Orders" >
+            <Orders/>
+          </Tab>
+          <Tab eventKey="Viewed Products" title="Viewed Products" >
+            <ViewedProducts/>
+          </Tab>
+          <Tab eventKey="Settings" title="Settings" >
+            <Settings/>
+          </Tab>
+        </Tabs>
+      </div>
     </>
   );
 }
 
 const mapStateToProps = (state) => {
-  return { user: state.user};
+  console.log('staaateeee',state);
+  let wishlistArr=[];
+  if(state.wishlist.results){
+    wishlistArr=state.wishlist.results;
+  }
+  return { user: state.user,wishlist:wishlistArr, favoriteStores:state.favoriteStores};
 };
 
-export default connect(mapStateToProps)(Profilepage);
+const mapDispatchToProps = (dispatch) => ({
+  getWishlist: () => dispatch(getWishlist()),
+  getFavoriteStores: () => dispatch(getFavoriteStores()),
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(Profilepage);
