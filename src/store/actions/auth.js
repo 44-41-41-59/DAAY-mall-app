@@ -3,8 +3,8 @@ import base64 from 'base-64';
 import getHeader from '../header';
 import cookie from 'react-cookies';
 
-const api = 'http://localhost:3001';
-// const api = 'https://daaymall-401-project.herokuapp.com';
+// const api = 'http://localhost:3001';
+const api = 'https://daaymall-401-project.herokuapp.com';
 export const auth = (userInfo) => ({
   type: 'LOGIN',
   payload: userInfo,
@@ -39,7 +39,7 @@ export const signUpRemoteUser = function (username, email, password) {
       .post(
         api + '/auth',
         { username, email, password },
-        { headers: getHeader() }
+        { headers: getHeader() },
       )
       .then((response) => {
         cookie.save('auth', response.data.data.token, { path: '/' });

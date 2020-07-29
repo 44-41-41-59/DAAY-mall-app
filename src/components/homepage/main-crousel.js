@@ -3,7 +3,6 @@ import Carousel from 'react-bootstrap/Carousel';
 import 'holderjs';
 
 function MainCrousel(props) {
-  console.log(props.ads, 'main');
   return (
     <Carousel interval="5000">
       {props.ads.ads.map((item) => {

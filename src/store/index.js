@@ -7,7 +7,9 @@ import files from './reducers/files';
 import pagination from './reducers/pagination';
 
 import ads from './reducers/ads';
-const rootReducer = combineReducers({ user, files, products, ads, pagination });
+import product from './reducers/product';
+
+const rootReducer = combineReducers({ user, files, products, ads, product, pagination });
 
 export default createStore(
   rootReducer,
