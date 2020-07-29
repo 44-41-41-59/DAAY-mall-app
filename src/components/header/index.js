@@ -14,7 +14,7 @@ export default function Header(props) {
   return (
     <header>
       <Navbar bg="light" expand="lg" id='header' >
-        <Navbar.Brand href="#home" >
+        <Navbar.Brand href="/" >
           DAAY-mall
         </Navbar.Brand>
         

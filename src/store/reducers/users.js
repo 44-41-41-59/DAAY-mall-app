@@ -28,6 +28,17 @@ let initialState = {
 export default (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
+<<<<<<< HEAD
+  case 'LOGIN':
+    return { ...state, ...payload };
+  // case 'GETWISHLIST':
+  //   return {...state, ...payload };
+  default:
+    return state;
+  }
+ 
+};
+=======
     case 'LOGIN':
       return { ...state, ...payload };
     case 'GET CART PRODUCTS':
@@ -36,3 +47,4 @@ export default (state = initialState, action) => {
       return state;
   }
 };
+>>>>>>> 9608cf03d5f7ff646c928825f5a995e727b13f6d

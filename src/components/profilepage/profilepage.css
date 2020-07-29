@@ -1,8 +1,25 @@
-/* #userInfoBox{
-    margin-left: 1%;
-} */
+#tabs{
+    margin-left: 29vw;
+    margin-top: -52vh;
+    margin-right: 5vw;
+}
 
-.userInfo{
+#userInfo{
+    width: 27vw;
+    margin-left: 1vw;
+}
+
+#userImg{
+    margin-left: 5vw;
+    margin-top: 2vw;
+}
+
+#wishlistCards{
     display: flex;
 }
 
+#form1,#form2{
+    margin-top: 2vh;
+    width:50vw;
+    padding: 2vw;
+}
