@@ -1,12 +1,28 @@
 #header {
-    height: 10vh;
-}
-.mr-auto, .mx-auto {
-    margin-right: auto!important;
-    margin-left: 20vw;
+    height: 10vh !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
 }
 
-.navbar-nav .nav-link {
+#basic-navbar-nav {
+    flex-grow: 0;
+}
+
+#userIcon {
+    line-height: 2!important;
+    color: rgb(58, 58, 58);
+}
+#logoIcon {
+    color: rgb(58, 58, 58);
+}
+
+/* .mr-auto, .mx-auto {
+    margin-right: auto!important;
+    margin-left: 20vw;
+} */
+
+/* .navbar-nav .nav-link {
     margin-right: 1vw;
 }
 
@@ -15,10 +31,37 @@
     flex-flow: row wrap;
     align-items: center;
     margin-left: 25vw;
-}
+} */
 
 .mr-auto img {
     width: 2vw;
     height: 4vh;
     margin-top: 0.8vw;
+}
+
+/* Bootstrap 4 text input with search icon */
+#searchIcon {
+    padding: 0vw;
+}
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+#searchFormHeader {
+    margin-bottom: 0rem;
+    width: 19vw;
+    margin-right: 4vw;
+}
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+#basic-navbar-nav {
 }

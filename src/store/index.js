@@ -4,20 +4,15 @@ import thunk from 'redux-thunk';
 import user from './reducers/users';
 import products from './reducers/products';
 import files from './reducers/files';
-<<<<<<< HEAD
-import wishlist from './reducers/wishlist';
-import favoriteStores from './reducers/favoritestores';
-
+import pagination from './reducers/pagination';
 import ads from './reducers/ads';
-const rootReducer = combineReducers({ user, files, products, ads, wishlist, favoriteStores });
-=======
 import product from './reducers/product';
+import favoriteStores from './reducers/favoritestores';
+import wishlist from './reducers/wishlist';
 
-import ads from './reducers/ads';
-const rootReducer = combineReducers({ user, files, products, ads, product });
->>>>>>> 9608cf03d5f7ff646c928825f5a995e727b13f6d
+const rootReducer = combineReducers({ user, files, products, ads, product, paginationوfavoriteStoresوwishlist });
 
 export default createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(thunk))
+  composeWithDevTools(applyMiddleware(thunk)),
 );

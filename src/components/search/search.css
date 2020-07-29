@@ -2,28 +2,75 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin: 0vh 0vh 5vh;
 }
 
 #searchResultsBox {
-  width: 60vw;
+  width: 70vw;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-#product-list {
-  width: 220px;
-}
-
 #sorting-div {
   display: flex;
-  flex-direction: row;
-  margin: 1vh 5vw 1vh;
+  flex-direction: column;
+  background-color: rgb(230, 230, 230);
+  margin: 0vh 5vh 5vh;
+  padding: 2vh;
+  height: 65vh;
+}
+#heartIcon {
+  color: rgb(199, 8, 24);
+}
+#priceColor {
+  font-weight: bolder;
+  color: #7eaad5;
+}
+#cartAdd-search {
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1vh;
+  color: rgb(42, 42, 42);
+  border-radius: 0.5vh;
+
+  -webkit-box-shadow: 7px 7px 5px -6px rgba(0,0,0,0.29);
+  -moz-box-shadow: 7px 7px 5px -6px rgba(0,0,0,0.29);
+  box-shadow: 7px 7px 5px -6px rgba(0,0,0,0.29); 
+}
+#price-search {
+  margin: 0vw!important;
+}
+#addCart-search-icon {
+  padding: 0vh!important;
+}
+#searchIcon-side {
+  border: none;
+  line-height: 0rem !important;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 0vh;
+}
+#search-form-side {
+  padding: 2vw;
+  justify-content: center;
+}
+#searchInput-side {
+  margin-right: 0rem !important;
+  padding-left: 3.375rem;
+}
+#searchBtn-side {
+  width: 100%;
 }
 
-.sort-box-1 {
-  margin-right: 2vw;
-  margin-left: 2vw;
+.sort-box-1 > * {
+  padding: 1vh;
+  margin: 1vh 0vh 1vh;
+
+  /* text-align: center; */
+  /* margin-right: 2vw;
+  margin-left: 2vw; */
 }
 .input-group-text {
   padding: 0.2vw;
@@ -38,4 +85,26 @@
   padding: 0px;
 }
 
+#cardImageSearch {
+  width: 100%;
+  height: auto;
+  min-height: 50vh;
+  object-fit: cover;
+}
 
+#left-sort-section {
+  height: 90vh;
+  margin: 5vh !important;
+  width: 20vw !important;
+  max-width: 20vw !important;
+  background: rgba(228, 228, 228, 0.568) !important;
+  color: #1d1d1d !important;
+}
+#searchResultCards{
+  margin: 5vh 0vh 5vh;
+}
+
+#search-page-cont {
+  display: flex;
+  flex-direction: row;
+}

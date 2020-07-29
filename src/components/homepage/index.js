@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import SideNav from './side-nav';
 import MainCrousel from './main-crousel';
@@ -16,8 +16,8 @@ import './homepage.css';
 function Homepage(props) {
   return (
     <>
-      <Row>
-        <Col>
+      <Row id= 'mainCont'>
+        <Col id="left-section">
           <SideNav />
         </Col>
         <Col id="right-section">
@@ -29,24 +29,23 @@ function Homepage(props) {
           </Row>
         </Col>
       </Row>
-      <Row>
+      <Row id='sliderRow'>
         <Sale products={props.mainProducts} />
       </Row>
-      <Row>
+      <Row id='sliderRow'>
         <TopRanked products={props.mainProducts} />
       </Row>
-      <Row>
+      <Row id='sliderRow'>
         <NewArrivals products={props.mainProducts} />
       </Row>
-      <Row>
+      {/* <Row id='sliderRow'>
         <Recommended products={props.mainProducts} />
-      </Row>
+      </Row> */}
     </>
   );
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state.products, 'mapState');
   return { mainProducts: state.products, ads: state.ads };
 };
 const actionCreater = (dispatch) => ({

@@ -17,7 +17,7 @@ function Sorting(props) {
   let changeHandler = (e) => {
     let sortingName = e.target.name;
     let sortingValue = e.target.value;
-    if(sortingName === 'sortby') {
+    if (sortingName === 'sortby') {
       props.getSortingSetting(sortingValue, '', '');
     } else if (sortingName === 'rating') {
       props.getSortingSetting('', '', sortingValue);
@@ -44,16 +44,16 @@ function Sorting(props) {
 
       <section class="sort-box-1">
 
-        <h6 class="font-weight-bold form-field">Avg. Customer Review</h6>
+        <h6 class="font-weight-bold form-field">Customer Reviews</h6>
 
         <div class="rating">
           {[...Array(5)].map((star, i) => {
             const ratingValue = i + 1;
             return (
               <label>
-                <input type="radio" name="rating" value={ratingValue} onClick={() => setRating(ratingValue)} onChange={changeHandler}/>
+                <input type="radio" name="rating" value={ratingValue} onClick={() => setRating(ratingValue)} onChange={changeHandler} />
 
-                <FaStar class="star" color={ratingValue <= (hover || rating) ? '#ffc107' : '#e4e5e9'} size={25} onMouseEnter={() => setHover(ratingValue)} onMouseLeave={() => setHover(null)} />
+                <FaStar class="star" color={ratingValue <= (hover || rating) ? '#7eabd6' : 'rgb(255, 255, 255)'} size={25} onMouseEnter={() => setHover(ratingValue)} onMouseLeave={() => setHover(null)} />
               </label>
             );
           })}
@@ -65,7 +65,7 @@ function Sorting(props) {
 
         <h6 class="font-weight-bold form-field">Price</h6>
         <select class="custom-select" name='priceRangeDropdown' onChange={changeHandler}>
-          <option selected>Open this select menu</option>
+          <option selected>Price range</option>
           <option value="0-25">UNDER 25$</option>
           <option value="25-50">$25 TO $50</option>
           <option value="50-100">$50 TO $100</option>
@@ -81,11 +81,11 @@ function Sorting(props) {
           <InputGroup.Prepend>
             <InputGroup.Text id="inputGroup-sizing-sm">MIN</InputGroup.Text>
           </InputGroup.Prepend>
-          <FormControl aria-label="Small" name='minPrice' aria-describedby="inputGroup-sizing-sm"  onChange={changeHandler} />
+          <FormControl aria-label="Small" name='minPrice' aria-describedby="inputGroup-sizing-sm" onChange={changeHandler} />
           <InputGroup.Prepend>
             <InputGroup.Text id="inputGroup-sizing-sm" >MAX</InputGroup.Text>
           </InputGroup.Prepend>
-          <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name='maxPrice' onChange={changeHandler}/>
+          <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name='maxPrice' onChange={changeHandler} />
         </InputGroup>
 
       </section>
