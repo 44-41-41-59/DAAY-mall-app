@@ -10,8 +10,9 @@ import {
   addWishlist,
   payedUserCart,
 } from '../../store/actions/products';
-// import Comments from './commentCollection';
+
 import Reviews from './reviews';
+import NewForm from './buyProductnewForm';
 
 
 // import BuyProductSecSlid from './buyProductSecSlide';
@@ -32,15 +33,16 @@ function ProductPage(props) {
   }
   return (
     <div className="App">
-      <BuyProductSlid product={props.product} />
-      <BuyProductSided
+      <NewForm />
+      {/* <BuyProductSlid product={props.product} /> */}
+      {/* <BuyProductSided
         product={props.product}
         actions={{ addToLikes, addToCart, addToWishlist }}
         pay={props.payedUserCart}
         quantity={quantity}
-      />
-      {/* <Comments /> */}
+        
       {/* <Reviews reviews={props.reviews} /> */}
+
     </div>
   );
 }
