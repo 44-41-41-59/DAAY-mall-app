@@ -22,16 +22,37 @@ const StarRating = (props) => {
   return (
     <div class="space">
       <div class="sided">
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry.
+        </p>
         <h4>Cost : $$$$$</h4>
         <div id="star">
           {[...Array(5)].map((star, i) => {
             const ratingValue = i + 1;
-            return <label>
-              <input type="radio" name="ratting" value={ratingValue} onClick={() => setRating(ratingValue)} />
-              <FaStar class="star" color={ratingValue <= (hover || rating) ? '#26115a' : '#e4e5e9'} size={30} onMouseEnter={() => setHover(ratingValue)} onMouseLeave={() => setHover(null)} /></label>;
+            return (
+              <label>
+                <input
+                  type="radio"
+                  name="ratting"
+                  value={ratingValue}
+                  onClick={() => setRating(ratingValue)}
+                />
+                <FaStar
+                  class="star"
+                  color={
+                    ratingValue <= (hover || rating) ? '#26115a' : '#e4e5e9'
+                  }
+                  size={30}
+                  onMouseEnter={() => setHover(ratingValue)}
+                  onMouseLeave={() => setHover(null)}
+                />
+              </label>
+            );
           })}
-          <p>the rating is <span id="starNumber">{rating}</span> .</p>
+          <p>
+            the rating is <span id="starNumber">{rating}</span> .
+          </p>
         </div>
         <h4>Estimated Delivery</h4>
         <h4>Available items</h4>
@@ -45,7 +66,6 @@ const StarRating = (props) => {
         <Button variant="outline-primary">Buy Item</Button>{' '}
         <Button variant="outline-primary">Add to Cart</Button>{' '}
       </div>
-
     </div>
   );
 };

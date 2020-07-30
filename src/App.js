@@ -5,7 +5,7 @@ import { getMainPageProducts } from './store/actions/products';
 import { getAdvertising } from './store/actions/ads';
 
 import './App.css';
-import Auth from './components/auth';
+import Auth from './components/register';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import cookie from 'react-cookies';
@@ -18,7 +18,8 @@ import Footer from '../src/components/footer';
 import SearchResults from '../src/components/search/';
 import Storepage from '../src/components/storepage';
 import Profilepage from '../src/components/profilepage';
-import Image from './components/imagetest';
+import Dashboard from '../src/components/admin';
+// import Image from './components/imagetest';
 
 class App extends Component {
   // eslint-disable-next-line no-useless-constructor
@@ -62,6 +63,9 @@ class App extends Component {
         </Route>
         <Route exact path="/search">
           <SearchResults />
+        </Route>
+        <Route exact path="/admin/dashboard">
+          <Dashboard />
         </Route>
         <Footer />
       </div>

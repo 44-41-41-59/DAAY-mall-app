@@ -1,5 +1,5 @@
 let initialState = {
-  username: '',
+  logedin: false,
   email: '',
   avatar:
     'https://cdn0.iconfinder.com/data/icons/set-ui-app-android/32/8-512.png',
@@ -29,7 +29,7 @@ export default (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case 'LOGIN':
-      return { ...state, ...payload };
+      return { ...state, ...payload, logedin: true };
     case 'GET CART PRODUCTS':
       return { ...state, ...payload };
     default:

@@ -9,6 +9,7 @@ import ads from './reducers/ads';
 import product from './reducers/product';
 import favoriteStores from './reducers/favoritestores';
 import wishlist from './reducers/wishlist';
+import admin from './reducers/admin';
 
 const rootReducer = combineReducers({
   user,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   pagination,
   favoriteStores,
   wishlist,
+  admin,
 });
 
 export default createStore(

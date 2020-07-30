@@ -3,8 +3,8 @@ import base64 from 'base-64';
 import getHeader from '../header';
 import cookie from 'react-cookies';
 
-// const api = 'http://localhost:3001';
-const api = 'https://daaymall-401-project.herokuapp.com';
+const api = 'http://localhost:3001';
+// const api = 'https://daaymall-401-project.herokuapp.com';
 export const auth = (userInfo) => ({
   type: 'LOGIN',
   payload: userInfo,
@@ -16,7 +16,7 @@ function getUserData(obj) {
   return { avatar, confirmed, email, role, username, _id, acl };
 }
 
-export const loginRemoteUser = function (email, password) {
+export const loginRemoteUser = function (email, password, history) {
   return async (dispatch) => {
     const headers = {
       'Content-Type': 'application/json',
@@ -29,22 +29,23 @@ export const loginRemoteUser = function (email, password) {
         cookie.save('auth', response.data.data.token, { path: '/' });
         console.log(response);
         dispatch(auth(getUserData(response.data)));
+        history.push('/');
       })
       .catch((err) => console.log(err.response));
   };
 };
-export const signUpRemoteUser = function (username, email, password) {
+export const signUpRemoteUser = function (username, email, password, history) {
   return async (dispatch) => {
     return axios
       .post(
         api + '/auth',
         { username, email, password },
-        { headers: getHeader() },
+        { headers: getHeader() }
       )
       .then((response) => {
         cookie.save('auth', response.data.data.token, { path: '/' });
-
         dispatch(auth(getUserData(response.data)));
+        history.push('/');
       })
       .catch(console.log);
   };
