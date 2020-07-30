@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 function Login(props) {
   return (
     <Card body>
+      {props.fetch.loginFailed && <p id='loginErrMsg' >{props.fetch.loginErrorMsg}</p>}
       <Form onSubmit={props.handleSubmitLogin}>
         <h3>LOGIN</h3>
         <Form.Group controlId="formBasicEmail">

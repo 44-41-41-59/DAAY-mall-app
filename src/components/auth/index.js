@@ -4,17 +4,19 @@ import * as actions from '../../store/actions/auth';
 import Login from './login';
 import SignUp from './signup';
 import Button from 'react-bootstrap/Button';
+import {useHistory } from 'react-router-dom';
 import './auth.css';
 
 function Auth(props) {
   const [body, setBody] = useState({});
+  const history= useHistory();
   async function handleSubmit(e) {
     e.preventDefault();
-    props.signUpRemoteUser(body.username, body.email, body.password);
+    props.signUpRemoteUser(body.username, body.email, body.password,history);
   }
   async function handleSubmitLogin(e) {
     e.preventDefault();
-    props.loginRemoteUser(body.email, body.password);
+    props.loginRemoteUser(body.email, body.password,history);
   }
 
   function handelChange(e) {
@@ -26,11 +28,13 @@ function Auth(props) {
         <Login
           handelChange={handelChange}
           body={body}
+          fetch={props.fetch}
           handleSubmitLogin={handleSubmitLogin}
         />
         <SignUp
           handelChange={handelChange}
           body={body}
+          fetch={props.fetch}
           handleSubmit={handleSubmit}
         />
       </div>
@@ -49,12 +53,12 @@ function Auth(props) {
   );
 }
 const mapStateToProps = (state) => {
-  return { user: state.user };
+  return { user: state.user, fetch:state.fetching };
 };
 const actionCreater = (dispatch) => ({
-  loginRemoteUser: (email, password) =>
-    dispatch(actions.loginRemoteUser(email, password)),
-  signUpRemoteUser: (username, email, password) =>
-    dispatch(actions.signUpRemoteUser(username, email, password)),
+  loginRemoteUser: (email, password,history) =>
+    dispatch(actions.loginRemoteUser(email, password,history)),
+  signUpRemoteUser: (username, email, password,history) =>
+    dispatch(actions.signUpRemoteUser(username, email, password,history)),
 });
 export default connect(mapStateToProps, actionCreater)(Auth);

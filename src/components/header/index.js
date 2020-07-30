@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 import Image from 'react-bootstrap/Image';
+import {Link} from 'react-router-dom';
 import { MDBIcon } from 'mdbreact';
 
 import './header.css';
@@ -18,10 +19,12 @@ export default function Header(props) {
 
       <Navbar bg="light" expand="lg" id='header'>
         <div id='logoImg'>
-          <Navbar.Brand href="/" >
-            <MDBIcon icon="weight-hanging" id='logoIcon' />
+          <Link to='/' >
+            <Navbar.Brand >
+              <MDBIcon icon="weight-hanging" id='logoIcon' />
             DAAY-mall
-          </Navbar.Brand>
+            </Navbar.Brand>
+          </Link>
         </div>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
