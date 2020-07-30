@@ -14,7 +14,7 @@ import { logout } from '../../store/actions/auth';
 
 import './header.css';
 
-export default function Header(props) {
+function Header(props) {
   const history = useHistory();
   const logedin = useSelector((state) => state.user.logedin);
   const dispatch = useDispatch();
