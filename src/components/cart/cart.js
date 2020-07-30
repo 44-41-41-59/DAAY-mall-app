@@ -31,7 +31,7 @@ export default function Cart(props) {
             <div>
               <div class="accordion">
                 <div class="image">
-                  <img src={item.products.images[0]}/> 
+                  <img alt='productImage' src={item.products.images[0]}/> 
                 </div>
                 <Accordion defaultActiveKey="0">
                   <Card>
@@ -71,6 +71,7 @@ export default function Cart(props) {
         token={makePayment}
         name="test"
         amount={cost * 100}>
+        {props.fetch.paymentFailed && alert('Some information are missing')}
         <button id="btnTotal">Check Out</button>
       </StripeCeckout>
     </div>

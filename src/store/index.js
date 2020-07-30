@@ -9,6 +9,7 @@ import ads from './reducers/ads';
 import product from './reducers/product';
 import favoriteStores from './reducers/favoritestores';
 import wishlist from './reducers/wishlist';
+import fetching from './reducers/fetch';
 
 const rootReducer = combineReducers({
   user,
@@ -19,9 +20,10 @@ const rootReducer = combineReducers({
   pagination,
   favoriteStores,
   wishlist,
+  fetching,
 });
 
 export default createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(thunk))
+  composeWithDevTools(applyMiddleware(thunk)),
 );

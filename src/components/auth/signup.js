@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 function Signup(props) {
   return (
     <Card body>
+      {props.fetch.signupFailed && <p id='signupErrMsg' >{props.fetch.signupErrorMsg.message}</p>}
       <Form onSubmit={props.handleSubmit}>
         <h3>SIGNUP</h3>
         <Form.Group controlId="formBasicEmail">
