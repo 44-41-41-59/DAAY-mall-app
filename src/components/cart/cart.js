@@ -4,6 +4,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import StripeCeckout from 'react-stripe-checkout';
+import { Link } from 'react-router-dom';
 import './cart.scss';
 
 export default function Cart(props) {
@@ -36,7 +37,7 @@ export default function Cart(props) {
         let sale = item.products.sale;
         let per = (price / 100) * sale;
         return (
-          <div>
+          <Link to={`/product/${item.products._id}`}>
             <div>
               <div class="accordion">
                 <div class="image">
@@ -85,7 +86,7 @@ export default function Cart(props) {
                 </Accordion>
               </div>
             </div>
-          </div>
+          </Link>
         );
       })}
       <h3>Total is {cost}</h3>

@@ -6,12 +6,12 @@ import Results from './search-results';
 
 import { If, Else, Then } from '../if/if.js';
 
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import FormControl from 'react-bootstrap/FormControl';
+// import Form from 'react-bootstrap/Form';
+// import Button from 'react-bootstrap/Button';
+// import FormControl from 'react-bootstrap/FormControl';
 
 import './search.css';
-import { Pagination } from 'react-bootstrap';
+// import { Pagination } from 'react-bootstrap';
 
 function SearchResults(props) {
   

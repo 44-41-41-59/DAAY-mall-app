@@ -10,8 +10,9 @@ import {
   addWishlist,
   payedUserCart,
 } from '../../store/actions/products';
-import ProductPreview from './product-preview';
-import Comments from './commentCollection';
+
+import Reviews from './reviews';
+import NewForm from './buyProductnewForm';
 
 
 // import BuyProductSecSlid from './buyProductSecSlide';
@@ -32,23 +33,26 @@ function ProductPage(props) {
   }
   return (
     <div className="App">
-      <BuyProductSlid product={props.product} />
-      <BuyProductSided
+      <NewForm />
+      {/* <BuyProductSlid product={props.product} /> */}
+      {/* <BuyProductSided
         product={props.product}
         actions={{ addToLikes, addToCart, addToWishlist }}
         pay={props.payedUserCart}
         quantity={quantity}
-      />
-      {/* <BuyProductSecSlid /> */}
-      <ProductPreview product={props.product} />
-      <Comments />
+        
+      {/* <Reviews reviews={props.reviews} /> */}
+
     </div>
   );
 }
 
-const mapToState = (state) => ({
-  product: state.product,
-});
+const mapStateToProps = (state) => {
+  return {
+    product: state.product,
+    reviews: state.reviews,
+  };
+};
 const actionsCreater = (dispatch) => ({
   getProduct: (id) => dispatch(getProduct(id)),
   addCart: (body) => dispatch(addCart(body)),
@@ -57,4 +61,4 @@ const actionsCreater = (dispatch) => ({
   payedUserCart: (body) => dispatch(payedUserCart(body)),
 });
 
-export default connect(mapToState, actionsCreater)(withRouter(ProductPage));
+export default connect(mapStateToProps, actionsCreater)(withRouter(ProductPage));

@@ -3,35 +3,38 @@ import './homepage.css';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Container from 'react-bootstrap/Container';
+import { Link } from 'react-router-dom';
 import { MDBIcon } from 'mdbreact';
 
 export const Sale = (props) => {
   return (
     <div class="container slideRowContainer">
       <MDBIcon icon="dollar-sign" id="saleIcon" />
-      <span>Sale</span>
+      <span id="sale">Sale</span>
       <div class="row" id="slideRow">
         {props.products.mainProducts.onSale &&
           props.products.mainProducts.onSale.map((item) => {
             return (
-              <div class="col-xs-4">
-                <div class="card" id="slideRow-card">
-                  <img class="card-img" src={item.images} alt={item.title} />
-                  <div class="card-img-overlay d-flex justify-content-end">
-                    <MDBIcon far icon="heart" />
-                  </div>
-                  <div class="card-body">
-                    <div class="buy d-flex justify-content-between align-items-center">
-                      <div class="price text-danger">
-                        <h5 class="mt-4" id="price-home">
-                          {item.price} JOD
-                        </h5>
+              <Link to={`/product/${item._id}`}>
+                <div class="col-xs-4">
+                  <div class="card" id="slideRow-card">
+                    <img class="card-img" src={item.images} alt={item.title} />
+                    <div class="card-img-overlay d-flex justify-content-end">
+                      <MDBIcon far icon="heart" />
+                    </div>
+                    <div class="card-body">
+                      <div class="buy d-flex justify-content-between align-items-center">
+                        <div class="price text-danger">
+                          <h5 class="mt-4" id="price-home">
+                            {item.price}JOD
+                          </h5>
+                        </div>
+                        <MDBIcon icon="shopping-cart" />
                       </div>
-                      <MDBIcon icon="shopping-cart" />
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
       </div>
@@ -60,29 +63,31 @@ export const TopRanked = (props) => {
   return (
     <div class="container slideRowContainer">
       <MDBIcon icon="chart-line" id="saleIcon" />
-      <span>Top products</span>
+      <span id="topProducts">Top products</span>
       <div class="row" id="slideRow">
         {props.products.mainProducts.ranked &&
           props.products.mainProducts.ranked.map((item) => {
             return (
-              <div class="col-xs-4">
-                <div class="card" id="slideRow-card">
-                  <img class="card-img" src={item.images} alt={item.title} />
-                  <div class="card-img-overlay d-flex justify-content-end">
-                    <MDBIcon far icon="heart" />
-                  </div>
-                  <div class="card-body">
-                    <div class="buy d-flex justify-content-between align-items-center">
-                      <div class="price text-danger">
-                        <h5 class="mt-4" id="price-home">
-                          {item.price} JOD
-                        </h5>
+              <Link to={`/product/${item._id}`}>
+                <div class="col-xs-4">
+                  <div class="card" id="slideRow-card">
+                    <img class="card-img" src={item.images} alt={item.title} />
+                    <div class="card-img-overlay d-flex justify-content-end">
+                      <MDBIcon far icon="heart" />
+                    </div>
+                    <div class="card-body">
+                      <div class="buy d-flex justify-content-between align-items-center">
+                        <div class="price text-danger">
+                          <h5 class="mt-4" id="price-home">
+                            {item.price} JOD
+                          </h5>
+                        </div>
+                        <MDBIcon icon="shopping-cart" />
                       </div>
-                      <MDBIcon icon="shopping-cart" />
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
       </div>
@@ -94,29 +99,31 @@ export const NewArrivals = (props) => {
   return (
     <div class="container slideRowContainer">
       <MDBIcon icon="newspaper" id="saleIcon" />
-      <span>New</span>
+      <span id="new">New</span>
       <div class="row" id="slideRow">
         {props.products.mainProducts.newest &&
           props.products.mainProducts.newest.map((item) => {
             return (
-              <div class="col-xs-4">
-                <div class="card" id="slideRow-card">
-                  <img class="card-img" src={item.images} alt={item.title} />
-                  <div class="card-img-overlay d-flex justify-content-end">
-                    <MDBIcon far icon="heart" />
-                  </div>
-                  <div class="card-body">
-                    <div class="buy d-flex justify-content-between align-items-center">
-                      <div class="price text-danger">
-                        <h5 class="mt-4" id="price-home">
-                          {item.price} JOD
-                        </h5>
+              <Link to={`/product/${item._id}`}>
+                <div class="col-xs-4">
+                  <div class="card" id="slideRow-card">
+                    <img class="card-img" src={item.images} alt={item.title} />
+                    <div class="card-img-overlay d-flex justify-content-end">
+                      <MDBIcon far icon="heart" />
+                    </div>
+                    <div class="card-body">
+                      <div class="buy d-flex justify-content-between align-items-center">
+                        <div class="price text-danger">
+                          <h5 class="mt-4" id="price-home">
+                            {item.price} JOD
+                          </h5>
+                        </div>
+                        <MDBIcon icon="shopping-cart" />
                       </div>
-                      <MDBIcon icon="shopping-cart" />
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
       </div>

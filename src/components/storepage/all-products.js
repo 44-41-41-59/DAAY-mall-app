@@ -1,21 +1,22 @@
 import React from 'react';
-// import './storepage.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Accordion from 'react-bootstrap/Accordion';
+import Row from 'react-bootstrap/Row';
 import { MDBIcon } from 'mdbreact';
 
-function OnSale(props) {
+
+function StoreProducts(props) {
   return (
     <Card>
       <Card.Header>
-        <Accordion.Toggle as={Button} variant="link" eventKey="1">
-          On Sale
+        <Accordion.Toggle as={Button} variant="link" eventKey="0">
+          All products
         </Accordion.Toggle>
       </Card.Header>
       {props.products.map((product) => {
         return (
-          <Accordion.Collapse eventKey="1">
+          <Accordion.Collapse eventKey="0">
             <div class="col-12 col-sm-8 col-md-6 col-lg-4" id='searchResultCards'>
               <div class="card" id='cardImageSearch'>
                 <img class="card-img" id='cardImageSearch' src={product.images[0]} alt={product.name} />
@@ -46,4 +47,4 @@ function OnSale(props) {
   );
 }
 
-export default OnSale;
+export default StoreProducts;
