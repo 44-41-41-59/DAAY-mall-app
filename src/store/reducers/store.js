@@ -1,10 +1,11 @@
 let initialState = {
   name: '',
-  logo: '',
+  logo: 'holder.js/200x180',
   category: [],
   images: [],
   products: [],
-  status:   'pending',
+  orders:[],
+  status: 'pending',
   country: '',
   city: '',
   contactNumber: '',
@@ -16,7 +17,10 @@ export default (state = initialState, action) => {
   switch (type) {
   case 'ADDSTORE':
     return payload;
+  case 'GETSTORE':
+    return payload;
   default:
     return state;
   }
 };
+

@@ -29,9 +29,30 @@ export const addStore = function (storeData) {
   };
 };
 
+export const getStore = function (id) {
+  return (dispatch) => {
+    return axios({
+      method: 'get',
+      url: `${api}/store/${id}`,  //make it dynamic by getting from params
+      headers: getHeader(),
+    }).then(function (response) {
+      console.log('pleeeeeeeeeeeeeeeee', response);
+
+      dispatch(getStoreAction(response.data[0]));
+    });
+  };
+};
+
 export const addStoreAction = (payload) => {
   return {
     type: 'ADDSTORE',
+    payload: payload,
+  };
+};
+
+export const getStoreAction = (payload) => {
+  return {
+    type: 'GETSTORE',
     payload: payload,
   };
 };

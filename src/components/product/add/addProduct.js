@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { MDBInput } from "mdbreact";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -37,11 +36,11 @@ function AddProduct(props) {
           <Form.Control type="text" placeholder="Specification" />
           <br />
           {/* <Form.Label>Quantity</Form.Label> */}
-          <Form.Control type="number" placeholder="Quantity" name='amount' />
+          <Form.Control type="number" placeholder="Quantity" name='amount'min="1" />
           <br />
           <br />
           {/* <Form.Label>Price</Form.Label> */}
-          <Form.Control type="number" placeholder="Price" name='price' />
+          <Form.Control type="number" placeholder="Price JOD" name='price' />
           <br />
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlTextarea1">
@@ -56,9 +55,9 @@ function AddProduct(props) {
           <option>General</option>
           <option>Food</option>
         </Form.Control>
-        <Form.Control type="number" placeholder="Sale" name='sale' />
+        <Form.Control type="number" placeholder="Sale percentage %" name='sale' min="0" max="100" step="1"/>
         <Form.Check label="Hidden" type='radio' name='hidden' value={true} />
-        <Form.Check label="Available" type='radio' name='hidden' value={false}/>
+        <Form.Check label="Available" type='radio' name='hidden' value={false} checked/>
         <Button variant="primary" type="submit">
           Add
         </Button>

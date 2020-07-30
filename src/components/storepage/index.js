@@ -1,35 +1,28 @@
-import React from 'react';
-import './storepage.css';
-import Card from 'react-bootstrap/Card';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
+import './storepage.scss';
+import StoreInfo from './store-info';
 import Button from 'react-bootstrap/Button';
 import Accordion from 'react-bootstrap/Accordion';
 import OnSale from './onsale';
-import New from './new';
-import Summer from './summer';
-import InStock from './instock';
+import Orders from './orders';
+import AllProducts from './all-products';
+import { getStore } from '../../store/actions/store';
+import { If, Else, Then } from '../if/if.js';
 
-function Storepage() {
+
+function Storepage(props) {
+  const storeID = props.match.params.id;
+
+  useEffect(() => {
+    props.getStore(storeID);
+  }, []);
+
   return (
     <div id='store-page'>
-      <div class="storeInfo">
-        <div id='left-store-page'>
-          <Card  id='left-store-page-image'>
-            <Card.Img variant="top" src="holder.js/225x180" />
-          </Card>
-        </div>
-        <div id='right-store-page'>
-          <Card>
-            <Card.Header as="h5">Featured  <Button variant="warning">Add to favorite</Button> </Card.Header>
-            <Card.Body>
-              {/* <Card.Title>Special title treatment</Card.Title> */}
-              <Card.Text>
-                With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in
-              </Card.Text>
-            </Card.Body>
-          </Card>
-
-        </div>
-      </div>
+      <StoreInfo store={props.store} />
 
       <div class='categoryButtons' >
         <Button variant="outline-secondary">Categories</Button>{' '}
@@ -37,15 +30,46 @@ function Storepage() {
         <Button variant="outline-secondary">+</Button>{' '}
       </div>
 
-      <Accordion defaultActiveKey="0" >
-        <OnSale />
-        <New />
+      <Accordion defaultActiveKey="1" >
+
+        <If condition={props.owner}>
+          <Then>
+            <Orders orders={props.orders} />
+          </Then>
+        </If>
+
+        <AllProducts products={props.store.products} />
+        <OnSale products={props.sale} />
+        {/* <New />
         <Summer />
-        <InStock />
+        <InStock /> */}
       </Accordion>
     </div>
-
   );
 }
 
-export default Storepage;
+const mapStateToProps = (state) => {
+  let owner = false;
+  let sale = state.store.products.filter(product => product.sale);
+  if (state.user && state.store) {
+    if (state.user._id && state.store.ownerID) {
+      console.log('userID', state.user._id, 'storeID', state.store.ownerID._id);
+      if (state.user._id === state.store.ownerID._id) {
+        owner = true;
+      }
+    }
+  }
+
+  return {
+    user: state.user,
+    store: state.store,
+    sale,
+    orders: (state.store) ? (state.store.orders) : [],
+    owner: owner,
+  };
+};
+const mapDispatchToProps = (dispatch) => ({
+  getStore: (storeID) => dispatch(getStore(storeID)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Storepage));
