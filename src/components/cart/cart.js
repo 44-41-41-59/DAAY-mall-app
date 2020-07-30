@@ -4,6 +4,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import StripeCeckout from 'react-stripe-checkout';
+import {Link} from 'react-router-dom';
 import './cart.scss';
 
 export default function Cart(props) {
@@ -27,42 +28,45 @@ export default function Cart(props) {
       </h1>
       {props.user.cart.map((item) => {
         return (
-          <div>
+          <Link to={`/product/${item.products._id}`}>
+
             <div>
-              <div class="accordion">
-                <div class="image">
-                  <img alt='productImage' src={item.products.images[0]}/> 
-                </div>
-                <Accordion defaultActiveKey="0">
-                  <Card>
-                    <Card.Header>
-                      <Accordion.Toggle as={Button} variant="link" eventKey="0">
+              <div>
+                <div class="accordion">
+                  <div class="image">
+                    <img alt='productImage' src={item.products.images[0]}/> 
+                  </div>
+                  <Accordion defaultActiveKey="0">
+                    <Card>
+                      <Card.Header>
+                        <Accordion.Toggle as={Button} variant="link" eventKey="0">
                         Item Description
-                      </Accordion.Toggle>
-                    </Card.Header>
-                    <Accordion.Collapse eventKey="0">
-                      <Card.Body><p>name  {item.products.name}</p></Card.Body>
-                    </Accordion.Collapse>
-                  </Card>
-                  <Card>
-                    <Card.Header>
-                      <Accordion.Toggle as={Button} variant="link" eventKey="1">
+                        </Accordion.Toggle>
+                      </Card.Header>
+                      <Accordion.Collapse eventKey="0">
+                        <Card.Body><p>name  {item.products.name}</p></Card.Body>
+                      </Accordion.Collapse>
+                    </Card>
+                    <Card>
+                      <Card.Header>
+                        <Accordion.Toggle as={Button} variant="link" eventKey="1">
                         Item Details
-                      </Accordion.Toggle>
-                    </Card.Header>
-                    <Accordion.Collapse eventKey="1">
-                      <Card.Body>
-                        <ul>
-                          <li><p>price  {item.products.price}</p></li>
-                          <li><p>seal {item.products.seal}</p></li>
-                        </ul>
-                      </Card.Body>
-                    </Accordion.Collapse>
-                  </Card>
-                </Accordion>
+                        </Accordion.Toggle>
+                      </Card.Header>
+                      <Accordion.Collapse eventKey="1">
+                        <Card.Body>
+                          <ul>
+                            <li><p>price  {item.products.price}</p></li>
+                            <li><p>seal {item.products.seal}</p></li>
+                          </ul>
+                        </Card.Body>
+                      </Accordion.Collapse>
+                    </Card>
+                  </Accordion>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         );
       })}
 
@@ -73,7 +77,7 @@ export default function Cart(props) {
         amount={cost * 100}>
         {props.fetch.paymentFailed && alert('Some information are missing')}
         <button id="btnTotal">Check Out</button>
-      </StripeCeckout>
+      </StripeCeckout>  
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import './footer.css';
-            
 import { MDBIcon } from 'mdbreact';
+import {Link} from 'react-router-dom';
 
 
 function Footer() {
@@ -15,7 +15,8 @@ function Footer() {
           <div class='about'>  
             <h6>About</h6>
             <p>
-            DAAY-mall is an online platform for stores owners to display and sell their products in an easy, efficient and secure process.
+            DAAY-mall is an online platform for stores owners to display and sell their products in an easy, efficient and secure process. <br/>
+              <Link to='/Aboutus' >Learn More</Link>
             </p>
           </div>
 
@@ -42,14 +43,15 @@ function Footer() {
           <div class='help'>
             <h6>Help Center</h6>
             <p>
-                 FAQ <br/>
-                Online Service
+              <Link to='/help'>FAQ</Link> <br/>
+              <Link to='/chat'> Online Service </Link>
             </p> 
           </div>
-
         </div>
+        
+        <div> &copy; 2020 <br/>
+        All rights reserved for DAAY-mall </div>
       </Navbar>
-    
     </footer>
 
   );

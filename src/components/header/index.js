@@ -2,18 +2,14 @@ import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import FormControl from 'react-bootstrap/FormControl';
-import Image from 'react-bootstrap/Image';
 import {Link} from 'react-router-dom';
 import { MDBIcon } from 'mdbreact';
+import { connect } from 'react-redux';
 
 import './header.css';
 
-//  (REPLACE WITH DROPDOWN instead of an image and a dropdown next to it)
 
-export default function Header(props) {
+function Header(props) {
   return (
     <header>
 
@@ -37,17 +33,27 @@ export default function Header(props) {
           <Nav className="mr-auto" >
             <MDBIcon far icon="user" id='userIcon' />
             <NavDropdown id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Edit Profile</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">My orders</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Favorites</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.4">Settings</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.4">Log out</NavDropdown.Item>
             </NavDropdown>
 
-            <NavDropdown title="Cart" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">View Cart</NavDropdown.Item>
-            </NavDropdown>
-
+            <p id='numOfitemsAddedToCart' >{props.user.cart.length}</p> 
+            {!props.user._id &&<Link to={`/auth`}>
+              <div id='cartIcon' style={{color: 'black'}}>
+                <MDBIcon icon="shopping-cart" />
+              </div>
+            </Link>}
+            {props.user._id &&<Link to={`/cart/user/${props.user._id}`}>
+              <div id='cartIcon' style={{color: 'black'}}>
+                <MDBIcon icon="shopping-cart" />
+              </div>
+            </Link>
+            }
+            
+            
             <NavDropdown title="Help" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Customer Service</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Return Poilicy</NavDropdown.Item>
@@ -60,3 +66,12 @@ export default function Header(props) {
     </header>
   );
 }
+
+const mapStateToProps = (state) => {
+  return { 
+    user:state.user,
+    fetch:state.fetching,
+  };
+};
+
+export default connect(mapStateToProps)(Header);
