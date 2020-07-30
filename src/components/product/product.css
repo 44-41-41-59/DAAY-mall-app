@@ -17,7 +17,6 @@ div #text h1 {
   animation: text-flicker 3s linear infinite;
   
 }
-
 #offset {
   animation: letter-flicker 2s linear infinite;
 }

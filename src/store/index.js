@@ -10,6 +10,7 @@ import product from './reducers/product';
 import favoriteStores from './reducers/favoritestores';
 import wishlist from './reducers/wishlist';
 import fetching from './reducers/fetch';
+import store from './reducers/store';
 
 const rootReducer = combineReducers({
   user,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   favoriteStores,
   wishlist,
   fetching,
+  store,
 });
 
 export default createStore(

@@ -4,22 +4,36 @@ import PaginationBar from './pagination';
 import Card from 'react-bootstrap/Card';
 import { MDBIcon } from 'mdbreact';
 import Button from 'react-bootstrap/Button';
+import { connect } from 'react-redux';
 
 
 
 import './search.css';
 
 function Results(props) {
-  // let idxOfLastItem = settingsContext.currentPage * settingsContext.itemPerpage;
-  // let idxOfFirstItem = idxOfLastItem - settingsContext.itemPerpage;
-  // let currentItems = ajaxHook.list.slice(idxOfFirstItem, idxOfLastItem);
+  let currentItems = [];
+  let pageNumbers = [];
+  if (props.currentPage && props.itemPerPage) {
+    let idxOfLastItem = props.currentPage * props.itemPerPage;
+    let idxOfFirstItem = idxOfLastItem - props.itemPerPage;
+    
+    currentItems = props.products.slice(idxOfFirstItem, idxOfLastItem);    
+    console.log('why???????', props.itemPerPage, currentItems);
+    for (let i = 1; i <= Math.ceil(props.products.length / props.itemPerPage); i++) {
+      pageNumbers.push(i);
+    }
+  }
+  if (!currentItems.length) {
+    console.log('empty');
+    currentItems= props.products;
+  };
   
   return (
     <>
       <div id='searchResultsBox'>
         <div class="container">
           <div class="row">
-            {props.products.map(item => {
+            {currentItems.map(item => {
               return (
                 <div class="col-12 col-sm-8 col-md-6 col-lg-4" id='searchResultCards'>
                   <div class="card" id='cardImageSearch'>
@@ -67,11 +81,23 @@ function Results(props) {
         totalItems={props.fullList.length}
       /> */}
       </div>
-      <PaginationBar products={props.products}/>
+      <PaginationBar products={props.products} pageNumbers={pageNumbers}/>
     </>
 
   );
 }
 
+const mapStateToProps = (state) => {
+  console.log('results state', state);
+  return {
+    products: state.products.results,
+    currentPage: state.pagination.currentPage,
+    itemPerPage: state.pagination.itemPerPage,
+  };
+};
 
-export default Results;
+
+// export default Results;
+export default connect(mapStateToProps)(Results);
+
+

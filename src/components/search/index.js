@@ -14,6 +14,7 @@ import './search.css';
 import { Pagination } from 'react-bootstrap';
 
 function SearchResults(props) {
+  
   let search = (e) => {
     e.preventDefault();
     let searched = e.target.searchTermInput.value;
