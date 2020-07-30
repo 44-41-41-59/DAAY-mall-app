@@ -57,7 +57,7 @@ class App extends Component {
         <Route exact path="/user/applystore">
           <StoreApplicationPage />
         </Route>
-        <Route exact path="/store">
+        <Route exact path="/store/:id">
           <Storepage />
         </Route>
         <Route exact path="/profile">

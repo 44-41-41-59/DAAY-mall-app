@@ -184,7 +184,7 @@ box-shadow: 0px 0px 78px 4px rgba(16,134,232,0.73);
   display: none;
 }
 
-#related-slide-container .card {
+#related-slide-container {
   width: 20vw;
   height: 30vh;
   display: inline-block;
