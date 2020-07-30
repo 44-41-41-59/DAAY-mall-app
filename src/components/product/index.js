@@ -12,6 +12,7 @@ import {
 } from '../../store/actions/products';
 import ProductPreview from './product-preview';
 import Comments from './commentCollection';
+import NewForm from './buyProductnewForm';
 
 
 // import BuyProductSecSlid from './buyProductSecSlide';
@@ -32,16 +33,17 @@ function ProductPage(props) {
   }
   return (
     <div className="App">
-      <BuyProductSlid product={props.product} />
-      <BuyProductSided
+      <NewForm />
+      {/* <BuyProductSlid product={props.product} /> */}
+      {/* <BuyProductSided
         product={props.product}
         actions={{ addToLikes, addToCart, addToWishlist }}
         pay={props.payedUserCart}
         quantity={quantity}
-      />
+      /> */}
       {/* <BuyProductSecSlid /> */}
-      <ProductPreview product={props.product} />
-      <Comments />
+      {/* <ProductPreview product={props.product} /> */}
+      {/* <Comments /> */}
     </div>
   );
 }
