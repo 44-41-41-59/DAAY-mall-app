@@ -14,13 +14,13 @@ const ReactFirebaseFileUpload = (props) => {
   };
 
   const handleUpload = () => {
-    props.handleUpload('users', images);
+    props.handleUpload(props.type, images);
   };
 
   return (
     <div>
       <progress value={progress} max="100" />
-      <input multiple type="file" onChange={handleChange} />
+      <input multiple type="file" onChange={handleChange} name={props.name} />
       <button onClick={handleUpload}>Upload</button>
     </div>
   );
@@ -33,4 +33,5 @@ const actionCreater = (dispatch) => ({
   handleUpload: (spaceName, images) =>
     dispatch(handleUpload(spaceName, images)),
 });
+
 export default connect(mapStateToProps, actionCreater)(ReactFirebaseFileUpload);

@@ -1,7 +1,7 @@
 import headers from '../header';
 import axios from 'axios';
-const api = 'http://localhost:3001';
-// const api = 'https://daaymall-401-project.herokuapp.com';
+// const api = 'http://localhost:3001';
+const api = 'https://daaymall-401-project.herokuapp.com';
 
 export const getProducts = function () {
   return (dispatch) => {
@@ -124,7 +124,7 @@ export const getSearchedProducts = function (searchTerm) {
         getSearchedProductsAction({
           searchTerm,
           searchedProducts: response.data.results,
-        })
+        }),
       );
     });
   };

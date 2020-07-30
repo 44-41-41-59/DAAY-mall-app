@@ -23,16 +23,17 @@ let initialState = {
   orders: [],
   viewedProducts: [],
   cart: [],
+  _id:'',
 };
 
 export default (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case 'LOGIN':
-      return { ...state, ...payload };
-    case 'GET CART PRODUCTS':
-      return { ...state, ...payload };
-    default:
-      return state;
+  case 'LOGIN':
+    return { ...state, ...payload };
+  case 'GET CART PRODUCTS':
+    return { ...state, ...payload };
+  default:
+    return state;
   }
 };

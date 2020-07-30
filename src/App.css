@@ -13,3 +13,11 @@
   margin: 0 !important;
 } */
 
+#store-apply-form > * {
+  margin: 2vh;
+}
+input[type="radio"] {
+  display: block!important;
+  position: initial;
+}
+

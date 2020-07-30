@@ -36,8 +36,8 @@ function Sorting(props) {
         <h6 class="font-weight-bold form-field">Sort by:</h6>
         <div class='sortby-wrapper'>
           <Form.Check custom type='radio' id='custom-radio' label='PRICE' name='sortby' onChange={changeHandler} value='price' />
-          <Form.Check custom type='radio' id='custom-radio' label='NEW' name='sortby' onChange={changeHandler} />
-          <Form.Check custom type='radio' id='custom-radio' label='TOP RANKED' name='sortby' onChange={changeHandler} />
+          <Form.Check custom type='radio' id='custom-radio' label='NEW' name='sortby' onChange={changeHandler} value='new'/>
+          <Form.Check custom type='radio' id='custom-radio' label='TOP RANKED' name='sortby' onChange={changeHandler} value='top-ranked'/>
         </div>
 
       </section>

@@ -7,26 +7,26 @@ import Pagination from 'react-bootstrap/Pagination';
 
 function PaginationFunction(props) {
 
-  let currentItems = [];
-  let pageNumbers = [];
-  if (props.currentPage && props.itemPerPage) {
-    let idxOfLastItem = props.currentPage * props.itemPerPage;
-    let idxOfFirstItem = idxOfLastItem - props.itemPerPage;
+  // let currentItems = [];
+  // let pageNumbers = [];
+  // if (props.currentPage && props.itemPerPage) {
+  //   let idxOfLastItem = props.currentPage * props.itemPerPage;
+  //   let idxOfFirstItem = idxOfLastItem - props.itemPerPage;
     
-    currentItems = props.products.slice(idxOfFirstItem, idxOfLastItem);    
-    console.log('why???????', props.itemPerPage, currentItems);
-    for (let i = 1; i <= Math.ceil(props.products.length / props.itemPerPage); i++) {
-      pageNumbers.push(i);
-    }
-  }
-  if (!currentItems.length) {
-    console.log('empty');
-    currentItems= props.products;
-  };
+  //   currentItems = props.products.slice(idxOfFirstItem, idxOfLastItem);    
+  //   console.log('why???????', props.itemPerPage, currentItems);
+  //   for (let i = 1; i <= Math.ceil(props.products.length / props.itemPerPage); i++) {
+  //     pageNumbers.push(i);
+  //   }
+  // }
+  // if (!currentItems.length) {
+  //   console.log('empty');
+  //   currentItems= props.products;
+  // };
   return (
     <Pagination>
-      {pageNumbers.map(number => (
-        <Pagination.Item key={number} onClick={()=>props.getPaginationSettings(number, 10, currentItems)}>
+      {props.pageNumbers.map(number => (
+        <Pagination.Item key={number} onClick={()=>props.getPaginationSettings(number, 10, props.currentItems)}>
           {number}
         </Pagination.Item>
       ))}
