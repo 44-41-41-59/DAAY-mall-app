@@ -27,7 +27,7 @@ function Auth(props) {
   }
   return (
     <>
-      {!logedin && <Redirect to="/" />}
+      {logedin && <Redirect to="/" />}
       <div id="authcontainer">
         <Login
           handelChange={handelChange}
