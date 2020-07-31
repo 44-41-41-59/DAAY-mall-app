@@ -9,7 +9,8 @@ import Accordion from 'react-bootstrap/Accordion';
 import OnSale from './onsale';
 import Orders from './orders';
 import AllProducts from './all-products';
-import { getStore } from '../../store/actions/store';
+import { getStore, addStoreReview } from '../../store/actions/store';
+import Reviews from './reviews';
 import { If, Else, Then } from '../if/if.js';
 
 
@@ -43,6 +44,12 @@ function Storepage(props) {
         {/* <New />
         <Summer />
         <InStock /> */}
+        <Reviews
+          reviews={props.store.reviews}
+          addReview={props.addStoreReview}
+          store={props.store}
+          user={props.user}
+        />
       </Accordion>
     </div>
   );
@@ -70,6 +77,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => ({
   getStore: (storeID) => dispatch(getStore(storeID)),
+  addStoreReview: (reviewData) => dispatch(addStoreReview(reviewData)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Storepage));

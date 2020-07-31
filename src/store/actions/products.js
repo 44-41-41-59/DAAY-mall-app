@@ -24,6 +24,7 @@ export const addCart = function (data) {
     })
       .then(function (response) {
         console.log(response, 'cart');
+        dispatch(addCartAction({ cart: response.data }));
         // dispatch(getProductsAction({ results: response.data.results }));
       })
       .catch(console.log);
@@ -223,3 +224,13 @@ export const getProductAction = (payload) => {
     payload: payload,
   };
 };
+
+export const addCartAction = (payload) => {
+  console.log('inside action dndn', payload);
+  return {
+    type: 'ADDCART',
+    payload: payload,
+  };
+};
+
+

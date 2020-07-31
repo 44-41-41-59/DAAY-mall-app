@@ -33,6 +33,8 @@ export default (state = initialState, action) => {
     return { ...state, ...payload };
   case 'GET CART PRODUCTS':
     return { ...state, ...payload };
+  case 'ADDCART':
+    return {...state, ...payload};
   default:
     return state;
   }
