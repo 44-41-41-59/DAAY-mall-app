@@ -1,8 +1,12 @@
 import headers from '../header';
 import axios from 'axios';
-import { fetchPayment, paymentSuccess,paymentFailed } from '../../store/actions/fetch';
-// const api = 'http://localhost:3001';
-const api = 'https://daaymall-401-project.herokuapp.com';
+import {
+  fetchPayment,
+  paymentSuccess,
+  paymentFailed,
+} from '../../store/actions/fetch';
+const api = 'http://localhost:3001';
+// const api = 'https://daaymall-401-project.herokuapp.com';
 
 export const getProducts = function () {
   return (dispatch) => {
@@ -126,7 +130,7 @@ export const getSearchedProducts = function (searchTerm) {
         getSearchedProductsAction({
           searchTerm,
           searchedProducts: response.data.results,
-        }),
+        })
       );
     });
   };
@@ -135,7 +139,7 @@ export const getSearchedProducts = function (searchTerm) {
 export const payedUserCart = function (data) {
   return (dispatch) => {
     console.log('action', data);
-    dispatch(fetchPayment({fetchpayment:true}));
+    dispatch(fetchPayment({ fetchpayment: true }));
     return axios({
       method: 'post',
       url: `${api}/charge`,
@@ -144,8 +148,8 @@ export const payedUserCart = function (data) {
     })
       .then(function (response) {
         console.log(response);
-        dispatch(paymentSuccess({ paymentSuccess : true})) ;
-        dispatch(fetchPayment({fetchpayment:false}));
+        dispatch(paymentSuccess({ paymentSuccess: true }));
+        dispatch(fetchPayment({ fetchpayment: false }));
         // dispatch(
         //   getSearchedProductsAction({
         //     searchTerm,
@@ -153,10 +157,13 @@ export const payedUserCart = function (data) {
         //   })
         // );
       })
-      .catch((err) =>{
-        dispatch(paymentFailed({
-          paymentFailed: true}));
-        dispatch(fetchPayment({fetchpayment:false}));
+      .catch((err) => {
+        dispatch(
+          paymentFailed({
+            paymentFailed: true,
+          })
+        );
+        dispatch(fetchPayment({ fetchpayment: false }));
       });
   };
 };
@@ -172,9 +179,30 @@ export const getMainPageProducts = function () {
   };
 };
 
+export const getSearchProducts = function (str) {
+  return (dispatch) => {
+    return axios({
+      method: 'get',
+      url: `${api}/search?searchText=${str}`,
+    }).then(function (response) {
+      console.log(response.data);
+      dispatch(
+        getSearchProductsAction({ suggestions: response.data.suggestion })
+      ); //change resultes to results
+    });
+  };
+};
+
 export const getSortingSetting = function (sortBy, sortPriceRange, sortRating) {
   return (dispatch) => {
     dispatch(getSortingSettingAction({ sortBy, sortPriceRange, sortRating }));
+  };
+};
+
+export const getSearchProductsAction = (payload) => {
+  return {
+    type: 'GET SEARCH',
+    payload: payload,
   };
 };
 

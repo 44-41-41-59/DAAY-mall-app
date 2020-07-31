@@ -1,8 +1,7 @@
 import axios from 'axios';
 import getHeader from '../header';
-const api = 'https://daaymall-401-project.herokuapp.com';
-// const api='http://localhost:3001';
-
+// const api = 'https://daaymall-401-project.herokuapp.com';
+const api = 'http://localhost:3001';
 
 export const addStore = function (storeData) {
   let formData = {
@@ -33,7 +32,7 @@ export const getStore = function (id) {
   return (dispatch) => {
     return axios({
       method: 'get',
-      url: `${api}/store/${id}`,  //make it dynamic by getting from params
+      url: `${api}/store/${id}`, //make it dynamic by getting from params
       headers: getHeader(),
     }).then(function (response) {
       dispatch(getStoreAction(response.data[0]));
@@ -76,3 +75,4 @@ export const addStoreReviewAction = (payload) => {
     payload: payload,
   };
 };
+

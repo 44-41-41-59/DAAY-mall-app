@@ -1,4 +1,5 @@
 let initialState = {
+  logedin: false,
   username: '',
   email: '',
   avatar:
@@ -23,19 +24,23 @@ let initialState = {
   orders: [],
   viewedProducts: [],
   cart: [],
-  _id:'',
+  _id: '',
 };
 
 export default (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-  case 'LOGIN':
-    return { ...state, ...payload };
   case 'GET CART PRODUCTS':
     return { ...state, ...payload };
   case 'ADDCART':
     return {...state, ...payload};
-  default:
-    return state;
+    case 'LOGIN':
+      return { ...state, ...payload, logedin: true };
+    case 'GET CART PRODUCTS':
+      return { ...state, ...payload };
+    case 'LOGOUT':
+      return initialState;
+    default:
+      return state;
   }
 };

@@ -9,18 +9,15 @@ function Signup(props) {
       <Form onSubmit={props.handleSubmit}>
         <h3>SIGNUP</h3>
         <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label>Username</Form.Label>
           <Form.Control
             required
             type="text"
             name="username"
             // value={props.body.username}
-            placeholder="Enter ur lovely name"
+            placeholder="Enter your username"
             onChange={props.handelChange}
           />
-          <Form.Text className="text-muted">
-            show us your cool name lady if u r anolla or diana don't kill me pls
-          </Form.Text>
         </Form.Group>
 
         <Form.Group controlId="formBasicUserName">
@@ -31,11 +28,14 @@ function Signup(props) {
             name="email"
             required
             type="email"
-            placeholder="Enter username"
+            placeholder="Enter email"
           />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.<span role="img" aria-label="Angel">😇</span>
-          </Form.Text>
+        </Form.Group>
+
+        <Form.Group id='radioButtons'>
+          <Form.Check type="radio" inline label="User" id='user' name="role" value="user" />
+          <Form.Check type="radio" inline label="Owner" id='owner' name="role" value="owner" />
+          {/* <Form.Check type="radio" inline label="customer service agent" id='customerServiceAgent' name="role" value="customer service agent" /> */}
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">

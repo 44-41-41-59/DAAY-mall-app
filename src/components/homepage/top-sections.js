@@ -8,16 +8,24 @@ function TopSections(props) {
   return (
     <CardGroup>
       <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="holder.js/100px200" />
+        <a href='#sale' >
+          <Card.Img variant="top" src="holder.js/100px200" />
+        </a>
       </Card>
       <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="holder.js/100px200" />
+        <a href='#topProducts' >
+          <Card.Img variant="top" src="holder.js/100px200" />
+        </a>
       </Card>
       <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="holder.js/100px200" />
+        <a href='#new' >
+          <Card.Img variant="top" src="holder.js/100px200" />
+        </a>
       </Card>
       <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="holder.js/100px200" />
+        <a href='#card-recommended' >
+          <Card.Img variant="top" src="holder.js/100px200" />
+        </a>
       </Card>
     </CardGroup>
   );
