@@ -9,7 +9,8 @@ let initialState = {
   sale: 0,
   storeID: '',
   views: 0,
-  _id:'',
+  reviews: [],
+  _id: '',
 };
 
 export default (state = initialState, action) => {
@@ -18,7 +19,11 @@ export default (state = initialState, action) => {
   case 'GET PRODUCT':
     return { ...state, ...payload };
   case 'ADDPRODUCT':
-    return {...state, ...payload};
+    return { ...state, ...payload };
+  case 'ADD PRODUCT REVIEW':
+    let reviews = state.reviews;
+    reviews.push(payload);
+    return { ...state, ...reviews };
   default:
     return state;
   }
