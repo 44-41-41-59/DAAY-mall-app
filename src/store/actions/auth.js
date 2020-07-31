@@ -11,17 +11,18 @@ import {
   signupFailed,
 } from '../actions/fetch';
 
-const api = 'http://localhost:3001';
-// const api = 'https://daaymall-401-project.herokuapp.com';
+// const api = 'http://localhost:3001';
+const api = 'https://daaymall-401-project.herokuapp.com';
 export const auth = (userInfo) => ({
   type: 'LOGIN',
   payload: userInfo,
 });
 
 function getUserData(obj) {
+  console.log('oooobbbbbjjjjj',obj);
   let acl = obj.acl.acl;
-  let { avatar, confirmed, email, role, username, _id } = obj.data;
-  return { avatar, confirmed, email, role, username, _id, acl };
+  let { avatar, confirmed, email, role, username, _id,stores} = obj.data;
+  return { avatar, confirmed, email, role, username, _id, acl,stores };
 }
 
 export const loginRemoteUser = function (email, password, history) {

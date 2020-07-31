@@ -15,7 +15,7 @@ function HeaderNav(props) {
         <ul class="navbar-nav">
           <Show condition={props.owner}>
             <li class="nav-item">
-              <Link class="nav-link" to=''>My Store</Link>{' '}
+              <Link class="nav-link" to={`/store/${props.user.stores}`} >My Store</Link>{' '}
             </li>
           </Show>
           <li class="nav-item dropdown">
@@ -42,6 +42,7 @@ const mapStateToProps = (state) => {
     user: state.user,
     fetch: state.fetching,
     owner,
+    store:state.store,
   };
 };
   

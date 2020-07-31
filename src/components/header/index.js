@@ -47,13 +47,12 @@ function Header(props) {
               </Show>
               <MDBIcon far icon="user" id="userIcon" />
               <NavDropdown id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">
-                Edit Profile
+                <NavDropdown.Item>
+                  <Link to={`/profile/${props.user._id}`}>Profile</Link>
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">My orders</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Favorites</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.4">Settings</NavDropdown.Item>
+                <NavDropdown.Item >My orders</NavDropdown.Item>
+                <NavDropdown.Item >Favorites</NavDropdown.Item>
+                <NavDropdown.Item>Settings</NavDropdown.Item>
                 <Show condition={logedin}>
                   <NavDropdown.Item onClick={handelLogout}>
                   Log out

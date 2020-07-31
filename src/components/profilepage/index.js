@@ -10,50 +10,51 @@ import FavoriteStores from './favoritestores';
 import Orders from './orders';
 import ViewedProducts from './viewesproducts';
 import Settings from './settings';
-import {getWishlist} from '../../store/actions/wishlist';
-import {getFavoriteStores} from '../../store/actions/favoritestore';
+import {withRouter} from 'react-router-dom';
+import {getProfile} from '../../store/actions/profile';
+
 
 
 function Profilepage(props) {
-
+  let params= props.match.params.id;
   useEffect(() => {
-    props.getWishlist();
-    props.getFavoriteStores();
+    props.getProfile(params);
   }, []);
 
 
   return (
     <>
       <div id="container">
-        <Image id='userImg' src={props.user.avatar} style={{width:'15%'}} roundedCircle />
+        <Image id='userImg' src={props.profile.avatar} style={{width:'15%'}} roundedCircle />
         <Card id='userInfo'>     
           <Card.Header as="h5">User Information</Card.Header>
           <Card.Body>
             {/* <Card.Title>Special title treatment</Card.Title> */}
             <Card.Text id='userInfo'>
-              Name: {props.user.username} <br/> <br/>
-              Email: {props.user.email} <br/> <br/>
-              Role: {props.user.role}
+              Name: {props.profile.username} <br/> <br/>
+              Email: {props.profile.email} <br/> <br/>
+              Role: {props.profile.role}
             </Card.Text>
           </Card.Body>
         </Card>
       </div>
+      {/* <Show condition={props.isUserSame}><h1>Hiiiiiiiiiiiii</h1></Show> */}
 
       <div id='tabs' >
         <Tabs defaultActiveKey="Wish-list" id="uncontrolled-tab-example">
           <Tab eventKey="Wish-list" title="Wish-list">
-            <Wishlist wishlist={props.wishlist}/>
+            <Wishlist wishlist={props.profile.wishlist}/>
           </Tab>
           <Tab eventKey="Favorite Stores" title="Favorite Stores">
-            <FavoriteStores favoriteStores={props.favoriteStores.favoriteStores} />
+            <FavoriteStores favoriteStores={props.profile.favoriteStores} />
           </Tab>
-          <Tab eventKey="Orders" title="Orders" >
+          <Tab tabClassName={!props.isUserSame ? 'd-none' : ''} eventKey="Orders" title="Orders" >
             <Orders/>
           </Tab>
-          <Tab eventKey="Viewed Products" title="Viewed Products" >
+          <Tab tabClassName={!props.isUserSame ? 'd-none' : ''} eventKey="Viewed Products" title="Viewed Products" >
             <ViewedProducts/>
           </Tab>
-          <Tab eventKey="Settings" title="Settings" >
+          <Tab tabClassName={!props.isUserSame ? 'd-none' : ''} eventKey="Settings" title="Settings" >
             <Settings/>
           </Tab>
         </Tabs>
@@ -63,17 +64,17 @@ function Profilepage(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log('staaateeee',state);
-  let wishlistArr=[];
-  if(state.wishlist.results){
-    wishlistArr=state.wishlist.results;
+  let isUserSame = false;
+  console.log('diaaaanaaaa',state.profile._id,state.user._id);
+  if(state.profile._id === state.user._id){
+    isUserSame=true;
   }
-  return { user: state.user,wishlist:wishlistArr, favoriteStores:state.favoriteStores};
+  console.log('staaateeee',isUserSame);
+  return { user: state.user,  profile:state.profile, isUserSame};
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  getWishlist: () => dispatch(getWishlist()),
-  getFavoriteStores: () => dispatch(getFavoriteStores()),
+  getProfile:(params)=>dispatch(getProfile(params)),
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(Profilepage);
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(Profilepage));

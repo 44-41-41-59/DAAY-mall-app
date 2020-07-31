@@ -37,56 +37,56 @@ export default function Cart(props) {
         let sale = item.products.sale;
         let per = (price / 100) * sale;
         return (
-          <Link to={`/product/${item.products._id}`}>
-            <div>
-              <div class="accordion">
-                <div class="image">
+          <div>
+            <div class="accordion">
+              <div class="image">
+                <Link to={`/product/${item.products._id}`}>
                   <img alt="productImage" src={item.products.images[0]} />
-                </div>
-                <Accordion defaultActiveKey="0">
-                  <Card>
-                    <Card.Header>
-                      <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                </Link>
+              </div>
+              <Accordion defaultActiveKey="0">
+                <Card>
+                  <Card.Header>
+                    <Accordion.Toggle as={Button} variant="link" eventKey="0">
                         Item Description
-                      </Accordion.Toggle>
-                    </Card.Header>
-                    <Accordion.Collapse eventKey="0">
-                      <Card.Body>
-                        <p>name {item.products.name}</p>
-                      </Card.Body>
-                    </Accordion.Collapse>
-                  </Card>
-                  <Card>
-                    <Card.Header>
-                      <Accordion.Toggle as={Button} variant="link" eventKey="1">
+                    </Accordion.Toggle>
+                  </Card.Header>
+                  <Accordion.Collapse eventKey="0">
+                    <Card.Body>
+                      <p>name {item.products.name}</p>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+                <Card>
+                  <Card.Header>
+                    <Accordion.Toggle as={Button} variant="link" eventKey="1">
                         Item Details
-                      </Accordion.Toggle>
-                    </Card.Header>
-                    <Accordion.Collapse eventKey="1">
-                      <Card.Body>
-                        <ul>
-                          <li>
-                            <p>
-                              {!!sale &&
+                    </Accordion.Toggle>
+                  </Card.Header>
+                  <Accordion.Collapse eventKey="1">
+                    <Card.Body>
+                      <ul>
+                        <li>
+                          <p>
+                            {!!sale &&
                                 'onSale: ' +
                                   Math.round(
-                                    (price * quantity - per * quantity) * 100
+                                    (price * quantity - per * quantity) * 100,
                                   ) /
                                     100}{' '}
                               Price :{price * quantity}
-                            </p>
-                          </li>
-                          {/* <li>
+                          </p>
+                        </li>
+                        {/* <li>
                             <p>seal {item.products.seal}</p>
                           </li> */}
-                        </ul>
-                      </Card.Body>
-                    </Accordion.Collapse>
-                  </Card>
-                </Accordion>
-              </div>
+                      </ul>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+              </Accordion>
             </div>
-          </Link>
+          </div>
         );
       })}
       <h3>Total is {cost}</h3>
