@@ -35,8 +35,6 @@ export const getStore = function (id) {
       url: `${api}/store/${id}`, //make it dynamic by getting from params
       headers: getHeader(),
     }).then(function (response) {
-      console.log('pleeeeeeeeeeeeeeeee', response);
-
       dispatch(getStoreAction(response.data[0]));
     });
   };
@@ -55,3 +53,26 @@ export const getStoreAction = (payload) => {
     payload: payload,
   };
 };
+
+export const addStoreReview = function (reviewData) {
+  return (dispatch) => {
+    console.log('hello');
+    return axios({
+      method: 'post',
+      url: `${api}/review`,
+      headers: getHeader(),
+      data: reviewData,
+    }).then(function (response) {
+      dispatch(addStoreReviewAction( response.data ));
+    }).catch(err=>console.log(err.response));
+  };
+};
+
+
+export const addStoreReviewAction = (payload) => {
+  return {
+    type: 'ADD STORE REVIEW',
+    payload: payload,
+  };
+};
+
