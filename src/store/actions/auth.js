@@ -46,8 +46,8 @@ export const loginRemoteUser = function (email, password, history) {
         dispatch(
           LoginFailed({
             loginFailed: true,
-            loginErrorMsg: err.response.data.err,
-          })
+            loginErrorMsg: err.response,
+          }),
         );
         dispatch(fetchLogin({ fetchLogin: false }));
       });
@@ -60,7 +60,7 @@ export const signUpRemoteUser = function (username, email, password, history) {
       .post(
         api + '/auth',
         { username, email, password },
-        { headers: getHeader() }
+        { headers: getHeader() },
       )
       .then((response) => {
         cookie.save('auth', response.data.data.token, { path: '/' });
@@ -74,7 +74,7 @@ export const signUpRemoteUser = function (username, email, password, history) {
           signupFailed({
             signupFailed: true,
             signupErrorMsg: err.response.data.err,
-          })
+          }),
         );
         dispatch(fetchSignup({ fetchSignup: false }));
       });

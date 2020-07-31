@@ -4,14 +4,14 @@ const api = 'http://localhost:3001';
 export const getPaginationSettings = function (
   currentPage,
   itemPerPage,
-  currentItems
+  currentItems,
 ) {
   return (dispatch) => {
     console.log(
       'action paginaaaaaaaaaation',
       currentPage,
       itemPerPage,
-      currentItems
+      currentItems,
     );
     dispatch(setPaginationAction({ currentPage, itemPerPage, currentItems }));
   };

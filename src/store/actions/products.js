@@ -5,8 +5,8 @@ import {
   paymentSuccess,
   paymentFailed,
 } from '../../store/actions/fetch';
-const api = 'http://localhost:3001';
-// const api = 'https://daaymall-401-project.herokuapp.com';
+// const api = 'http://localhost:3001';
+const api = 'https://daaymall-401-project.herokuapp.com';
 
 export const getProducts = function () {
   return (dispatch) => {
@@ -129,7 +129,7 @@ export const getSearchedProducts = function (searchTerm) {
         getSearchedProductsAction({
           searchTerm,
           searchedProducts: response.data.results,
-        })
+        }),
       );
     });
   };
@@ -160,7 +160,7 @@ export const payedUserCart = function (data) {
         dispatch(
           paymentFailed({
             paymentFailed: true,
-          })
+          }),
         );
         dispatch(fetchPayment({ fetchpayment: false }));
       });
