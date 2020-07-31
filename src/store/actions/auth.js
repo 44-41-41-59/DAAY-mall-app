@@ -95,6 +95,22 @@ export const checkRemoteUser = function () {
       .catch(console.log);
   };
 };
+export const changePasswordRequest = function (obj) {
+  return (dispatch) => {
+    console.log('helo');
+    return axios({
+      url: api + '/auth/resetpassword',
+      headers: getHeader(),
+      method: 'patch',
+      data: obj,
+    })
+      .then((response) => {
+        console.log(response.data);
+        // dispatch(auth(getUserData(response.data)));
+      })
+      .catch((err) => console.log(err.response));
+  };
+};
 
 export const logout = function (history) {
   return (dispatch) => {

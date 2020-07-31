@@ -28,6 +28,7 @@ export const addCart = function (data) {
     })
       .then(function (response) {
         console.log(response, 'cart');
+        dispatch(addCartAction({ cart: response.data }));
         // dispatch(getProductsAction({ results: response.data.results }));
       })
       .catch(console.log);
@@ -178,9 +179,30 @@ export const getMainPageProducts = function () {
   };
 };
 
+export const getSearchProducts = function (str) {
+  return (dispatch) => {
+    return axios({
+      method: 'get',
+      url: `${api}/search?searchText=${str}`,
+    }).then(function (response) {
+      console.log(response.data);
+      dispatch(
+        getSearchProductsAction({ suggestions: response.data.suggestion })
+      ); //change resultes to results
+    });
+  };
+};
+
 export const getSortingSetting = function (sortBy, sortPriceRange, sortRating) {
   return (dispatch) => {
     dispatch(getSortingSettingAction({ sortBy, sortPriceRange, sortRating }));
+  };
+};
+
+export const getSearchProductsAction = (payload) => {
+  return {
+    type: 'GET SEARCH',
+    payload: payload,
   };
 };
 
@@ -230,3 +252,13 @@ export const getProductAction = (payload) => {
     payload: payload,
   };
 };
+
+export const addCartAction = (payload) => {
+  console.log('inside action dndn', payload);
+  return {
+    type: 'ADDCART',
+    payload: payload,
+  };
+};
+
+

@@ -9,6 +9,7 @@ let initialState = {
   sale: 0,
   storeID: '',
   views: 0,
+  _id:'',
 };
 
 export default (state = initialState, action) => {

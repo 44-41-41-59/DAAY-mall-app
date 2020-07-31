@@ -11,14 +11,14 @@ function StoreInfo(props) {
         <h4>Category: {props.store.category}</h4>
         <p>Contact number: {props.store.contactNumber}</p>
         <p>Address: {props.store.counrty}, {props.store.city}</p>
-        <div>
+        {/* <div>
           {props.store.images.map(img => {
             return (
-              <img src='https://picsum.photos/80/80' alt='store' /> /*make it expandable*/
-              // <img src={img} alt='store' />
+              <img src='https://picsum.photos/80/80' alt='store' /> 
+              <img src={img} alt='store' />
             );
           })}
-        </div>
+        </div> */}
       </div>
     </div>
   );

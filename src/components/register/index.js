@@ -25,6 +25,7 @@ function Auth(props) {
   function handelChange(e) {
     setBody({ ...body, [e.target.name]: e.target.value });
   }
+
   return (
     <>
       {logedin && <Redirect to="/" />}

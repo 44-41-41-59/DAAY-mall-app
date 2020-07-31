@@ -30,6 +30,10 @@ let initialState = {
 export default (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
+  case 'GET CART PRODUCTS':
+    return { ...state, ...payload };
+  case 'ADDCART':
+    return {...state, ...payload};
     case 'LOGIN':
       return { ...state, ...payload, logedin: true };
     case 'GET CART PRODUCTS':
