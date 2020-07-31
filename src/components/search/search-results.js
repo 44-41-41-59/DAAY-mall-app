@@ -10,23 +10,23 @@ import {Link} from 'react-router-dom';
 
 
 import './search.css';
+import products from '../../store/reducers/products';
 
 function Results(props) {
   let currentItems = [];
   let pageNumbers = [];
-  if (props.currentPage && props.itemPerPage) {
-    let idxOfLastItem = props.currentPage * props.itemPerPage;
-    let idxOfFirstItem = idxOfLastItem - props.itemPerPage;
+  if (props.currentPage) {
+    let idxOfLastItem = props.currentPage * 12;
+    let idxOfFirstItem = idxOfLastItem - 12;
     
-    currentItems = props.products.slice(idxOfFirstItem, idxOfLastItem);    
-    console.log('why???????', props.itemPerPage, currentItems);
-    for (let i = 1; i <= Math.ceil(props.products.length / props.itemPerPage); i++) {
+    currentItems = props.productList.slice(idxOfFirstItem, idxOfLastItem);    
+    for (let i = 1; i <= Math.ceil(props.productList.length / 12); i++) {
       pageNumbers.push(i);
     }
   }
   if (!currentItems.length) {
     console.log('empty');
-    currentItems= props.products;
+    currentItems= props.productList;
   };
   
   return (
@@ -94,7 +94,6 @@ const mapStateToProps = (state) => {
   return {
     products: state.products.results,
     currentPage: state.pagination.currentPage,
-    itemPerPage: state.pagination.itemPerPage,
   };
 };
 
