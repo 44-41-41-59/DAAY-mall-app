@@ -43,7 +43,7 @@ function ApplyStore(props) {
         </label>
         <label for='logo'>
           Store logo
-          <input type='file' onChange={handleChange}/> {/*should be only one image*/}
+          <input type='file' onChange={handleChange}/>
           <div onClick={handleUpload} style={{backgroundColor:'gray'}}>Upload</div> {/* Dont make it a button!! */}
         </label>
         <label for='categories'>
