@@ -8,12 +8,13 @@ let initialState = {
   acl: [],
   paymentsHistory: [],
   confirmed: false,
-  wishlist: [],
+  wishlist: [ ],
   favoriteStores: [],
   orders: [],
   viewedProducts: [],
   cart: [],
   _id: '',
+  stores:'',
 };
 
 export default (state = initialState, action) => {

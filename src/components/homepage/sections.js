@@ -15,26 +15,26 @@ export const Sale = (props) => {
         {props.products.mainProducts.onSale &&
           props.products.mainProducts.onSale.map((item) => {
             return (
-              <Link to={`/product/${item._id}`}>
-                <div class="col-xs-4">
-                  <div class="card" id="slideRow-card">
+              <div class="col-xs-4">
+                <div class="card" id="slideRow-card">
+                  <Link to={`/product/${item._id}`}>
                     <img class="card-img" src={item.images} alt={item.title} />
-                    <div class="card-img-overlay d-flex justify-content-end">
-                      <MDBIcon far icon="heart" />
-                    </div>
-                    <div class="card-body">
-                      <div class="buy d-flex justify-content-between align-items-center">
-                        <div class="price text-danger">
-                          <h5 class="mt-4" id="price-home">
-                            {item.price}JOD
-                          </h5>
-                        </div>
-                        <MDBIcon icon="shopping-cart" />
+                  </Link>
+                  <div class="card-img-overlay d-flex justify-content-end">
+                    <MDBIcon far icon="heart" />
+                  </div>
+                  <div class="card-body">
+                    <div class="buy d-flex justify-content-between align-items-center">
+                      <div class="price text-danger">
+                        <h5 class="mt-4" id="price-home">
+                          {item.price}JOD
+                        </h5>
                       </div>
+                      <MDBIcon icon="shopping-cart" />
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             );
           })}
       </div>
@@ -68,26 +68,26 @@ export const TopRanked = (props) => {
         {props.products.mainProducts.ranked &&
           props.products.mainProducts.ranked.map((item) => {
             return (
-              <Link to={`/product/${item._id}`}>
-                <div class="col-xs-4">
-                  <div class="card" id="slideRow-card">
+              <div class="col-xs-4">
+                <div class="card" id="slideRow-card">
+                  <Link to={`/product/${item._id}`}>
                     <img class="card-img" src={item.images} alt={item.title} />
-                    <div class="card-img-overlay d-flex justify-content-end">
-                      <MDBIcon far icon="heart" />
-                    </div>
-                    <div class="card-body">
-                      <div class="buy d-flex justify-content-between align-items-center">
-                        <div class="price text-danger">
-                          <h5 class="mt-4" id="price-home">
-                            {item.price} JOD
-                          </h5>
-                        </div>
-                        <MDBIcon icon="shopping-cart" />
+                  </Link>
+                  <div class="card-img-overlay d-flex justify-content-end">
+                    <MDBIcon far icon="heart" />
+                  </div>
+                  <div class="card-body">
+                    <div class="buy d-flex justify-content-between align-items-center">
+                      <div class="price text-danger">
+                        <h5 class="mt-4" id="price-home">
+                          {item.price} JOD
+                        </h5>
                       </div>
+                      <MDBIcon icon="shopping-cart" />
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             );
           })}
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card'; 
-
+import { Link } from 'react-router-dom';
 
 function Reviews(props) {
   let formHandler = (e) => {
@@ -21,7 +21,9 @@ function Reviews(props) {
         {props.reviews.map(review => {
           return (
             <Card>
-              <Card.Header as="h5">{review.userID.username}</Card.Header>
+              <Link to={`/profile/${review.userID._id}`} >
+                <Card.Header as="h5">{review.userID.username}</Card.Header>
+              </Link>
               <Card.Body>
                 <Card.Text>
                   Rate: {review.rate} , Review: {review.review}
