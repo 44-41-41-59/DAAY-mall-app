@@ -2,7 +2,6 @@ let initialState = {
   name: '',
   logo: 'holder.js/200x180',
   category: [],
-  images: [],
   products: [],
   orders: [],
   status: 'pending',

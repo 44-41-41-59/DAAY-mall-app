@@ -10,10 +10,20 @@ import { handleUpload } from '../../store/actions/files';
 
 function ApplyStore(props) {
   const [modal, setModal] = useState(false);
+  const [images, setImage] = useState({});
 
-  let formHandler = (e) => {
+  const handleChange = (e) => {
+    if (e.target.files.length > 0) {
+      setImage(e.target.files);
+    }
+  };
+  const handleUpload = () => {
+    props.handleUpload('storeLogo', images);
+  };
+
+  let submitFormHandler = (e) => {
     e.preventDefault();
-    props.addStore(e.target);
+    props.addStore(e.target, props.images);
     setModal(true);
   };
   let hideModal = () => {
@@ -23,7 +33,7 @@ function ApplyStore(props) {
   return (
     <div>
       <form
-        onSubmit={formHandler}
+        onSubmit={submitFormHandler}
         id='store-apply-form'
         style={{ display: 'flex', flexDirection: 'column' }
         }>
@@ -33,9 +43,8 @@ function ApplyStore(props) {
         </label>
         <label for='logo'>
           Store logo
-          {/* <input multiple type="file" onChange={logoHandleChange} name='logo' /> */}
-          {/* <Image name='logo' type='storeLogo'/> */}
-          <input type='file' name='logo'/> {/*should be only one image*/}
+          <input type='file' onChange={handleChange}/> {/*should be only one image*/}
+          <div onClick={handleUpload} style={{backgroundColor:'gray'}}>Upload</div> {/* Dont make it a button!! */}
         </label>
         <label for='categories'>
           Categories
@@ -43,12 +52,6 @@ function ApplyStore(props) {
             <option value="general">General</option>
             <option value="food">food</option>
           </select>
-        </label>
-        <label for='images'>
-          Store images
-          {/* <input multiple type="file" onChange={imageHandleChange} name='images' /> */}
-          {/* <Image name='images' type='storeImages'/> */}
-          <input type='file' name='images'/> {/*should be only images*/}
         </label>
         <label for='country'>
           Country
@@ -86,12 +89,12 @@ function ApplyStore(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log('inside apply comp', state);
+  console.log('??????????????///', state.files);
   return { user: state.user, images:state.files.images };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  addStore: (target) => dispatch(addStore(target)),
+  addStore: (target, logo) => dispatch(addStore(target, logo)),
   handleUpload: (spaceName, images) =>
     dispatch(handleUpload(spaceName, images)),
 });
