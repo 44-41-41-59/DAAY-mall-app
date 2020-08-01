@@ -8,18 +8,7 @@ let initialState = {
   acl: [],
   paymentsHistory: [],
   confirmed: false,
-  wishlist: [
-    {
-      title: 'electronics',
-      image:
-        'https://getmyshopping.com/wp-content/uploads/2019/07/Products00.jpg',
-    },
-    {
-      title: 'cosmetics',
-      image:
-        'https://www.rossanoferretti.com/pub/media/catalog/category/RF-category-product-mobile.png',
-    },
-  ],
+  wishlist: [],
   favoriteStores: [],
   orders: [],
   viewedProducts: [],
@@ -34,13 +23,11 @@ export default (state = initialState, action) => {
     return { ...state, ...payload };
   case 'ADDCART':
     return {...state, ...payload};
-    case 'LOGIN':
-      return { ...state, ...payload, logedin: true };
-    case 'GET CART PRODUCTS':
-      return { ...state, ...payload };
-    case 'LOGOUT':
-      return initialState;
-    default:
-      return state;
+  case 'LOGIN':
+    return { ...state, ...payload, logedin: true };
+  case 'LOGOUT':
+    return initialState;
+  default:
+    return state;
   }
 };

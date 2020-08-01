@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 // import BuyProductSided from './buyProductSided';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getProduct } from '../../store/actions/products';
+import { getProduct, addProductReview } from '../../store/actions/products';
 
 import Reviews from './reviews';
 import Product from './buyProductnewForm';
@@ -17,24 +17,20 @@ function ProductPage(props) {
   }, []);
 
   return (
-    <div className="App">
+    <div >
       <Product
         product={props.product}
         productID={productID}
-        // actions={{ addToLikes, addToCart, addToWishlist }}
-        // pay={props.payedUserCart}
-        // quantity={quantity}
+      // actions={{ addToLikes, addToCart, addToWishlist }}
+      // pay={props.payedUserCart}
+      // quantity={quantity}
       />
 
-      {/* <BuyProductSided
-        product={props.product}
-        actions={{ addToLikes, addToCart, addToWishlist }}
-        pay={props.payedUserCart}
-        quantity={quantity}
-      /> */}
-
       <Reviews
-        reviews={props.reviews}
+        reviews={props.product.reviews}
+        addReview={props.addProductReview}
+        product={props.product}
+        user={props.user}
       />
 
     </div>
@@ -44,7 +40,7 @@ function ProductPage(props) {
 const mapStateToProps = (state) => {
   return {
     product: state.product,
-    reviews: state.reviews,
+    user: state.user,
   };
 };
 const mapDispatchToProps = (dispatch) => ({
@@ -53,6 +49,7 @@ const mapDispatchToProps = (dispatch) => ({
   // addLike: (body) => dispatch(addLike(body)),
   // addWishlist: (body) => dispatch(addWishlist(body)),
   // payedUserCart: (body) => dispatch(payedUserCart(body)),
+  addProductReview: (reviewData) => dispatch(addProductReview(reviewData)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ProductPage));

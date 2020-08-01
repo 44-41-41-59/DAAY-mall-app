@@ -24,10 +24,10 @@ function SearchResults(props) {
     props.getSearchedProducts(searched);
   };
 
-  function handelSearchCange(e) {
-    console.log(e.target.value);
-    props.getSearchProducts(e.target.value);
-  }
+  // function handelSearchCange(e) {
+  //   console.log(e.target.value);
+  //   props.getSearchProducts(e.target.value);
+  // }
 
   useEffect(() => {
     props.get();
@@ -57,7 +57,7 @@ function SearchResults(props) {
             placeholder="Search"
             name="searchTermInput"
             id="searchInput-side"
-            onChange={handelSearchCange}
+            // onChange={handelSearchCange}
           />
           <datalist id="browsers">
             {props.suggestions.map((item) => {
@@ -78,18 +78,18 @@ function SearchResults(props) {
               {/* <p>Results for: {props.searchTerm}..., Filters: {props.sortBy}</p> */}
               <Then>
                 <div>
-                  <Results products={props.sortedProducts} />
+                  <Results productList={props.sortedProducts} />
                 </div>
               </Then>
               <Else>
                 <div>
-                  <Results products={props.searchedProducts} />
+                  <Results productList={props.searchedProducts} />
                 </div>
               </Else>
             </If>
           </Then>
           <Else>
-            <Results products={props.data} />
+            <Results productList={props.data} />
           </Else>
         </If>
       </div>
@@ -115,7 +115,7 @@ const mapDispatchToProps = (dispatch) => ({
   get: () => dispatch(getProducts()),
   getSearchedProducts: (searchTerm) =>
     dispatch(getSearchedProducts(searchTerm)),
-  getSearchProducts: (str) => dispatch(getSearchProducts(str)),
+  // getSearchProducts: (str) => dispatch(getSearchProducts(str)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);

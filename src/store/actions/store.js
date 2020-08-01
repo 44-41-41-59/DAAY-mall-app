@@ -1,14 +1,14 @@
 import axios from 'axios';
 import getHeader from '../header';
-// const api = 'https://daaymall-401-project.herokuapp.com';
-const api = 'http://localhost:3001';
+const api = 'https://daaymall-401-project.herokuapp.com';
+// const api = 'http://localhost:3001';
 
-export const addStore = function (storeData) {
+export const addStore = function (storeData, logo) {
+  console.log('ooooooooooooooooooooooo', logo);
   let formData = {
     name: storeData.name.value,
-    logo: storeData.logo.value,
+    logo:logo[0],
     category: storeData.category.value,
-    images: storeData.images.value,
     country: storeData.country.value,
     city: storeData.city.value,
     contactNumber: parseInt(storeData.contactNumber.value),
@@ -24,7 +24,7 @@ export const addStore = function (storeData) {
       data: formData,
     }).then(function (response) {
       dispatch(addStoreAction({ results: response.data }));
-    });
+    }).catch(err=> console.log(err.response));
   };
 };
 
