@@ -28,13 +28,25 @@ function AddProduct(props) {
 
   let formHandler = (e) => {
     e.preventDefault();
+
+    let specsEntries = {};
+    for(let i = 0; i<e.target.specifications.length; i++) {
+      console.log('&&&&&&&&&&&&&&&&&&&&&&', specsEntries, '///' , e.target.specifications );
+      specsEntries[e.target.specifications[i].value] = e.target.specifications[i+1].value;
+      // specsEntries.push({[e.target.specifications[i]]:e.target.specifications[i+1]});
+      i++;
+    }
+
+    // let key = `input-${i}-key`;
+    // let value = `input-${i}-key`;
+
     let formData = {
       name: e.target.name.value,
       amount: e.target.amount.value,
       category: e.target.category.value,
       description: e.target.description.value,
       images: props.images,
-      // specs: {[e.target.spec.value]:[e.target.specValue.value]},
+      specs: specsEntries,
       price: e.target.price.value,
       sale: e.target.sale.value,
       hidden: e.target.hidden.value,
@@ -59,15 +71,15 @@ function AddProduct(props) {
           <br />
         </Form.Group>
 
-        <Form.Group controlId="exampleForm.ControlTextarea1">         
+        <Form.Group controlId="specifications">         
           <Form.Label>
             Specifications
             <div id="dynamicInput">
               {specsInputs.inputs.map(input => {
                 return (
                   <>
-                    <Form.Control type="text" key={`${input}-key`} placeholder='Spec'/>
-                    <Form.Control type="text" key={`${input}-value`} placeholder='Value' />
+                    <Form.Control type="text" key={`${input}-key`} placeholder='Spec' name={`${input}-key`}/>
+                    <Form.Control type="text" key={`${input}-value`} placeholder='Value' name={`${input}-value`} />
                   </>
                 );
               })}
