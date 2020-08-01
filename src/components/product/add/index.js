@@ -3,7 +3,7 @@ import Item from './addProduct';
 
 function AddProduct() {  
   return (
-    <div className="App">
+    <div >
       <Item />
     </div>
   );

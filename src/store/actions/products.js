@@ -1,4 +1,4 @@
-import headers from '../header';
+import getHeader from '../header';
 import axios from 'axios';
 import {
   fetchPayment,
@@ -23,7 +23,7 @@ export const addCart = function (data) {
     return axios({
       method: 'post',
       url: `${api}/cart`,
-      headers: headers(),
+      headers: getHeader(),
       data,
     })
       .then(function (response) {
@@ -39,7 +39,7 @@ export const addLike = function (data) {
     return axios({
       method: 'post',
       url: `${api}/likes`,
-      headers: headers(),
+      headers: getHeader(),
       data,
     })
       .then(function (response) {
@@ -55,7 +55,7 @@ export const addWishlist = function (data) {
     return axios({
       method: 'post',
       url: `${api}/wishlist`,
-      headers: headers(),
+      headers: getHeader(),
       data,
     })
       .then(function (response) {
@@ -71,7 +71,7 @@ export const getProduct = function (id) {
     return axios({
       method: 'get',
       url: `${api}/products/${id}`,
-      headers: headers(),
+      headers: getHeader(),
     }).then(function (response) {
       if (response.data[0]) {
         const {
@@ -85,6 +85,8 @@ export const getProduct = function (id) {
           sale,
           storeID,
           views,
+          reviews,
+          _id,
         } = response.data[0];
 
         console.log(response, 'product response');
@@ -101,6 +103,8 @@ export const getProduct = function (id) {
             sale,
             storeID,
             views,
+            reviews,
+            _id,
           },
         });
       }
@@ -113,7 +117,7 @@ export const getCartProducts = function (id) {
     return axios({
       method: 'get',
       url: `${api}/cart/user/${id}`,
-      headers: headers(),
+      headers: getHeader(),
     }).then(function (response) {
       dispatch(getCartProductsAction({ cart: response.data }));
     });
@@ -143,7 +147,7 @@ export const payedUserCart = function (data) {
     return axios({
       method: 'post',
       url: `${api}/charge`,
-      headers: headers(),
+      headers: getHeader(),
       data,
     })
       .then(function (response) {
@@ -187,7 +191,7 @@ export const getSearchProducts = function (str) {
     }).then(function (response) {
       console.log(response.data);
       dispatch(
-        getSearchProductsAction({ suggestions: response.data.suggestion })
+        getSearchProductsAction({ suggestions: response.data.suggestion }),
       ); //change resultes to results
     });
   };
@@ -257,6 +261,48 @@ export const addCartAction = (payload) => {
   console.log('inside action dndn', payload);
   return {
     type: 'ADDCART',
+    payload: payload,
+  };
+};
+
+export const addProductReview = function (reviewData) {
+  return (dispatch) => {
+    return axios({
+      method: 'post',
+      url: `${api}/review`,
+      headers: getHeader(),
+      data: reviewData,
+    }).then(function (response) {
+      dispatch(addProductReviewAction(response.data));
+    }).catch(err => console.log(err.response));
+  };
+};
+
+
+export const addProductReviewAction = (payload) => {
+  return {
+    type: 'ADD PRODUCT REVIEW',
+    payload: payload,
+  };
+};
+
+export const getProductReviews = function (productID) {
+  return (dispatch) => {
+    return axios({
+      method: 'get',
+      url: `${api}/review`,
+      headers: getHeader(),
+      data: productID,
+    }).then(function (response) {
+      dispatch(getProductReviewsAction(response.data));
+    }).catch(err => console.log(err.response));
+  };
+};
+
+
+export const getProductReviewsAction = (payload) => {
+  return {
+    type: 'GET PRODUCT REVIEWS',
     payload: payload,
   };
 };
