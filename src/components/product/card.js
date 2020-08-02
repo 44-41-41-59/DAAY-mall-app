@@ -38,13 +38,20 @@ function ProductCard(props) {
       noRateStars.push(' ');
     }
   }
-  if(props.cardProduct.sale){
-    priceAfterSale = Math.floor(props.cardProduct.price- (props.cardProduct.price*(props.cardProduct.sale/100)));
+  if (props.cardProduct.sale) {
+    priceAfterSale = Math.floor(props.cardProduct.price - (props.cardProduct.price * (props.cardProduct.sale / 100)));
+  }
+  let searchPageStyle = {};
+  let cardWidth = { width: '17vw', marginRight: '2vw' };
+
+  if (props.searchPage) {
+    searchPageStyle = { marginBottom: '7vh' };
+    cardWidth =  { width: '17vw', marginRight: '1vw' };
   }
   return (
-    <MDBRow>
+    <MDBRow style={searchPageStyle}>
       <MDBCol lg='3' md='6' className='mb-lg-0 mb-4' >
-        <MDBCard cascade narrow ecommerce style={{ width: '17vw', marginRight: '2vw' }}>
+        <MDBCard cascade narrow ecommerce style={cardWidth}>
           <MDBCardImage
             cascade
             src={props.cardProduct.images[0]}
@@ -89,7 +96,7 @@ function ProductCard(props) {
             {/* <MDBCardText>
               {props.cardProduct.description}
             </MDBCardText> */}
-            <MDBCardFooter className='px-1'>
+            <MDBCardFooter className='px-1' style={{ padding: '0.75rem 1.25rem 1.75rem' }}>
               <If condition={!props.cardProduct.sale}>
                 <Then>
                   <span className='float-left font-weight-bold' style={{ fontSize: '0.8rem' }}>

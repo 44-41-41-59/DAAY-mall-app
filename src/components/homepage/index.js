@@ -11,6 +11,7 @@ import { Sale, TopRanked, NewArrivals } from './sections';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+
 import './homepage.css';
 
 function Homepage(props) {

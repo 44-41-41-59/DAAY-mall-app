@@ -10,36 +10,36 @@ function SideNav(props) {
     <ProSidebar >
       <Menu >
     
-        <MenuItem>Dashboard</MenuItem>
+        <MenuItem><Link to="/products?category=general"/>Dashboard</MenuItem>
         <SubMenu title="Home, Pet & Appliances" >
-          <MenuItem >  <Link to="/search?category=Household+Items"/> Household Items</MenuItem>
-          <MenuItem > <Link to="/search?category=Pet+Products" /> Pet Products </MenuItem>
-          <MenuItem > <Link to="/search?category=Garden+Supplies" /> Garden Supplies</MenuItem>
+          <MenuItem >  <Link to="/products?category=Household+Items"/> Household Items</MenuItem>
+          <MenuItem > <Link to="/products?category=Pet+Products" /> Pet Products </MenuItem>
+          <MenuItem > <Link to="/products?category=Garden+Supplies" /> Garden Supplies</MenuItem>
 
           
         </SubMenu>
         <SubMenu title="Home Improvement & Tools" >
-          <MenuItem> <Link to="/search?category=>Home+Improvment+Tools" /> Home Improvment Tools</MenuItem>
-          <MenuItem> <Link to="/search?category=Indoor+Lightneing" />Indoor Lightneing</MenuItem>
-          <MenuItem> <Link to="/search?category=Outdoor+Lightning" /> Outdoor Lightning</MenuItem>
+          <MenuItem> <Link to="/products?category=>Home+Improvment+Tools" /> Home Improvment Tools</MenuItem>
+          <MenuItem> <Link to="/products?category=Indoor+Lightneing" />Indoor Lightneing</MenuItem>
+          <MenuItem> <Link to="/products?category=Outdoor+Lightning" /> Outdoor Lightning</MenuItem>
         </SubMenu>
 
         <SubMenu title="Outdoor Fun & Sports" >
-          <MenuItem> <Link to="/search?category=Sportswear" /> Sportswear</MenuItem>
-          <MenuItem>  <Link to="/search?category=Sneakers" /> Sneakers</MenuItem>          
-          <MenuItem> <Link to="/search?category=Other+Sports+Equipment"/> Other Sports Equipment</MenuItem>
+          <MenuItem> <Link to="/products?category=Sportswear" /> Sportswear</MenuItem>
+          <MenuItem>  <Link to="/products?category=Sneakers" /> Sneakers</MenuItem>          
+          <MenuItem> <Link to="/products?category=Other+Sports+Equipment"/> Other Sports Equipment</MenuItem>
         </SubMenu>
 
         <SubMenu title="Automobiles & Motorcycles" >
-          <MenuItem> <Link to="/search?category=Maintanace&Care+Tools" /> Maintanace&Care Tools</MenuItem>
-          <MenuItem>  <Link to="/search?category=Interior+Accessories" />Interior Accessories</MenuItem>
-          <MenuItem> <Link to="/search?category=Exterior+Accessories" /> Exterior Accessories</MenuItem>
+          <MenuItem> <Link to="/products?category=Maintanace&Care+Tools" /> Maintanace&Care Tools</MenuItem>
+          <MenuItem>  <Link to="/products?category=Interior+Accessories" />Interior Accessories</MenuItem>
+          <MenuItem> <Link to="/products?category=Exterior+Accessories" /> Exterior Accessories</MenuItem>
         </SubMenu>
 
         <SubMenu title="Consumer Electronics" >
-          <MenuItem> <Link to="/search?category=Smart+Electronics" /> Smart Electronics</MenuItem>
-          <MenuItem>  <Link to="/search?category=Home+Audio&Video" /> Home Audio&Video</MenuItem>
-          <MenuItem> <Link to="/search?category=Video+Games" />Video Games</MenuItem>
+          <MenuItem> <Link to="/products?category=Smart+Electronics" /> Smart Electronics</MenuItem>
+          <MenuItem>  <Link to="/products?category=Home+Audio&Video" /> Home Audio&Video</MenuItem>
+          <MenuItem> <Link to="/products?category=Video+Games" />Video Games</MenuItem>
         </SubMenu>
         
         <SubMenu title="Computer, Office & Security" >

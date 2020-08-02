@@ -19,6 +19,14 @@ export default (state = initialState, action) => {
       searchTerm: payload.searchTerm,
       searchedProducts: payload.searchedProducts,
     };
+  case 'GETCATEGORYSEARCHEDPRODUCTS':
+    console.log('harrr youuu');
+    return {
+      ...state,
+      searchTerm: payload.searchTerm,
+      searchedProducts: payload.searchedProducts,
+    };
+
   case 'SORTPRODUCTS':
     console.log('sort', payload);
     let sortCondition = '';

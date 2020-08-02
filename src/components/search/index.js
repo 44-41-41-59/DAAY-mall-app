@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import {
   getProducts,
   getSearchedProducts,
+  getCategorySearchProducts,
 } from '../../store/actions/products';
 import Sorting from './sorting-section';
 import Results from './search-results';
@@ -23,24 +24,19 @@ function SearchResults(props) {
   let search = (e) => {
     e.preventDefault();
     let searched = e.target.searchTermInput.value;
-    props.getSearchedProducts(searched);
+    props.getSearchedProducts(`${searched}`);
   };
 
   useEffect(() => {
     props.get();
     if (searchQuery) {
-      console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh', searchQuery)
-      props.getSearchedProducts(searchQuery);
+      props.getCategorySearchProducts(searchQuery);
     }
   }, []);
 
   return (
-    <div id="search-page-cont">
-      <div id="left-sort-section">
-        {/* <Form inline onSubmit={search} id='search-form-side'>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" name='searchTermInput' id='searchInput-side' />
-          <Button variant="info" type="submit" size="md" id='searchBtn-side' >Search</Button>
-        </Form> */}
+    <div style={{display:'flex', flexDirection:'row'}}>
+      <div id="left-sort-section" style={{margin:'5vh 0vw 0vw 5vh !important'}}>
         <form
           class="form-group has-search"
           id="search-form-side"
@@ -72,16 +68,6 @@ function SearchResults(props) {
       </div>
 
       <div id="searchPage">
-        <If condition={searchQuery}>
-          <Then>
-            <h1>
-              hello!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            </h1>
-          </Then>
-          <Else>
-
-          </Else>
-        </If>
         <If condition={props.searchTerm}>
           <Then>
             <If condition={props.sortBy}>
@@ -124,6 +110,8 @@ const mapDispatchToProps = (dispatch) => ({
   get: () => dispatch(getProducts()),
   getSearchedProducts: (searchTerm) =>
     dispatch(getSearchedProducts(searchTerm)),
+  getCategorySearchProducts: (searchTerm) => 
+    dispatch(getCategorySearchProducts(searchTerm)),
   // getSearchProducts: (str) => dispatch(getSearchProducts(str)),
 });
 
