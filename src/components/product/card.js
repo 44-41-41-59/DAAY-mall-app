@@ -38,13 +38,11 @@ function ProductCard(props) {
               </p>
             </strong>
             {/* </MDBCardTitle> */}
-            <ul className='rating'>
-              <MDBIcon icon='star' />
-              <MDBIcon icon='star' />
-              <MDBIcon icon='star' />
-              <MDBIcon icon='star' />
-              <MDBIcon far icon='star' />
-            </ul>
+            <MDBIcon icon='star' />
+            <MDBIcon icon='star' />
+            <MDBIcon icon='star' />
+            <MDBIcon far icon='star' />
+            <MDBIcon far icon='star' />
             {/* <MDBCardText>
               {props.product.description}
             </MDBCardText> */}
@@ -54,12 +52,8 @@ function ProductCard(props) {
               </span>
               <span className='float-right' style={{fontSize:'1rem'}}>
                 <MDBTooltip domElement placement='top'>
-                  <i className='grey-text fa fa-shopping-cart mr-3' />
+                  <i className='grey-text fa fa-shopping-cart mr-3'/>
                   <span>Add to Cart</span>
-                </MDBTooltip>
-                <MDBTooltip domElement placement='top'>
-                  <i className='grey-text fa fa-share-alt mr-3' />
-                  <span>Share</span>
                 </MDBTooltip>
                 <MDBTooltip domElement placement='top'>
                   <i className='grey-text fa fa-heart' />

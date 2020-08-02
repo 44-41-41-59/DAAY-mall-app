@@ -100,6 +100,7 @@ class App extends Component {
         </Route>
         <Route exact path="/customerservice">
           <CustomerServiceClient />
+        </Route>
         <Route exact path="/stores">
           <Stores />
         </Route>
