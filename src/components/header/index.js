@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch, connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import {
+  getProducts,
+  getSearchedProducts,
+} from '../../store/actions/products';
 import {
   MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
   MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon,
 } from 'mdbreact';
 import { If, Then, Else } from '../if/if';
 import Show from '../show';
+import SearchPage from '../search/index';
 
 import { logout } from '../../store/actions/auth';
 
@@ -15,6 +21,8 @@ import './header.css';
 function Header(props) {
   const history = useHistory();
   const logedin = useSelector((state) => state.user.logedin);
+  let [redirect, setRedirect] = useState(null);
+
   const dispatch = useDispatch();
   function handelLogout() {
     dispatch(logout(history));
@@ -26,6 +34,15 @@ function Header(props) {
   let toggleCollapse = () => {
     this.setState({ isOpen: !this.state.isOpen });
   };
+  let search = (e) => {
+    e.preventDefault();
+    let searched = e.target.searchTermInput.value;
+    props.getSearchedProducts(searched);
+    setRedirect('/search');
+  };
+  useEffect(() => {
+    props.get();
+  }, []);
   return (
     <>
       <MDBNavbar color="#b1bace mdb-color lighten-4" dark expand="md" sticky='top'>
@@ -49,14 +66,14 @@ function Header(props) {
             </MDBNavItem>
           </MDBNavbarNav>
           <MDBNavbarNav right>
-            <div class="form-group has-search" id="searchFormHeader">
+            <form class="form-group has-search" id="searchFormHeader" onSubmit={search}>
               <span
                 class="fa fa-search form-control-feedback"
                 id="searchIcon"
               ></span>
-              <input type="text" class="form-control" placeholder="Search" />
-            </div>
-
+              <input type="text" class="form-control" placeholder="Search" name='searchTermInput' />
+            </form>
+            <Redirect to={redirect} />
             <MDBNavItem>
               <MDBDropdown>
                 <MDBDropdownToggle nav caret >
@@ -106,7 +123,7 @@ function Header(props) {
                       <MDBDropdownItem >
                         <Link to={`/profile/${props.user._id}`}>My profile</Link>
                       </MDBDropdownItem>
-                      <Show condition={props.user.role==='owner'}>
+                      <Show condition={props.user.role === 'owner'}>
                         <MDBDropdownItem >
                           <Link to={`/store/${props.user.stores}`}>My store</Link>
                         </MDBDropdownItem>
@@ -151,7 +168,14 @@ const mapStateToProps = (state) => {
   return {
     user: state.user,
     fetch: state.fetching,
+    searchTerm: state.products.searchTerm,
   };
 };
+const mapDispatchToProps = (dispatch) => ({
+  get: () => dispatch(getProducts()),
+  getSearchedProducts: (searchTerm) =>
+    dispatch(getSearchedProducts(searchTerm)),
+  // getSearchProducts: (str) => dispatch(getSearchedProducts(str)),
+});
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

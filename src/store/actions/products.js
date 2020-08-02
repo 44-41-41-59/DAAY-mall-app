@@ -73,6 +73,8 @@ export const getProduct = function (id) {
       url: `${api}/products/${id}`,
       headers: getHeader(),
     }).then(function (response) {
+  console.log('idddddddddddddddddddddddddd', response)
+
       if (response.data[0]) {
         const {
           name,
@@ -108,7 +110,7 @@ export const getProduct = function (id) {
           },
         });
       }
-    });
+    }).catch(err=>console.log(err.response));
   };
 };
 
@@ -134,7 +136,7 @@ export const getSearchedProducts = function (searchTerm) {
         getSearchedProductsAction({
           searchTerm,
           searchedProducts: response.data.results,
-        })
+        }),
       );
     });
   };
@@ -183,19 +185,19 @@ export const getMainPageProducts = function () {
   };
 };
 
-export const getSearchProducts = function (str) {
-  return (dispatch) => {
-    return axios({
-      method: 'get',
-      url: `${api}/search?searchText=${str}`,
-    }).then(function (response) {
-      console.log(response.data);
-      dispatch(
-        getSearchProductsAction({ suggestions: response.data.suggestion })
-      ); //change resultes to results
-    });
-  };
-};
+// export const getSearchProducts = function (str) {
+//   return (dispatch) => {
+//     return axios({
+//       method: 'get',
+//       url: `${api}/search?searchText=${str}`,
+//     }).then(function (response) {
+//       console.log(response.data);
+//       dispatch(
+//         getSearchProductsAction({ suggestions: response.data.suggestion })
+//       ); //change resultes to results
+//     });
+//   };
+// };
 
 export const getSortingSetting = function (sortBy, sortPriceRange, sortRating) {
   return (dispatch) => {
@@ -203,12 +205,12 @@ export const getSortingSetting = function (sortBy, sortPriceRange, sortRating) {
   };
 };
 
-export const getSearchProductsAction = (payload) => {
-  return {
-    type: 'GET SEARCH',
-    payload: payload,
-  };
-};
+// export const getSearchProductsAction = (payload) => {
+//   return {
+//     type: 'GET SEARCH',
+//     payload: payload,
+//   };
+// };
 
 export const getProductsAction = (payload) => {
   return {

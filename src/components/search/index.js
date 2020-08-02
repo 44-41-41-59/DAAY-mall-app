@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import {
   getProducts,
   getSearchedProducts,
-  getSearchProducts,
 } from '../../store/actions/products';
 import Sorting from './sorting-section';
 import Results from './search-results';
@@ -18,22 +19,21 @@ import './search.css';
 // import { Pagination } from 'react-bootstrap';
 
 function SearchResults(props) {
+  let searchQuery = props.location.search;
   let search = (e) => {
     e.preventDefault();
     let searched = e.target.searchTermInput.value;
     props.getSearchedProducts(searched);
   };
 
-  // function handelSearchCange(e) {
-  //   console.log(e.target.value);
-  //   props.getSearchProducts(e.target.value);
-  // }
-
   useEffect(() => {
     props.get();
+    if (searchQuery) {
+      console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh', searchQuery)
+      props.getSearchedProducts(searchQuery);
+    }
   }, []);
 
-  console.log('conso++++++++++++++++++++++++', props.searchedProducts);
   return (
     <div id="search-page-cont">
       <div id="left-sort-section">
@@ -57,7 +57,7 @@ function SearchResults(props) {
             placeholder="Search"
             name="searchTermInput"
             id="searchInput-side"
-            // onChange={handelSearchCange}
+          // onChange={handelSearchCange}
           />
           <datalist id="browsers">
             {props.suggestions.map((item) => {
@@ -72,6 +72,16 @@ function SearchResults(props) {
       </div>
 
       <div id="searchPage">
+        <If condition={searchQuery}>
+          <Then>
+            <h1>
+              hello!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            </h1>
+          </Then>
+          <Else>
+
+          </Else>
+        </If>
         <If condition={props.searchTerm}>
           <Then>
             <If condition={props.sortBy}>
@@ -98,7 +108,6 @@ function SearchResults(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log('hello', state);
   let products = state.products;
   return {
     data: products.results,
@@ -118,4 +127,4 @@ const mapDispatchToProps = (dispatch) => ({
   // getSearchProducts: (str) => dispatch(getSearchProducts(str)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SearchResults));

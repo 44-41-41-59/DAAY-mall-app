@@ -90,7 +90,6 @@ function Results(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log('results state', state);
   return {
     products: state.products.results,
     currentPage: state.pagination.currentPage,
