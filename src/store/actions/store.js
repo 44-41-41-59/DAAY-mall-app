@@ -7,7 +7,7 @@ export const addStore = function (storeData, logo) {
   console.log('ooooooooooooooooooooooo', logo);
   let formData = {
     name: storeData.name.value,
-    logo:logo[0],
+    logo: logo[0],
     category: storeData.category.value,
     country: storeData.country.value,
     city: storeData.city.value,
@@ -22,9 +22,11 @@ export const addStore = function (storeData, logo) {
       url: `${api}/store`,
       headers: getHeader(),
       data: formData,
-    }).then(function (response) {
-      dispatch(addStoreAction({ results: response.data }));
-    }).catch(err=> console.log(err.response));
+    })
+      .then(function (response) {
+        dispatch(addStoreAction({ results: response.data }));
+      })
+      .catch((err) => console.log(err.response));
   };
 };
 
@@ -62,12 +64,13 @@ export const addStoreReview = function (reviewData) {
       url: `${api}/review`,
       headers: getHeader(),
       data: reviewData,
-    }).then(function (response) {
-      dispatch(addStoreReviewAction( response.data ));
-    }).catch(err=>console.log(err.response));
+    })
+      .then(function (response) {
+        dispatch(addStoreReviewAction(response.data));
+      })
+      .catch((err) => console.log(err.response));
   };
 };
-
 
 export const addStoreReviewAction = (payload) => {
   return {
@@ -75,4 +78,3 @@ export const addStoreReviewAction = (payload) => {
     payload: payload,
   };
 };
-

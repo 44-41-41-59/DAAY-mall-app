@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { checkRemoteUser } from './store/actions/auth';
 import { getMainPageProducts } from './store/actions/products';
 import { getAdvertising } from './store/actions/ads';
-
 import './App.css';
 import Auth from './components/register';
 import { Route } from 'react-router-dom';
@@ -21,20 +20,40 @@ import Profilepage from '../src/components/profilepage';
 import StoreApplicationPage from './components/profilepage/store-application';
 import Aboutus from './components/aboutUs/';
 import Dashboard from '../src/components/admin';
+import CustomerServiceAdmin from './components/customerService/Admin';
+import CustomerServiceClient from './components/customerService/Client';
+import { test, socket } from './service/socket';
 
 class App extends Component {
   // eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
+    let socket;
   }
   async componentWillMount() {
-    console.log('hiiiiiiiiiiiiiiiiiiii');
-    let auth = cookie.load('auth');
+    let auth = await cookie.load('auth');
     if (auth) {
       this.props.checkRemoteUser(auth);
     }
     await this.props.getMainPageProducts();
     await this.props.getAdvertising();
+  }
+  componentDidMount() {
+    setTimeout(() => {
+      let { username, avatar, _id } = this.props.user;
+      test({
+        username,
+        avatar,
+        _id,
+      });
+      console.log(socket);
+      socket.emit('massege', { name: 'helo' });
+      socket.on('test', () => {
+        console.log('hello ladies');
+      });
+
+      console.log(this.props.user);
+    }, 1200);
   }
   render() {
     return (
@@ -72,6 +91,12 @@ class App extends Component {
         </Route>
         <Route exact path="/admin/dashboard">
           <Dashboard />
+        </Route>
+        <Route exact path="/admin/customerservice">
+          <CustomerServiceAdmin />
+        </Route>
+        <Route exact path="/customerservice">
+          <CustomerServiceClient />
         </Route>
         <Footer />
       </div>
