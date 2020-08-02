@@ -21,6 +21,7 @@ import Profilepage from '../src/components/profilepage';
 import StoreApplicationPage from './components/profilepage/store-application';
 import Aboutus from './components/aboutUs/';
 import Dashboard from '../src/components/admin';
+import Stores from '../src/components/storespage/index';
 
 class App extends Component {
   // eslint-disable-next-line no-useless-constructor
@@ -72,6 +73,9 @@ class App extends Component {
         </Route>
         <Route exact path="/admin/dashboard">
           <Dashboard />
+        </Route>
+        <Route exact path="/stores">
+          <Stores />
         </Route>
         <Footer />
       </div>
