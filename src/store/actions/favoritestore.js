@@ -13,7 +13,7 @@ export const getFavoriteStores = function () {
     }).then(function (response) {
       console.log(
         'helloooooooooooo from favorite stores',
-        response.data.results
+        response.data.results,
       );
       dispatch(
         getFavoriteStoresAction({ favoriteStores: response.data.results })

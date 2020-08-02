@@ -7,7 +7,7 @@ import Show from '../show';
 function HeaderNav(props) {
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <Link class="navbar-brand" >Stores</Link>
+      <Link class="navbar-brand" to='/stores' >Stores</Link>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
