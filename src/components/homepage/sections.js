@@ -5,36 +5,20 @@ import CardGroup from 'react-bootstrap/CardGroup';
 import Container from 'react-bootstrap/Container';
 import { Link } from 'react-router-dom';
 import { MDBIcon } from 'mdbreact';
+import ProductCard from '../product/card';
 
 export const Sale = (props) => {
   return (
     <div class="container slideRowContainer">
-      <MDBIcon icon="dollar-sign" id="saleIcon" />
-      <span id="sale">Sale</span>
+      <div style={{padding:'1vw'}}>
+        <MDBIcon icon="dollar-sign" id="saleIcon" />
+        <span id="sale">Sale</span>
+      </div>
       <div class="row" id="slideRow">
         {props.products.mainProducts.onSale &&
           props.products.mainProducts.onSale.map((item) => {
             return (
-              <div class="col-xs-4">
-                <div class="card" id="slideRow-card">
-                  <Link to={`/product/${item._id}`}>
-                    <img class="card-img" src={item.images} alt={item.title} />
-                  </Link>
-                  <div class="card-img-overlay d-flex justify-content-end">
-                    <MDBIcon far icon="heart" />
-                  </div>
-                  <div class="card-body">
-                    <div class="buy d-flex justify-content-between align-items-center">
-                      <div class="price text-danger">
-                        <h5 class="mt-4" id="price-home">
-                          {item.price}JOD
-                        </h5>
-                      </div>
-                      <MDBIcon icon="shopping-cart" />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <ProductCard product={item} />
             );
           })}
       </div>

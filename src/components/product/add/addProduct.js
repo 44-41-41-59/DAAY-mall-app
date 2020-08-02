@@ -31,14 +31,9 @@ function AddProduct(props) {
 
     let specsEntries = {};
     for(let i = 0; i<e.target.specifications.length; i++) {
-      console.log('&&&&&&&&&&&&&&&&&&&&&&', specsEntries, '///' , e.target.specifications );
       specsEntries[e.target.specifications[i].value] = e.target.specifications[i+1].value;
-      // specsEntries.push({[e.target.specifications[i]]:e.target.specifications[i+1]});
       i++;
     }
-
-    // let key = `input-${i}-key`;
-    // let value = `input-${i}-key`;
 
     let formData = {
       name: e.target.name.value,

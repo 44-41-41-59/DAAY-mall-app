@@ -26,6 +26,7 @@ import { test, socket } from './service/socket';
 import Stores from '../src/components/storespage/index';
 
 
+
 class App extends Component {
   // eslint-disable-next-line no-useless-constructor
   constructor(props) {
