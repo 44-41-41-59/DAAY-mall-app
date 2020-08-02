@@ -1,11 +1,11 @@
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
 import React,{useEffect} from 'react';
 import './storespage.css';
-import Tab from 'react-bootstrap/Tab'; 
-import Row from 'react-bootstrap/Row';
 import { connect,useDispatch } from 'react-redux';
 import {getStores} from '../../store/actions/stores';
 import { Link } from 'react-router-dom';
+import { FaFileExcel, FaAlignJustify } from 'react-icons/fa';
+import {MDBIcon} from 'mdbreact';
 
 
 function Stores(props) {
@@ -13,22 +13,38 @@ function Stores(props) {
   const dipatch=useDispatch();
   useEffect(()=>{ 
     dipatch(getStores());
-  },[dipatch]);
+  },[]);
  
   return (
-    <>  
+    <div style={{height:'90vh' }} >  
+      <h3 id='title' >Our Stores</h3>
+      <hr/>
       <MDBCol>
-        <MDBCard style={{ width: '22rem' }}>
-          <MDBCardImage className="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" waves />
-          <MDBCardBody>
-            <MDBCardTitle>Card title</MDBCardTitle>
-            <MDBCardText>
-            Some quick example text to build on the card title and make
-            up the bulk of the card&apos;s content.
-            </MDBCardText>
-            <MDBBtn href="#">MDBBtn</MDBBtn>
-          </MDBCardBody>
-        </MDBCard>
+        <div  style={{display:'flex'}}>
+          {props.stores.results.map((store)=>{
+            return(
+              <div >
+                <MDBCard id='storeCard'>
+                  <MDBCardImage id='storeImage' src={store.logo} alt={store.name} />
+                  <MDBCardBody>
+                    <div id='storeInfo' >
+                      <MDBCardTitle>{store.name}</MDBCardTitle>
+                      <p class="card-text">Country : {store.country}</p>
+                      <MDBIcon icon='star' />
+                      <MDBIcon icon='star' />
+                      <MDBIcon icon='star' />
+                      <MDBIcon icon='star' />
+                      <MDBIcon far icon='star' />
+                    </div>
+                    <Link to={`/store/${store._id}`} >
+                      <MDBBtn id='button' color='#b1bace mdb-color lighten-4'>View Store</MDBBtn>
+                    </Link>
+                  </MDBCardBody>
+                </MDBCard>
+              </div>
+            );
+          })}
+        </div>
       </MDBCol>
       {/* <Tab.Pane >
         <Row>
@@ -44,7 +60,7 @@ function Stores(props) {
           })}
         </Row>
       </Tab.Pane> */}
-    </>
+    </div>
   );
 }
 
