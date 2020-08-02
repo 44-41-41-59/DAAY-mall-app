@@ -134,7 +134,7 @@ export const getSearchedProducts = function (searchTerm) {
         getSearchedProductsAction({
           searchTerm,
           searchedProducts: response.data.results,
-        }),
+        })
       );
     });
   };
@@ -165,7 +165,7 @@ export const payedUserCart = function (data) {
         dispatch(
           paymentFailed({
             paymentFailed: true,
-          }),
+          })
         );
         dispatch(fetchPayment({ fetchpayment: false }));
       });
@@ -191,7 +191,7 @@ export const getSearchProducts = function (str) {
     }).then(function (response) {
       console.log(response.data);
       dispatch(
-        getSearchProductsAction({ suggestions: response.data.suggestion }),
+        getSearchProductsAction({ suggestions: response.data.suggestion })
       ); //change resultes to results
     });
   };
@@ -272,12 +272,13 @@ export const addProductReview = function (reviewData) {
       url: `${api}/review`,
       headers: getHeader(),
       data: reviewData,
-    }).then(function (response) {
-      dispatch(addProductReviewAction(response.data));
-    }).catch(err => console.log(err.response));
+    })
+      .then(function (response) {
+        dispatch(addProductReviewAction(response.data));
+      })
+      .catch((err) => console.log(err.response));
   };
 };
-
 
 export const addProductReviewAction = (payload) => {
   return {
@@ -293,12 +294,13 @@ export const getProductReviews = function (productID) {
       url: `${api}/review`,
       headers: getHeader(),
       data: productID,
-    }).then(function (response) {
-      dispatch(getProductReviewsAction(response.data));
-    }).catch(err => console.log(err.response));
+    })
+      .then(function (response) {
+        dispatch(getProductReviewsAction(response.data));
+      })
+      .catch((err) => console.log(err.response));
   };
 };
-
 
 export const getProductReviewsAction = (payload) => {
   return {
@@ -306,5 +308,3 @@ export const getProductReviewsAction = (payload) => {
     payload: payload,
   };
 };
-
-

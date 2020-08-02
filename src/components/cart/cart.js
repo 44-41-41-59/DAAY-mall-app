@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
-import Image from 'react-bootstrap/Image';
-import Accordion from 'react-bootstrap/Accordion';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+import React from 'react';
 import StripeCeckout from 'react-stripe-checkout';
 import { Link } from 'react-router-dom';
+import Table from 'react-bootstrap/Table';
 import './cart.scss';
 
 export default function Cart(props) {
@@ -21,84 +18,71 @@ export default function Cart(props) {
 
   return (
     <div class="myBody">
-      <h1 class="wordCarousel">
-        <div>
-          <ul class="flip4">
-            <li>total price {cost}</li>
-            <li>({props.user.cart.length})</li>
-            <li>My Carts</li>
-            <li>Welcome to Carts page</li>
-          </ul>
-        </div>
-      </h1>
-      {props.user.cart.map((item) => {
-        let price = item.products.price;
-        let quantity = item.quantity;
-        let sale = item.products.sale;
-        let per = (price / 100) * sale;
-        return (
-          <div>
-            <div class="accordion">
-              <div class="image">
-                <Link to={`/product/${item.products._id}`}>
-                  <img alt="productImage" src={item.products.images[0]} />
-                </Link>
-              </div>
-              <Accordion defaultActiveKey="0">
-                <Card>
-                  <Card.Header>
-                    <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                        Item Description
-                    </Accordion.Toggle>
-                  </Card.Header>
-                  <Accordion.Collapse eventKey="0">
-                    <Card.Body>
-                      <p>name {item.products.name}</p>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-                <Card>
-                  <Card.Header>
-                    <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                        Item Details
-                    </Accordion.Toggle>
-                  </Card.Header>
-                  <Accordion.Collapse eventKey="1">
-                    <Card.Body>
-                      <ul>
-                        <li>
-                          <p>
-                            {!!sale &&
-                                'onSale: ' +
-                                  Math.round(
-                                    (price * quantity - per * quantity) * 100,
-                                  ) /
-                                    100}{' '}
-                              Price :{price * quantity}
-                          </p>
-                        </li>
-                        {/* <li>
-                            <p>seal {item.products.seal}</p>
-                          </li> */}
-                      </ul>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-              </Accordion>
-            </div>
-          </div>
-        );
-      })}
-      <h3>Total is {cost}</h3>
-      <StripeCeckout
-        stripeKey="pk_test_51Gw6p5DCWnftj01CHDFox6ZFihtNyZ0EkHqOxR8uTnYB0jeLLTPfZBPtuRQXcFBSd4McXulw456Dl1Cp6mq3t6lR00booR4E8t"
-        token={makePayment}
-        name="test"
-        amount={cost * 100}
-      >
-        {props.fetch.paymentFailed && alert('Some information are missing')}
-        <button id="btnTotal">Check Out</button>
-      </StripeCeckout>
+      <div id="Carts">
+        <img src="https://thumbs.gfycat.com/CompleteShallowFlyingsquirrel-size_restricted.gif" id="logoCardImg"></img>
+        <h1 id="myCarts">My Carts ({props.user.cart.length})</h1>
+      </div>
+      <Table striped bordered hover variant="dark">
+        <thead>
+          <tr id="tableHeader">
+            <th>Product</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th><span role="img" aria-label="sad">😥</span></th>
+          </tr>
+        </thead>
+        {props.user.cart.map((item) => {
+          let price = item.products.price;
+          let quantity = item.quantity;
+          let sale = item.products.sale;
+          let per = (price / 100) * sale;
+          return (
+            <tbody>
+              <tr>
+                <td id='firstTd'>
+                  <div class="image">
+                    <Link to={`/product/${item.products._id}`}>
+                      <img alt="productImage" src={item.products.images[0]} />
+                    </Link>
+                  </div></td>
+                <td id='secondTd'>{item.products.name}</td>
+                <td id='thirdTd'>{!!sale &&
+                      'onSale: ' +
+                      Math.round(
+                        (price * quantity - per * quantity) * 100,
+                      ) /
+                      100}{' '}
+                <br /> Price :{price * quantity}
+                </td>
+                <td id='forthId'><input type="number" name="quantity" min="1" max="10" /></td>
+                <td id='fifthId'>{!!sale &&
+                      'onSale: ' +
+                      Math.round(
+                        (price * quantity - per * quantity) * 100,
+                      ) /
+                      100}{' '}
+                <br /> Price :{price * quantity}</td>
+                <td id='sixId'><i className="fas fa-trash"></i></td>
+              </tr>
+            </tbody>
+          );
+        })}
+        <tr >
+          <td id="totalTd">Total</td>
+          <td colSpan="1" id="totalTd1">{cost}</td>
+          <td colSpan="4"><StripeCeckout
+            stripeKey="pk_test_51Gw6p5DCWnftj01CHDFox6ZFihtNyZ0EkHqOxR8uTnYB0jeLLTPfZBPtuRQXcFBSd4McXulw456Dl1Cp6mq3t6lR00booR4E8t"
+            token={makePayment}
+            name="test"
+            amount={cost * 100}
+          >
+            {props.fetch.paymentFailed && alert('Some information are missing')}
+            <button >Check Out</button>
+          </StripeCeckout></td>
+        </tr>
+      </Table>
     </div>
   );
 }

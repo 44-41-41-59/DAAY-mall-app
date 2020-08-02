@@ -13,8 +13,6 @@ import {
   payedUserCart,
 } from '../../store/actions/products';
 
-
-
 function Product(props) {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
@@ -24,7 +22,7 @@ function Product(props) {
     setQuantity(e.target.value);
   }
   function addToCart() {
-    console.log('uuuuuuuuuuuu',props.productID )
+    console.log('uuuuuuuuuuuu',props.productID );
     props.addCart({ products:props.productID, quantity, userID:props.user._id });
   }
   function addToWishlist() {

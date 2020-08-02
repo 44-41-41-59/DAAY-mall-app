@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
+import { socket } from '../../service/socket';
 import 'holderjs';
 
 function MainCrousel(props) {
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     socket.emit('next');
+  //     socket.on('test2', () => console.log('secodnd compo'));
+  //   }, 500);
+  // }, []);
+
   return (
     <Carousel interval="5000">
       {props.ads.ads.map((item) => {
