@@ -13,7 +13,6 @@ function App(props) {
   useEffect(() => {
     props.getCartProducts(props.match.params.id, history);
   }, []);
-  console.log(props);
   return (
     <div className="App">
       <Cart user={props.user} pay={props.payedUserCart} fetch={props.fetch} />

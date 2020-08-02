@@ -11,18 +11,17 @@ import {
   signupFailed,
 } from '../actions/fetch';
 
-// const api = 'http://localhost:3001';
-const api = 'https://daaymall-401-project.herokuapp.com';
+const api = 'http://localhost:3001';
+// const api = 'https://daaymall-401-project.herokuapp.com';
 export const auth = (userInfo) => ({
   type: 'LOGIN',
   payload: userInfo,
 });
 
 function getUserData(obj) {
-  console.log('oooobbbbbjjjjj',obj);
   let acl = obj.acl.acl;
-  let { avatar, confirmed, email, role, username, _id,stores} = obj.data;
-  return { avatar, confirmed, email, role, username, _id, acl,stores };
+  let { avatar, confirmed, email, role, username, _id, stores } = obj.data;
+  return { avatar, confirmed, email, role, username, _id, acl, stores };
 }
 
 export const loginRemoteUser = function (email, password, history) {
@@ -48,7 +47,7 @@ export const loginRemoteUser = function (email, password, history) {
           LoginFailed({
             loginFailed: true,
             loginErrorMsg: err.response,
-          }),
+          })
         );
         dispatch(fetchLogin({ fetchLogin: false }));
       });
@@ -61,7 +60,7 @@ export const signUpRemoteUser = function (username, email, password, history) {
       .post(
         api + '/auth',
         { username, email, password },
-        { headers: getHeader() },
+        { headers: getHeader() }
       )
       .then((response) => {
         cookie.save('auth', response.data.data.token, { path: '/' });
@@ -75,7 +74,7 @@ export const signUpRemoteUser = function (username, email, password, history) {
           signupFailed({
             signupFailed: true,
             signupErrorMsg: err.response.data.err,
-          }),
+          })
         );
         dispatch(fetchSignup({ fetchSignup: false }));
       });
