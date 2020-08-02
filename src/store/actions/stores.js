@@ -3,21 +3,22 @@ import getHeader from '../header';
 const api = 'https://daaymall-401-project.herokuapp.com';
 // const api = 'http://localhost:3001';
 
-export const getWishlist = function () {
+export const getStores = function () {
   return (dispatch) => {
     return axios({
       method: 'get',
-      url: `${api}/wishlist/5f1fe028508bff0017282214`, //make it dynamic by getting from params
+      url: `${api}/store`, //
       headers: getHeader(),
     }).then(function (response) {
-      dispatch(getWishlistAction({ results: response.data }));
+      console.log('helloooooooooooo from Storessss', response.data);
+      dispatch(getStoresAction({ results: response.data.results }));
     });
   };
 };
 
-export const getWishlistAction = (payload) => {
+export const getStoresAction = (payload) => {
   return {
-    type: 'GETWISHLIST',
+    type: 'GETSTORES',
     payload: payload,
   };
 };

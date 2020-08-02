@@ -13,6 +13,7 @@ import fetching from './reducers/fetch';
 import store from './reducers/store';
 import admin from './reducers/admin';
 import profile from './reducers/profile';
+import stores from './reducers/stores';
 
 const rootReducer = combineReducers({
   user,
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   store,
   admin,
   profile,
+  stores,
 });
 
 export default createStore(

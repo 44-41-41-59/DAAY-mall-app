@@ -23,6 +23,8 @@ import Dashboard from '../src/components/admin';
 import CustomerServiceAdmin from './components/customerService/Admin';
 import CustomerServiceClient from './components/customerService/Client';
 import { test, socket } from './service/socket';
+import Stores from '../src/components/storespage/index';
+
 
 class App extends Component {
   // eslint-disable-next-line no-useless-constructor
@@ -97,6 +99,8 @@ class App extends Component {
         </Route>
         <Route exact path="/customerservice">
           <CustomerServiceClient />
+        <Route exact path="/stores">
+          <Stores />
         </Route>
         <Footer />
       </div>
