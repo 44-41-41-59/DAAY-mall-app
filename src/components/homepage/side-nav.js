@@ -1,43 +1,15 @@
 import React from 'react';
 import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import {Link} from 'react-router-dom';
-// import Accordion from 'react-bootstrap/Accordion';
-// import Card from 'react-bootstrap/Card';
-// import Button from 'react-bootstrap/Button';
-
 
 
 import './homepage.css';
 
 function SideNav(props) {
   return (
-
-  /*  PLEASE KEEP THIS COMMENT */
-
-  // <Accordion defaultActiveKey="0">
-  //   <Card>
-  //     <Card.Header>
-  //       <Accordion.Toggle as={Button} variant="link" eventKey="0">
-  //         Click me!
-  //       </Accordion.Toggle>
-  //     </Card.Header>
-  //     <Accordion.Collapse eventKey="0">
-  //       <Card.Body>Hello! I'm the body</Card.Body>
-  //     </Accordion.Collapse>
-  //   </Card>
-  // </Accordion>
-
-  //   <div class="dropdown">
-  //   <button class="dropbtn">Dropdown</button>
-  //   <div class="dropdown-content">
-  //     <a href="#">Link 1</a>
-  //     <a href="#">Link 2</a>
-  //     <a href="#">Link 3</a>
-  //   </div>
-  // </div>
-
     <ProSidebar >
       <Menu >
+    
         <MenuItem>Dashboard</MenuItem>
         <SubMenu title="Home, Pet & Appliances" >
           <MenuItem >  <Link to="/search?category=Household+Items"/> Household Items</MenuItem>
