@@ -35,7 +35,6 @@ function PaginationFunction(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log('pagination', state);
   return {
     products: state.products.results,
     currentPage: state.pagination.currentPage,

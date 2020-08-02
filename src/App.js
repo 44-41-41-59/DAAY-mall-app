@@ -86,7 +86,7 @@ class App extends Component {
         <Route exact path="/profile/:id">
           <Profilepage />
         </Route>
-        <Route exact path="/search">
+        <Route exact path="/search/">
           <SearchResults />
         </Route>
         <Route exact path="/aboutUs">
