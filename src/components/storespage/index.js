@@ -1,3 +1,4 @@
+import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
 import React,{useEffect} from 'react';
 import './storespage.css';
 import Tab from 'react-bootstrap/Tab'; 
@@ -16,7 +17,20 @@ function Stores(props) {
  
   return (
     <>  
-      <Tab.Pane >
+      <MDBCol>
+        <MDBCard style={{ width: '22rem' }}>
+          <MDBCardImage className="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" waves />
+          <MDBCardBody>
+            <MDBCardTitle>Card title</MDBCardTitle>
+            <MDBCardText>
+            Some quick example text to build on the card title and make
+            up the bulk of the card&apos;s content.
+            </MDBCardText>
+            <MDBBtn href="#">MDBBtn</MDBBtn>
+          </MDBCardBody>
+        </MDBCard>
+      </MDBCol>
+      {/* <Tab.Pane >
         <Row>
           {props.stores.results.map((store)=>{
             return(
@@ -29,7 +43,7 @@ function Stores(props) {
             );
           })}
         </Row>
-      </Tab.Pane>
+      </Tab.Pane> */}
     </>
   );
 }
@@ -45,3 +59,5 @@ const mapStateToProps= (state) => {
 // });
 
 export default connect(mapStateToProps)(Stores);
+
+
