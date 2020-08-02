@@ -5,148 +5,96 @@
 $spotOne: #26115a;
 $spotTwo: #0000FF;
 $spotThree: #1212cf;
-*, *:before, *:after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
 .myBody{
-    margin-top: 2%;
-    margin-left: 2%;
     font-family: 'Philosopher', sans-serif; 
-    .image{
-        float: left;
-        width: 13%;
-    }
-
     .image img{
         width: 100%;
-        border: 0.5rem double #0000FF;
-        border-radius: 50%;
         animation: anim-glow 2s ease infinite;
     }
+
+    table {
+        text-align: center;
+    }
+
+    #firstTd{
+        width: 10%;
+    }
     
-    .accordion{
-        margin-top:5%;
-        width: 90%;
-        margin-left: 5%;
+    #secondTd{
+        width: 50%;
+        padding-top: 3%;
+    }
+    
+    #thirdTd , #fifthId{
+        width: 20%;
+        padding-top:1.5%;
+    }
+    
+    #forthId , #sixId{
+        width: 5%;
+        padding-top:3%;
+    }
+    
+    #myCarts{
+        text-align: center;
+    }
+    
+    #totalTd{
+        font-size: 2rem;
     }
 
-    #btnTotal{
-         position: relative;
-         margin: auto;
-         padding-right: 1.5rem;
-         padding-left: 1.5rem;
-         font-size: 1rem;
-         line-height: 3rem;
-         text-decoration: none;
-         color: white;
-         text-transform: uppercase;
-         letter-spacing: 2px;
-         -webkit-font-smoothing: antialiased;
-         -moz-osx-font-smoothing: grayscale;
-         background-image: linear-gradient( 160deg, $spotThree, $spotTwo );
-         border-radius: 30px;
-         margin-top: 5%;
-         margin-left: 25%;
-         width: 20%;
-         cursor: pointer;
-         user-select: none;
-         box-shadow: 
-         0 0 0 0 $spotTwo,
-         0.2rem 0.2rem 20px mix(black, $spotOne, 50%);
-         transition: box-shadow 0.6s;
-  
-  &:hover {
-    box-shadow: 
-      0 0 30px 2px $spotTwo,
-      0.5rem 0.5rem 20px mix(black, $spotOne, 50%);
-  }
-  
-  &:after {
-    content: '';
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    bottom: 2px;
-    left: 2px;
-    border-radius: 30px;
-    background-image: linear-gradient( 170deg, rgba(white, 0.3), rgba(white, 0) );
-    pointer-events: none;
-  }
+    #totalTd1{
+        font-size: 2rem;
     }
-}
-
-.wordCarousel {
-    font-size: 2rem;
-    font-weight: 700;
-    color: black;
-    text-align: center;
-    div {
-        overflow: hidden;
-        position: relative;
-        height: 65px;
-        padding-top: 10px;
-        margin-bottom: -60px;
-        li {
-            color: #0000FF;
-            font-weight: 700;
-            padding: 0 10px;
-            height: 45px;
-            margin-bottom: 45px;
-            display: block;
-        }
+    
+     button{
+        width: 100%;
+        height: 3rem;
+        border-radius: 5%;
+        font-size: 1.5rem;
     }
+
+    button:hover{
+        border: 1px solid white;
+        background-color: #454d55;
+        color: white;
+    }
+
+     #tableHeader th{
+        font-size: 1.2rem;
+    }
+
+    #logoCardImg{
+        width: 30%;
+    }
+
+    #Carts{
+        width: 40%;
+        display: flex;
+        margin-left: 35%;
+    }
+
+    #Carts h1{
+        margin-top: 8%;
+    }
+
+    .fa-trash {
+        font-size: 1.5em;
+        cursor: pointer;
+      }
+      .fa-trash:hover {
+        color: rgb(180,220,220);
+      }
 }
 
-.flip2 { animation: flip2 6s cubic-bezier(0.23, 1, 0.32, 1.2) infinite; }
-.flip3 { animation: flip3 8s cubic-bezier(0.23, 1, 0.32, 1.2) infinite; }
-.flip4 { animation: flip4 10s cubic-bezier(0.23, 1, 0.32, 1.2) infinite; }
-
-@keyframes flip2 {
-    0% { margin-top: -180px; }
-    5% { margin-top: -90px;  }
-    50% { margin-top: -90px; }
-    55% { margin-top: 0px; }
-    99.99% { margin-top: 0px; }
-    100% { margin-top: -270px; }
-}
-
-@keyframes flip3 {
-    0% { margin-top: -270px; }
-    5% { margin-top: -180px; }
-    33% { margin-top: -180px; }
-    38% { margin-top: -90px; }
-    66% { margin-top: -90px; }
-    71% { margin-top: 0px; }
-    99.99% { margin-top: 0px; }
-    100% { margin-top: -270px; }
-}
-
-@keyframes flip4 {
-    0% { margin-top: -360px; }
-    5% { margin-top: -270px; }
-    25% { margin-top: -270px; }
-    30% { margin-top: -180px; }
-    50% { margin-top: -180px; }
-    55% { margin-top: -90px; }
-    75% { margin-top: -90px; }
-    80% { margin-top: 0px; }
-    99.99% { margin-top: 0px; }
-    100% { margin-top: -270px; }
-}
 
 @keyframes anim-glow {
 	0% {
-		box-shadow: 0 0 rgba(#26115a, 1);
+		box-shadow: 0 0 rgba(white, 1);
 	}
 	100% {
-		box-shadow: 0 0 10px 8px transparent;
+		box-shadow: 0 0 2px 3px transparent;
 		border-width: 2px;
 	}
 }
 
-.page-footer{
-    margin-top: 120px;
-}
