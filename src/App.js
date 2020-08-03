@@ -24,6 +24,7 @@ import CustomerServiceAdmin from './components/customerService/Admin';
 import CustomerServiceClient from './components/customerService/Client';
 import { test, socket } from './service/socket';
 import Stores from '../src/components/storespage/index';
+import NotFound from '../src/components/notfound/notfound';
 
 
 class App extends Component {
@@ -103,6 +104,9 @@ class App extends Component {
         </Route>
         <Route exact path="/stores">
           <Stores  />
+        </Route>
+        <Route exact path="/notfound">
+          <NotFound  />
         </Route>
         <Footer />
       </div>

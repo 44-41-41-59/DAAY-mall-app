@@ -10,7 +10,6 @@ class Auth extends React.Component {
   render() {
     let okToRender = false;
     try {
-      console;
       okToRender =
         this.context.loggedIn && this.props.capability
           ? this.context.user.capabilities.includes(this.props.capability)
