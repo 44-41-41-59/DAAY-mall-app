@@ -17,8 +17,6 @@ import './one-product.css';
 import product from '.';
 
 function OneProduct(props) {
-  const [rating, setRating] = useState(null);
-  const [hover, setHover] = useState(null);
   const [quantity, setQuantity] = useState({ value: 1 });
 
   let decrease = () => {
@@ -30,7 +28,6 @@ function OneProduct(props) {
   };
 
   function addToCart() {
-    console.log('uuuuuuuuuuuu', props.productID);
     props.addCart({ products: props.productID, quantity, userID: props.user._id });
   }
   function addToWishlist() {
@@ -81,7 +78,7 @@ function OneProduct(props) {
       >
         <div
           id='leftside-product'
-          style={{ width: '50vw', margin: '5vh', padding: '6vh 10vh' }}
+          style={{ width: '50vw', margin: '5vh', padding: '6vh 8vh' }}
         >
           <div style={{ minHeight: '60vh' }}>
             <div id='info-product' style={{ padding: '5vh' }} >
@@ -154,7 +151,7 @@ function OneProduct(props) {
                       justifyContent: 'center',
                       alignItems: 'center',
                       alignSelf: 'center',
-                      width: '30%',
+                      width: '5vw',
                       marginBottom: '0px',
                     }}
                   >
@@ -166,14 +163,15 @@ function OneProduct(props) {
                       onChange={() => console.log('change')}
                       type="number"
                       style={{
-                        maxWidth: '2rem',
+                        maxWidth: '1.5rem',
+                        textAlign:'center',
                       }} />
                     <button onClick={increase} className="plus"></button>
                   </div>
-                  <MDBBtn color="blue-grey">Add to cart</MDBBtn>
+                  <MDBBtn color="blue-grey" style={{marginLeft:'1.5vw'}}>Add to cart</MDBBtn>
 
                 </div>
-                <MDBBtn color='amber' style={{ width: '50%' }}>Add to wishlist</MDBBtn>
+                <MDBBtn color='amber' style={{ width: '44%' }} onClick={addToWishlist}>Add to wishlist</MDBBtn>
 
               </div>
 

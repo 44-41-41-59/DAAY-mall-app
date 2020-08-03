@@ -59,7 +59,7 @@ export const addWishlist = function (data) {
       data,
     })
       .then(function (response) {
-        console.log(response, 'cart');
+        console.log(response);
         // dispatch(getProductsAction({ results: response.data.results }));
       })
       .catch(console.log);
