@@ -4,14 +4,14 @@ const api = 'https://daaymall-401-project.herokuapp.com';
 export const getPaginationSettings = function (
   currentPage,
   itemPerPage,
-  currentItems
+  currentItems,
 ) {
   return (dispatch) => {
     console.log(
       'action paginaaaaaaaaaation',
       currentPage,
       itemPerPage,
-      currentItems
+      currentItems,
     );
     dispatch(setPaginationAction({ currentPage, itemPerPage, currentItems }));
   };

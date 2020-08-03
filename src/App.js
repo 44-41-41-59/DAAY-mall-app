@@ -102,7 +102,7 @@ class App extends Component {
           <CustomerServiceClient />
         </Route>
         <Route exact path="/stores">
-          <Stores />
+          <Stores  />
         </Route>
         <Footer />
       </div>

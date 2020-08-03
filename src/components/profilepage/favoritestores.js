@@ -5,7 +5,6 @@ import Tab from 'react-bootstrap/Tab';
 import Row from 'react-bootstrap/Row'; 
 
 function FavoriteStores(props) {
-  console.log('proooops',props);
   return (
     <>
       <Tab.Pane >

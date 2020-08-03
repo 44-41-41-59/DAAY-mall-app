@@ -1,0 +1,22 @@
+#storeImage {
+    width: 6vw;
+    margin: 0 auto;
+    height: 12vh;
+}
+
+#storeCard{
+ margin-left: 5vw;
+ margin-top: 3vh;
+}
+
+#title{
+    margin-left: 5vw;
+}
+
+#button{
+    color: white;
+}
+
+#storeInfo{
+    text-align: center;
+}

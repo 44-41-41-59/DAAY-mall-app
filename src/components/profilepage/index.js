@@ -40,7 +40,7 @@ function Profilepage(props) {
       </div>
       {/* <Show condition={props.isUserSame}><h1>Hiiiiiiiiiiiii</h1></Show> */}
 
-      <div id='tabs' >
+      <div id='tabs' style={{minHeight:'80vh'}}>
         <Tabs defaultActiveKey="Wish-list" id="uncontrolled-tab-example">
           <Tab eventKey="Wish-list" title="Wish-list">
             <Wishlist wishlist={props.profile.wishlist}/>
@@ -65,11 +65,9 @@ function Profilepage(props) {
 
 const mapStateToProps = (state) => {
   let isUserSame = false;
-  console.log('diaaaanaaaa',state.profile._id,state.user._id);
   if(state.profile._id === state.user._id){
     isUserSame=true;
   }
-  console.log('staaateeee',isUserSame);
   return { user: state.user,  profile:state.profile, isUserSame};
 };
 

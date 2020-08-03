@@ -47,7 +47,7 @@ export const loginRemoteUser = function (email, password, history) {
           LoginFailed({
             loginFailed: true,
             loginErrorMsg: err.response,
-          })
+          }),
         );
         dispatch(fetchLogin({ fetchLogin: false }));
       });
@@ -60,7 +60,7 @@ export const signUpRemoteUser = function (username, email, password, history) {
       .post(
         api + '/auth',
         { username, email, password },
-        { headers: getHeader() }
+        { headers: getHeader() },
       )
       .then((response) => {
         cookie.save('auth', response.data.data.token, { path: '/' });
@@ -74,7 +74,7 @@ export const signUpRemoteUser = function (username, email, password, history) {
           signupFailed({
             signupFailed: true,
             signupErrorMsg: err.response.data.err,
-          })
+          }),
         );
         dispatch(fetchSignup({ fetchSignup: false }));
       });
@@ -83,7 +83,7 @@ export const signUpRemoteUser = function (username, email, password, history) {
 
 export const checkRemoteUser = function () {
   return (dispatch) => {
-    console.log('helo');
+    // console.log('helo');
     return axios({
       url: api + '/auth/check',
       headers: getHeader(),
@@ -97,7 +97,7 @@ export const checkRemoteUser = function () {
 };
 export const changePasswordRequest = function (obj) {
   return (dispatch) => {
-    console.log('helo');
+    // console.log('helo');
     return axios({
       url: api + '/auth/resetpassword',
       headers: getHeader(),
