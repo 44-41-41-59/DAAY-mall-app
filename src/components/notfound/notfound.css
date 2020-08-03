@@ -1,3 +1,9 @@
-body{
-    background-color: #F7F7F7;
+#notfoundImage{
+    width: 60vw;
+}
+
+#returnLink{
+    z-index: -1;
+    color: #45494E;
+    margin-top: -13vh;
 }
