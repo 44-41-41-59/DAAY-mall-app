@@ -46,8 +46,8 @@ function OneProduct(props) {
     props.pay(body);
   };
   return (
-    <div>
-      <div class="container">
+    <div >
+      <div class="container" style={{display:'flex', flexDirection:'row'}}>
 
         <div id='rightside-product'>
           <div id='info-product'>
