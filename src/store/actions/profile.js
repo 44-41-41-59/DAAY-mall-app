@@ -10,13 +10,13 @@ export const getProfile = function (id) {
       url: `${api}/user/${id}`,
       headers: getHeader(),
     }).then(function (response) {
+      console.log('heeellloo from profile actions',response.data[0]);
       dispatch(getProfileAction(response.data[0]));
     });
   };
 };
 
 export const getProfileAction = (payload) => {
-  console.log('anoooollllaaaaaa', payload);
   return {
     type: 'GETPROFILE',
     payload: payload,

@@ -15,7 +15,7 @@ function Wishlist(props) {
             return(
               <Card style={{ width: '25%' }} >
                 <Card.Img variant="top" src={product.productID.images[0]} />
-                <Card.Title>{product.title}</Card.Title>
+                <Card.Title>No Wishlists, Add some </Card.Title>
               </Card>
             );
           })}
