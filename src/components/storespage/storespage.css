@@ -1,7 +1,7 @@
 #storeImage {
-    width: 12vw;
+    width: 6vw;
     margin: 0 auto;
-    height: 20vh;
+    height: 12vh;
 }
 
 #storeCard{
@@ -12,7 +12,6 @@
 #title{
     margin-left: 5vw;
 }
-
 
 #button{
     color: white;
