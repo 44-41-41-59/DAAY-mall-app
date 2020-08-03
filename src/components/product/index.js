@@ -14,9 +14,9 @@ import OneProduct from './product-page';
 // import BuyProductSecSlid from './buyProductSecSlide';
 function ProductPage(props) {
   const productID = props.match.params.id;
+  
   useEffect(() => {
     props.getProduct(productID);
-    console.log('/////////////////////', productID);
   }, []);
 
   return (
