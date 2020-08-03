@@ -5,7 +5,8 @@ import './buyProduct.scss';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { FaStar } from 'react-icons/fa';
-import { MDBInput } from 'mdbreact';
+import { MDBBtn, MDBIcon, MDBCard } from 'mdbreact';
+import { If, Then, Else } from '../if/if';
 import {
   addCart,
   addLike,
@@ -13,11 +14,12 @@ import {
   payedUserCart,
 } from '../../store/actions/products';
 import './one-product.css';
+import product from '.';
 
 function OneProduct(props) {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
-  const [quantity, setQuantity] = useState({value:1});
+  const [quantity, setQuantity] = useState({ value: 1 });
 
   let decrease = () => {
     setQuantity({ value: quantity.value - 1 });
@@ -45,44 +47,179 @@ function OneProduct(props) {
     };
     props.pay(body);
   };
+  let sum = 0;
+  let ratingStars = [];
+  let noRate = false;
+  let noRateStars = [];
+  let emptyRatingStars = [];
+  let priceAfterSale = 0;
+  props.product.reviews.forEach(review => {
+    sum = sum + review.rate;
+  });
+  let avg = Math.ceil(sum / props.product.reviews.length);
+  for (let i = 0; i < avg; i++) {
+    ratingStars.push(' ');
+  }
+  for (let i = 0; i < 5 - avg; i++) {
+    emptyRatingStars.push(' ');
+  }
+  if (isNaN(avg)) {
+    noRate = true;
+    for (let i = 0; i < 5; i++) {
+      noRateStars.push(' ');
+    }
+  }
+  if (props.product.sale) {
+    priceAfterSale = Math.floor(props.product.price - (props.product.price * (props.product.sale / 100)));
+  }
+
   return (
-    <div >
-      <div class="container" style={{display:'flex', flexDirection:'row'}}>
+    <div>
+      <MDBCard
+        class="container"
+        style={{ maxHeight: '80vh', display: 'flex', flexDirection: 'row', justifyContent: 'center', margin: '5vh 20vh' }}
+      >
+        <div
+          id='leftside-product'
+          style={{ width: '50vw', margin: '5vh', padding: '6vh 10vh' }}
+        >
+          <div style={{ minHeight: '60vh' }}>
+            <div id='info-product' style={{ padding: '5vh' }} >
+              <h1 style={{ fontSize: '1.3rem' }}>{props.product.name}</h1>
+              <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'left', alignItems: 'center' }}>
+                <div>
+                  <span style={{ color: 'gray', marginRight: '1vw' }}>{props.product.views} Views</span>
+                  <If condition={!noRate}>
+                    <Then>
+                      {ratingStars.map(star => {
+                        return <MDBIcon icon='star' />;
+                      })}
+                      {emptyRatingStars.map(star => {
+                        return <MDBIcon far icon='star' />;
+                      })}
+                    </Then>
+                    <Else>
+                      {noRateStars.map(star => {
+                        return <MDBIcon far icon='star' />;
+                      })}
+                    </Else>
+                  </If>
 
-        <div id='rightside-product'>
-          <div id='info-product'>
-            <p>Title</p>
-            <p>Rating</p>
-            <p>Views</p>
-            <p>Price + if there is sale</p>
-            <p>Available quantity</p>
-          </div>
-          <div id='footer-product'>
-            <div>
-              <button>add to cart</button>
-              <div className="def-number-input number-input">
-                <button onClick={decrease} className="minus"></button>
-                <input className="quantity" name="quantity" value={quantity.value} onChange={() => console.log('change')}
-                  type="number" />
-                <button onClick={increase} className="plus"></button>
+                </div>
               </div>
-              {/* <input name='quantity' placeholder='quantity' /> */}
+              <p style={{ color: 'gray' }}>{props.product.Timestamp.split('T')[0]}</p>
+              <p style={{ color: 'gray' }}>{props.product.category}</p>
+
+              <div style={{margin:'5vh 0vh'}}>
+                <If condition={!props.product.sale}>
+                  <Then>
+                    <span className='float-left font-weight-bold' style={{ fontSize: '1rem' }}>
+                      <strong>{props.product.price} JOD</strong>
+                    </span>
+                  </Then>
+                  <Else>
+                    <span className='float-left font-weight-bold' style={{ fontSize: '1rem', textDecoration: 'line-through', marginRight: '1vw', color:'red' }}>
+                      <strong>{props.product.price} JOD</strong>
+                    </span>
+                    <span className='float-left font-weight-bold' style={{ fontSize: '1rem' }}>
+                      <strong>{priceAfterSale} JOD</strong>
+                    </span>
+                  </Else>
+                </If>
+              </div>
             </div>
-            <button>add to wishlist</button>
+            <div
+              id='footer-product'
+              style={{
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                padding: '3vh',
+                // justifyContent: 'center',
+              }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                  }}
+                >
+                  <div
+                    className="def-number-input number-input"
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      alignSelf: 'center',
+                      width: '30%',
+                      marginBottom: '0px',
+                    }}
+                  >
+                    <button onClick={decrease} className="minus"></button>
+                    <input
+                      className="quantity"
+                      name="quantity"
+                      value={quantity.value}
+                      onChange={() => console.log('change')}
+                      type="number"
+                      style={{
+                        maxWidth: '2rem',
+                      }} />
+                    <button onClick={increase} className="plus"></button>
+                  </div>
+                  <MDBBtn color="blue-grey">Add to cart</MDBBtn>
+
+                </div>
+                <MDBBtn color='amber' style={{ width: '50%' }}>Add to wishlist</MDBBtn>
+
+              </div>
+
+            </div>
+
           </div>
         </div>
 
-        <div id='leftside-product'>
-          <div id='bigimage-product'>
-            <img src='' alt='product' />
-          </div>
-          <div id='samllimages-product'>
-            <img src='' alt='product' />
-            <img src='' alt='product' />
-            <img src='' alt='product' />
+        <div
+          id='rightside-product'
+          style={{ width: '30vw', margin: '5vh' }}
+        >
+          <div
+            style={{ maxHeight: '60vh' }}
+          >
+            <div
+              id='bigimage-product'
+              style={{
+                width: '25vw',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              <img
+                src={props.product.images}
+                alt='product'
+                style={{
+                  width: '25vw',
+                }}
+              />
+            </div>
+            <div
+              id='samllimages-product'
+              style={{
+                width: '25vw',
+                display: 'flex',
+                justifyContent: 'space-between',
+              }}
+            >
+              <img src={props.product.images} style={{ width: '7vw', marginTop: '1vw' }} alt='product' />
+              <img src={props.product.images} style={{ width: '7vw', marginTop: '1vw' }} alt='product' />
+              <img src={props.product.images} style={{ width: '7vw', marginTop: '1vw' }} alt='product' />
+            </div>
           </div>
         </div>
-      </div>
+      </MDBCard>
     </div>
   );
 };
