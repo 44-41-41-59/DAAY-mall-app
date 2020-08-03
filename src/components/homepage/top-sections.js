@@ -11,7 +11,7 @@ function TopSections(props) {
       <Col style={{ backgroundColor: 'red', height: '30vh' }}>
         <a href='#saleSection' >
           <img style={{ width: '100%', height: '30vh' }}
-            src='https://image.freepik.com/free-vector/abstract-sale-composition-with-watercolor-style_23-2147817804.jpg'
+            src='https://blog.vancity.com/wp-content/uploads/2017/05/SaleSigns-iStock-Blog-1000x484.jpg'
             alt='sale banner'
           />
         </a>
