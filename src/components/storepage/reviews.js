@@ -1,9 +1,15 @@
-import React from 'react';
-import Card from 'react-bootstrap/Card'; 
+import React, {useState} from 'react';
+import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
+import { FaStar } from 'react-icons/fa';
+import { MDBIcon } from 'mdbreact';
 
 function Reviews(props) {
+  const [rating, setRating] = useState(null);
+  const [hover, setHover] = useState(null);
+
   let formHandler = (e) => {
+    
     console.log('check here');
     e.preventDefault();
     let formData = {
@@ -17,39 +23,50 @@ function Reviews(props) {
 
   return (
     <div class="reviewsStore">
-      
+
       <form onSubmit={formHandler} id="reviewsBackground">
         <h1>Reviews</h1>
-        <label for='review'>
-          Review
-          <input type='text' name='review' />
+        <label for='review' >
+          <input type='text' placeholder="Leave a comment 💭" name='review' id="addComment" />
         </label>
-        <label for='rate1'>
-          1
+        <div>
+          {[...Array(5)].map((star, i) => {
+            const ratingValue = i + 1;
+            return <label>
+              <input type="radio" name="rate" value={ratingValue} onClick={() => setRating(ratingValue)} />
+              {/* <MDBIcon far icon='star' class="star" color={ratingValue <= (hover || rating) ? '#26115a' : '#e4e5e9'} size={30} onMouseEnter={() => setHover(ratingValue)} onMouseLeave={() => setHover(null)}/>; */}
+
+              <FaStar class="star" color={ratingValue <= (hover || rating) ? '#26115a' : '#e4e5e9'} size={30} onMouseEnter={() => setHover(ratingValue)} onMouseLeave={() => setHover(null)} />
+            </label>;
+          })}
+        </div>
+        {/* <label for='rate1'>
+        <MDBIcon icon='star' />;
           <input type='radio' name='rate' value='1' id='rate1' />
+        
         </label>
         <label for='rate2'>
-          2
+        <MDBIcon icon='star' />;
           <input type='radio' name='rate' value='2' id='rate2' />
         </label>
         <label for='rate3'>
-          3
+        <MDBIcon icon='star' />;
           <input type='radio' name='rate' value='3' id='rate3' />
         </label>
         <label for='rate4'>
-          4
+        <MDBIcon icon='star' />;
           <input type='radio' name='rate' value='4' id='rate4' />
         </label>
         <label for='rate15'>
-          5
+        <MDBIcon icon='star' />;
           <input type='radio' name='rate' value='5' id='rate5' />
-        </label>
+        </label> */}
         <input type='hidden' name='storeID' value={props.store._id} />
         <input type='hidden' name='userID' value={props.user._id} />
-        <input type='submit' />
+        <input type='submit' id="commentSubmit" />
       </form>
       <div>
-        
+
         {props.reviews.map(review => {
           return (
             <div>
