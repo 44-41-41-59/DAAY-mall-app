@@ -9,8 +9,9 @@ import {
 import './cart.scss';
 
 export default function Cart(props) {
-  let cost = props.user.cart.reduce((pre, cur) => {
-    let price = cur.products.price;
+
+  let cost = props.user.cart && props.user.cart.reduce((pre, cur) => {
+    let price = cur.products&& cur.products.price;
     let sale = cur.products.sale;
     let per = (price / 100) * sale;
     return pre + (cur.products.price * cur.quantity - per * cur.quantity);
