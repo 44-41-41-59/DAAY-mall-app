@@ -46,7 +46,7 @@ function ProductCard(props) {
 
   if (props.searchPage) {
     searchPageStyle = { marginBottom: '7vh' };
-    cardWidth =  { width: '17vw', marginRight: '1vw' };
+    cardWidth = { width: '17vw', marginRight: '1vw' };
   }
   return (
     <MDBRow style={searchPageStyle}>
@@ -58,10 +58,20 @@ function ProductCard(props) {
             top
             alt='product photo'
             overlay='white-slight'
+          // style={{height:'30vh'}}
           />
           <MDBCardBody cascade className='text-center'>
             <a href='#!' className='grey-text'>
-              <h5>{props.cardProduct.category}</h5>
+              <h5
+                style={{
+                  display: 'inline-block',
+                  whiteSpace: 'nowrap',
+                  width: '100%',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                }}
+              >
+                {props.cardProduct.category}</h5>
             </a>
             <strong>
               <p>

@@ -1,10 +1,61 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
+import {If, Then, Else} from '../if/if';
+import {MDBIcon} from 'mdbreact';
 
 function StoreInfo(props) {
+  let sum = 0;
+  let ratingStars = [];
+  let noRate = false;
+  let noRateStars = [];
+  let emptyRatingStars = [];
+  let priceAfterSale = 0;
+  props.store.reviews.forEach(review => {
+    sum = sum + review.rate;
+  });
+  let avg = Math.ceil(sum / props.store.reviews.length);
+  for (let i = 0; i < avg; i++) {
+    ratingStars.push(' ');
+  }
+  for (let i = 0; i < 5 - avg; i++) {
+    emptyRatingStars.push(' ');
+  }
+  if (isNaN(avg)) {
+    noRate = true;
+    for (let i = 0; i < 5; i++) {
+      noRateStars.push(' ');
+    }
+  }
+  
   return (
-    <div class="storeInfo" style={{ display: 'flex', flexWrap: 'wrap' }}>
-      <div id="tablelong">
+    <div id="storeInfo" style={{ display: 'flex', flexWrap: 'wrap' }}>
+      <div class="Card">
+        <div>
+          <img src={props.store.logo} alt={props.store.name} id="imgStore"/>
+          <h2>Store name:{props.store.name}</h2>
+          <h3>Category:{props.store.category}</h3>
+          <h3>Contact number:{props.store.contactNumber}</h3>
+          <h3>Address:{props.store.counrty}</h3>
+          <h3>Reviews:9</h3>
+          <h3>rate:3.8/5</h3>
+          <If condition={!noRate}>
+              <Then>
+                {ratingStars.map(star => {
+                  return <MDBIcon icon='star' />;
+                })}
+                {emptyRatingStars.map(star => {
+                  return <MDBIcon far icon='star' />;
+                })}
+              </Then>
+              <Else>
+                {noRateStars.map(star => {
+                  return <MDBIcon far icon='star' />;
+                })}
+              </Else>
+            </If>
+        </div>
+      </div>
+      {/* <div id="tablelong">
         <Table striped bordered hover >
           <thead>
             <tr>
@@ -29,17 +80,7 @@ function StoreInfo(props) {
             </tr>
           </thead>
         </Table>
-
-
-        {/* <div>
-          {props.store.images.map(img => {
-            return (
-              <img src='https://picsum.photos/80/80' alt='store' /> 
-              <img src={img} alt='store' />
-            );
-          })}
-        </div> */}
-      </div>
+      </div> */}
     </div>
   );
 }

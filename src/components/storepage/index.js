@@ -42,10 +42,11 @@ function Storepage(props) {
           <AllProducts products={props.store.products} />
           <OnSale products={props.sale} />
         </div>
-        {/* <New />
+      </Accordion>
+      {/* <New />
         <Summer />
         <InStock /> */}
-      </Accordion>
+      
       
       <Reviews
         reviews={props.store.reviews}
