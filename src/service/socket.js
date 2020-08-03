@@ -1,6 +1,7 @@
 import io from 'socket.io-client';
-// const ENDPOINT = 'http://localhost:3001';
-const ENDPOINT = 'https://daaymall-401-project.herokuapp.com';
+const ENDPOINT = 'http://localhost:3001';
+// const ENDPOINT = 'https://daaymall-401-project.herokuapp.com';
+// const ENDPOINT = 'https://backup-app-daaymall.herokuapp.com/';
 
 export let socket;
 
