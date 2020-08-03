@@ -1,16 +1,36 @@
 import React from 'react';
+import Table from 'react-bootstrap/Table';
 
 function StoreInfo(props) {
   return (
     <div class="storeInfo" style={{ display: 'flex', flexWrap: 'wrap' }}>
-      <div>
-        <img src={props.store.logo} alt={props.store.name} />
-      </div>
-      <div>
-        <h1>{props.store.name}</h1>
-        <h4>Category: {props.store.category}</h4>
-        <p>Contact number: {props.store.contactNumber}</p>
-        <p>Address: {props.store.counrty}, {props.store.city}</p>
+      <div id="tablelong">
+        <Table striped bordered hover >
+          <thead>
+            <tr>
+              <th rowspan="2" id="storeLogo">
+                <img src={props.store.logo} alt={props.store.name} />
+              </th>
+              <th>Store name</th>
+              <th>Category</th>
+              <th>Contact number</th>
+              <th>Address</th>
+              <th>Reviews</th>
+              <th>rate</th>
+
+            </tr>
+            <tr>
+              <td>{props.store.name}</td>
+              <td>{props.store.category}</td>
+              <td>{props.store.contactNumber}</td>
+              <td>{props.store.counrty} {props.store.city}</td>
+              <td>9</td>
+              <td>3.8/5</td>
+            </tr>
+          </thead>
+        </Table>
+
+
         {/* <div>
           {props.store.images.map(img => {
             return (

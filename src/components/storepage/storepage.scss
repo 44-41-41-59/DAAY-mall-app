@@ -78,3 +78,132 @@
     }
   }
   
+
+// CSS Variables
+:root { // Similar to HTML selector but w/higher specificity. To house custom CSS variables.
+  --color-grey-dark: #323031;
+  --color-grey-light: #D9DCD6;
+  --shadow-light: 0 2rem 5rem rgba(0,0,0, .05);
+}
+
+// SCSS Variables
+$bp-medium: 56.25em; // 900px
+$bp-small: 37.5em; // 600px
+
+.codepen-wrapper { // Codepen display purposes
+  height: 50vh;
+  background-color: var(--color-grey-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review {
+  color: var(--color-grey-dark);
+  font-size: 1.4rem;
+  padding: 3rem;
+  position: relative;
+  background-color: #fff;
+  box-shadow: var(--shadow-light);
+  overflow: hidden;
+  flex: 0 0 50%;
+  z-index: 1;
+
+  @media screen and (max-width: $bp-medium) {
+    padding: 2rem;
+  }
+
+  @media screen and (max-width: $bp-small) {
+    padding: 1rem;
+    font-size: 1.2rem;
+  }
+
+  &::before {
+    content: "\201c";
+    position: absolute;
+    left: -.9rem;
+    top: -2.5rem;
+    font-size: 20rem;
+    color: var(--color-grey-light);
+    line-height: 1; 
+    z-index: 1;
+    font-family: sans-serif;
+  }
+
+  &__text {
+    margin-bottom: 2rem;
+    z-index: 2;
+    position: relative; // Z-index only works if you define the position
+
+    @media screen and (max-width: $bp-medium) {
+      margin: 0; // Overwrite default blockquote margins
+      padding: 1rem;
+    }
+  }
+
+  &__person {
+    display: flex;
+    align-items: center;
+  }
+
+  &__photo {
+    height: 4.5rem;
+    width: 4.5rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+
+    @media screen and (max-width: $bp-small) {
+      margin-right: .5rem;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-flow: row wrap;
+    margin-right: auto;
+
+    &--name {
+      flex: 0 0 80%;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: -.5rem;
+
+      @media screen and (max-width: $bp-small) {
+        font-size: .9rem;
+      }
+    }
+
+    &--date {
+      font-size: .9rem;
+
+      @media screen and (max-width: $bp-small) {
+        font-size: .7rem;
+      }
+    }
+  }
+
+  &__rating {
+    color: var(--color-grey-dark);
+    font-size: 2.2rem;
+    font-weight: 300;
+  } 
+}
+
+#reviewsBackground{
+  background-color: var(--color-grey-light);
+  text-align: center;
+}
+
+.card-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.card-1:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+#storeCards{
+  width: 30%;
+}

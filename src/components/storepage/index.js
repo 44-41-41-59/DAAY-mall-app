@@ -19,38 +19,39 @@ function Storepage(props) {
 
   useEffect(() => {
     props.getStore(storeID);
-  }, []);
+  }, [props, storeID]);
 
   return (
     <div id='store-page'>
-      <StoreInfo store={props.store} />
-
-      <div class='categoryButtons' >
+      <div id='store-pageExtra'>
+        <StoreInfo store={props.store} />
+        {/* <div class='categoryButtons' >
         <Button variant="outline-secondary">Categories</Button>{' '}
         <Button variant="outline-secondary">General</Button>{' '}
         <Button variant="outline-secondary">+</Button>{' '}
+      </div> */}
+
       </div>
-
-      <Accordion defaultActiveKey="1" >
-
+      <Accordion defaultActiveKey="1">
         <If condition={props.owner}>
           <Then>
             <Orders orders={props.orders} />
           </Then>
         </If>
-
-        <AllProducts products={props.store.products} />
-        <OnSale products={props.sale} />
+        <div>
+          <AllProducts products={props.store.products} />
+          <OnSale products={props.sale} />
+        </div>
         {/* <New />
         <Summer />
         <InStock /> */}
-        <Reviews
-          reviews={props.store.reviews}
-          addReview={props.addStoreReview}
-          store={props.store}
-          user={props.user}
-        />
       </Accordion>
+      
+      <Reviews
+        reviews={props.store.reviews}
+        addReview={props.addStoreReview}
+        store={props.store}
+        user={props.user}/>
     </div>
   );
 }
