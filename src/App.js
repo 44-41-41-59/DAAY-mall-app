@@ -5,7 +5,7 @@ import { getMainPageProducts } from './store/actions/products';
 import { getAdvertising } from './store/actions/ads';
 import './App.css';
 import Auth from './components/register';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import cookie from 'react-cookies';
 import Products from './components/product/';
@@ -24,7 +24,6 @@ import CustomerServiceAdmin from './components/customerService/Admin';
 import CustomerServiceClient from './components/customerService/Client';
 import { test, socket } from './service/socket';
 import Stores from '../src/components/storespage/index';
-
 
 
 class App extends Component {
@@ -66,6 +65,7 @@ class App extends Component {
           <Auth />
         </Route>
         <Route exact path="/">
+
           <Homepage />
         </Route>
         <Route exact path="/product/:id">
@@ -86,7 +86,7 @@ class App extends Component {
         <Route exact path="/profile/:id">
           <Profilepage />
         </Route>
-        <Route exact path="/search/">
+        <Route exact path="/products/">
           <SearchResults />
         </Route>
         <Route exact path="/aboutUs">

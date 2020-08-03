@@ -38,7 +38,7 @@ function Header(props) {
     e.preventDefault();
     let searched = e.target.searchTermInput.value;
     props.getSearchedProducts(searched);
-    setRedirect('/search');
+    setRedirect('/products');
   };
   useEffect(() => {
     props.get();
@@ -70,10 +70,13 @@ function Header(props) {
               <span
                 class="fa fa-search form-control-feedback"
                 id="searchIcon"
+                style={{marginTop:'0px'}}
               ></span>
               <input type="text" class="form-control" placeholder="Search" name='searchTermInput' />
             </form>
-            <Redirect to={redirect} />
+            <Show condition={redirect}>
+              <Redirect to={redirect} />
+            </Show>
             <MDBNavItem>
               <MDBDropdown>
                 <MDBDropdownToggle nav caret >

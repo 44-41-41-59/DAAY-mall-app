@@ -6,7 +6,9 @@ import { connect } from 'react-redux';
 import { getProduct, addProductReview } from '../../store/actions/products';
 
 import Reviews from './reviews';
-import Product from './buyProductnewForm';
+// import Product from './buyProductnewForm';
+import OneProduct from './product-page';
+
 
 
 // import BuyProductSecSlid from './buyProductSecSlide';
@@ -14,26 +16,32 @@ function ProductPage(props) {
   const productID = props.match.params.id;
   useEffect(() => {
     props.getProduct(productID);
-    console.log('/////////////////////', productID)
+    console.log('/////////////////////', productID);
   }, []);
 
   return (
     <div >
-      <Product
+      {/* <Product
+        product={props.product}
+        productID={productID}
+      // actions={{ addToLikes, addToCart, addToWishlist }}
+      // pay={props.payedUserCart}
+      // quantity={quantity}
+      /> */}
+
+      <OneProduct
         product={props.product}
         productID={productID}
       // actions={{ addToLikes, addToCart, addToWishlist }}
       // pay={props.payedUserCart}
       // quantity={quantity}
       />
-
       <Reviews
         reviews={props.product.reviews}
         addReview={props.addProductReview}
         product={props.product}
         user={props.user}
       />
-
     </div>
   );
 }

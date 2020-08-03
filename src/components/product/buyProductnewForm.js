@@ -118,6 +118,7 @@ const mapStateToProps = (state) => {
     reviews: state.reviews,
   };
 };
+
 const mapDispatchToProps = (dispatch) => ({
   addCart: (body) => dispatch(addCart(body)),
   addLike: (body) => dispatch(addLike(body)),

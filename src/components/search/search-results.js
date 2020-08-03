@@ -11,6 +11,7 @@ import {Link} from 'react-router-dom';
 
 import './search.css';
 import products from '../../store/reducers/products';
+import ProductCard from '../product/card';
 
 function Results(props) {
   let currentItems = [];
@@ -31,38 +32,15 @@ function Results(props) {
   
   return (
     <>
-      <div id='searchResultsBox'>
-        <div class="container">
-          <div class="row">
-            {currentItems.map(item => {
-              return (
-                <div class="col-12 col-sm-8 col-md-6 col-lg-4" id='searchResultCards'>
-                  <Link to={`/product/${item._id}`}>
-                    <div class="card" id='cardImageSearch'>
-                      <img class="card-img" id='cardImageSearch' src={item.images[0]} alt={item.name} />
-                      <div class="card-img-overlay d-flex justify-content-end">
-                        <MDBIcon far icon="heart" id='heartIcon' />
-                      </div>
-                      <div class="card-body">
-                        <h4 class="card-title">{item.name.split(' ')[0]} {item.name.split(' ')[1]} {item.name.split(' ')[2]}</h4>
-                        <h6 class="card-subtitle mb-2 text-muted">Category: {item.category}</h6>
-                        <div class="buy d-flex justify-content-between align-items-center">
-                          <div class="price" id='priceColor'><h5 class="mt-4" id='price-search'>{item.price} JOD</h5></div>
-                          <div id='cartAdd-search'>
-                            <div>Add to cart</div>
-                            <div>
-                              <MDBIcon icon="shopping-cart" id='addCart-search-icon' />
-                            </div>
-                          </div>
-                          {/* <button>Add to Cart<MDBIcon icon="shopping-cart" /></button> */}
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              );
-            })}
-          </div>
+      <div id='searchResultsBox' style={{width:'80vw'}} >
+        <div style={{margin:'5vh 5vw 0vw 0vh', display:'flex', flexWrap:'wrap', justifyContent:'space-around'}}>
+          {/* <div class="row"> */}
+          {currentItems.map(item => {
+            return (
+              <ProductCard cardProduct={item} searchPage={true}/>
+            );
+          })}
+          {/* </div> */}
         </div>
 
         {/* {props.products.map(product => {

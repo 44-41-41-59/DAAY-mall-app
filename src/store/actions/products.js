@@ -127,6 +127,7 @@ export const getCartProducts = function (id) {
 };
 
 export const getSearchedProducts = function (searchTerm) {
+  console.log('')
   return (dispatch) => {
     return axios({
       method: 'get',
@@ -138,9 +139,27 @@ export const getSearchedProducts = function (searchTerm) {
           searchedProducts: response.data.results,
         }),
       );
+    }).catch(err=>err.response);
+  };
+};
+
+export const getCategorySearchProducts = function (searchTerm) {
+  return (dispatch) => {
+    return axios({
+      method: 'get',
+      url: `${api}/products${searchTerm}`,
+    }).then(function (response) {
+      console.log('++++++++++++++++++++++++++++', response);
+      dispatch(
+        getSearchedProductsAction({
+          searchTerm,
+          searchedProducts: response.data.results,
+        }),
+      );
     });
   };
 };
+
 
 export const payedUserCart = function (data) {
   return (dispatch) => {
@@ -167,7 +186,7 @@ export const payedUserCart = function (data) {
         dispatch(
           paymentFailed({
             paymentFailed: true,
-          })
+          }),
         );
         dispatch(fetchPayment({ fetchpayment: false }));
       });
@@ -232,6 +251,7 @@ export const getCartProductAction = (payload) => {
   };
 };
 export const getSearchedProductsAction = (payload) => {
+  console.log('ppppppppppppppppppppppp', payload);
   return {
     type: 'GETSEARCHEDPRODUCTS',
     payload: payload,
@@ -260,7 +280,6 @@ export const getProductAction = (payload) => {
 };
 
 export const addCartAction = (payload) => {
-  console.log('inside action dndn', payload);
   return {
     type: 'ADDCART',
     payload: payload,
@@ -307,6 +326,13 @@ export const getProductReviews = function (productID) {
 export const getProductReviewsAction = (payload) => {
   return {
     type: 'GET PRODUCT REVIEWS',
+    payload: payload,
+  };
+};
+
+export const getCategorySearchProductsAction = (payload) => {
+  return {
+    type: 'GETCATEGORYSEARCHEDPRODUCTS',
     payload: payload,
   };
 };
