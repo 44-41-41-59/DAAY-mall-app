@@ -20,9 +20,9 @@ import Profilepage from '../src/components/profilepage';
 import StoreApplicationPage from './components/profilepage/store-application';
 import Aboutus from './components/aboutUs/';
 import Dashboard from '../src/components/admin';
-import CustomerServiceAdmin from './components/customerService/Admin';
-import CustomerServiceClient from './components/customerService/Client';
-import { test, socket } from './service/socket';
+// import CustomerServiceAdmin from './components/customerService/Admin';
+// import CustomerServiceClient from './components/customerService/Client';
+// import { test, socket } from './service/socket';
 import Stores from '../src/components/storespage/index';
 
 
@@ -30,7 +30,7 @@ class App extends Component {
   // eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
-    let socket;
+    // let socket;
   }
   async componentWillMount() {
     let auth = await cookie.load('auth');
@@ -41,21 +41,21 @@ class App extends Component {
     await this.props.getAdvertising();
   }
   componentDidMount() {
-    setTimeout(() => {
-      let { username, avatar, _id } = this.props.user;
-      test({
-        username,
-        avatar,
-        _id,
-      });
-      console.log(socket);
-      socket.emit('massege', { name: 'helo' });
-      socket.on('test', () => {
-        console.log('hello ladies');
-      });
+    // setTimeout(() => {
+    //   let { username, avatar, _id } = this.props.user;
+    //   test({
+    //     username,
+    //     avatar,
+    //     _id,
+    //   });
+    //   console.log(socket);
+    //   socket.emit('massege', { name: 'helo' });
+    //   socket.on('test', () => {
+    //     console.log('hello ladies');
+    //   });
 
-      console.log(this.props.user);
-    }, 1200);
+    //   console.log(this.props.user);
+    // }, 1200);
   }
   render() {
     return (
