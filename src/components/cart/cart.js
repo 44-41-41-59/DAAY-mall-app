@@ -2,6 +2,10 @@ import React from 'react';
 import StripeCeckout from 'react-stripe-checkout';
 import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
+import {
+  MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
+  MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon,
+} from 'mdbreact';
 import './cart.scss';
 
 export default function Cart(props) {
@@ -18,11 +22,31 @@ export default function Cart(props) {
 
   return (
     <div class="myBody">
-      <div id="Carts">
-        <img src="https://thumbs.gfycat.com/CompleteShallowFlyingsquirrel-size_restricted.gif" id="logoCardImg"></img>
-        <h1 id="myCarts">My Carts ({props.user.cart.length})</h1>
+      <div id="cartsHeader">
+        <MDBNavbar color='white'  expand="md" scrolling fixed="top">
+          <div className="collapse navbar-collapse" id="navbarsExampleDefault">
+            <MDBNavbarNav left>
+              <div id="Carts">
+                <img src="https://thumbs.gfycat.com/CompleteShallowFlyingsquirrel-size_restricted.gif" id="logoCardImg"></img>
+                <h1 id="myCarts">My Cart ({props.user.cart.length})</h1>
+              </div>
+            </MDBNavbarNav>
+            <MDBNavbarNav right>
+              <a className="nav-link disabled" href="#" id="color">Total {cost}</a>
+              <StripeCeckout
+                stripeKey="pk_test_51Gw6p5DCWnftj01CHDFox6ZFihtNyZ0EkHqOxR8uTnYB0jeLLTPfZBPtuRQXcFBSd4McXulw456Dl1Cp6mq3t6lR00booR4E8t"
+                token={makePayment}
+                name="test"
+                amount={cost * 100}>
+                {props.fetch.paymentFailed && alert('Some information are missing')}
+                <button>Check Out</button>
+              </StripeCeckout>
+            </MDBNavbarNav>
+          </div>
+        </ MDBNavbar >
       </div>
-      <Table striped bordered hover variant="dark">
+
+      <Table >
         <thead>
           <tr id="tableHeader">
             <th>Product</th>
@@ -51,37 +75,24 @@ export default function Cart(props) {
                 <td id='thirdTd'>{!!sale &&
                       'onSale: ' +
                       Math.round(
-                        (price * quantity - per * quantity) * 100,
+                        (price * quantity - per * quantity) * 100 ,
                       ) /
-                      100}{' '}
-                <br /> Price :{price * quantity}
+                      100}{' '} 
+                <br /> Price :{price * quantity} JOD
                 </td>
                 <td id='forthId'><input type="number" name="quantity" min="1" max="10" /></td>
                 <td id='fifthId'>{!!sale &&
                       'onSale: ' +
                       Math.round(
-                        (price * quantity - per * quantity) * 100,
+                        (price * quantity - per * quantity)* 100,
                       ) /
                       100}{' '}
-                <br /> Price :{price * quantity}</td>
+                <br /> Price :{price * quantity} JOD</td>
                 <td id='sixId'><i className="fas fa-trash"></i></td>
               </tr>
             </tbody>
           );
         })}
-        <tr >
-          <td id="totalTd">Total</td>
-          <td colSpan="1" id="totalTd1">{cost}</td>
-          <td colSpan="4"><StripeCeckout
-            stripeKey="pk_test_51Gw6p5DCWnftj01CHDFox6ZFihtNyZ0EkHqOxR8uTnYB0jeLLTPfZBPtuRQXcFBSd4McXulw456Dl1Cp6mq3t6lR00booR4E8t"
-            token={makePayment}
-            name="test"
-            amount={cost * 100}
-          >
-            {props.fetch.paymentFailed && alert('Some information are missing')}
-            <button >Check Out</button>
-          </StripeCeckout></td>
-        </tr>
       </Table>
     </div>
   );

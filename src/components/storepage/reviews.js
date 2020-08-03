@@ -16,24 +16,10 @@ function Reviews(props) {
   };
 
   return (
-    <div>
-      <div>
-        {props.reviews.map(review => {
-          return (
-            <Card>
-              <Link to={`/profile/${review.userID._id}`} >
-                <Card.Header as="h5">{review.userID.username}</Card.Header>
-              </Link>
-              <Card.Body>
-                <Card.Text>
-                  Rate: {review.rate} , Review: {review.review}
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          );
-        })}
-      </div>
-      <form onSubmit={formHandler}>
+    <div class="reviewsStore">
+      
+      <form onSubmit={formHandler} id="reviewsBackground">
+        <h1>Reviews</h1>
         <label for='review'>
           Review
           <input type='text' name='review' />
@@ -62,7 +48,34 @@ function Reviews(props) {
         <input type='hidden' name='userID' value={props.user._id} />
         <input type='submit' />
       </form>
-
+      <div>
+        
+        {props.reviews.map(review => {
+          return (
+            <div>
+              <div class="codepen-wrapper">
+                <figure class="review">
+                  <figcaption class="review__person">
+                    <img src="http://alexsommers.com/codepen/user-6.jpg" alt="User 1" class="review__photo" />
+                    <div class="review__info">
+                      <p class="review__info--name"><Link to={`/profile/${review.userID._id}`} >
+                        <h1 as="h5">{review.userID.username}</h1>
+                      </Link></p>
+                      <p class="review__info--date"> April 26, 2020</p>
+                    </div>
+                    <div class="review__rating">{review.rate}⍟</div>
+                  </figcaption>
+                  <blockquote class="review__text">
+                    {review.review}
+                  </blockquote>
+                </figure>
+              </div>
+              <div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

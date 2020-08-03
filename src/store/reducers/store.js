@@ -1,6 +1,7 @@
 let initialState = {
   name: '',
-  logo: 'holder.js/200x180',
+  // logo: 'holder.js/200x180',
+  logo: '',
   category: [],
   products: [],
   orders: [],
