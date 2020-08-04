@@ -53,6 +53,25 @@ export default function CustomerServiceClient() {
   return (
     <div style={{ margin: '2% 5%', maxHeight: '50%' }}>
       <MDBCard className="grey lighten-3 chat-room">
+      {room !== '' && (
+                  // <MDBBtn
+                  //   style={{ margin: '0 0 !important',maxWidth:'50px' }}
+                  //   color="info"
+                  //   rounded
+                  //   size="sm"
+                  //   className="float-right mt-4 leavebutton"
+                  //   onClick={() => {
+                  //     socket.emit('userDisconnected', { room });
+                  //     history.push('/');
+                  //   }}
+                  // >
+                    <MDBIcon onClick={() => {
+                          socket.emit('userDisconnected', { room });
+                          history.push('/');
+                        }}
+                      style={{fontSize:'25px',color:'#5ab6e5',margin:'5px 0 0 15px'}} icon="arrow-alt-circle-left" />
+                  // </MDBBtn>
+                )}
         <MDBCardBody>
           <MDBRow className="px-lg-2 px-2">
             <MDBCol md="6" xl="8" className="pl-md-3 px-lg-auto mt-2 mt-md-0">
@@ -82,7 +101,7 @@ export default function CustomerServiceClient() {
                     ))}
                   </div>
                 </MDBListGroup>
-                {room !== '' && (
+                {/* {room !== '' && (
                   <MDBBtn
                     style={{ marginLeft: '40px' }}
                     color="info"
@@ -96,7 +115,7 @@ export default function CustomerServiceClient() {
                   >
                     Leave
                   </MDBBtn>
-                )}
+                )} */}
                 <div className="form-group basic-textarea">
                   <div style={{ display: 'flex' }}>
                     <textarea
@@ -113,10 +132,11 @@ export default function CustomerServiceClient() {
                       color="info"
                       rounded
                       size="sm"
+                      style={{paddingLeft:'15px'}}
                       className="float-right mt-4 rudios"
                       onClick={() => handelKeyPress({ key: 'Enter' })}
                     >
-                      <MDBIcon icon="paper-plane" />
+                      <MDBIcon style={{fontSize:'20px'}} icon="paper-plane" />
                     </MDBBtn>
                   </div>
                 </div>

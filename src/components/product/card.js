@@ -90,7 +90,7 @@ function ProductCard(props) {
             top
             alt='product photo'
             overlay='white-slight'
-            style={{ minHeight: '38.2vh' }}
+            style={{ minHeight: '40vh' }}
           />
           <MDBCardBody cascade className='text-center'>
             <a href='#!' className='grey-text'>

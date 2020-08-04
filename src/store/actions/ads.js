@@ -1,10 +1,7 @@
 import axios from 'axios';
 const api = 'http://localhost:3001';
 // const api = 'https://daaymall-401-project.herokuapp.com';
-<<<<<<< HEAD
 // const api = 'https://backup-app-daaymall.herokuapp.com/';
-=======
->>>>>>> chat2
 
 export const getAdvertising = function () {
   return (dispatch) => {
