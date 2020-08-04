@@ -1,8 +1,8 @@
 #storeImage {
-    width: 6vw;
+    width: 14vw;
     margin: 0 auto;
-    height: 12vh;
-}
+    height: 23vh;
+} 
 
 #storeCard{
  margin-left: 5vw;
@@ -13,10 +13,27 @@
     margin-left: 5vw;
 }
 
-#button{
-    color: white;
+#storesInfo{
+    text-align: center;
+} 
+
+#pagetitle{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -8vh;
+    margin-right: 3vw;
 }
 
-#storeInfo{
-    text-align: center;
+#storenote{
+    margin-top: 3vh;
+}
+
+#addStoreButton{
+    color: white;
+    background-color: #5254AF !important;
+}
+
+#viewstorebutton{
+    background-color: #5254AF !important;
+    margin-left: 4.5vw;
 }

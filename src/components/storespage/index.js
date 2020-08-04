@@ -14,17 +14,21 @@ function Stores(props) {
   const dipatch=useDispatch();
   useEffect(()=>{ 
     dipatch(getStores());
-  },[]);
+  },[dipatch]);
 
   return (
     <div style={{height:'90vh' }} >  
       <h3 id='title' >Our Stores</h3>
+      <div id='pagetitle'><span id='storenote' >Want to join us? you are one click away   </span>
+        <Link to='/user/applystore'>
+          {' '}<MDBBtn id='addStoreButton'>Add Store</MDBBtn>   
+        </Link></div>
+         
       <hr/>
       <MDBCol>
         <div  style={{display:'flex'}}>
           {props.stores.results.map((store)=>{
             if(store.reviews){
-
             }
             let sum = 0;
             let ratingStars = [];
@@ -52,7 +56,7 @@ function Stores(props) {
                 <MDBCard id='storeCard'>
                   <MDBCardImage id='storeImage' src={store.logo} alt={store.name} />
                   <MDBCardBody>
-                    <div id='storeInfo' >
+                    <div id='storesInfo' >
                       <MDBCardTitle>{store.name}</MDBCardTitle>
                       <p class="card-text">Country : {store.country}</p>
                       <If condition={!noRate}>
@@ -72,7 +76,7 @@ function Stores(props) {
                       </If>
                     </div>
                     <Link to={`/store/${store._id}`} >
-                      <MDBBtn id='button' color='#b1bace mdb-color lighten-4'>View Store</MDBBtn>
+                      <MDBBtn id='viewstorebutton'>View Store</MDBBtn>
                     </Link>
                   </MDBCardBody>
                 </MDBCard>
@@ -96,5 +100,3 @@ const mapStateToProps= (state) => {
 // });
 
 export default connect(mapStateToProps)(Stores);
-
-

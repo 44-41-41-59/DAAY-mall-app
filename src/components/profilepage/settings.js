@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Card from 'react-bootstrap/Card';
+import {MDBBtn} from 'mdbreact';
 import { connect, useSelector, useDispatch } from 'react-redux';
 import { changePasswordRequest } from '../../store/actions/auth';
 
@@ -29,9 +30,9 @@ function Settings(props) {
   return (
     <>
       <Tab.Pane>
-        <h5> Change Theme </h5> <br />
+        <h5 id='titletheme'> Theme </h5>
         <ButtonGroup aria-label="Basic example">
-          <Button variant="secondary">Dark</Button>
+          <Button variant="dark">Dark</Button>
           <Button variant="light">Light</Button>
         </ButtonGroup>
         <Card id="form1">
@@ -66,44 +67,43 @@ function Settings(props) {
               />
             </Form.Group>
             {changePassword.error && 'your password not match'}
-            <Button variant="primary" type="submit">
+            <MDBBtn id='submitbutton'>Submit</MDBBtn>
+            {/* <Button id='submitbutton' type="submit">
               Submit
-            </Button>
+            </Button> */}
           </Form>
         </Card>
         <Card id="form2">
           <Form id="changingcountry">
             <Form.Label>Choose your Country</Form.Label>
             <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
+              <Dropdown.Toggle variant="light" id="dropdown-basic">
                 Country
-              </Dropdown.Toggle>
+              </Dropdown.Toggle >
               <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                <Dropdown.Item href="#/action-1">Jordan</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Canada</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Australia</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
             <Form.Label>Choose Currency</Form.Label>
             <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
+              <Dropdown.Toggle variant="light" id="dropdown-basic">
                 Currency
               </Dropdown.Toggle>
               <Form.Group controlId="formBasicPassword">
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                  <Dropdown.Item href="#/action-1">JOD</Dropdown.Item>
                   <Dropdown.Item href="#/action-2">
-                    Another action
-                  </Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">
-                    Something else
+                    Dollar
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Form.Group>
             </Dropdown>
-            <Button variant="primary" type="submit">
+            <MDBBtn id='submitbutton2'>Submit</MDBBtn>
+            {/* <Button variant="primary" type="submit">
               Save
-            </Button>
+            </Button> */}
           </Form>
         </Card>
       </Tab.Pane>
