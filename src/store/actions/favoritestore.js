@@ -1,7 +1,7 @@
 import axios from 'axios';
 import getHeader from '../header';
-const api = 'https://daaymall-401-project.herokuapp.com';
-// const api = 'http://localhost:3001';
+// const api = 'https://daaymall-401-project.herokuapp.com';
+const api = 'http://localhost:3001';
 
 export const getFavoriteStores = function () {
   console.log('helloooooooooooo from favorite stores');
@@ -13,7 +13,7 @@ export const getFavoriteStores = function () {
     }).then(function (response) {
       console.log(
         'helloooooooooooo from favorite stores',
-        response.data.results,
+        response.data.results
       );
       dispatch(
         getFavoriteStoresAction({ favoriteStores: response.data.results })
