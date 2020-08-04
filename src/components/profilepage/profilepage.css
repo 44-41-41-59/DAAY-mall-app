@@ -23,3 +23,17 @@
     width:50vw;
     padding: 2vw;
 }
+
+#submitbutton{
+    background-color: #5254AF !important;
+}
+
+#submitbutton2{
+    background-color: #5254AF !important;
+}
+
+#titletheme{
+  margin-left: 1vw;
+  font-weight: bold;
+  margin-top: 1vh;
+}
