@@ -62,7 +62,6 @@ export const addWishlist = function (data) {
       data,
     })
       .then(function (response) {
-        console.log(response);
         dispatch({type:'ADD WISH LIST MODAL'});
         setTimeout(()=>{
           dispatch({type:'ADD WISH LIST CLOSE MODAL'});
@@ -76,13 +75,11 @@ export const addWishlist = function (data) {
 };
 export const getProduct = function (id) {
   return (dispatch) => {
-    console.log(id);
     return axios({
       method: 'get',
       url: `${api}/products/${id}`,
       headers: getHeader(),
     }).then(function (response) {
-  console.log('idddddddddddddddddddddddddd', response)
 
       if (response.data[0]) {
         const {
@@ -100,7 +97,6 @@ export const getProduct = function (id) {
           _id,
         } = response.data[0];
 
-        console.log(response, 'product response');
         dispatch({
           type: 'GET PRODUCT',
           payload: {
@@ -136,7 +132,6 @@ export const getCartProducts = function (id) {
 };
 
 export const getSearchedProducts = function (searchTerm) {
-  console.log('')
   return (dispatch) => {
     return axios({
       method: 'get',
@@ -148,6 +143,20 @@ export const getSearchedProducts = function (searchTerm) {
           searchedProducts: response.data.results,
         }),
       );
+    }).catch(err=>err.response);
+  };
+};
+export const checkout = function(){
+  return (dispatch) => dispatch({type:'CHECKOUT PAYMENT'})
+}
+export const deleteCardFromCart = function (id) {
+  return (dispatch) => {
+    return axios({
+      method: 'delete',
+      url: `${api}/cart/${id}`,
+      headers:getHeader()
+    }).then(function (response) {
+      dispatch({type:'DELETE CARD FROM CART',payload:id})
     }).catch(err=>err.response);
   };
 };
