@@ -5,8 +5,8 @@ import {
   paymentSuccess,
   paymentFailed,
 } from '../../store/actions/fetch';
-// const api = 'http://localhost:3001';
-const api = 'https://daaymall-401-project.herokuapp.com';
+const api = 'http://localhost:3001';
+// const api = 'https://daaymall-401-project.herokuapp.com';
 
 export const getProducts = function () {
   return (dispatch) => {
@@ -61,8 +61,7 @@ export const addWishlist = function (data) {
       .then(function (response) {
         console.log(response);
         // dispatch(getProductsAction({ results: response.data.results }));
-      })
-      .catch(console.log);
+      }).catch(err=>(console.log(err.response)));
   };
 };
 export const getProduct = function (id) {
