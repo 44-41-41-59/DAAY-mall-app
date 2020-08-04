@@ -4,6 +4,7 @@
 
 #returnLink{
     z-index: -1;
-    color: #45494E;
+    color: #97D5FB;
+    font-weight: bold;
     margin-top: -13vh;
 }

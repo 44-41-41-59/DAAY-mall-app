@@ -102,10 +102,10 @@ class App extends Component {
         {/* <Route exact path="/customerservice">
           <CustomerServiceClient />
         </Route> */}
-        <Route exact={true} path="/stores">
+        <Route path="/stores">
           <Stores  />
         </Route>
-        <Route exact path="*">
+        <Route exact={true}  path="/*">
           <NotFound  />
         </Route>
         <Footer />
