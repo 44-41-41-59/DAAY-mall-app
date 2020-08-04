@@ -41,15 +41,17 @@ function SearchResults(props) {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop:'5vh',
-        marginRight:'5vh',
-        marginLeft:'5vh',
+        marginTop: '5vh',
+        marginRight: '5vh',
+        marginLeft: '5vh',
       }}>
       <div
         style={{
           backgroundColor: '#f5f5f5',
           width: '20vw',
-          padding:'5vh',
+          padding: '5vh',
+          height:'70vh',
+          position:'fixed',
         }}
       >
         <form
@@ -64,7 +66,7 @@ function SearchResults(props) {
             type="submit"
             class="fa fa-search form-control-feedback"
             id="searchIcon-side"
-            style={{padding:'0vh', margin:'0vh'}}
+            style={{ padding: '0vh', margin: '0vh' }}
           />
           <input
             list="browsers"
@@ -111,26 +113,26 @@ function SearchResults(props) {
       {<MDBModal isOpen={
         props.fetching.fetchAddCardSuccesses ||
         props.fetching.fetchAddWishListSuccesses} toggle='' side position="top-right">
-          <MDBModalHeader >SUCCESS</MDBModalHeader>
-          <MDBModalBody>
-           the card has been Added successfully to the {props.fetching.fetchAddCardSuccesses?'Cart':'wishlist'} 📦🎁
-          </MDBModalBody>
-          <MDBModalFooter>
-            <MDBBtn color="secondary" >UNDO</MDBBtn>
-            <MDBBtn color="primary">DONE</MDBBtn>
-          </MDBModalFooter>
-        </MDBModal>}
-      
+        <MDBModalHeader >SUCCESS</MDBModalHeader>
+        <MDBModalBody>
+          the card has been Added successfully to the {props.fetching.fetchAddCardSuccesses ? 'Cart' : 'wishlist'} 📦🎁
+        </MDBModalBody>
+        <MDBModalFooter>
+          <MDBBtn color="secondary" >UNDO</MDBBtn>
+          <MDBBtn color="primary">DONE</MDBBtn>
+        </MDBModalFooter>
+      </MDBModal>}
+
       {<MDBModal color='primary' isOpen={props.fetching.fetchModalFailer} toggle='' side position="top-right">
-          <MDBModalHeader >SOMETHING WENT WRONG</MDBModalHeader>
-          <MDBModalBody>
-           you need to login or signup
-          </MDBModalBody>
-          <MDBModalFooter>
-            <MDBBtn color="secondary" >CANCEL</MDBBtn>
-            <MDBBtn color="primary">Go to register</MDBBtn>
-          </MDBModalFooter>
-        </MDBModal>}
+        <MDBModalHeader >SOMETHING WENT WRONG</MDBModalHeader>
+        <MDBModalBody>
+          you need to login or signup
+        </MDBModalBody>
+        <MDBModalFooter>
+          <MDBBtn color="secondary" >CANCEL</MDBBtn>
+          <MDBBtn color="primary">Go to register</MDBBtn>
+        </MDBModalFooter>
+      </MDBModal>}
     </div>
   );
 }
@@ -146,7 +148,7 @@ const mapStateToProps = (state) => {
     sortedProducts: products.sortedProducts,
     currentPage: state.pagination.currentPage,
     itemPerpage: state.pagination.itemPerpage,
-    fetching:state.fetching
+    fetching: state.fetching,
   };
 };
 const mapDispatchToProps = (dispatch) => ({
