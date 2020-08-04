@@ -8,10 +8,10 @@ function TopSections(props) {
   return (
 
     <Row>
-      <Col style={{ backgroundColor: 'red', height: '30vh' }}>
+      <Col style={{ backgroundColor: 'red', height: '30vh'}}>
         <a href='#saleSection' >
           <img style={{ width: '100%', height: '30vh' }}
-            src='https://blog.vancity.com/wp-content/uploads/2017/05/SaleSigns-iStock-Blog-1000x484.jpg'
+            src='https://www.footwearetc.com/_resources/www/footwear/_system/content/images/d83f84d5-3279-485c-a401-eb5472f91d4e_130650_headerimage.jpg'
             alt='sale banner'
           />
         </a>

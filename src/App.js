@@ -96,13 +96,13 @@ class App extends Component {
         <Route exact path="/admin/dashboard">
           <Dashboard />
         </Route>
-        {/* <Route exact path="/admin/customerservice">
-          <CustomerServiceAdmin />
-        </Route> */}
-        {/* <Route exact path="/customerservice">
-          <CustomerServiceClient />
-        </Route> */}
-        <Route path="/stores">
+        <Route exact path="/admin/customerservice">
+          {/* <CustomerServiceAdmin /> */}
+        </Route>
+        <Route exact path="/customerservice">
+          {/* <CustomerServiceClient /> */}
+        </Route>
+        <Route exact path="/stores">
           <Stores  />
         </Route>
         <Route exact={true}  path="/*">
