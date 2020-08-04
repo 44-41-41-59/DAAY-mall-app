@@ -5,11 +5,11 @@ import Card from 'react-bootstrap/Card';
 import { MDBIcon } from 'mdbreact';
 import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 
-import './search.css';
+import './search.scss';
 import products from '../../store/reducers/products';
 import ProductCard from '../product/card';
 
@@ -19,25 +19,29 @@ function Results(props) {
   if (props.currentPage) {
     let idxOfLastItem = props.currentPage * 12;
     let idxOfFirstItem = idxOfLastItem - 12;
-    
-    currentItems = props.productList.slice(idxOfFirstItem, idxOfLastItem);    
+
+    currentItems = props.productList.slice(idxOfFirstItem, idxOfLastItem);
     for (let i = 1; i <= Math.ceil(props.productList.length / 12); i++) {
       pageNumbers.push(i);
     }
   }
   if (!currentItems.length) {
     console.log('empty');
-    currentItems= props.productList;
+    currentItems = props.productList;
   };
-  
+
   return (
     <>
-      <div id='searchResultsBox' style={{width:'80vw'}} >
-        <div style={{margin:'5vh 5vw 0vw 0vh', display:'flex', flexWrap:'wrap', justifyContent:'space-around'}}>
+      <div style={{ width: '72vw' }} >
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+        }}>
           {/* <div class="row"> */}
           {currentItems.map(item => {
             return (
-              <ProductCard cardProduct={item} searchPage={true}/>
+              <ProductCard cardProduct={item} searchPage={true} />
             );
           })}
           {/* </div> */}
@@ -61,7 +65,7 @@ function Results(props) {
         totalItems={props.fullList.length}
       /> */}
       </div>
-      <PaginationBar products={props.products} pageNumbers={pageNumbers}/>
+      <PaginationBar products={props.products} pageNumbers={pageNumbers} />
     </>
 
   );

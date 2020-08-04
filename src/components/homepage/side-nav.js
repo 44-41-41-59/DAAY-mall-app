@@ -7,7 +7,7 @@ import './homepage.css';
 
 function SideNav(props) {
   return (
-    <ProSidebar >
+    <ProSidebar>
       <Menu >
         <MenuItem><Link to="/products?category=general" />General</MenuItem>
 
