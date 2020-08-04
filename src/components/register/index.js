@@ -44,15 +44,17 @@ function Auth(props) {
         />
       </div>
       <hr></hr>
-      <div id="authbuttons">
-        <h3 id="or">OR</h3>
-        <hr></hr>
-        <Button className="authbuttons" variant="primary">
+      <div  >
+        <h3 id="or">OR <br/> Sign with</h3>
+        {/* <hr></hr> */}
+        <div id="authbuttons">
+          <Button className="authbuttons" variant="primary">
           FACEBOOK
-        </Button>{' '}
-        <Button className="authbuttons" variant="danger">
+          </Button>{' '}
+          <Button className="authbuttons" variant="danger">
           GOOGLE
-        </Button>
+          </Button>
+        </div>
       </div>
     </>
   );

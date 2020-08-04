@@ -1,0 +1,10 @@
+#notfoundImage{
+    width: 60vw;
+}
+
+#returnLink{
+    z-index: -1;
+    color: #97D5FB;
+    font-weight: bold;
+    margin-top: -13vh;
+}

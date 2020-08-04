@@ -28,7 +28,9 @@ export const addStore = function (storeData, logo) {
       data: formData,
     })
       .then(function (response) {
-        dispatch(addStoreAction({ results: response.data }));
+        console.log(response.data)
+        dispatch(addStoreAction(  response.data ));
+        dispatch({type:'ADD STORE MODAL', payload:response.data.results._id})
       })
       .catch((err) => console.log(err.response));
   };

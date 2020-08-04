@@ -16,10 +16,10 @@ import { If, Else, Then } from '../if/if.js';
 
 function Storepage(props) {
   const storeID = props.match.params.id;
-
+  //  props.store = props.store.results || props.store
   useEffect(() => {
     props.getStore(storeID);
-  }, [props, storeID]);
+  }, []);
 
   return (
     <div id='store-page'>

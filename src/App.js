@@ -25,6 +25,8 @@ import CustomerServiceClient from './components/customerService/Client';
 import Break from './components/customerService/Admin/break';
 import { test, socket } from './service/socket';
 import Stores from '../src/components/storespage/index';
+import NotFound from '../src/components/notfound/notfound';
+
 import Test from '../src/components/customerService/Admin/index1';
 
 class App extends Component {
@@ -112,6 +114,9 @@ class App extends Component {
         <Route exact path="/stores">
           <Stores  />
         </Route>
+        {/* <Route exact={true} path="*">
+          <NotFound  />
+        </Route> */}
         <Footer />
       </div>
     );

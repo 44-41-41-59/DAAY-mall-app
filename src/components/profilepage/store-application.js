@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { useHistory} from 'react-router-dom';
 import { addStore } from '../../store/actions/store';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { handleUpload } from '../../store/actions/files';
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
+
 // import Image from '../imagetest/index';
 
 
 
 function ApplyStore(props) {
+  const history =  useHistory()
   const [modal, setModal] = useState(false);
   const [images, setImage] = useState({});
 
@@ -69,19 +73,16 @@ function ApplyStore(props) {
         <button type='submit'>Apply store</button>
       </form>
 
-      <Modal  show={modal} onHide={hideModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
-        </Modal.Header>
-
-        <Modal.Body>
-          <p>Store created successfully.</p> {/*if statement for the failed case*/}
-        </Modal.Body>
-
-        <Modal.Footer>
-          <Button variant="primary" onClick={hideModal}>Ok</Button>
-        </Modal.Footer>
-      </Modal>
+      <MDBModal isOpen={props.fetching.fetchModalStoreSuccess}  size="lg">
+        <MDBModalHeader >{props.store.results?props.store.results.name:props.store.name} has been added successfully.</MDBModalHeader>
+        <MDBModalBody>
+         your store has been added successfully but you need to wait for your store to be approved. 
+        </MDBModalBody>
+        <MDBModalFooter>
+          <MDBBtn color="secondary" onClick={()=>history.push('/')}>Back to main page</MDBBtn>
+          <MDBBtn color="primary" onClick={()=>history.push(`/store/${props.store.results?props.store.results._id:props.store._id}`)}>see my store page</MDBBtn>
+        </MDBModalFooter>
+      </MDBModal>
 
     </div>
 
@@ -90,7 +91,7 @@ function ApplyStore(props) {
 
 const mapStateToProps = (state) => {
   console.log('??????????????///', state.files);
-  return { user: state.user, images:state.files.images };
+  return { user: state.user, images:state.files.images,fetching:state.fetching,store:state.store };
 };
 
 const mapDispatchToProps = (dispatch) => ({

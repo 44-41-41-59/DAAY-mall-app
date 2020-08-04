@@ -9,9 +9,9 @@
 #or {
   text-align: center;
 }
-.authbuttons {
-  width: 18%;
-  margin: 6px 41%;
+#authbuttons {
+  display: flex;
+  margin-left:39vw;
   font-weight: bolder !important;
 }
 

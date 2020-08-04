@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 
 import {
   getProducts,
@@ -89,6 +90,29 @@ function SearchResults(props) {
           </Else>
         </If>
       </div>
+      {<MDBModal isOpen={
+        props.fetching.fetchAddCardSuccesses ||
+        props.fetching.fetchAddWishListSuccesses} toggle='' side position="top-right">
+          <MDBModalHeader >SUCCESS</MDBModalHeader>
+          <MDBModalBody>
+           the card has been Added successfully to the {props.fetching.fetchAddCardSuccesses?'Cart':'wishlist'} 📦🎁
+          </MDBModalBody>
+          <MDBModalFooter>
+            <MDBBtn color="secondary" >UNDO</MDBBtn>
+            <MDBBtn color="primary">DONE</MDBBtn>
+          </MDBModalFooter>
+        </MDBModal>}
+      
+      {<MDBModal color='primary' isOpen={props.fetching.fetchModalFailer} toggle='' side position="top-right">
+          <MDBModalHeader >SOMETHING WENT WRONG</MDBModalHeader>
+          <MDBModalBody>
+           you need to login or signup
+          </MDBModalBody>
+          <MDBModalFooter>
+            <MDBBtn color="secondary" >CANCEL</MDBBtn>
+            <MDBBtn color="primary">Go to register</MDBBtn>
+          </MDBModalFooter>
+        </MDBModal>}
     </div>
   );
 }
@@ -104,6 +128,7 @@ const mapStateToProps = (state) => {
     sortedProducts: products.sortedProducts,
     currentPage: state.pagination.currentPage,
     itemPerpage: state.pagination.itemPerpage,
+    fetching:state.fetching
   };
 };
 const mapDispatchToProps = (dispatch) => ({
