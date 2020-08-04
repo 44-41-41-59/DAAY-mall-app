@@ -19,7 +19,7 @@ function Profilepage(props) {
   let params= props.match.params.id;
   useEffect(() => {
     props.getProfile(params);
-  }, [params, props]);
+  }, []);
 
 
   return (

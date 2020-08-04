@@ -105,7 +105,7 @@ class App extends Component {
         <Route exact path="/stores">
           <Stores  />
         </Route>
-        <Route exact={true}  path="/*">
+        <Route exact={true} path="*">
           <NotFound  />
         </Route>
         <Footer />
