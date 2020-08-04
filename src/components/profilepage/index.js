@@ -38,23 +38,27 @@ function Profilepage(props) {
           </Card.Body>
         </Card>
       </div>
-      {/* <Show condition={props.isUserSame}><h1>Hiiiiiiiiiiiii</h1></Show> */}
 
       <div id='tabs' style={{minHeight:'80vh'}}>
         <Tabs defaultActiveKey="Wish-list" id="uncontrolled-tab-example">
           <Tab eventKey="Wish-list" title="Wish-list">
+            <hr/>
             <Wishlist wishlist={props.profile.wishlist}/>
           </Tab>
           <Tab eventKey="Favorite Stores" title="Favorite Stores">
+            <hr/>
             <FavoriteStores favoriteStores={props.profile.favoriteStores} />
           </Tab>
           <Tab tabClassName={!props.isUserSame ? 'd-none' : ''} eventKey="Orders" title="Orders" >
+            <hr/>
             <Orders/>
           </Tab>
           <Tab tabClassName={!props.isUserSame ? 'd-none' : ''} eventKey="Viewed Products" title="Viewed Products" >
+            <hr/>
             <ViewedProducts/>
           </Tab>
           <Tab tabClassName={!props.isUserSame ? 'd-none' : ''} eventKey="Settings" title="Settings" >
+            <hr/>
             <Settings/>
           </Tab>
         </Tabs>

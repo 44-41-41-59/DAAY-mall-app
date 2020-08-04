@@ -2,8 +2,6 @@ import axios from 'axios';
 import headers from '../header';
 const api = 'http://localhost:3001';
 // const api = 'https://daaymall-401-project.herokuapp.com';
-// const api = 'https://backup-app-daaymall.herokuapp.com/';
-
 
 export const getStorePending = function () {
   return (dispatch) => {
