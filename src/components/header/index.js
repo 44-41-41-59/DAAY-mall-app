@@ -45,7 +45,7 @@ function Header(props) {
   }, []);
   return (
     <>
-      <MDBNavbar color="#b1bace mdb-color lighten-4" dark expand="md" sticky='top'>
+      <MDBNavbar dark expand="md" sticky='top' style={{backgroundColor:'#5254AF'}}>
         <MDBNavbarBrand>
           <Link to="/">
             <img src='https://i.ibb.co/3pmPmvc/logo2-white-cropped.png' alt='logo' />
@@ -90,10 +90,10 @@ function Header(props) {
                     <Link to='/customerservice'>Customer Service</Link>
                   </MDBDropdownItem>
                   <MDBDropdownItem >
-                    <Link to=''>Website Policies</Link>
+                    <Link to='/webSitePolicies'>Website Policies</Link>
                   </MDBDropdownItem>
                   <MDBDropdownItem >
-                    <Link to=''>FAQ</Link>
+                    <Link to='/faq'>FAQ</Link>
                   </MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>

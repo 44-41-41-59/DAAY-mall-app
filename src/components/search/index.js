@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 
 import {
   getProducts,
@@ -16,7 +17,7 @@ import { If, Else, Then } from '../if/if.js';
 // import Button from 'react-bootstrap/Button';
 // import FormControl from 'react-bootstrap/FormControl';
 
-import './search.css';
+import './search.scss';
 // import { Pagination } from 'react-bootstrap';
 
 function SearchResults(props) {
@@ -35,17 +36,35 @@ function SearchResults(props) {
   }, []);
 
   return (
-    <div style={{display:'flex', flexDirection:'row'}}>
-      <div id="left-sort-section" style={{margin:'5vh 0vw 0vw 5vh !important'}}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop:'5vh',
+        marginRight:'5vh',
+        marginLeft:'5vh',
+      }}>
+      <div
+        style={{
+          backgroundColor: '#f5f5f5',
+          width: '20vw',
+          padding:'5vh',
+        }}
+      >
         <form
           class="form-group has-search"
-          id="search-form-side"
           onSubmit={search}
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+          }}
         >
           <button
             type="submit"
             class="fa fa-search form-control-feedback"
             id="searchIcon-side"
+            style={{padding:'0vh', margin:'0vh'}}
           />
           <input
             list="browsers"
@@ -67,7 +86,7 @@ function SearchResults(props) {
         <Sorting />
       </div>
 
-      <div id="searchPage">
+      <div>
         <If condition={props.searchTerm}>
           <Then>
             <If condition={props.sortBy}>
@@ -89,6 +108,29 @@ function SearchResults(props) {
           </Else>
         </If>
       </div>
+      {<MDBModal isOpen={
+        props.fetching.fetchAddCardSuccesses ||
+        props.fetching.fetchAddWishListSuccesses} toggle='' side position="top-right">
+          <MDBModalHeader >SUCCESS</MDBModalHeader>
+          <MDBModalBody>
+           the card has been Added successfully to the {props.fetching.fetchAddCardSuccesses?'Cart':'wishlist'} 📦🎁
+          </MDBModalBody>
+          <MDBModalFooter>
+            <MDBBtn color="secondary" >UNDO</MDBBtn>
+            <MDBBtn color="primary">DONE</MDBBtn>
+          </MDBModalFooter>
+        </MDBModal>}
+      
+      {<MDBModal color='primary' isOpen={props.fetching.fetchModalFailer} toggle='' side position="top-right">
+          <MDBModalHeader >SOMETHING WENT WRONG</MDBModalHeader>
+          <MDBModalBody>
+           you need to login or signup
+          </MDBModalBody>
+          <MDBModalFooter>
+            <MDBBtn color="secondary" >CANCEL</MDBBtn>
+            <MDBBtn color="primary">Go to register</MDBBtn>
+          </MDBModalFooter>
+        </MDBModal>}
     </div>
   );
 }
@@ -104,13 +146,14 @@ const mapStateToProps = (state) => {
     sortedProducts: products.sortedProducts,
     currentPage: state.pagination.currentPage,
     itemPerpage: state.pagination.itemPerpage,
+    fetching:state.fetching
   };
 };
 const mapDispatchToProps = (dispatch) => ({
   get: () => dispatch(getProducts()),
   getSearchedProducts: (searchTerm) =>
     dispatch(getSearchedProducts(searchTerm)),
-  getCategorySearchProducts: (searchTerm) => 
+  getCategorySearchProducts: (searchTerm) =>
     dispatch(getCategorySearchProducts(searchTerm)),
   // getSearchProducts: (str) => dispatch(getSearchProducts(str)),
 });

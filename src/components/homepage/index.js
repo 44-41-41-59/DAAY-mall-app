@@ -5,6 +5,7 @@ import MainCrousel from './main-crousel';
 import TopSections from './top-sections';
 import { connect } from 'react-redux';
 import { getMainPageProducts } from '../../store/actions/products';
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 
 import { Sale, TopRanked, NewArrivals } from './sections';
 
@@ -29,7 +30,7 @@ function Homepage(props) {
         </Col>
       </Row>
       <Row id='sliderRow'>
-        <Sale products={props.mainProducts} id='saleSection' />
+        <Sale products={props.mainProducts} />
       </Row>
       <Row id='sliderRow'>
         <TopRanked products={props.mainProducts} />
@@ -37,12 +38,35 @@ function Homepage(props) {
       <Row id='sliderRow'>
         <NewArrivals products={props.mainProducts} />
       </Row>
+      {<MDBModal isOpen={
+        props.fetching.fetchAddCardSuccesses ||
+        props.fetching.fetchAddWishListSuccesses} toggle='' side position="top-right">
+          <MDBModalHeader >SUCCESS</MDBModalHeader>
+          <MDBModalBody>
+           the card has been Added successfully to the {props.fetching.fetchAddCardSuccesses?'Cart':'wishlist'} 📦🎁
+          </MDBModalBody>
+          <MDBModalFooter>
+            <MDBBtn color="secondary" >UNDO</MDBBtn>
+            <MDBBtn color="primary">DONE</MDBBtn>
+          </MDBModalFooter>
+        </MDBModal>}
+      
+      {<MDBModal color='primary' isOpen={props.fetching.fetchModalFailer} toggle='' side position="top-right">
+          <MDBModalHeader >SOMETHING WENT WRONG</MDBModalHeader>
+          <MDBModalBody>
+           you need to login or signup
+          </MDBModalBody>
+          <MDBModalFooter>
+            <MDBBtn color="secondary" >CANCEL</MDBBtn>
+            <MDBBtn color="primary">Go to register</MDBBtn>
+          </MDBModalFooter>
+        </MDBModal>}
     </>
   );
 }
 
 const mapStateToProps = (state) => {
-  return { mainProducts: state.products, ads: state.ads };
+  return { mainProducts: state.products, ads: state.ads,fetching:state.fetching };
 };
 const actionCreater = (dispatch) => ({
   getMainPageProducts: () => dispatch(getMainPageProducts()),

@@ -58,11 +58,10 @@ function ProductCard(props) {
 
   if (props.searchPage) {
     searchPageStyle = { marginBottom: '7vh' };
-    cardWidth = { width: '17vw', marginRight: '1vw' };
+    cardWidth = { width: '17vw'};
   }
 
   function addToCart() {
-    console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu');
     props.addCart({ products: props.cardProduct.id, quantity:1, userID: props.user._id });
   }
   function addToWishlist() {
@@ -90,7 +89,7 @@ function ProductCard(props) {
             top
             alt='product photo'
             overlay='white-slight'
-            style={{ minHeight: '38.2vh' }}
+            style={{ minHeight: '40vh' }}
           />
           <MDBCardBody cascade className='text-center'>
             <a href='#!' className='grey-text'>

@@ -17,6 +17,24 @@ export const addProduct = function (formData) {
     })
       .then(function (response) {
         dispatch(addProductAction({ results: response.data.results }));
+        dispatch({type:'ADD PRODUCT SUCCESS'})
+        setTimeout(()=>{
+          dispatch({type:'ADD PRODUCT SUCCESS CLOSE THE MODAL'})
+        },2000)
+      })
+      .catch((err) => console.log(err.response));
+  };
+};
+export const closeModal = function (formData) {
+  return (dispatch) => {
+    return axios({
+      method: 'post',
+      url: `${api}/products`,
+      headers: getHeader(),
+      data: formData,
+    })
+      .then(function (response) {
+          dispatch({type:'ADD PRODUCT SUCCESS CLOSE THE MODAL'})
       })
       .catch((err) => console.log(err.response));
   };

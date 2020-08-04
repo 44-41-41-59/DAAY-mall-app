@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
 import './storepage.scss';
 import StoreInfo from './store-info';
 import Button from 'react-bootstrap/Button';
@@ -10,16 +9,17 @@ import OnSale from './onsale';
 import Orders from './orders';
 import AllProducts from './all-products';
 import { getStore, addStoreReview } from '../../store/actions/store';
-import Reviews from './reviews';
+import Reviews from '../product/reviews';
 import { If, Else, Then } from '../if/if.js';
+import NotFound from '../notfound/notfound';
 
 
 function Storepage(props) {
   const storeID = props.match.params.id;
-
+  //  props.store = props.store.results || props.store
   useEffect(() => {
     props.getStore(storeID);
-  }, [props, storeID]);
+  }, []);
 
   return (
     <div id='store-page'>
@@ -46,13 +46,11 @@ function Storepage(props) {
       {/* <New />
         <Summer />
         <InStock /> */}
-      
-      
       <Reviews
         reviews={props.store.reviews}
         addReview={props.addStoreReview}
-        store={props.store}
-        user={props.user}/>
+        product={props.store}
+        user={props.user} />
     </div>
   );
 }

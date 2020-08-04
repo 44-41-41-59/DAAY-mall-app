@@ -26,8 +26,11 @@ import Break from './components/customerService/Admin/break';
 import { test, socket } from './service/socket';
 import Stores from '../src/components/storespage/index';
 import NotFound from '../src/components/notfound/notfound';
+import WebSitePolicie from './components/webSitePolicies/';
+import FAQ from './components/FAQ/';
 
 import Test from '../src/components/customerService/Admin/index1';
+import Policies from './components/webSitePolicies';
 
 class App extends Component {
   // eslint-disable-next-line no-useless-constructor
@@ -110,7 +113,12 @@ class App extends Component {
         <Route exact path="/break">
           <Break />
         </Route>
-
+        <Route exact path="/webSitePolicies">
+          <WebSitePolicie />
+        </Route>
+        <Route exact path="/faq">
+          <FAQ  />
+        </Route>
         <Route exact path="/stores">
           <Stores  />
         </Route>
