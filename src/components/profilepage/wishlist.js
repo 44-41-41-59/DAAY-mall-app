@@ -1,13 +1,11 @@
 import React from 'react';
 import './profilepage.css';
-import Card from 'react-bootstrap/Card';
 import Tab from 'react-bootstrap/Tab';
 import Row from 'react-bootstrap/Row';
-import { Link } from 'react-router-dom';
 // import { connect } from 'react-redux';
 import ProductCard from '../product/card';
 import {If, Then, Else} from '../if/if';
-import NotFound from '../notfound/notfound';
+import Empty from '../emptypage/emptypage';
 
 
 function Wishlist(props) {
@@ -24,7 +22,7 @@ function Wishlist(props) {
               })}
             </Then>
             <Else>
-              <NotFound />
+              <Empty />
             </Else>
           </If>
         </Row>

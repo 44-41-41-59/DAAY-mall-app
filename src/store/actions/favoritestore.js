@@ -12,7 +12,7 @@ export const getFavoriteStores = function () {
       headers: getHeader(),
     }).then(function (response) {
       dispatch(
-        getFavoriteStoresAction({ favoriteStores: response.data.results })
+        getFavoriteStoresAction({ favoriteStores: response.data.results }),
       );
     });
   };

@@ -1,11 +1,14 @@
 import React from 'react';
 import './profilepage.css';
 import Tab from 'react-bootstrap/Tab'; 
+import Empty from '../emptypage/emptypage';
+import Image from 'react-bootstrap/Image'; 
+import { Link } from 'react-router-dom';
 
-function Wishlist(props) {
+function Orders(props) {
   return (
     <>
-      <Tab.Pane>
+      {/* <Tab.Pane>
         <div class="card mb-3" style={{width: '540px'}}>
           <div class="row no-gutters">
             <div class="col-md-4">
@@ -45,9 +48,13 @@ function Wishlist(props) {
             </div>
           </div>
         </div>
-      </Tab.Pane>
+      </Tab.Pane> */}
+      <div style={{margin:'0 auto',textAlign:'center'}} >
+        <Image id='emptyImage' src='https://i.ibb.co/1nv4TNJ/2e183d4b59f0ffd3981e9759488f3258.jpg' />
+        <Link to='/stores' > <p id='redirectLink' >You didn't order any, Check out our products, we assure you this will not be empty anymore</p></Link>
+      </div>
     </>
   );
 }
 
-export default Wishlist;
+export default Orders;

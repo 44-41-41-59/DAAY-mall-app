@@ -1,0 +1,65 @@
+.chat-room .friend-list .list-group-item {
+  margin-bottom: 0;
+  border: 0;
+  border-bottom: 1px solid;
+}
+
+.chat-room .friend-list .list-group-item:last-of-type {
+  border-bottom: 0;
+}
+
+.chat-room .friend-list .list-group-item.active {
+  background-color: #eeeeee;
+}
+
+.chat-room .avatar {
+  height: 3rem;
+  width: 3rem;
+}
+
+.chat-room .chat-message {
+  flex-direction: row-reverse;
+}
+.chat-room .chat-message-firstuser {
+  flex-direction: row-reverse;
+  background-color: red;
+}
+.chat-room .chat-message-seconduser {
+  flex-direction: row-reverse;
+  background-color: blue;
+}
+
+.chat-room .scrollable-friends-list {
+  height: 570px;
+}
+
+.chat-room .scrollable-chat {
+  height: 510px;
+  padding-bottom: 15px;
+}
+.break {
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('https://memegenerator.net/img/instances/73276713.jpg');
+  /* background-position: 'top center'; */
+
+  /* padding: 100%; */
+}
+.scrollcontanir::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  min-width: 300px !important;
+}
+.rudios {
+  border-radius: 36px !important;
+}
+.chatcontainr {
+  margin-top: 39px !important;
+}
+.chat2 {
+  min-width: 1135px;
+  min-height: 320px;
+}
