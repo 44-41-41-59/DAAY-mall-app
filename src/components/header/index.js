@@ -90,10 +90,10 @@ function Header(props) {
                     <Link to='/customerservice'>Customer Service</Link>
                   </MDBDropdownItem>
                   <MDBDropdownItem >
-                    <Link to=''>Website Policies</Link>
+                    <Link to='/webSitePolicies'>Website Policies</Link>
                   </MDBDropdownItem>
                   <MDBDropdownItem >
-                    <Link to=''>FAQ</Link>
+                    <Link to='/faq'>FAQ</Link>
                   </MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>

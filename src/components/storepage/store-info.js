@@ -29,30 +29,28 @@ function StoreInfo(props) {
   
   return (
     <div id="storeInfo" style={{ display: 'flex', flexWrap: 'wrap' }}>
+      <img src={props.store.logo} alt={props.store.name} id="imgStore"/>
       <div class="Card">
-        <div>
-          <img src={props.store.logo} alt={props.store.name} id="imgStore"/>
-          <h2>Store name:{props.store.name}</h2>
-          <h3>Category:{props.store.category}</h3>
+        <div class="storeCon">
+          <h1>Store name:{props.store.name}</h1>
+          <h2>Category:{props.store.category}</h2>
           <h3>Contact number:{props.store.contactNumber}</h3>
-          <h3>Address:{props.store.counrty}</h3>
-          <h3>Reviews:9</h3>
-          <h3>rate:3.8/5</h3>
+          <h4>Address:{props.store.counrty}</h4>
           <If condition={!noRate}>
-              <Then>
-                {ratingStars.map(star => {
-                  return <MDBIcon icon='star' />;
-                })}
-                {emptyRatingStars.map(star => {
-                  return <MDBIcon far icon='star' />;
-                })}
-              </Then>
-              <Else>
-                {noRateStars.map(star => {
-                  return <MDBIcon far icon='star' />;
-                })}
-              </Else>
-            </If>
+            <Then>
+              {ratingStars.map(star => {
+                return <MDBIcon icon='star' />;
+              })}
+              {emptyRatingStars.map(star => {
+                return <MDBIcon far icon='star' />;
+              })}
+            </Then>
+            <Else>
+              {noRateStars.map(star => {
+                return <MDBIcon far icon='star' />;
+              })}
+            </Else>
+          </If>
         </div>
       </div>
       {/* <div id="tablelong">
