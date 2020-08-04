@@ -28,7 +28,8 @@ function OneProduct(props) {
   };
 
   function addToCart() {
-    props.addCart({ products: props.productID, quantity, userID: props.user._id });
+    console.log('harrr you');
+    props.addCart({ products: props.product._id, quantity:quantity.value, userID: props.user._id });
   }
   function addToWishlist() {
     props.addWishlist({ productID: props.product._id });
@@ -163,12 +164,12 @@ function OneProduct(props) {
                       onChange={() => console.log('change')}
                       type="number"
                       style={{
-                        maxWidth: '1.5rem',
+                        maxWidth: '2vw',
                         textAlign:'center',
                       }} />
                     <button onClick={increase} className="plus"></button>
                   </div>
-                  <MDBBtn color="blue-grey" style={{marginLeft:'1.5vw'}}>Add to cart</MDBBtn>
+                  <MDBBtn color="blue-grey" style={{marginLeft:'1.5vw'}} onClick={addToCart}>Add to cart</MDBBtn>
 
                 </div>
                 <MDBBtn color='amber' style={{ width: '44%' }} onClick={addToWishlist}>Add to wishlist</MDBBtn>

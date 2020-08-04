@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import {
   MDBRow,
   MDBCol,
@@ -11,11 +13,21 @@ import {
   MDBIcon,
   MDBTooltip,
 } from 'mdbreact';
+
+import {
+  addCart,
+  addLike,
+  addWishlist,
+  payedUserCart,
+} from '../../store/actions/products';
+
 import { Link } from 'react-router-dom';
 import Show from '../show/index';
 import { If, Then, Else } from '../if/if';
 
 function ProductCard(props) {
+  const [quantity, setQuantity] = useState({ value: 1 });
+
   let sum = 0;
   let ratingStars = [];
   let noRate = false;
@@ -48,6 +60,26 @@ function ProductCard(props) {
     searchPageStyle = { marginBottom: '7vh' };
     cardWidth = { width: '17vw', marginRight: '1vw' };
   }
+
+  function addToCart() {
+    console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu');
+    props.addCart({ products: props.cardProduct.id, quantity:1, userID: props.user._id });
+  }
+  function addToWishlist() {
+    props.addWishlist({ productID: props.cardProduct._id });
+  }
+  function addToLikes() {
+    props.addLike({ productID: props.cardProduct._id });
+  }
+
+  const makePayment = (token) => {
+    let body = {
+      token,
+      amount: Math.ceil(props.cardProduct.price * props.quantity * 100),
+    };
+    props.pay(body);
+  };
+
   return (
     <MDBRow style={searchPageStyle}>
       <MDBCol lg='3' md='6' className='mb-lg-0 mb-4' >
@@ -58,7 +90,7 @@ function ProductCard(props) {
             top
             alt='product photo'
             overlay='white-slight'
-          // style={{height:'30vh'}}
+            style={{ minHeight: '38.2vh' }}
           />
           <MDBCardBody cascade className='text-center'>
             <a href='#!' className='grey-text'>
@@ -124,13 +156,13 @@ function ProductCard(props) {
               </If>
 
               <span className='float-right' style={{ fontSize: '1rem' }}>
-                <MDBTooltip domElement placement='top'>
-                  <i className='grey-text fa fa-shopping-cart mr-3' />
-                  <span>Add to Cart</span>
+                <MDBTooltip domElement placement='top' >
+                  <i className='grey-text fa fa-shopping-cart mr-3' onClick={addToCart}/>
+                  <span style={{fontSize:'0.5rem'}}>Add to Cart</span>
                 </MDBTooltip>
                 <MDBTooltip domElement placement='top'>
-                  <i className='grey-text fa fa-heart' />
-                  <span>Add to Whishlist</span>
+                  <i className='grey-text fa fa-heart' onClick={addToWishlist}/>
+                  <span style={{fontSize:'0.5rem'}}>Add to Wishlist</span>
                 </MDBTooltip>
               </span>
             </MDBCardFooter>
@@ -141,4 +173,19 @@ function ProductCard(props) {
   );
 }
 
-export default ProductCard;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    product: state.product,
+    reviews: state.reviews,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  addCart: (body) => dispatch(addCart(body)),
+  addLike: (body) => dispatch(addLike(body)),
+  addWishlist: (body) => dispatch(addWishlist(body)),
+  payedUserCart: (body) => dispatch(payedUserCart(body)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ProductCard));
