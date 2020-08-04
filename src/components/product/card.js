@@ -161,10 +161,10 @@ function ProductCard(props) {
                   <span style={{fontSize:'0.5rem'}}>Add to Cart</span>
                 </MDBTooltip>
                 <Show condition={!props.wishlist}>
-                <MDBTooltip domElement placement='top'>
-                  <i className='grey-text fa fa-heart' onClick={addToWishlist}/>
-                  <span style={{fontSize:'0.5rem'}}>Add to Wishlist</span>
-                </MDBTooltip>
+                  <MDBTooltip domElement placement='top'>
+                    <i className='grey-text fa fa-heart' onClick={addToWishlist}/>
+                    <span style={{fontSize:'0.5rem'}}>Add to Wishlist</span>
+                  </MDBTooltip>
                 </Show>
               </span>
             </MDBCardFooter>

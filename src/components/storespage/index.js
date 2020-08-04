@@ -77,6 +77,9 @@ function Stores(props) {
                     </div>
                     <Link to={`/store/${store._id}`} >
                       <MDBBtn id='viewstorebutton'>View Store</MDBBtn>
+                    </Link> <br/>
+                    <Link  >
+                      <MDBBtn id='addtofavbutton'>Add to favorite</MDBBtn>
                     </Link>
                   </MDBCardBody>
                 </MDBCard>

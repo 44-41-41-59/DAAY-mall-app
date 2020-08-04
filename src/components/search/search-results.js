@@ -6,6 +6,8 @@ import { MDBIcon } from 'mdbreact';
 import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
+import { If, Then, Else } from '../if/if';
+import Image from 'react-bootstrap/Image'; 
 
 
 
@@ -32,36 +34,29 @@ function Results(props) {
   
   return (
     <>
-      <div id='searchResultsBox' style={{width:'80vw'}} >
-        <div style={{margin:'5vh 5vw 0vw 0vh', display:'flex', flexWrap:'wrap', justifyContent:'space-around'}}>
-          {/* <div class="row"> */}
-          {currentItems.map(item => {
-            return (
-              <ProductCard cardProduct={item} searchPage={true}/>
-            );
-          })}
-          {/* </div> */}
-        </div>
-
-        {/* {props.products.map(product => {
-          return (
-            <Card style={{ width: '220px' }}>
-              <Card.Img variant="top" src={product.images[0]} />
-              <Card.Body>
-                <Card.Title>{product.name}</Card.Title>
-                <Card.Text>{product.price}$</Card.Text>
-              </Card.Body>
-            </Card>
-          );
-        })} */}
-
-        {/* <PaginationFunction
-        paginateHandler={props.pagination.currentPage}
-        itemsPerPage={props.pagination.itemPerpage}
-        totalItems={props.fullList.length}
-      /> */}
-      </div>
-      <PaginationBar products={props.products} pageNumbers={pageNumbers}/>
+      <If condition={currentItems.length}>
+        <Then>
+          <div id='searchResultsBox' style={{width:'80vw'}} >
+            <div style={{margin:'5vh 5vw 0vw 0vh', display:'flex', flexWrap:'wrap', justifyContent:'space-around'}}>
+              {/* <div class="row"> */}
+              {currentItems.map(item => {
+                return (
+                  <ProductCard cardProduct={item} searchPage={true}/>
+                );
+              })}
+              {/* </div> */}
+            </div>
+          </div>
+          <PaginationBar products={props.products} pageNumbers={pageNumbers}/>
+        </Then>
+        <Else>
+          <div style={{display:'flex',flexDirection:'column',alignItems:'center'}} >
+            <Image id='notfoundsearchImage' src='https://i.ibb.co/0YxH3qW/6ab1e47de248ab872c71cd685945f0f5.jpg' />
+            <p id='returnLink' >Click to return to Home Page</p>
+          </div>
+        </Else>
+      </If>
+    
     </>
 
   );
