@@ -16,7 +16,7 @@ import NotFound from '../notfound/notfound';
 
 function Storepage(props) {
   const storeID = props.match.params.id;
-
+  //  props.store = props.store.results || props.store
   useEffect(() => {
     props.getStore(storeID);
   }, []);

@@ -29,9 +29,12 @@ export const addCart = function (data) {
       .then(function (response) {
         console.log(response, 'cart');
         dispatch(addCartAction({ cart: response.data }));
-        // dispatch(getProductsAction({ results: response.data.results }));
+        dispatch({ type: 'ADD CART MODAL' });
+        setTimeout(()=>{
+          dispatch({type:'ADD CART CLOSE MODAL'})
+        },2000)
       })
-      .catch(console.log);
+      .catch(err=>{console.log(err.response);dispatch({type:'ADD MODAL ERROR'})});
   };
 };
 export const addLike = function (data) {
@@ -60,8 +63,15 @@ export const addWishlist = function (data) {
     })
       .then(function (response) {
         console.log(response);
-        // dispatch(getProductsAction({ results: response.data.results }));
-      }).catch(err=>(console.log(err.response)));
+        dispatch({type:'ADD WISH LIST MODAL'});
+        setTimeout(()=>{
+          dispatch({type:'ADD WISH LIST CLOSE MODAL'});
+          
+        },2000)
+      }).catch(err=>{console.log(err.response);
+        new Audio('./Funny.mp3').play()
+        dispatch({type:'ADD MODAL ERROR'})
+      });
   };
 };
 export const getProduct = function (id) {

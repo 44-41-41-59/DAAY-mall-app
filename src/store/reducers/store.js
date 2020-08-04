@@ -20,9 +20,9 @@ export default (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
   case 'ADDSTORE':
-    return payload;
+    return {...state,...payload};
   case 'GETSTORE':
-    return payload;
+    return {...state,...payload};
   case 'ADD STORE REVIEW':
     let reviews = state.reviews;
     reviews.push(payload);
