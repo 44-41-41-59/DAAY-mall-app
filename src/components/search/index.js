@@ -16,7 +16,7 @@ import { If, Else, Then } from '../if/if.js';
 // import Button from 'react-bootstrap/Button';
 // import FormControl from 'react-bootstrap/FormControl';
 
-import './search.css';
+import './search.scss';
 // import { Pagination } from 'react-bootstrap';
 
 function SearchResults(props) {
@@ -53,7 +53,6 @@ function SearchResults(props) {
       >
         <form
           class="form-group has-search"
-          id="search-form-side"
           onSubmit={search}
           style={{
             display: 'flex',
@@ -64,6 +63,7 @@ function SearchResults(props) {
             type="submit"
             class="fa fa-search form-control-feedback"
             id="searchIcon-side"
+            style={{padding:'0vh', margin:'0vh'}}
           />
           <input
             list="browsers"

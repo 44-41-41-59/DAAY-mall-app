@@ -8,7 +8,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import { MDBInput } from 'mdbreact';
 
-import './search.css';
+import './search.scss';
 
 function Sorting(props) {
   const [rating, setRating] = useState(null);
@@ -40,55 +40,44 @@ function Sorting(props) {
   return (
     <div>
       <section >
-        <h6 class="font-weight-bold form-field">Sort by:</h6>
-        <div>
-          <MDBInput
-            gap
-            group
-            onClick={() => changesort('price')}
-            checked={sorting.radio === 'price' ? true : false}
-            label="PRICE"
-            type="radio"
-            value='price'
-            style={{
-              fontSize: '5px',
-            }}
-          />
-
-          <MDBInput
-            gap
-            group
-            onClick={() => changesort('new')}
-            checked={sorting.radio === 'new' ? true : false}
-            label="NEW"
-            type="radio"
-            value='new'
-            style={{
-              fontSize: '5px',
-            }}
-          />
-          <MDBInput
-            gap
-            group
-            onClick={() => changesort('top-ranked')}
-            checked={sorting.radio === 'top-ranked' ? true : false}
-            label="TOP RANKED"
-            type="radio"
-            value='top-ranked'
-            style={{
-              fontSize: '5px',
-            }}
-          />
-
-          {/* <Form.Check custom type='radio' id='custom-radio' label='PRICE' name='sortby' onChange={changeHandler} value='price' />
-          <Form.Check custom type='radio' id='custom-radio' label='NEW' name='sortby' onChange={changeHandler} value='new'/>
-          <Form.Check custom type='radio' id='custom-radio' label='TOP RANKED' name='sortby' onChange={changeHandler} value='top-ranked'/> */}
+        <p class="font-weight-bold form-field">Sort by:</p>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <label >
+            Price
+            <input
+              type='radio'
+              onClick={() => changesort('price')}
+              checked={sorting.radio === 'price' ? true : false}
+              value='price'
+              style={{ marginTop: '2vh', marginBottom: '2vh'}}
+            />
+          </label>
+          <label>
+            New
+            <input
+              type='radio'
+              onClick={() => changesort('new')}
+              checked={sorting.radio === 'new' ? true : false}
+              value='new'
+              style={{ marginTop: '2vh', marginBottom: '2vh'}}
+            />
+          </label>
+          <label>
+            Top Ranked
+            <input
+              type='radio'
+              onClick={() => changesort('top-ranked')}
+              checked={sorting.radio === 'top-ranked' ? true : false}
+              value='top-ranked'
+              style={{ marginTop: '2vh', marginBottom: '2vh'}}
+            />
+          </label>
         </div>
       </section>
 
       <section>
 
-        <h6 class="font-weight-bold form-field">Customer Reviews</h6>
+        <p class="font-weight-bold form-field">Customer Reviews</p>
 
         <div class="rating">
           {[...Array(5)].map((star, i) => {
@@ -96,7 +85,6 @@ function Sorting(props) {
             return (
               <label>
                 <input type="radio" name="rating" value={ratingValue} onClick={() => setRating(ratingValue)} onChange={changeHandler} />
-
                 <FaStar class="star" color={ratingValue <= (hover || rating) ? '#7eabd6' : 'rgb(255, 255, 255)'} size={25} onMouseEnter={() => setHover(ratingValue)} onMouseLeave={() => setHover(null)} />
               </label>
             );
@@ -107,7 +95,7 @@ function Sorting(props) {
 
       <section>
 
-        <h6 class="font-weight-bold form-field">Price</h6>
+        <p class="font-weight-bold form-field">Price</p>
         <select class="custom-select" name='priceRangeDropdown' onChange={changeHandler}>
           <option selected>Price range</option>
           <option value="0-25">UNDER 25$</option>

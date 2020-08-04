@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 
 
-import './search.css';
+import './search.scss';
 import products from '../../store/reducers/products';
 import ProductCard from '../product/card';
 
