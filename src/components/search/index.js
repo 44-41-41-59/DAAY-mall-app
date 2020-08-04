@@ -35,12 +35,30 @@ function SearchResults(props) {
   }, []);
 
   return (
-    <div style={{display:'flex', flexDirection:'row'}}>
-      <div id="left-sort-section" style={{margin:'5vh 0vw 0vw 5vh !important'}}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop:'5vh',
+        marginRight:'5vh',
+        marginLeft:'5vh',
+      }}>
+      <div
+        style={{
+          backgroundColor: '#f5f5f5',
+          width: '20vw',
+          padding:'5vh',
+        }}
+      >
         <form
           class="form-group has-search"
           id="search-form-side"
           onSubmit={search}
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+          }}
         >
           <button
             type="submit"
@@ -67,7 +85,7 @@ function SearchResults(props) {
         <Sorting />
       </div>
 
-      <div id="searchPage">
+      <div>
         <If condition={props.searchTerm}>
           <Then>
             <If condition={props.sortBy}>
@@ -110,7 +128,7 @@ const mapDispatchToProps = (dispatch) => ({
   get: () => dispatch(getProducts()),
   getSearchedProducts: (searchTerm) =>
     dispatch(getSearchedProducts(searchTerm)),
-  getCategorySearchProducts: (searchTerm) => 
+  getCategorySearchProducts: (searchTerm) =>
     dispatch(getCategorySearchProducts(searchTerm)),
   // getSearchProducts: (str) => dispatch(getSearchProducts(str)),
 });

@@ -58,11 +58,10 @@ function ProductCard(props) {
 
   if (props.searchPage) {
     searchPageStyle = { marginBottom: '7vh' };
-    cardWidth = { width: '17vw', marginRight: '1vw' };
+    cardWidth = { width: '17vw'};
   }
 
   function addToCart() {
-    console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu');
     props.addCart({ products: props.cardProduct.id, quantity:1, userID: props.user._id });
   }
   function addToWishlist() {
@@ -160,12 +159,10 @@ function ProductCard(props) {
                   <i className='grey-text fa fa-shopping-cart mr-3' onClick={addToCart}/>
                   <span style={{fontSize:'0.5rem'}}>Add to Cart</span>
                 </MDBTooltip>
-                <Show condition={!props.wishlist}>
                 <MDBTooltip domElement placement='top'>
                   <i className='grey-text fa fa-heart' onClick={addToWishlist}/>
                   <span style={{fontSize:'0.5rem'}}>Add to Wishlist</span>
                 </MDBTooltip>
-                </Show>
               </span>
             </MDBCardFooter>
           </MDBCardBody>

@@ -6,13 +6,20 @@ import { FaStar } from 'react-icons/fa';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
+import { MDBInput } from 'mdbreact';
 
 import './search.css';
 
 function Sorting(props) {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
+  const [sorting, setSorting] = useState({ radio: '' });
   // sortBy, sortPriceRange, sortRating
+
+  let changesort = (sort) => {
+    setSorting({ radio: sort });
+    props.getSortingSetting(sort, '', '');
+  };
 
   let changeHandler = (e) => {
     let sortingName = e.target.name;
@@ -31,18 +38,55 @@ function Sorting(props) {
   };
 
   return (
-    <div id='sorting-div'>
-      <section class="sort-box-1">
+    <div>
+      <section >
         <h6 class="font-weight-bold form-field">Sort by:</h6>
-        <div class='sortby-wrapper'>
-          <Form.Check custom type='radio' id='custom-radio' label='PRICE' name='sortby' onChange={changeHandler} value='price' />
-          <Form.Check custom type='radio' id='custom-radio' label='NEW' name='sortby' onChange={changeHandler} value='new'/>
-          <Form.Check custom type='radio' id='custom-radio' label='TOP RANKED' name='sortby' onChange={changeHandler} value='top-ranked'/>
-        </div>
+        <div>
+          <MDBInput
+            gap
+            group
+            onClick={() => changesort('price')}
+            checked={sorting.radio === 'price' ? true : false}
+            label="PRICE"
+            type="radio"
+            value='price'
+            style={{
+              fontSize: '5px',
+            }}
+          />
 
+          <MDBInput
+            gap
+            group
+            onClick={() => changesort('new')}
+            checked={sorting.radio === 'new' ? true : false}
+            label="NEW"
+            type="radio"
+            value='new'
+            style={{
+              fontSize: '5px',
+            }}
+          />
+          <MDBInput
+            gap
+            group
+            onClick={() => changesort('top-ranked')}
+            checked={sorting.radio === 'top-ranked' ? true : false}
+            label="TOP RANKED"
+            type="radio"
+            value='top-ranked'
+            style={{
+              fontSize: '5px',
+            }}
+          />
+
+          {/* <Form.Check custom type='radio' id='custom-radio' label='PRICE' name='sortby' onChange={changeHandler} value='price' />
+          <Form.Check custom type='radio' id='custom-radio' label='NEW' name='sortby' onChange={changeHandler} value='new'/>
+          <Form.Check custom type='radio' id='custom-radio' label='TOP RANKED' name='sortby' onChange={changeHandler} value='top-ranked'/> */}
+        </div>
       </section>
 
-      <section class="sort-box-1">
+      <section>
 
         <h6 class="font-weight-bold form-field">Customer Reviews</h6>
 
@@ -61,7 +105,7 @@ function Sorting(props) {
         </div>
       </section>
 
-      <section class="sort-box-1">
+      <section>
 
         <h6 class="font-weight-bold form-field">Price</h6>
         <select class="custom-select" name='priceRangeDropdown' onChange={changeHandler}>
@@ -71,22 +115,20 @@ function Sorting(props) {
           <option value="50-100">$50 TO $100</option>
           <option value="100-200">$100 TO $200</option>
           <option value="200">$200 & ABOVE</option>
-
         </select>
+
         <div id='price-range'>
-
+          <InputGroup size="sm" className="mb-3">
+            <InputGroup.Prepend>
+              <InputGroup.Text id="inputGroup-sizing-sm">MIN</InputGroup.Text>
+            </InputGroup.Prepend>
+            <FormControl aria-label="Small" name='minPrice' aria-describedby="inputGroup-sizing-sm" onChange={changeHandler} />
+            <InputGroup.Prepend>
+              <InputGroup.Text id="inputGroup-sizing-sm" >MAX</InputGroup.Text>
+            </InputGroup.Prepend>
+            <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name='maxPrice' onChange={changeHandler} />
+          </InputGroup>
         </div>
-
-        <InputGroup size="sm" className="mb-3">
-          <InputGroup.Prepend>
-            <InputGroup.Text id="inputGroup-sizing-sm">MIN</InputGroup.Text>
-          </InputGroup.Prepend>
-          <FormControl aria-label="Small" name='minPrice' aria-describedby="inputGroup-sizing-sm" onChange={changeHandler} />
-          <InputGroup.Prepend>
-            <InputGroup.Text id="inputGroup-sizing-sm" >MAX</InputGroup.Text>
-          </InputGroup.Prepend>
-          <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name='maxPrice' onChange={changeHandler} />
-        </InputGroup>
 
       </section>
 

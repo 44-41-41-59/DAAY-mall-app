@@ -6,9 +6,10 @@ import ProductCard from '../product/card';
 export const Sale = (props) => {
   return (
     <>
+      <span id='saleSection'></span>
       <div style={{ padding: '3vh 2vw 2vh', fontSize: '1.5rem' }}>
         <MDBIcon icon="dollar-sign" style={{ color: '#424242' }} />
-        <span id="sale" style={{ color: '#424242', paddingLeft: '1vw' }}>Sale</span>
+        <span style={{ color: '#424242', paddingLeft: '1vw' }}>Sale</span>
       </div>
       <div class="container slideRowContainer">
         <div class="row" id="slideRow">
@@ -27,9 +28,11 @@ export const Sale = (props) => {
 export const TopRanked = (props) => {
   return (
     <>
+      <span id='topSection'></span>
+
       <div style={{ padding: '3vh 2vw 2vh', fontSize: '1.5rem' }}>
         <MDBIcon icon="chart-line" style={{ color: '#424242' }} />
-        <span id="sale" style={{ color: '#424242', paddingLeft: '1vw' }}>Top products</span>
+        <span style={{ color: '#424242', paddingLeft: '1vw' }}>Top products</span>
       </div>
 
       <div class="container slideRowContainer">
@@ -49,9 +52,11 @@ export const TopRanked = (props) => {
 export const NewArrivals = (props) => {
   return (
     <>
+      <span id='newSection'></span>
+
       <div style={{ padding: '3vh 2vw 2vh', fontSize: '1.5rem' }}>
         <MDBIcon icon="newspaper" style={{ color: '#424242' }} />
-        <span id="sale" style={{ color: '#424242', paddingLeft: '1vw' }}>New</span>
+        <span style={{ color: '#424242', paddingLeft: '1vw' }}>New</span>
       </div>
 
       <div class="container slideRowContainer">

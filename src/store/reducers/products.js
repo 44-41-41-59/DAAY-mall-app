@@ -20,7 +20,6 @@ export default (state = initialState, action) => {
       searchedProducts: payload.searchedProducts,
     };
   case 'GETCATEGORYSEARCHEDPRODUCTS':
-    console.log('harrr youuu');
     return {
       ...state,
       searchTerm: payload.searchTerm,

@@ -29,7 +29,7 @@ function Homepage(props) {
         </Col>
       </Row>
       <Row id='sliderRow'>
-        <Sale products={props.mainProducts} id='saleSection' />
+        <Sale products={props.mainProducts} />
       </Row>
       <Row id='sliderRow'>
         <TopRanked products={props.mainProducts} />

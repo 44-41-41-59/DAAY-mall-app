@@ -250,7 +250,6 @@ export const getCartProductAction = (payload) => {
   };
 };
 export const getSearchedProductsAction = (payload) => {
-  console.log('ppppppppppppppppppppppp', payload);
   return {
     type: 'GETSEARCHEDPRODUCTS',
     payload: payload,

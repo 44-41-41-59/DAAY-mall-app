@@ -50,9 +50,10 @@
   display: none;
 }
 
-.card {
+/* .card {
   min-width: 300px !important;
-}
+} */
+
 .rudios {
   border-radius: 36px !important;
 }

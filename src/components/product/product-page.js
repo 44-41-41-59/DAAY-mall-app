@@ -5,7 +5,7 @@ import './buyProduct.scss';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { FaStar } from 'react-icons/fa';
-import { MDBBtn, MDBIcon, MDBCard } from 'mdbreact';
+import { MDBBtn, MDBIcon, MDBCard, MDBNavbar } from 'mdbreact';
 import { If, Then, Else } from '../if/if';
 import {
   addCart,
@@ -29,7 +29,7 @@ function OneProduct(props) {
 
   function addToCart() {
     console.log('harrr you');
-    props.addCart({ products: props.product._id, quantity:quantity.value, userID: props.user._id });
+    props.addCart({ products: props.product._id, quantity: quantity.value, userID: props.user._id });
   }
   function addToWishlist() {
     props.addWishlist({ productID: props.product._id });
@@ -108,7 +108,7 @@ function OneProduct(props) {
               <p style={{ color: 'gray' }}>{props.product.Timestamp.split('T')[0]}</p>
               <p style={{ color: 'gray' }}>{props.product.category}</p>
 
-              <div style={{margin:'5vh 0vh'}}>
+              <div style={{ margin: '5vh 0vh' }}>
                 <If condition={!props.product.sale}>
                   <Then>
                     <span className='float-left font-weight-bold' style={{ fontSize: '1rem' }}>
@@ -116,7 +116,7 @@ function OneProduct(props) {
                     </span>
                   </Then>
                   <Else>
-                    <span className='float-left font-weight-bold' style={{ fontSize: '1rem', textDecoration: 'line-through', marginRight: '1vw', color:'red' }}>
+                    <span className='float-left font-weight-bold' style={{ fontSize: '1rem', textDecoration: 'line-through', marginRight: '1vw', color: 'red' }}>
                       <strong>{props.product.price} JOD</strong>
                     </span>
                     <span className='float-left font-weight-bold' style={{ fontSize: '1rem' }}>
@@ -165,14 +165,14 @@ function OneProduct(props) {
                       type="number"
                       style={{
                         maxWidth: '2vw',
-                        textAlign:'center',
+                        textAlign: 'center',
                       }} />
                     <button onClick={increase} className="plus"></button>
                   </div>
-                  <MDBBtn color="blue-grey" style={{marginLeft:'1.5vw'}} onClick={addToCart}>Add to cart</MDBBtn>
+                  <MDBBtn id='bluebtnpr' onClick={addToCart}>Add to cart</MDBBtn>
 
                 </div>
-                <MDBBtn color='amber' style={{ width: '44%' }} onClick={addToWishlist}>Add to wishlist</MDBBtn>
+                <MDBBtn id='orangebtnpr' style={{ width: '44%' }} onClick={addToWishlist}>Add to wishlist</MDBBtn>
 
               </div>
 
