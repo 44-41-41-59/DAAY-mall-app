@@ -9,6 +9,7 @@ import {
   fetchSignup,
   signupSuccess,
   signupFailed,
+  logoutSuccess,
 } from '../actions/fetch';
 
 const api = 'http://localhost:3001';
@@ -42,7 +43,7 @@ export const loginRemoteUser = function (email, password, history) {
         dispatch(fetchLogin({ fetchLogin: false }));
         dispatch(({type:'MODAL FOR LOGIN'}));
         history.push('/');
-        setTimeout(()=>{dispatch({type:'MODAL FOR LOGIN CLOSE'})},2000)
+        setTimeout(()=>{dispatch({type:'MODAL FOR LOGIN CLOSE'});},2000);
       })
       .catch((err) => {
         dispatch(
@@ -92,7 +93,7 @@ export const checkRemoteUser = function () {
       method: 'get',
     })
       .then((response) => {
-        console.log(response)
+        console.log(response);
         dispatch(auth(getUserData(response.data)));
       })
       .catch(console.log);
@@ -120,5 +121,6 @@ export const logout = function (history) {
     dispatch({ type: 'LOGOUT' });
     cookie.remove('auth');
     history.push('/');
+    dispatch(logoutSuccess({ logoutSuccess: true }));
   };
 };

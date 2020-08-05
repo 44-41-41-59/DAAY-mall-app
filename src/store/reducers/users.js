@@ -25,13 +25,13 @@ export default (state = initialState, action) => {
   // case 'CHECKOUT PAYMENT':
   //   return { ...state, cart:[] };
   case 'ADDCART':
-    state.cart.push(payload.cart)
+    state.cart.push(payload.cart);
     return {...state};
   case 'LOGIN':
-    console.log(payload)
+    console.log(payload);
     return { ...state, ...payload, logedin: true };
   case 'DELETE CARD FROM CART':
-    let cart =  state.cart.filter(item=> item._id !==  payload)
+    let cart =  state.cart.filter(item=> item._id !==  payload);
     return { ...state, cart };
   case 'LOGOUT':
     return initialState;

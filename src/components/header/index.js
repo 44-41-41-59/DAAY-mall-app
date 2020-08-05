@@ -10,6 +10,7 @@ import {
   MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
   MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon,
 } from 'mdbreact';
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 import { If, Then, Else } from '../if/if';
 import Show from '../show';
 import SearchPage from '../search/index';
@@ -22,6 +23,7 @@ function Header(props) {
   const history = useHistory();
   const logedin = useSelector((state) => state.user.logedin);
   let [redirect, setRedirect] = useState(null);
+  let [modal, setModal] = useState({modal:false});
 
   const dispatch = useDispatch();
   function handelLogout() {
@@ -42,7 +44,7 @@ function Header(props) {
   };
   useEffect(() => {
     props.get();
-  }, []);
+  }, [props]);
   return (
     <>
       <MDBNavbar dark expand="md" sticky='top' style={{backgroundColor:'#5254AF'}}>
@@ -140,8 +142,8 @@ function Header(props) {
                       <MDBDropdownItem>
                         <Link to={`/profile/${props.user._id}`}>Settings</Link>
                       </MDBDropdownItem>
-                      <MDBDropdownItem onClick={handelLogout}>
-                        <Link>Logout</Link>
+                      <MDBDropdownItem onClick={handelLogout} >
+                        <Link onClick={()=>setModal({modal:true})}>Logout</Link>
                       </MDBDropdownItem>
                     </MDBDropdownMenu>
                   </MDBDropdown>
@@ -163,11 +165,23 @@ function Header(props) {
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBNavbar>
+
+      {/* {LOGOUT MODAL} */}
+      <MDBModal isOpen={props.fetch.logoutSuccess&&modal.modal} >
+        <MDBModalBody>
+         You have been logged out
+        </MDBModalBody>
+        <MDBModalFooter>
+          <MDBBtn id='modalbutton' onClick={()=>setModal({modal:false})}> Ok</MDBBtn> 
+        </MDBModalFooter>
+      </MDBModal>
+
     </>
   );
 }
 
 const mapStateToProps = (state) => {
+
   return {
     user: state.user,
     fetch: state.fetching,

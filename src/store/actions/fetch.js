@@ -63,3 +63,12 @@ export const paymentFailed= (payload) => {
     payload: payload,
   };
 };
+
+
+export const logoutSuccess= (payload) => {
+  return {
+    type: 'LOGOUTSUCCESS',
+    payload: payload,
+  };
+};
+
