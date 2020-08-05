@@ -67,7 +67,7 @@ class App extends Component {
       });
 
       console.log(this.props.user);
-    }, 1200);
+    }, 1800);
   }
   render() {
     return (

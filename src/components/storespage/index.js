@@ -10,7 +10,6 @@ import Reviews from '../product/reviews';
 
 
 function Stores(props) {
-
   const dipatch=useDispatch();
   useEffect(()=>{ 
     dipatch(getStores());

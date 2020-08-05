@@ -133,6 +133,16 @@ function Header(props) {
                           <Link to={`/store/${props.user.stores}`}>My store</Link>
                         </MDBDropdownItem>
                       </Show>
+                      <Show condition={props.user.role === 'admin'}>
+                        <MDBDropdownItem >
+                          <Link to={`/admin/dashboard`}>Admin Dashboard</Link>
+                        </MDBDropdownItem>
+                      </Show>
+                      <Show condition={props.user.role === 'admin'}>
+                        <MDBDropdownItem >
+                          <Link to={`/admin/customerservice`}>Message Center</Link>
+                        </MDBDropdownItem>
+                      </Show>
                       <MDBDropdownItem >
                         <Link to={`/profile/${props.user._id}`}>My orders</Link>
                       </MDBDropdownItem>

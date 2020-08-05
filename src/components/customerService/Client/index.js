@@ -40,7 +40,7 @@ export default function CustomerServiceClient() {
         setMessages([...messages, currentRoom]);
         console.log(messages);
       });
-    }, 1300);
+    }, 2000);
   }, []);
   useEffect(() => {
     setTimeout(() => {
@@ -48,7 +48,7 @@ export default function CustomerServiceClient() {
         setMessages([...messages, message]);
         console.log(messages);
       });
-    }, 1300);
+    }, 2000);
   }, [messages]);
   return (
     <div style={{ margin: '2% 5%', maxHeight: '50%' }}>

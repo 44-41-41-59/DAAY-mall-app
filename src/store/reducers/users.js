@@ -11,7 +11,7 @@ let initialState = {
   wishlist: [ ],
   favoriteStores: [],
   orders: [],
-  viewedProducts: [],
+  views: [],
   cart: [],
   _id: '',
   stores:'',
