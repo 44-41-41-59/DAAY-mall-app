@@ -63,9 +63,8 @@ class App extends Component {
       socket.on('test', () => {
         console.log('hello ladies');
       });
-
       console.log(this.props.user);
-    }, 2000);
+    }, 1800);
   }
   render() {
     return (

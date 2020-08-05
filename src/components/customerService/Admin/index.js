@@ -50,7 +50,9 @@ export default function CustomerServiceAdmin() {
       let toRespond = agentId === id;
       dispatch(agentMessage({ id, _id, avatar, username, message, toRespond }));
     });
-  }, 3200);
+
+  }, 2000);
+
   function handelAdminClick(id) {
     setAgentId(id);
     dispatch(resetToRespond(id));
@@ -70,7 +72,9 @@ export default function CustomerServiceAdmin() {
   useEffect(() => {
     setTimeout(() => {
       socket.emit('admin');
-    }, 3200);
+
+    }, 2000);
+
     return;
   }, []);
   useEffect(() => {
@@ -101,7 +105,8 @@ export default function CustomerServiceAdmin() {
       //     );
       //   }
       // );
-    }, 3200);
+
+    }, 2000);
   }, [messages]);
   useEffect(() => {
     setTimeout(() => {
@@ -130,8 +135,10 @@ export default function CustomerServiceAdmin() {
         console.log('hello from out user ');
         dispatch(deleteAgents(id));
       });
-    }, 3200);
-  }, [dispatch]);
+    }, 2000);
+  }, []);
+
+
   useEffect(() => {
     return () => {
       console.log('close');

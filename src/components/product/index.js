@@ -15,14 +15,10 @@ import OneProduct from './product-page';
 
 // import BuyProductSecSlid from './buyProductSecSlide';
 function ProductPage(props) {
-  const [audio] = useState(new Audio('../../store/actions/Funny.mp3'));
-   
   const productID = props.match.params.id;
-  
   useEffect(() => {
-    audio.play();
     props.getProduct(productID);
-  }, [audio, productID, props]);
+  }, []);
 
   return (
     <div >

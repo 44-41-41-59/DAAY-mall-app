@@ -40,15 +40,16 @@ export default function CustomerServiceClient() {
         setMessages([...messages, currentRoom]);
         console.log(messages);
       });
-    }, 3200);
-  }, [messages, room]);
+    }, 2000);
+  }, []);
   useEffect(() => {
     setTimeout(() => {
       socket.on('message', (message) => {
         setMessages([...messages, message]);
         console.log(messages);
       });
-    }, 3200);
+    }, 2000);
+
   }, [messages]);
   return (
     <div id='adminchatcontainer'>

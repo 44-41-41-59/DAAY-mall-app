@@ -12,7 +12,7 @@ function Wishlist(props) {
   return (
     <>
       <Tab.Pane >
-        <Row style={{ marginLeft: '2vh' }}>
+        <Row style={{ marginLeft: '-2vh',display:'flex',justifyContent:'space-around' }}>
           <If condition={props.wishlist.length}>
             <Then>
               {props.wishlist.map((product) => {

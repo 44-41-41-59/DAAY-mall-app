@@ -46,7 +46,7 @@ function Footer() {
             <p>
               <h5>Help Center</h5>
               <Link to='/help'>FAQ</Link> <br />
-              <Link to='/chat'> Online Service </Link>
+              <Link to='/customerservice'> Online Service </Link>
             </p>
           </MDBCol>
         </MDBRow>

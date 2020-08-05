@@ -6,7 +6,9 @@
 
 #storeCard{
     margin-left: 2vw;
-    margin-top: 2vh;
+    margin-top: 5vh;
+    width: 22vw;
+    margin-bottom: 5vh;
 }
 
 #title{
@@ -35,11 +37,13 @@
 
 #viewstorebutton{
     background-color: #5254AF !important;
+    width: 13vw;
 }
 
 #addtofavbutton{
     background-color: #EC9F05 !important;
     margin-top: -3vh;
+    width: 13vw;
 }
 
 #addtofavbuttonStore{

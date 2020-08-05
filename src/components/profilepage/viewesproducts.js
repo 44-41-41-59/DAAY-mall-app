@@ -7,19 +7,20 @@ import {If, Then, Else} from '../if/if';
 import Empty from '../emptypage/emptypage';
 import ProductCard from '../product/card';
 import { connect } from 'react-redux';
+import Show from '../show/index'
 
 
 
 function ViewedProducts(props) {
   return (
     <>
-     {/* <Tab.Pane >
-        <Row style={{ marginLeft: '2vh' }}>
-          <If condition={props.user.viewedProducts.length}>
+    <Tab.Pane >
+        <Row style={{ marginLeft: '-2vh',display:'flex',justifyContent:'space-around' }}>
+          <If condition={props.user.views.length}>
             <Then>
-              {props.wishlist.map((product) => {
+              {props.user.views.map((product) => {
                 return (
-                  <ProductCard cardProduct={product.productID} wishlist={true} searchPage={true} />
+                  <ProductCard cardProduct={product.products} wishlist={true} searchPage={true} />
                 );
               })}
             </Then>
@@ -28,22 +29,7 @@ function ViewedProducts(props) {
             </Else>
           </If>
         </Row>
-      </Tab.Pane> */}
-
-<Empty/>
-
-      {/* <Tab.Pane>
-        <Row>
-          {props.user.wishlist.map((product)=>{
-            return(
-              <Card style={{ width: '25%' }}>
-                <Card.Img variant="top" src={product.image} />
-                <Card.Title>{product.title}</Card.Title>
-              </Card>
-            );
-          })}
-        </Row>
-      </Tab.Pane> */}
+      </Tab.Pane>
     </>
   );
 }
