@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './freeze.scss';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import {Link} from 'react-router-dom';
 import {
   getStorePending,
   resposeToStore,
@@ -30,6 +31,11 @@ export default function Dashboard() {
         <Button variant="primary" value="Freeze">
             Freeze
         </Button>
+        <Link to="/admin/adminPage">
+          <Button variant="primary">
+          Back
+          </Button>
+        </Link>
       </Form>
     </div>
   );

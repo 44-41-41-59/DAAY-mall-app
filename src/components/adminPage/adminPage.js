@@ -11,7 +11,7 @@ export default function AdminPage(props) {
         <div id="forButtons">
           <Link to="/admin/dashboard">
             <Button variant="primary">
-          Items Detail
+            Pending stores
             </Button>
           </Link>
           <Link to="/admin/freeze">

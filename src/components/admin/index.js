@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './admin.scss';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import {Link} from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import {
   getStorePending,
@@ -32,7 +33,7 @@ export default function Dashboard() {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th colSpan="13"> Items Detail</th>
+            <th colSpan="13"> Pending stores</th>
           </tr>
         </thead>
         <tbody>
@@ -73,6 +74,11 @@ export default function Dashboard() {
           })}
         </tbody>
       </Table>
+      <Link to="/admin/adminPage">
+        <Button variant="primary" id="buttonBack">
+          Back
+        </Button>
+      </Link>
     </div>
   );
 }
