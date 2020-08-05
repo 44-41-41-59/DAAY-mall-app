@@ -39,75 +39,90 @@ function ApplyStore(props) {
   };
 
   return (
-    <div id='addstoreform' >
-    <Card>
-      <Form onSubmit={submitFormHandler} id='store-apply-form'>
-        <Form.Row>
-          <Form.Group as={Col} controlId="formGridEmail">
-            <Form.Label>Store name</Form.Label>
-            <Form.Control  type='text' name='name' />
-          </Form.Group>
+    <>
+      <div id='addstorepage'>
 
-          <Form.Group as={Col} controlId="formGridPassword">
-            <Form.Label>Store logo</Form.Label>
-            <Form.Control type='file' onChange={handleChange} />
-            <div onClick={handleUpload} style={{backgroundColor:'#5254AF',display:'inline-block',border:'1% , solid #5254AF',color:'white',cursor:'pointer'}}>Upload</div>
-          </Form.Group>
-        </Form.Row>
+        <h3 id='addstore3title' >Add a store</h3>
+        <h5>These information will be used as your default store information.</h5>
+        <hr/>
 
-        <Form.Label>Store logo</Form.Label>
-        <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-        </DropdownButton>
-        <Form.Group controlId="formGridAddress2">
-          <Form.Label>Address 2</Form.Label>
-          <Form.Control placeholder="Apartment, studio, or floor" />
-        </Form.Group>
+        <div id='addstoreformcontainer' >
+          <Card>
+            <form onSubmit={submitFormHandler} id='addstoreform' >
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Store Name</label>
+                  <input type="text" class="form-control" id="inputEmail4" name='name'/>
+                </div>
 
-        <Form.Row>
-          <Form.Group as={Col} controlId="formGridCity">
-            <Form.Label>City</Form.Label>
-            <Form.Control />
-          </Form.Group>
 
-          <Form.Group as={Col} controlId="formGridState">
-            <Form.Label>State</Form.Label>
-            <Form.Control as="select" defaultValue="Choose...">
-              <option>Choose...</option>
-              <option>...</option>
-            </Form.Control>
-          </Form.Group>
+                <div class="form-group col-md-4">
+                  <label for='categories'>Category</label>
+                  <select id="categories" name="category" class="form-control">
+                    <option value="general">General</option>
+                    <option value="food">food</option>
+                  </select>
+                </div>
+              </div>
 
-          <Form.Group as={Col} controlId="formGridZip">
-            <Form.Label>Zip</Form.Label>
-            <Form.Control />
-          </Form.Group>
-        </Form.Row>
 
-        <Form.Group id="formGridCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
+              <div class="form-group col-md-6">
+                <label for='logo'>Store Logo</label>
+                <input  type='file' onChange={handleChange} id="logo" />
+                <div id='uploadbutton' onClick={handleUpload} class="btn btn-primary">Upload</div>
+              </div>
+             
 
-        <Button variant="primary" type="submit">
-    Submit
-        </Button>
-      </Form>
-    </Card>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for='country'>Country</label>
+                  <input type='text' name='country' class="form-control" id="inputCity"/>
+                </div>
 
-      <MDBModal isOpen={props.fetching.fetchModalStoreSuccess}  size="lg">
-        <MDBModalHeader >{props.store.results?props.store.results.name:props.store.name} has been added successfully.</MDBModalHeader>
-        <MDBModalBody>
+                <div class="form-group col-md-4">
+                  <label type='text' name='city'>City</label>
+                  <input type='text' class="form-control" id="city"/>
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="inputZip">Zip</label>
+                  <input type="text" class="form-control" id="inputZip"/>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <label for='contactNumber'>Contact Number</label>
+                  <input type="text" class="form-control" id="contactNumber"/>
+                </div>
+
+              </div>
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheck"/>
+                  <label class="form-check-label" for="gridCheck">
+        I agree on DAAY-mall instructions and policies
+                  </label>
+                </div>
+              </div>
+
+              <input type='hidden' value={props.user._id} name='ownerID' />
+
+              <button id='submitbutton' type="submit" class="btn btn-primary">Add my Store</button>
+            </form>
+          </Card>
+
+          <MDBModal isOpen={props.fetching.fetchModalStoreSuccess}  size="lg">
+            <MDBModalHeader >{props.store.results?props.store.results.name:props.store.name} has been added successfully.</MDBModalHeader>
+            <MDBModalBody>
          your store has been added successfully but you need to wait for your store to be approved. 
-        </MDBModalBody>
-        <MDBModalFooter>
-          <MDBBtn color="secondary" onClick={()=>history.push('/')}>Back to main page</MDBBtn>
-          <MDBBtn color="primary" onClick={()=>history.push(`/store/${props.store.results?props.store.results._id:props.store._id}`)}>see my store page</MDBBtn>
-        </MDBModalFooter>
-      </MDBModal>
+            </MDBModalBody>
+            <MDBModalFooter>
+              <MDBBtn color="secondary" onClick={()=>history.push('/')}>Back to main page</MDBBtn>
+              <MDBBtn color="primary" onClick={()=>history.push(`/store/${props.store.results?props.store.results._id:props.store._id}`)}>see my store page</MDBBtn>
+            </MDBModalFooter>
+          </MDBModal>
 
-    </div>
+        </div>
+      </div>
+    </>
   );
 }
 

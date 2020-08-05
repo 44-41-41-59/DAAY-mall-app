@@ -5,8 +5,8 @@
 } 
 
 #storeCard{
- margin-left: 5vw;
- margin-top: 3vh;
+    margin-left: 2vw;
+    margin-top: 2vh;
 }
 
 #title{
@@ -46,4 +46,9 @@
     display: flex;
     flex-direction:column;
     align-items: center;
+}
+
+#cardsContainer{
+    display: flex;
+    flex-wrap: wrap;
 }
