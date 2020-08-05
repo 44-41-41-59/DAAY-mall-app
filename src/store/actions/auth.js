@@ -20,8 +20,8 @@ export const auth = (userInfo) => ({
 
 function getUserData(obj) {
   let acl = obj.acl.acl;
-  let { avatar, confirmed, email, role, username, _id, stores } = obj.data;
-  return { avatar, confirmed, email, role, username, _id, acl, stores };
+  let { avatar, confirmed, email, role, username, _id, stores, cart,paymentsHistory,wishlist } = obj.data;
+  return { avatar, confirmed, email, role, username, _id, acl, stores,cart,paymentsHistory,wishlist };
 }
 
 export const loginRemoteUser = function (email, password, history) {
@@ -40,7 +40,9 @@ export const loginRemoteUser = function (email, password, history) {
         dispatch(auth(getUserData(response.data)));
         dispatch(LoginSuccess({ loginSuccess: true }));
         dispatch(fetchLogin({ fetchLogin: false }));
+        dispatch(({type:'MODAL FOR LOGIN'}));
         history.push('/');
+        setTimeout(()=>{dispatch({type:'MODAL FOR LOGIN CLOSE'})},2000)
       })
       .catch((err) => {
         dispatch(
@@ -90,6 +92,7 @@ export const checkRemoteUser = function () {
       method: 'get',
     })
       .then((response) => {
+        console.log(response)
         dispatch(auth(getUserData(response.data)));
       })
       .catch(console.log);

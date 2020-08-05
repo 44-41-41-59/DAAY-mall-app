@@ -22,10 +22,17 @@ export default (state = initialState, action) => {
   switch (type) {
   case 'GET CART PRODUCTS':
     return { ...state, ...payload };
+  // case 'CHECKOUT PAYMENT':
+  //   return { ...state, cart:[] };
   case 'ADDCART':
-    return {...state, ...payload};
+    state.cart.push(payload.cart)
+    return {...state};
   case 'LOGIN':
+    console.log(payload)
     return { ...state, ...payload, logedin: true };
+  case 'DELETE CARD FROM CART':
+    let cart =  state.cart.filter(item=> item._id !==  payload)
+    return { ...state, cart };
   case 'LOGOUT':
     return initialState;
   default:

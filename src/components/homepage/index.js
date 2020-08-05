@@ -61,12 +61,18 @@ function Homepage(props) {
             <MDBBtn color="primary">Go to register</MDBBtn>
           </MDBModalFooter>
         </MDBModal>}
+
+        <MDBModal isOpen={props.fetching.loginModal}  side position="top-right">
+          <MDBModalBody>
+           Welcome back {props.user.username}
+          </MDBModalBody> 
+        </MDBModal>
     </>
   );
 }
 
 const mapStateToProps = (state) => {
-  return { mainProducts: state.products, ads: state.ads,fetching:state.fetching };
+  return { mainProducts: state.products, ads: state.ads,fetching:state.fetching,user:state.user };
 };
 const actionCreater = (dispatch) => ({
   getMainPageProducts: () => dispatch(getMainPageProducts()),
