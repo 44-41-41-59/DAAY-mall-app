@@ -20,9 +20,9 @@ function ProductPage(props) {
   const productID = props.match.params.id;
   
   useEffect(() => {
-     audio.play()
+    audio.play();
     props.getProduct(productID);
-  }, []);
+  }, [audio, productID, props]);
 
   return (
     <div >
@@ -50,26 +50,26 @@ function ProductPage(props) {
       {<MDBModal isOpen={
         props.fetching.fetchAddCardSuccesses ||
         props.fetching.fetchAddWishListSuccesses} toggle='' side position="top-right">
-          <MDBModalHeader >SUCCESS</MDBModalHeader>
-          <MDBModalBody>
+        <MDBModalHeader >SUCCESS</MDBModalHeader>
+        <MDBModalBody>
            the card has been Added successfully to the {props.fetching.fetchAddCardSuccesses?'Cart':'wishlist'} 📦🎁
-          </MDBModalBody>
-          <MDBModalFooter>
-            <MDBBtn color="secondary" >UNDO</MDBBtn>
-            <MDBBtn color="primary">DONE</MDBBtn>
-          </MDBModalFooter>
-        </MDBModal>}
+        </MDBModalBody>
+        <MDBModalFooter>
+          <MDBBtn color="secondary" >UNDO</MDBBtn>
+          <MDBBtn color="primary">DONE</MDBBtn>
+        </MDBModalFooter>
+      </MDBModal>}
       
       {<MDBModal color='primary' isOpen={props.fetching.fetchModalFailer} toggle='' side position="top-right">
-          <MDBModalHeader >SOMETHING WENT WRONG</MDBModalHeader>
-          <MDBModalBody>
+        <MDBModalHeader >SOMETHING WENT WRONG</MDBModalHeader>
+        <MDBModalBody>
            you need to login or signup
-          </MDBModalBody>
-          <MDBModalFooter>
-            <MDBBtn color="secondary" >CANCEL</MDBBtn>
-            <MDBBtn color="primary">Go to register</MDBBtn>
-          </MDBModalFooter>
-        </MDBModal>}
+        </MDBModalBody>
+        <MDBModalFooter>
+          <MDBBtn color="secondary" >CANCEL</MDBBtn>
+          <MDBBtn color="primary">Go to register</MDBBtn>
+        </MDBModalFooter>
+      </MDBModal>}
     </div>
   );
 }
@@ -77,23 +77,23 @@ function ProductPage(props) {
 function Modal(){
   return(
     <MDBModal isOpen={this.state.modal6} toggle={this.toggle(6)} side position="top-right">
-          <MDBModalHeader toggle={this.toggle(6)}>MDBModal title</MDBModalHeader>
-          <MDBModalBody>
+      <MDBModalHeader toggle={this.toggle(6)}>MDBModal title</MDBModalHeader>
+      <MDBModalBody>
            the // has been Added successfully 📦🎁
-          </MDBModalBody>
-          <MDBModalFooter>
-            <MDBBtn color="secondary" onClick={this.toggle(6)}>Close</MDBBtn>
-            <MDBBtn color="primary">Save changes</MDBBtn>
-          </MDBModalFooter>
-        </MDBModal>
-  )
+      </MDBModalBody>
+      <MDBModalFooter>
+        <MDBBtn color="secondary" onClick={this.toggle(6)}>Close</MDBBtn>
+        <MDBBtn color="primary">Save changes</MDBBtn>
+      </MDBModalFooter>
+    </MDBModal>
+  );
 }
 
 const mapStateToProps = (state) => {
   return {
     product: state.product,
     user: state.user,
-    fetching:state.fetching
+    fetching:state.fetching,
   };
 };
 const mapDispatchToProps = (dispatch) => ({

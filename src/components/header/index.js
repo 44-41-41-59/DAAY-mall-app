@@ -148,14 +148,14 @@ function Header(props) {
                 </MDBNavItem>
                 <MDBNavItem>
                   <MDBDropdown>
-                    <MDBDropdownToggle nav >
+                    {/* <MDBDropdownToggle nav >
                       <div className="d-none d-md-inline" style={{ marginRight: '1vw' }}>
                         <Link to={`/cart/user/${props.user._id}`} style={{ color: 'white' }}>
                           <MDBIcon icon="shopping-cart" style={{ marginRight: '1vw' }} />
                           Cart {props.user.cart.length}
                         </Link>
                       </div>
-                    </MDBDropdownToggle>
+                    </MDBDropdownToggle> */}
                   </MDBDropdown>
                 </MDBNavItem>
               </Else>
