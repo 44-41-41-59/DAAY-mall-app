@@ -29,6 +29,9 @@ import NotFound from '../src/components/notfound/notfound';
 import WebSitePolicie from './components/webSitePolicies/';
 import FAQ from './components/FAQ/';
 import OwnerDashboard from './components/ownerDashboard';
+import Freeze from './components/Freeze/';
+import AdminPage from './components/adminPage/';
+
 
 import Test from '../src/components/customerService/Admin/index1';
 import Policies from './components/webSitePolicies';
@@ -128,6 +131,12 @@ class App extends Component {
         </Route>
         <Route exact path="/dashboard/store/:id">
           <OwnerDashboard />
+        </Route>
+        <Route exact path="/admin/adminPage">
+          <AdminPage />
+        </Route>
+        <Route exact path="/admin/freeze">
+          <Freeze />
         </Route>
         {/* <Route exact={true} path="*">
           <NotFound  />
