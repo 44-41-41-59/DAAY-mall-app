@@ -48,52 +48,6 @@ function Reviews(props) {
   };
   return (
     <div>
-      <MDBCard style={{ margin: '10vh 20vh', display: 'flex', alignItems: 'center' }}>
-        <MDBCardBody>
-          <MDBRow>
-            <div>
-              <form onSubmit={formHandler} style={{ display: 'flex', flexDirection: 'row' }}>
-
-                <MDBInput
-                  onChange={reviewHandler}
-                  type="textarea"
-                  label="Add your review here"
-                  rows="2"
-                  icon="pencil-alt"
-                  style={{ width: '45vw' }}
-                />
-                {[...Array(5)].map((star, i) => {
-                  const ratingValue = i + 1;
-                  return <label style={{ display: 'flex', alignItems: 'center' }}>
-                    <input
-                      type="radio"
-                      name="rate"
-                      value={ratingValue}
-                      onClick={() => setRating(ratingValue)}
-                      style={{ display: 'none!important', position: 'fixed' }}
-                    />
-                    <FaStar
-                      class="star"
-                      size={30}
-                      color={ratingValue <= (hover || newRating) ? '#ee9f1e' : '#e4e5e9'}
-                      onMouseEnter={() => setHover(ratingValue)}
-                      onMouseLeave={() => setHover(null)}
-                      onClick={() => setNewRating(ratingValue)}
-                    />
-
-                  </label>;
-                })}
-                <input type='hidden' name='productID' value={props.product._id} />
-                <input type='hidden' name='userID' value={props.user._id} />
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <MDBBtn type='submit' color="blue-grey" style={{ maxHeight: '7vh' }}>Add review</MDBBtn>
-                </div>
-              </form>
-            </div>
-          </MDBRow>
-        </MDBCardBody>
-
-      </MDBCard>
       {props.product.reviews.map(review => {
         return (
           <MDBCard
@@ -120,13 +74,13 @@ function Reviews(props) {
                       </div>
                     </div>
                     <div className="excerpt" style={{
-                      alignItems: 'center', minWidth: '70vw', display: 'flex', justifyContent: 'space-evenly',
+                      alignItems: 'center', minWidth: '63vw', display: 'flex', justifyContent: 'space-between', padding: '2vw', margin: '2vw',
                     }}>
-                      <div className="added-text" style={{ textAlign: 'center' }}>
+                      <div className="added-text" style={{ textAlign: 'center', maxWidth: '40vw' }}>
                         {review.review}
                       </div>
                       <div className="feed-footer" >
-                        <div style={{ display:'flex', flexDirection:'center', alignItems:'center'}}>
+                        <div style={{ display: 'flex', flexDirection: 'center', alignItems: 'center' }}>
                           {[...Array(review.rate)].map((star, i) => {
                             return <label style={{ display: 'flex', alignItems: 'center' }}>
                               <FaStar
@@ -136,7 +90,7 @@ function Reviews(props) {
                               />
                             </label>;
                           })}
-                          {[...Array(5-review.rate)].map((star, i) => {
+                          {[...Array(5 - review.rate)].map((star, i) => {
                             return <label style={{ display: 'flex', alignItems: 'center' }}>
                               <FaStar
                                 class="star"
@@ -156,6 +110,53 @@ function Reviews(props) {
         );
       })
       }
+
+      <MDBCard style={{ margin: '10vh 20vh', display: 'flex', alignItems: 'center' }}>
+        <MDBCardBody>
+          <MDBRow>
+            <div>
+              <form onSubmit={formHandler} style={{ display: 'flex', flexDirection: 'row' }}>
+
+                <MDBInput
+                  onChange={reviewHandler}
+                  type="textarea"
+                  label="Add your review here"
+                  rows="2"
+                  icon="pencil-alt"
+                  style={{ width: '40vw', marginRight: '5vw' }}
+                />
+                {[...Array(5)].map((star, i) => {
+                  const ratingValue = i + 1;
+                  return <label style={{ display: 'flex', alignItems: 'center' }}>
+                    <input
+                      type="radio"
+                      name="rate"
+                      value={ratingValue}
+                      onClick={() => setRating(ratingValue)}
+                      style={{ display: 'none!important', position: 'fixed' }}
+                    />
+                    <FaStar
+                      class="star"
+                      size={30}
+                      color={ratingValue <= (hover || newRating) ? '#ee9f1e' : '#e4e5e9'}
+                      onMouseEnter={() => setHover(ratingValue)}
+                      onMouseLeave={() => setHover(null)}
+                      onClick={() => setNewRating(ratingValue)}
+                    />
+
+                  </label>;
+                })}
+                <input type='hidden' name='productID' value={props.product._id} />
+                <input type='hidden' name='userID' value={props.user._id} />
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <MDBBtn type='submit' id='bluebtnpr' style={{ maxHeight: '7vh' }}>Add review</MDBBtn>
+                </div>
+              </form>
+            </div>
+          </MDBRow>
+        </MDBCardBody>
+
+      </MDBCard>
 
     </div >
   );

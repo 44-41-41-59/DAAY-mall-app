@@ -79,11 +79,11 @@ function OneProduct(props) {
       >
         <div
           id='leftside-product'
-          style={{ width: '50vw', margin: '5vh', padding: '6vh 8vh' }}
+          style={{ width: '50vw', margin: '0vh 5vh 0vh 5vh', padding: '10vh 6vh' }}
         >
           <div style={{ minHeight: '60vh' }}>
             <div id='info-product' style={{ padding: '5vh' }} >
-              <h1 style={{ fontSize: '1.3rem' }}>{props.product.name}</h1>
+              <h1 style={{ fontSize: '1.3rem', fontWeight: 400 }}>{props.product.name}</h1>
               <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'left', alignItems: 'center' }}>
                 <div>
                   <span style={{ color: 'gray', marginRight: '1vw' }}>{props.product.views} Views</span>
@@ -183,10 +183,16 @@ function OneProduct(props) {
 
         <div
           id='rightside-product'
-          style={{ width: '30vw', margin: '5vh' }}
+          style={{ width: '30vw', margin: '5vh', display: 'flex' }}
         >
           <div
-            style={{ maxHeight: '60vh' }}
+            style={{
+              maxHeight: '80vh',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
           >
             <div
               id='bigimage-product'
