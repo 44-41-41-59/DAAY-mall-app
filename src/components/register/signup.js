@@ -56,7 +56,7 @@ function Signup(props) {
             label="I read all the roles and understand it"
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button id='signupbutton' variant="primary" type="submit">
           Submit
         </Button>
       </Form>
