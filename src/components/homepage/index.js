@@ -22,7 +22,7 @@ function Homepage(props) {
         <Col id="left-section">
           <SideNav />
         </Col>
-        <Col id="right-section">
+        <Col id="right-section" style={{maxWidth:'75vw'}}>
           <Row id="crousel-id">
             <MainCrousel ads={props.ads} />
           </Row>

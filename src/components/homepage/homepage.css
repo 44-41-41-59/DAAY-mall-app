@@ -27,11 +27,11 @@
   width: 50vw;
 }
 
-
 #crousel-id {
   margin-top: 5vh;
   height: 60vh;
-  width: 75vw !important;
+  max-width: 75vw;
+  /* width: 75vw !important; */
   /* background-color: rgba(61, 61, 61, 0.349);
   clip-path: polygon(34% 84%, 100% 0, 100% 99%, 0 99%, 0 69%); */
 }
@@ -132,5 +132,128 @@
 }
 
 #price-home {
-  margin-top: 0vw!important;
+  margin-top: 0vw !important;
+}
+
+@keyframes flickerAnimation {
+  0% {
+    opacity: 0;
+  }
+  12.5% {
+    opacity: 0.25;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  37.5% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 1;
+  }
+  62.5% {
+    opacity: 0.75;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  78.5% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-o-keyframes flickerAnimation {
+  0% {
+    opacity: 0;
+  }
+  12.5% {
+    opacity: 0.25;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  37.5% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 1;
+  }
+  62.5% {
+    opacity: 0.75;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  78.5% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-moz-keyframes flickerAnimation {
+  0% {
+    opacity: 0;
+  }
+  12.5% {
+    opacity: 0.25;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  37.5% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 1;
+  }
+  62.5% {
+    opacity: 0.75;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  78.5% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes flickerAnimation {
+  0% {
+    opacity: 0;
+  }
+  12.5% {
+    opacity: 0.25;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  37.5% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 1;
+  }
+  62.5% {
+    opacity: 0.75;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  78.5% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.fade-in:hover {
+  -webkit-animation: flickerAnimation 1s infinite;
+  -moz-animation: flickerAnimation 1s infinite;
+  -o-animation: flickerAnimation 1s infinite;
+  animation: flickerAnimation 1s infinite;
 }

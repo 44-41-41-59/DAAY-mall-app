@@ -7,32 +7,32 @@ import Col from 'react-bootstrap/Col';
 function TopSections(props) {
   return (
 
-    <Row>
-      <Col style={{ backgroundColor: '#f5f5f5', height: '30vh'}}>
-        <a href='#saleSection' >
-          <img style={{ width: '100%', height: '30vh' }}
-            src='https://www.footwearetc.com/_resources/www/footwear/_system/content/images/d8'
+    <div style={{ display: 'flex', flexDirection: 'row', backgroundColor: 'white', justifyContent: 'center', maxWidth:'75vw' }}>
+      <div style={{ backgroundColor: '#f5f5f5', height: '30vh', width: '20vw' }} >
+        <a href='#saleSection' class='fade-in' >
+          <img style={{ width: '100%', height: '30vh', padding: '8vh 8vh' }}
+            src='https://i.ibb.co/FzJkQpS/coollogo-com-16050293.png'
             alt='sale banner'
           />
         </a>
-      </Col>
-      <Col style={{ backgroundColor: 'blue', height: '30vh' }}>
-        <a href='#topSection' >
-          <img style={{ width: '100%', height: '30vh' }}
-            src='https://www.footwearetc.com/_resources/www/footwear/_system/content/images/d83f84d5-3279-485c-a401-eb5472f91d4e_130650_headerimage.jpg'
+      </div>
+      <div style={{ backgroundColor: '#f5f5f5', height: '30vh', width: '30vw', paddingRight:'2vw', paddingLeft:'2vw'}}>
+        <a href='#topSection' class='fade-in'>
+          <img style={{ width: '100%', height: '30vh', padding: '8vh 0vh' }}
+            src='https://i.ibb.co/Sy5JLRY/coollogo-com-276811715.png'
             alt='best seller banner'
           />
         </a>
-      </Col>
-      <Col style={{ backgroundColor: '#f5f5f5', height: '30vh' }}>
-        <a href='#newSection' >
-          <img style={{ width: '100%', height: '30vh' }}
-            src='https://www.footwearetc.com/_resources/www/footwear/_system/content/images/d8'
+      </div>
+      <div style={{ backgroundColor: '#f5f5f5', height: '30vh', width: '20vw' }}>
+        <a href='#newSection' class='fade-in'>
+          <img style={{ width: '100%', height: '30vh', padding: '8vh 8vh' }}
+            src='https://i.ibb.co/dcc0fSF/coollogo-com-44415114.png'
             alt='new banner'
           />
         </a>
-      </Col>
-    </Row>
+      </div>
+    </div>
   );
 }
 

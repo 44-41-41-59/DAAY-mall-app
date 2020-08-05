@@ -164,7 +164,7 @@ function AddProduct(props) {
 
               <Form.Group controlId="exampleForm.ControlTextarea1">
 
-                <Form.Control as="select" custom name='category' style={{marginBottom:'6vh'}}> {/*make it dynamic*/}
+                <Form.Control as="select" custom name='category' style={{ marginBottom: '6vh' }}> {/*make it dynamic*/}
                   <option>Choose category</option>
                   <option>General</option>
                   <option>Food</option>
@@ -176,29 +176,29 @@ function AddProduct(props) {
 
               <Form.Group controlId="exampleForm.ControlTextarea1">
                 <Form.Control type="number" placeholder="Sale percentage %" name='sale' min="0" max="100" step="1" />
-                <div style={{display:'flex', flexDirection:'row', width:'20vw',     justifyContent: 'center'}}>
-                <label id='apl' style={{textAlign:'center'}} >
-                  Hidden
-                  <input
-                    type='radio'
-                    onClick={() => setHidden({ radio: 'hidden' })}
-                    checked={hidden.radio === 'hidden' ? true : false}
-                    name='hidden'
-                    value='hidden'
-                    style={{ marginTop: '2vh', marginBottom: '2vh', width: '5vw' }}
-                  />
-                </label>
-                <label id='apl' style={{textAlign:'center'}}>
-                  Available
-                  <input
-                    type='radio'
-                    onClick={() => setHidden({ radio: 'available' })}
-                    checked={hidden.radio === 'available' ? true : false}
-                    name='hidden'
-                    value='available'
-                    style={{ marginTop: '2vh', marginBottom: '2vh', width: '5vw' }}
-                  />
-                </label>
+                <div style={{ display: 'flex', flexDirection: 'row', width: '20vw', justifyContent: 'center' }}>
+                  <label id='apl' style={{ textAlign: 'center' }} >
+                    Hidden
+                    <input
+                      type='radio'
+                      onClick={() => setHidden({ radio: 'hidden' })}
+                      checked={hidden.radio === 'hidden' ? true : false}
+                      name='hidden'
+                      value='hidden'
+                      style={{ marginTop: '2vh', marginBottom: '2vh', width: '5vw' }}
+                    />
+                  </label>
+                  <label id='apl' style={{ textAlign: 'center' }}>
+                    Available
+                    <input
+                      type='radio'
+                      onClick={() => setHidden({ radio: 'available' })}
+                      checked={hidden.radio === 'available' ? true : false}
+                      name='hidden'
+                      value='available'
+                      style={{ marginTop: '2vh', marginBottom: '2vh', width: '5vw' }}
+                    />
+                  </label>
 
                 </div>
                 {/* <Form.Check 
@@ -218,7 +218,7 @@ function AddProduct(props) {
               <MDBBtn id='orangebtnpr' type="submit" style={{ marginRight: '10vw' }}>
                 Add product to The Store
               </MDBBtn>
-              <Link to={linkTarget} onClick={()=>setStep({ section: 1, active: 1 })}>Add more products</Link> {/*not correct!!*/}
+              <Link to={linkTarget} onClick={() => setStep({ section: 1, active: 1 })}>Add more products</Link> {/*not correct!!*/}
             </div>
           </div>
 

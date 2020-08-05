@@ -13,6 +13,13 @@ function MainCrousel(props) {
 
   return (
     <Carousel interval="5000">
+      {/* <Carousel.Item id='crItem'>
+        <img className="d-block w-100" src='https://i.ibb.co/dBPN7fn/photo-image-editing-20200803-3.jpg' alt="First slide" id="imgCr" />
+      </Carousel.Item>
+      <Carousel.Item id='crItem'>
+        <img className="d-block w-100" src='https://i.ibb.co/FzkbbRm/woman-3190829-1920-1.jpg' alt="First slide" id="imgCr" />
+      </Carousel.Item> */}
+
       {props.ads.ads.map((item) => {
         return (
           <Carousel.Item id='crItem'>
