@@ -2,17 +2,21 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory} from 'react-router-dom';
 import { addStore } from '../../store/actions/store';
-import Modal from 'react-bootstrap/Modal';
+import Dropdown from 'react-bootstrap/Dropdown';
+import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Form from 'react-bootstrap/Form';
+import Card from 'react-bootstrap/Card';
 import { handleUpload } from '../../store/actions/files';
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
+import { MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 
 // import Image from '../imagetest/index';
 
 
 
 function ApplyStore(props) {
-  const history =  useHistory()
+  const history =  useHistory();
   const [modal, setModal] = useState(false);
   const [images, setImage] = useState({});
 
@@ -35,43 +39,62 @@ function ApplyStore(props) {
   };
 
   return (
-    <div>
-      <form
-        onSubmit={submitFormHandler}
-        id='store-apply-form'
-        style={{ display: 'flex', flexDirection: 'column' }
-        }>
-        <label for='name'>
-          Store name
-          <input type='text' name='name' />
-        </label>
-        <label for='logo'>
-          Store logo
-          <input type='file' onChange={handleChange}/>
-          <div onClick={handleUpload} style={{backgroundColor:'gray'}}>Upload</div> {/* Dont make it a button!! */}
-        </label>
-        <label for='categories'>
-          Categories
-          <select name="category" id="categories">
-            <option value="general">General</option>
-            <option value="food">food</option>
-          </select>
-        </label>
-        <label for='country'>
-          Country
-          <input type='text' name='country' /> {/*make it a dropdown list*/}
-        </label>
-        <label for='city'>
-          City
-          <input type='text' name='city' />
-        </label>
-        <label for='contactNumber'>
-          Contact number
-          <input type='number' name='contactNumber' />
-        </label>
-        <input type='hidden' value={props.user._id} name='ownerID' />
-        <button type='submit'>Apply store</button>
-      </form>
+    <div id='addstoreform' >
+    <Card>
+      <Form onSubmit={submitFormHandler} id='store-apply-form'>
+        <Form.Row>
+          <Form.Group as={Col} controlId="formGridEmail">
+            <Form.Label>Store name</Form.Label>
+            <Form.Control  type='text' name='name' />
+          </Form.Group>
+
+          <Form.Group as={Col} controlId="formGridPassword">
+            <Form.Label>Store logo</Form.Label>
+            <Form.Control type='file' onChange={handleChange} />
+            <div onClick={handleUpload} style={{backgroundColor:'#5254AF',display:'inline-block',border:'1% , solid #5254AF',color:'white',cursor:'pointer'}}>Upload</div>
+          </Form.Group>
+        </Form.Row>
+
+        <Form.Label>Store logo</Form.Label>
+        <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+          <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+          <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+        </DropdownButton>
+        <Form.Group controlId="formGridAddress2">
+          <Form.Label>Address 2</Form.Label>
+          <Form.Control placeholder="Apartment, studio, or floor" />
+        </Form.Group>
+
+        <Form.Row>
+          <Form.Group as={Col} controlId="formGridCity">
+            <Form.Label>City</Form.Label>
+            <Form.Control />
+          </Form.Group>
+
+          <Form.Group as={Col} controlId="formGridState">
+            <Form.Label>State</Form.Label>
+            <Form.Control as="select" defaultValue="Choose...">
+              <option>Choose...</option>
+              <option>...</option>
+            </Form.Control>
+          </Form.Group>
+
+          <Form.Group as={Col} controlId="formGridZip">
+            <Form.Label>Zip</Form.Label>
+            <Form.Control />
+          </Form.Group>
+        </Form.Row>
+
+        <Form.Group id="formGridCheckbox">
+          <Form.Check type="checkbox" label="Check me out" />
+        </Form.Group>
+
+        <Button variant="primary" type="submit">
+    Submit
+        </Button>
+      </Form>
+    </Card>
 
       <MDBModal isOpen={props.fetching.fetchModalStoreSuccess}  size="lg">
         <MDBModalHeader >{props.store.results?props.store.results.name:props.store.name} has been added successfully.</MDBModalHeader>
@@ -85,7 +108,6 @@ function ApplyStore(props) {
       </MDBModal>
 
     </div>
-
   );
 }
 

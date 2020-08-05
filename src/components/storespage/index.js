@@ -75,12 +75,14 @@ function Stores(props) {
                         </Else>
                       </If>
                     </div>
-                    <Link to={`/store/${store._id}`} >
-                      <MDBBtn id='viewstorebutton'>View Store</MDBBtn>
-                    </Link> <br/>
-                    <Link  >
-                      <MDBBtn id='addtofavbutton'>Add to favorite</MDBBtn>
-                    </Link>
+                    <div id='storesbuttons' >
+                      <Link to={`/store/${store._id}`} >
+                        <MDBBtn id='viewstorebutton'>View Store</MDBBtn>
+                      </Link> <br/>
+                      <Link  >
+                        <MDBBtn id='addtofavbutton'>Add to favorite</MDBBtn>
+                      </Link>
+                    </div>
                   </MDBCardBody>
                 </MDBCard>
               </div>

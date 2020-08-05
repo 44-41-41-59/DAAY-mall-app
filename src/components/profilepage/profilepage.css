@@ -37,3 +37,9 @@
   font-weight: bold;
   margin-top: 1vh;
 }
+
+/* ADD TO STORE FORM */
+
+#addstoreform{
+    margin: 5vw;
+}

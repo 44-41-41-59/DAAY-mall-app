@@ -1,10 +1,18 @@
 import React from 'react';
+// import PaginationFunction from './pagination';
 import PaginationBar from './pagination';
+import Card from 'react-bootstrap/Card';
+import { MDBIcon } from 'mdbreact';
+import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
 import { If, Then, Else } from '../if/if';
 import Image from 'react-bootstrap/Image'; 
 
+
+
 import './search.scss';
+import products from '../../store/reducers/products';
 import ProductCard from '../product/card';
 
 function Results(props) {
@@ -28,18 +36,22 @@ function Results(props) {
     <>
       <If condition={currentItems.length}>
         <Then>
-          <div id='searchResultsBox' style={{width:'80vw'}} >
-            <div style={{margin:'5vh 5vw 0vw 0vh', display:'flex', flexWrap:'wrap', justifyContent:'space-around'}}>
+          <div style={{ width: '72vw' }} >
+            <div style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'space-between',
+            }}>
               {/* <div class="row"> */}
               {currentItems.map(item => {
                 return (
-                  <ProductCard cardProduct={item} searchPage={true}/>
+                  <ProductCard cardProduct={item} searchPage={true} />
                 );
               })}
-              {/* </div> */}
             </div>
           </div>
-          <PaginationBar products={props.products} pageNumbers={pageNumbers}/>
+          <PaginationBar products={props.products} pageNumbers={pageNumbers} />
+         
         </Then>
         <Else>
           <div style={{display:'flex',flexDirection:'column',alignItems:'center'}} >
@@ -48,23 +60,6 @@ function Results(props) {
           </div>
         </Else>
       </If>
-    
-      <div style={{ width: '72vw' }} >
-        <div style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'space-between',
-        }}>
-          {/* <div class="row"> */}
-          {currentItems.map(item => {
-            return (
-              <ProductCard cardProduct={item} searchPage={true} />
-            );
-          })}
-          {/* </div> */}
-        </div>
-      </div>
-      <PaginationBar products={props.products} pageNumbers={pageNumbers} />
     </>
 
   );
