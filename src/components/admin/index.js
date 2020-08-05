@@ -66,8 +66,8 @@ export default function Dashboard() {
                 <td><span class="fixing">{item.ownerID.email}</span></td>
                 <td><span class="fixing">{item.ownerID.username}</span></td>
                 <td><span class="fixing">{item.ownerID._id}</span></td>
-                <td><button class="ApproveAndReject" onClick={() => dispatch(resposeToStore('approved', item._id))}>+</button></td>
-                <td><button class="ApproveAndReject" id="Reject" onClick={() => dispatch(resposeToStore('rejected', item._id))}>--</button></td>
+                <td><button class="ApproveAndReject" onClick={() => dispatch(resposeToStore('approved', item._id))}>Approvel</button></td>
+                <td><button class="ApproveAndReject" id="Reject" onClick={() => dispatch(resposeToStore('rejected', item._id))}>Reject</button></td>
               </tr>
             );
           })}
