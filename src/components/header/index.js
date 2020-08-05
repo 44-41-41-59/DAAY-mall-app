@@ -135,7 +135,7 @@ function Header(props) {
                       </Show>
                       <Show condition={props.user.role === 'admin'}>
                         <MDBDropdownItem >
-                          <Link to={`/admin/dashboard`}>Admin Dashboard</Link>
+                          <Link to={`/admin/adminpage`}>Admin Dashboard</Link>
                         </MDBDropdownItem>
                       </Show>
                       <Show condition={props.user.role === 'admin'}>

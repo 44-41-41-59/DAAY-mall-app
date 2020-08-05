@@ -6,6 +6,7 @@ import {getStores} from '../../store/actions/stores';
 import { Link } from 'react-router-dom';
 import {MDBIcon} from 'mdbreact';
 import { If, Then, Else } from '../if/if';
+import Show from '../show'
 import Reviews from '../product/reviews';
 
 
@@ -18,10 +19,12 @@ function Stores(props) {
   return (
     <div style={{height:'auto',minHeight:'90vh' }} >  
       <h3 id='title' >Our Stores</h3>
+      <Show condition={props.user.role === 'owner'}>
       <div id='pagetitle'><span id='storenote' >Want to join us? you are one click away   </span>
         <Link to='/user/applystore'>
           {' '}<MDBBtn id='addStoreButton'>Add Store</MDBBtn>   
         </Link></div>
+      </Show>
          
       <hr/>
       <MDBCol>
@@ -94,7 +97,7 @@ function Stores(props) {
 }
 
 const mapStateToProps= (state) => {
-  return { stores: state.stores};
+  return { stores: state.stores,user:state.user};
 };
 
 // const mapDispatchToProps= {getStores};
