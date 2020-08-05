@@ -1,0 +1,32 @@
+    #adminDashboard {
+        margin-top: 4%;
+        text-align: center;
+        width: 96%;
+        margin-left: 2%;
+        img{
+            width: 100%
+        }
+        
+        #citytd{
+            width: 100vw;
+        }
+        .ApproveAndReject{
+            border-radius: 50%;
+        }
+    
+        .ApproveAndReject:hover{
+            border-radius: 50%;
+            color:white;
+            border: 1px solid white;
+            background: linear-gradient(to right, #000000, #0f9b0f);
+        }
+
+        #Reject:hover{
+            background: linear-gradient(to right, #eb5757, #000000);
+        }
+    }
+
+    .fixing{
+        font-size: 0.7rem;
+    }
+
