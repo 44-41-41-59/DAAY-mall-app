@@ -21,8 +21,10 @@ let initialState = {
 
   fetchModalStoreSuccess:false,
   storeId:'',
-  loginModal:false
+  loginModal:false,
   // fetchAddWishListFailer:false
+
+  logoutSuccess:false,
 };
     
 export default (state = initialState, action) => {
@@ -33,6 +35,8 @@ export default (state = initialState, action) => {
   case 'LOGINSUCCESS':
     return {...state, ...payload };
   case 'LOGINFAILED':
+    return {...state, ...payload };
+  case 'LOGOUTSUCCESS':
     return {...state, ...payload };
 
   case 'FETCHSIGNUP':
