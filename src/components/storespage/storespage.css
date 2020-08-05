@@ -42,6 +42,11 @@
     margin-top: -3vh;
 }
 
+#addtofavbuttonStore{
+    background-color: #EC9F05 !important;
+    margin-top: 13vh;
+}
+
 #storesbuttons{
     display: flex;
     flex-direction:column;

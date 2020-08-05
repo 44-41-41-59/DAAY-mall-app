@@ -8,12 +8,6 @@ import ListGroup from 'react-bootstrap/ListGroup';
 function Orders(props) {
   return (
     <Card>
-      <Card.Header>
-        <Accordion.Toggle as={Button} variant="link" eventKey="2">
-          Orders
-        </Accordion.Toggle>
-      </Card.Header>
-
       <Accordion.Collapse eventKey="2">
         <ListGroup>
           {props.orders.map((order) => {
