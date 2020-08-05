@@ -32,8 +32,6 @@ import OwnerDashboard from './components/ownerDashboard';
 import Freeze from './components/Freeze/';
 import AdminPage from './components/adminPage/';
 
-
-import Test from '../src/components/customerService/Admin/index1';
 import Policies from './components/webSitePolicies';
 
 import AddProduct from './components/product/add/add-product';
@@ -65,7 +63,6 @@ class App extends Component {
       socket.on('test', () => {
         console.log('hello ladies');
       });
-
       console.log(this.props.user);
     }, 1800);
   }
@@ -113,9 +110,6 @@ class App extends Component {
         </Route>
         <Route exact path="/customerservice">
           <CustomerServiceClient />
-        </Route>
-        <Route exact path="/customerservicetest">
-          <Test />
         </Route>
         <Route exact path="/break">
           <Break />

@@ -50,7 +50,9 @@ export default function CustomerServiceAdmin() {
       let toRespond = agentId === id;
       dispatch(agentMessage({ id, _id, avatar, username, message, toRespond }));
     });
+
   }, 2000);
+
   function handelAdminClick(id) {
     setAgentId(id);
     dispatch(resetToRespond(id));
@@ -70,7 +72,9 @@ export default function CustomerServiceAdmin() {
   useEffect(() => {
     setTimeout(() => {
       socket.emit('admin');
+
     }, 2000);
+
     return;
   }, []);
   useEffect(() => {
@@ -101,6 +105,7 @@ export default function CustomerServiceAdmin() {
       //     );
       //   }
       // );
+
     }, 2000);
   }, [messages]);
   useEffect(() => {
@@ -132,6 +137,8 @@ export default function CustomerServiceAdmin() {
       });
     }, 2000);
   }, []);
+
+
   useEffect(() => {
     return () => {
       console.log('close');
@@ -139,71 +146,75 @@ export default function CustomerServiceAdmin() {
     };
   }, []);
   return (
-    <div style={{ margin: '2% 5%', maxHeight: '50%' }}>
-      <MDBCard
-        style={{ maxHeight: '520px' }}
-        className="grey lighten-3 chat-room"
-      >
-        <MDBCardBody>
-          <MDBRow className="px-lg-2 px-2">
-            <MDBCol md="6" xl="4" className="px-0 mb-2 mb-md-0">
-              <h6 className="font-weight-bold mb-3 text-lg-left">Member</h6>
-              <div
-                className="white z-depth-1 p-3"
-                style={{ maxWidth: '250px' }}
-              >
-                <MDBListGroup
-                  style={{ overflow: 'scroll', minHeight: '410px' }}
-                  className="friend-list scrollcontanir"
-                >
-                  <Friend
-                    key={'channel'}
-                    friend={{
-                      username: 'Channel',
-                      // avatar,
-                      // message,
-                      // toRespond,
-                      // seen,
-                      _id: '',
-                    }}
-                    handelAdminClick={handelAdminClick}
-                  />
-                  {agent.agents.map((friend) => (
-                    <Friend
-                      key={friend.username}
-                      friend={friend}
-                      handelAdminClick={handelAdminClick}
-                    />
-                  ))}
-                </MDBListGroup>
-              </div>
-            </MDBCol>
-            <MDBCol
-              md="6"
-              xl="8"
-              className="pl-md-3 px-lg-auto mt-2 mt-md-0 chatcontainr"
-            >
-              <MDBRow>
-                <MDBListGroup
-                  // style={{ overflow: 'scroll', maxHeight: '500px' }}
-                  className="list-unstyled pl-3"
-                >
+    <>
+      <div id='adminchatcontainer'>
+        <h4 id='chatwelcoming'>Welcome to our Online Service</h4>
+        <div id='admingreyspace' >
+          <MDBCard
+            style={{ maxHeight: '520px' , paddingLeft:' 1.5vw'}}
+            className="grey lighten-3 chat-room"
+          >
+            <MDBCardBody>
+              <MDBRow className="px-lg-2 px-2">
+                <MDBCol md="6" xl="4" className="px-0 mb-2 mb-md-0">
+                  <h6 id='sidebarchat' className="font-weight-bold mb-3 text-lg-left">Member</h6>
                   <div
-                    className="scrollcontanir"
-                    style={{
-                      overflow: 'scroll',
-                      maxHeight: '350px',
-                      minHeight: '350px',
-                    }}
+                    className="white z-depth-1 p-3"
+                    style={{ maxWidth: '65%' }}
                   >
-                    {agentId === '' &&
+                    <MDBListGroup
+                      style={{ overflow: 'scroll', minHeight: '410px' }}
+                      className="friend-list scrollcontanir"
+                    >
+                      <Friend
+                        style={{color:'#5254AF !important'}}
+                        key={'channel'}
+                        friend={{
+                          username: 'Channel',
+                          // avatar,
+                          // message,
+                          // toRespond,
+                          // seen,
+                          _id: '',
+                        }}
+                        handelAdminClick={handelAdminClick}
+                      />
+                      {agent.agents.map((friend) => (
+                        <Friend
+                          key={friend.username}
+                          friend={friend}
+                          handelAdminClick={handelAdminClick}
+                        />
+                      ))}
+                    </MDBListGroup>
+                  </div>
+                </MDBCol>
+                <MDBCol
+                  md="6"
+                  xl="8"
+                  className="pl-md-3 px-lg-auto mt-2 mt-md-0 chatcontainr"
+                >
+                  <MDBRow>
+                    <MDBListGroup
+                      // style={{ overflow: 'scroll', maxHeight: '500px' }}
+                      className="list-unstyled pl-3"
+                    >
+                      <div
+                        className="scrollcontanir"
+                        style={{
+                          overflow: 'scroll',
+                          maxHeight: '350px',
+                          minHeight: '350px',
+                        }}
+                      >
+                        {agentId === '' &&
                       messages.map((message) => (
                         <ChatMessage
                           key={message.username + message.message}
                           message={{ ...message, user }}
                         />
                       ))}
-                    {agentId !== '' &&
+                        {agentId !== '' &&
                       agent.agents
                         .filter((item) => item._id === agentId)[0]
                         .messages.map((message) => (
@@ -212,60 +223,61 @@ export default function CustomerServiceAdmin() {
                             message={{ ...message, user }}
                           />
                         ))}
-                  </div>
-                  <li>
-                    <div
-                      style={{ display: 'flex' }}
-                      className="form-group basic-textarea"
-                    >
-                      <textarea
-                        className="form-control pl-2 my-0"
-                        id="exampleFormControlTextarea2"
-                        rows="3"
-                        value={message}
-                        style={{
-                          minWidth: '700px',
-                          maxHeight: '71',
-                          marginBottom: '-60px!important',
-                        }}
-                        placeholder="Type your message here..."
-                        onChange={(e) => setMessage(e.target.value)}
-                        onKeyPress={(e) => handelKeyPress(e)}
-                      />
-                      <MDBBtn
-                        color="info"
-                        rounded
-                        size="sm"
-                        className="float-right mt-4 rudios"
-                        onClick={() => handelKeyPress({ key: 'Enter' })}
-                      >
-                        <MDBIcon icon="paper-plane" />
-                      </MDBBtn>
-                    </div>
-                  </li>
-                </MDBListGroup>
-                <MDBModal isOpen={next} frame position="bottom">
-                  <MDBModalBody className="text-center">
-                    the user has left the chat do u want to take the next one
-                    plzzzz 🙏🏻
-                    <MDBBtn
-                      color="secondary"
-                      onClick={() => {
-                        socket.emit('admindisconecct', user._id);
-                        history.push('/break');
-                      }}
-                    >
+                      </div>
+                      <li>
+                        <div
+                          style={{ display: 'flex' }}
+                          className="form-group basic-textarea"
+                        >
+                          <textarea
+                            className="form-control pl-2 my-0"
+                            id="exampleFormControlTextarea2"
+                            rows="3"
+                            value={message}
+                            style={{
+                              minWidth: '40vw',
+                              maxHeight: '50vh',
+                              marginBottom: '-60px!important',
+                              marginLeft:'-14vh',
+                            }}
+                            placeholder="Type your message here..."
+                            onChange={(e) => setMessage(e.target.value)}
+                            onKeyPress={(e) => handelKeyPress(e)}
+                          />
+                          <MDBBtn
+                            id='sendbuttonchat'
+                            color="info"
+                            rounded
+                            size="xsm"
+                            className="float-right rudios"
+                            onClick={() => handelKeyPress({ key: 'Enter' })}
+                          >
+                            <MDBIcon icon="paper-plane" />
+                          </MDBBtn>
+                        </div>
+                      </li>
+                    </MDBListGroup>
+                    <MDBModal isOpen={next} frame position="bottom">
+                      <MDBModalBody className="text-center">
+                    Take the next Customer
+                        <MDBBtn
+                          color="secondary"
+                          onClick={() => {
+                            socket.emit('admindisconecct', user._id);
+                            history.push('/break');
+                          }}
+                        >
                       NO
-                    </MDBBtn>
-                    <MDBBtn
-                      onClick={() => socket.emit('next', user._id)}
-                      color="primary"
-                    >
+                        </MDBBtn>
+                        <MDBBtn
+                          onClick={() => socket.emit('next', user._id)}
+                          color="primary"
+                        >
                       Yes
-                    </MDBBtn>
-                  </MDBModalBody>
-                </MDBModal>
-                {/* <li>
+                        </MDBBtn>
+                      </MDBModalBody>
+                    </MDBModal>
+                    {/* <li>
                   <div className="form-group basic-textarea">
                     <textarea
                       className="form-control pl-2 my-0"
@@ -316,12 +328,14 @@ export default function CustomerServiceAdmin() {
                     </MDBBtn>
                   </div>
                 )} */}
+                  </MDBRow>
+                </MDBCol>
               </MDBRow>
-            </MDBCol>
-          </MDBRow>
-        </MDBCardBody>
-      </MDBCard>
-    </div>
+            </MDBCardBody>
+          </MDBCard>
+        </div>
+      </div>
+    </>
   );
 }
 
@@ -337,7 +351,7 @@ const Friend = ({
     }}
     // style={{ backgroundColor: active ? '#eeeeee' : '' }}
   >
-    <div style={{ fontSize: '0.95rem' }}>
+    <div style={{ fontSize: '0.95rem' ,color:'#5254AF !important'}}>
       <strong>{username}</strong>
       <p className="text-muted">{message}</p>
     </div>
@@ -364,6 +378,7 @@ const Friend = ({
 
 const ChatMessage = ({ message: { username, avatar, message, user, _id } }) => (
   <li
+    style={{    marginLeft:' 9.5vw'}}
     className={`${
       _id === user._id ? 'chat-message' : ''
     }  d-flex justify-content-between mb-4`}
@@ -377,7 +392,7 @@ const ChatMessage = ({ message: { username, avatar, message, user, _id } }) => (
     /> */}
     <MDBCard>
       <MDBCardBody>
-        <div>
+        <div style={{ width: '15vw',marginRight:'10vw'}}>
           <strong className="primary-font">{username}</strong>
           <small className="pull-right text-muted">
             {/* <i className="far fa-clock" /> {when} */}

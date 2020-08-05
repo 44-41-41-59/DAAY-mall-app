@@ -33,7 +33,7 @@ export default function Break() {
           onClick={() => history.push('/admin/customerservice')}
           style={{ maxHeight: '10vh' }}
         >
-          Back to hack ladies
+          Take the next customer
         </button>
       </div>
     </div>

@@ -178,11 +178,14 @@ function Header(props) {
 
       {/* {LOGOUT MODAL} */}
       <MDBModal isOpen={props.fetch.logoutSuccess&&modal.modal} >
+        <MDBModalHeader>
+          Logout
+        </MDBModalHeader>
         <MDBModalBody>
          You have been logged out
         </MDBModalBody>
         <MDBModalFooter>
-          <MDBBtn id='modalbutton' onClick={()=>setModal({modal:false})}> Ok</MDBBtn> 
+          <MDBBtn id='orangebtnpr' onClick={()=>setModal({modal:false})}> Ok</MDBBtn> 
         </MDBModalFooter>
       </MDBModal>
 
