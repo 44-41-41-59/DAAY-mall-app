@@ -73,11 +73,6 @@ export default function Dashboard() {
           })}
         </tbody>
       </Table>
-      <form onSubmit={handelAddComplaint}>
-        <input type="text" name="payments" placeholder="paymentdistory"></input>
-        <input type="text" name="product" placeholder="Product ID"></input>
-        <input type="button" value="Freeze"></input>
-      </form>
     </div>
   );
 }
