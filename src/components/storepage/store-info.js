@@ -1,7 +1,8 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
-import {If, Then, Else} from '../if/if';
-import {MDBIcon} from 'mdbreact';
+import { If, Then, Else } from '../if/if';
+import { MDBIcon, MDBBtn } from 'mdbreact';
+import Show from '../show/index';
 
 function StoreInfo(props) {
   let sum = 0;
@@ -26,32 +27,37 @@ function StoreInfo(props) {
       noRateStars.push(' ');
     }
   }
-  
+
   return (
-    <div id="storeInfo" style={{ display: 'flex', flexWrap: 'wrap' }}>
-      <img src={props.store.logo} alt={props.store.name} id="imgStore"/>
-      <div class="Card">
-        <div class="storeCon">
-          <h1>Store name:{props.store.name}</h1>
-          <h2>Category:{props.store.category}</h2>
-          <h3>Contact number:{props.store.contactNumber}</h3>
-          <h4>Address:{props.store.counrty}</h4>
-          <If condition={!noRate}>
-            <Then>
-              {ratingStars.map(star => {
-                return <MDBIcon icon='star' />;
-              })}
-              {emptyRatingStars.map(star => {
-                return <MDBIcon far icon='star' />;
-              })}
-            </Then>
-            <Else>
-              {noRateStars.map(star => {
-                return <MDBIcon far icon='star' />;
-              })}
-            </Else>
-          </If>
+    <div style={{ padding: '3vw 1vw 1vw 1vw', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+      <img src={props.store.logo} alt={props.store.name} style={{ width: '15vw' }} />
+      <div>
+        <div style={{ marginTop: '5vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
+          <h3 style={{ textAlign: 'center' }}>{props.store.name}</h3>
+          <p>Category:{props.store.category}</p>
+          <p>Contact number:{props.store.contactNumber}</p>
+          <p>Address:{props.store.counrty}</p>
+          <div>
+            <If condition={!noRate}>
+              <Then>
+                {ratingStars.map(star => {
+                  return <MDBIcon icon='star' />;
+                })}
+                {emptyRatingStars.map(star => {
+                  return <MDBIcon far icon='star' />;
+                })}
+              </Then>
+              <Else>
+                {noRateStars.map(star => {
+                  return <MDBIcon far icon='star' />;
+                })}
+              </Else>
+            </If>
+          </div>
         </div>
+        <Show condition={props.user.role === 'owner'}>
+          <MDBBtn style={{ alignSelf: 'left' }} id='addtofavbuttonStore'>Add a product</MDBBtn>
+        </Show>
       </div>
       {/* <div id="tablelong">
         <Table striped bordered hover >
