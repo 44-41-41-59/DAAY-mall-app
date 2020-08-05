@@ -2,14 +2,17 @@ import React from 'react';
 import StripeCeckout from 'react-stripe-checkout';
 import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
+import {useDispatch} from 'react-redux'
+import {deleteCardFromCart} from '../../store/actions/products'
 import {
   MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
   MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon,
 } from 'mdbreact';
 import './cart.scss';
+import { checkout } from '../../store/actions/products';
 
 export default function Cart(props) {
-
+  const dispatch = useDispatch()
   let cost = props.user.cart && props.user.cart.reduce((pre, cur) => {
     let price = cur.products&& cur.products.price;
     let sale = cur.products.sale;
@@ -33,21 +36,21 @@ export default function Cart(props) {
               </div>
             </MDBNavbarNav>
             <MDBNavbarNav right>
-              <a className="nav-link disabled" href="#" id="color">Total {cost}</a>
+              <a className="nav-link disabled" href="#" id="color">Total {cost.toFixed(2)}</a>
               <StripeCeckout
                 stripeKey="pk_test_51Gw6p5DCWnftj01CHDFox6ZFihtNyZ0EkHqOxR8uTnYB0jeLLTPfZBPtuRQXcFBSd4McXulw456Dl1Cp6mq3t6lR00booR4E8t"
                 token={makePayment}
                 name="test"
                 amount={cost * 100}>
                 {props.fetch.paymentFailed && alert('Some information are missing')}
-                <button>Check Out</button>
+                <button onClick={()=>dispatch(checkout())}>Check Out</button>
               </StripeCeckout>
             </MDBNavbarNav>
           </div>
         </ MDBNavbar >
       </div>
 
-      <Table >
+      <Table style={{minHeight:'40vh'}}>
         <thead>
           <tr id="tableHeader">
             <th>Product</th>
@@ -73,23 +76,17 @@ export default function Cart(props) {
                     </Link>
                   </div></td>
                 <td id='secondTd'>{item.products.name}</td>
-                <td id='thirdTd'>{!!sale &&
-                      'onSale: ' +
-                      Math.round(
-                        (price * quantity - per * quantity) * 100 ,
-                      ) /
-                      100}{' '} 
-                <br /> Price :{price * quantity} JOD
+                <td id='thirdTd'>  <br /> Price :{price } JOD
                 </td>
-                <td id='forthId'><input type="number" name="quantity" min="1" max="10" /></td>
+                <td id='forthId'><p>{quantity}</p></td>
                 <td id='fifthId'>{!!sale &&
                       'onSale: ' +
                       Math.round(
                         (price * quantity - per * quantity)* 100,
                       ) /
                       100}{' '}
-                <br /> Price :{price * quantity} JOD</td>
-                <td id='sixId'><i className="fas fa-trash"></i></td>
+                <br /> Price :{(price * quantity).toFixed(2)} JOD</td>
+                <td id='sixId' onClick={()=>{dispatch(deleteCardFromCart(item._id));console.log('sdf',item)}}><i className="fas fa-trash"></i></td>
               </tr>
             </tbody>
           );

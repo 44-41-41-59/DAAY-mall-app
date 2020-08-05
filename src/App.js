@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import cookie from 'react-cookies';
 import Products from './components/product/';
 import Carts from './components/cart/';
-import AddProduct from './components/product/add/';
+// import AddProduct from './components/product/add/';
 import Homepage from './components/homepage/';
 import Header from '../src/components/header';
 import Footer from '../src/components/footer';
@@ -31,6 +31,8 @@ import FAQ from './components/FAQ/';
 
 import Test from '../src/components/customerService/Admin/index1';
 import Policies from './components/webSitePolicies';
+
+import AddProduct from './components/product/add/add-product';
 
 class App extends Component {
   // eslint-disable-next-line no-useless-constructor
@@ -82,6 +84,7 @@ class App extends Component {
         </Route>
         <Route exact path="/add/product">
           <AddProduct />
+          {/* <AddProduct /> */}
         </Route>
         <Route exact path="/user/applystore">
           <StoreApplicationPage />
@@ -117,10 +120,10 @@ class App extends Component {
           <WebSitePolicie />
         </Route>
         <Route exact path="/faq">
-          <FAQ  />
+          <FAQ />
         </Route>
         <Route exact path="/stores">
-          <Stores  />
+          <Stores />
         </Route>
         {/* <Route exact={true} path="*">
           <NotFound  />

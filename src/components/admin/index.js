@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import './admin.scss';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Table from 'react-bootstrap/Table';
 import {
   getStorePending,
   resposeToStore,
@@ -15,51 +19,64 @@ export default function Dashboard() {
     //   return () => {
     //       cleanup
     //   }
-  }, []);
+  }, [dispatch]);
   function handelAddComplaint(e) {
     e.preventDefault();
-    let paymentHistoryID = e.target.payments.value;
+    let paymentdistoryID = e.target.payments.value;
     let productID = e.target.product.value;
-    dispatch(addComplaint({ paymentHistoryID, productID }));
+    dispatch(addComplaint({ paymentdistoryID, productID }));
   }
-  //   if (user.role !== 'admin') return <Redirect to="/" />;
+  // if (user.role !== 'admin') return <Redirect to="/" />;
   return (
-    <div>
-      {admin.pending.map((item) => {
-        console.log(item);
-        return (
-          <div>
-            <button
-              onClick={() => dispatch(resposeToStore('approved', item._id))}
-            >
-              Accept
-            </button>
-            <button
-              onClick={() => dispatch(resposeToStore('rejected', item._id))}
-            >
-              Reject
-            </button>
-            <p>{item.status}</p>
-            <p>{item.name}</p>
-            <p>{item.logo}</p>
-            <p>{item.category}</p>
-            <p>{item.city}</p>
-            <p>{item.country}</p>
-            <p>{item._id}</p>
-            <p>{item.ownerID.avatar}</p>
-            <p>{item.ownerID.email}</p>
-            <p>{item.ownerID.username}</p>
-            <p>{item.ownerID.status}</p>
-            {item.images.map((img) => {
-              return <img src={img}></img>;
-            })}
-          </div>
-        );
-      })}
+    <div id="adminDashboard">
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th colSpan="13"> Items Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><p>status</p></td>
+            <td><p>name</p></td>
+            <td><p>Demo</p></td>
+            <td><p>Category</p></td>
+            <td><p>City</p></td>
+            <td><p>Country</p></td>
+            <td><p>ID</p></td>
+            <td><p>Owner avatar</p></td>
+            <td><p>Owner email</p></td>
+            <td><p>Owner username</p></td>
+            <td><p>Owner ID</p></td>
+            <td><p>Approve</p></td>
+            <td><p>Reject</p></td>
+          </tr>
+          {admin.pending.map((item) => {
+            console.log(item);
+            return (
+              <tr>
+                <td><span class="fixing">{item.status}</span></td>
+                <td><span class="fixing">{item.name}</span></td>
+                <td><img src={item.logo} alt=""></img></td>
+                <td><span class="fixing">{item.category}</span></td>
+                <td id="citytd"><span class="fixing">{item.city}</span></td>
+                <td><span class="fixing">{item.country}</span></td>
+                <td><span class="fixing">{item._id}</span></td>
+                <td><img src={item.ownerID.avatar} alt=""/></td>
+                <td><span class="fixing">{item.ownerID.email}</span></td>
+                <td><span class="fixing">{item.ownerID.username}</span></td>
+                <td><span class="fixing">{item.ownerID._id}</span></td>
+                <td><button class="ApproveAndReject" onClick={() => dispatch(resposeToStore('approved', item._id))}>+</button></td>
+                <td><button class="ApproveAndReject" id="Reject" onClick={() => dispatch(resposeToStore('rejected', item._id))}>--</button></td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </Table>
       <form onSubmit={handelAddComplaint}>
-        <input type="text" name="payments" placeholder="paymentHistory"></input>
+        <input type="text" name="payments" placeholder="paymentdistory"></input>
         <input type="text" name="product" placeholder="Product ID"></input>
-        <input type="submit"></input>
+        <input type="button" value="Freeze"></input>
       </form>
     </div>
   );

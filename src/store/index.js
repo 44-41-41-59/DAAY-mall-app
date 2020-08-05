@@ -11,7 +11,7 @@ import favoriteStores from './reducers/favoritestores';
 import wishlist from './reducers/wishlist';
 import fetching from './reducers/fetch';
 import store from './reducers/store';
-// import admin from './reducers/admin';
+import admin from './reducers/admin';
 import profile from './reducers/profile';
 import stores from './reducers/stores';
 import agent from './reducers/agent';
@@ -27,7 +27,7 @@ const rootReducer = combineReducers({
   wishlist,
   fetching,
   store,
-  // admin,
+  admin,
   profile,
   stores,
   agent,
@@ -35,5 +35,5 @@ const rootReducer = combineReducers({
 
 export default createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(thunk))
+  composeWithDevTools(applyMiddleware(thunk)),
 );
