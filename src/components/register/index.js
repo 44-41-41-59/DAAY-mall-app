@@ -48,10 +48,10 @@ function Auth(props) {
         <h3 id="or">OR <br/> Sign with</h3>
         {/* <hr></hr> */}
         <div id="authbuttons">
-          <Button className="authbuttons" variant="primary">
+          <Button id='loginbuttonfacebook' className="authbuttons" variant="primary">
           FACEBOOK
           </Button>{' '}
-          <Button className="authbuttons" variant="danger">
+          <Button id='authbuttonsgoogle' className="authbuttons" variant="danger">
           GOOGLE
           </Button>
         </div>

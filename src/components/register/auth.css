@@ -19,3 +19,19 @@
 .form-check-label {
   padding-left:0rem;
 }
+
+#loginbutton{
+  background-color: #5254AF !important;
+}
+
+#authbuttonsgoogle{
+  background-color: #EC9F1D !important;
+}
+
+#loginbuttonfacebook{
+  background-color: #5254AF !important;
+}
+
+#signupbutton{
+  background-color: #5254AF !important;
+}

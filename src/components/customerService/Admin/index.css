@@ -65,3 +65,32 @@
   min-width: 1135px;
   min-height: 320px;
 }
+
+
+/*ANOLLA*/
+
+#charcard{
+  width:30vw
+}
+
+#adminchatcontainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#admingreyspace{
+  margin: 2% 5%;
+   max-height: 50%;
+   width:65%;
+}
+
+#sendbuttonchat{
+background-color: #EC9F05 !important;
+margin-left: 1vw !important;
+padding: 1.5vw;
+}
+
+#sidebarchat{
+  color:#5254AF !important;
+}
