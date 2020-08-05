@@ -27,6 +27,9 @@ export default (state = initialState, action) => {
     let reviews = state.reviews;
     reviews.push(payload);
     return {...state, ...reviews};
+  case 'GET STORE ORDERS':
+   
+    return {...state, orders:payload};
   default:
     return state;
   }

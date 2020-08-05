@@ -1,34 +1,34 @@
-import React from 'react';
-import './profilepage.css';
-import Tab from 'react-bootstrap/Tab'; 
-import Empty from '../emptypage/emptypage';
-import Image from 'react-bootstrap/Image'; 
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux'
-import Card from 'react-bootstrap/Card';
+import React ,{useEffect}from 'react'
 import Table from 'react-bootstrap/Table';
-
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-
 import Accordion from 'react-bootstrap/Accordion';
-
-import { MDBIcon } from 'mdbreact';
-
-
-function Orders(props) {
-  const user = useSelector(state=>state.user)
-  return (
-    <>
-       <Accordion defaultActiveKey="0">
-         {user.paymentsHistory.map((order,index)=>{
+import {getOrders} from '../../store/actions/store'
+import {useDispatch,useSelector} from 'react-redux'
+import {
+  MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
+  MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon,
+} from 'mdbreact';
+ function OwnerDashboard(props) {
+const store = useSelector(state => state.store)
+    const dispatch = useDispatch()
+    useEffect(()=>{
+        dispatch(getOrders(props.match.params.id))
+    },[])
+    return (
+        <>
+             <Accordion defaultActiveKey="0">
+         {store.orders.map((order,index)=>{
            return (
             <Card id="letsRock">
               <Card.Header>
           <Accordion.Toggle as={Button} variant="link" eventKey={index+1}>
           <MDBIcon icon="chevron-down" />
           </Accordion.Toggle>
-          order id: {order._id}{'   '}
-          Total: {order.cost}
+          Client: {order.userID.username}{'   '}
+          status: {order.status}
         </Card.Header>
 
         <Accordion.Collapse eventKey={index+1}>
@@ -41,7 +41,8 @@ function Orders(props) {
           </tr>
         </thead>
 
-        {order.productID.map(product=>{
+        {order.products.map(product=>{
+            console.log(product)
            let price = product.price;
           //  let quantity = item.quantity;
            let sale = product.sale;
@@ -68,9 +69,7 @@ function Orders(props) {
            )
          })}
               </Accordion> 
- 
-    </>
-  );
+        </>
+    )
 }
-
-export default Orders;
+export default withRouter(OwnerDashboard)

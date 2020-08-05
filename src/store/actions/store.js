@@ -6,6 +6,24 @@ const api = 'http://localhost:3001';
 
 // const api = 'https://daaymall-401-project.herokuapp.com';
 
+export const getOrders = function (id){
+  
+  return (dispatch) => {
+  console.log('from action store')
+    return axios({
+      method: 'get',
+      url: `${api}/order/store/${id}`,
+      headers: getHeader(),
+      // data: formData,
+    })
+      .then(function (response) {
+        console.log(response.data,'from the store')
+        dispatch({type:'GET STORE ORDERS',payload:response.data.results});
+        // dispatch({type:'ADD STORE MODAL', payload:response.data.results._id})
+      })
+      .catch((err) => console.log(err.response));
+  };
+}
 
 export const addStore = function (storeData, logo) {
   console.log('ooooooooooooooooooooooo', logo);
