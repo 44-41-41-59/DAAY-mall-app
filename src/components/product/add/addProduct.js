@@ -30,8 +30,8 @@ function AddProduct(props) {
     e.preventDefault();
 
     let specsEntries = {};
-    for(let i = 0; i<e.target.specifications.length; i++) {
-      specsEntries[e.target.specifications[i].value] = e.target.specifications[i+1].value;
+    for (let i = 0; i < e.target.specifications.length; i++) {
+      specsEntries[e.target.specifications[i].value] = e.target.specifications[i + 1].value;
       i++;
     }
 
@@ -52,6 +52,7 @@ function AddProduct(props) {
   };
   return (
     <div class="productForm">
+
       <Form onSubmit={formHandler}>
         <h1>Add Product</h1>
         <Form.Group controlId="exampleForm.ControlInput1" >
@@ -66,14 +67,14 @@ function AddProduct(props) {
           <br />
         </Form.Group>
 
-        <Form.Group controlId="specifications">         
+        <Form.Group controlId="specifications">
           <Form.Label>
             Specifications
             <div id="dynamicInput">
               {specsInputs.inputs.map(input => {
                 return (
                   <>
-                    <Form.Control type="text" key={`${input}-key`} placeholder='Spec' name={`${input}-key`}/>
+                    <Form.Control type="text" key={`${input}-key`} placeholder='Spec' name={`${input}-key`} />
                     <Form.Control type="text" key={`${input}-value`} placeholder='Value' name={`${input}-value`} />
                   </>
                 );
