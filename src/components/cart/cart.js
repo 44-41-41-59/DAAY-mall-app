@@ -47,7 +47,7 @@ export default function Cart(props) {
         </ MDBNavbar >
       </div>
 
-      <Table >
+      <Table style={{minHeight:'40vh'}}>
         <thead>
           <tr id="tableHeader">
             <th>Product</th>
