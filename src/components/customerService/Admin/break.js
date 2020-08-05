@@ -1,14 +1,15 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import './index.css';
+import Button from 'react-bootstrap/Button';
 export default function Break() {
   const history = useHistory();
   return (
     <div style={{ minHeight: '80vh' }}>
       <img
         style={{
-          width: '100vw',
-          height: '95vh',
+          width: '40vw',
+          height: '65vh',
           position: 'absolute',
           left: '0px',
           top: '0px',
@@ -16,7 +17,7 @@ export default function Break() {
           marginTop: '10vh',
         }}
         // src="https://memegenerator.net/img/instances/73276713.jpg"
-        src="https://uploads.toptal.io/blog/image/128038/toptal-blog-image-1548744925019-395cde9862cfed376f3dfb7c907604d6.jpg"
+        src="https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fstatic.dribbble.com%2Fusers%2F1124975%2Fscreenshots%2F3101803%2F000.jpg"
       />
       <div
         style={{
@@ -26,15 +27,15 @@ export default function Break() {
           minHeight: '84vh',
         }}
       >
-        <button onClick={() => history.push('/')} style={{ maxHeight: '10vh' }}>
+        <Button id="buttonsBreak" onClick={() => history.push('/')} style={{ maxHeight: '10vh' }}>
           Back to main Page
-        </button>
-        <button
+        </Button>
+        <Button id="buttonsBreak1"
           onClick={() => history.push('/admin/customerservice')}
           style={{ maxHeight: '10vh' }}
         >
           Take the next customer
-        </button>
+        </Button>
       </div>
     </div>
   );
