@@ -5,13 +5,13 @@ let initialState = {
 export default (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case 'GET PENDING STORES':
-      return { ...state, ...payload };
-    case 'RESPONSE TO STORES':
-      let pending = newPending(state.pending, payload);
-      return { ...state, pending };
-    default:
-      return state;
+  case 'GET PENDING STORES':
+    return { ...state, ...payload };
+  case 'RESPONSE TO STORES':
+    let pending = newPending(state.pending, payload);
+    return { ...state, pending };
+  default:
+    return state;
   }
 };
 
