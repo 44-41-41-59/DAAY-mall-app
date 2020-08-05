@@ -94,3 +94,28 @@ padding: 1.5vw;
 #sidebarchat{
   color:#5254AF !important;
 }
+
+#buttonsBreak{
+    width: 20%;
+    margin-left: 15%;
+}
+#buttonsBreak:hover{
+    background-color: #EC9F05 !important;
+    border:2px solid #EC9F05;
+}
+
+#buttonsBreak{
+    background-color: #5254af !important;
+}
+
+#buttonsBreak1{
+  width: 20%;
+}
+#buttonsBreak1:hover{
+  background-color: #EC9F05 !important;
+  border:2px solid #EC9F05;
+}
+
+#buttonsBreak1{
+  background-color: #5254af !important;
+}
