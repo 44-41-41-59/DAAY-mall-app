@@ -30,7 +30,7 @@ function Storepage(props) {
 
         <div style={{ width: '20vw', height: '90vh', marginTop: '10vh' }}>
           <div style={{ width: '20vw', height: '80vh', backgroundColor: '#f5f5f5', marginLeft: '20vh' }}>
-            <StoreInfo store={props.store} user={props.user}/>
+            <StoreInfo store={props.store} user={props.user} />
           </div>
         </div>
         <div>
@@ -42,7 +42,15 @@ function Storepage(props) {
                 <OnSale products={props.sale} user={props.user} />
               </Tab>
 
-              <Tab eventKey="products" title="All products">
+              <Tab eventKey="products" title="All products"
+                style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  overflow: 'scroll',
+                  justifyContent: 'center',
+                  maxHeight: '80vh',
+                  marginTop: '6vh',
+                }}>
                 <AllProducts products={props.store.products} user={props.user} />
               </Tab>
 
