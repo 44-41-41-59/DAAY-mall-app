@@ -17,6 +17,8 @@ function OnSale(props) {
           <Accordion.Toggle as={Button} variant="link" eventKey="1">
           On Sale
           </Accordion.Toggle>
+          bsbs moew
+          
         </Card.Header>
         <If condition={props.products.length}>
           <Then>

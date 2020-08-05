@@ -20,8 +20,8 @@ export const auth = (userInfo) => ({
 
 function getUserData(obj) {
   let acl = obj.acl.acl;
-  let { avatar, confirmed, email, role, username, _id, stores, cart,paymentsHistory,wishlist } = obj.data;
-  return { avatar, confirmed, email, role, username, _id, acl, stores,cart,paymentsHistory,wishlist };
+  let { avatar, confirmed, email, role, username, _id, stores, cart,paymentsHistory } = obj.data;
+  return { avatar, confirmed, email, role, username, _id, acl, stores,cart,paymentsHistory };
 }
 
 export const loginRemoteUser = function (email, password, history) {
