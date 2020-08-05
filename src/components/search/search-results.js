@@ -1,10 +1,18 @@
 import React from 'react';
+// import PaginationFunction from './pagination';
 import PaginationBar from './pagination';
+import Card from 'react-bootstrap/Card';
+import { MDBIcon } from 'mdbreact';
+import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
 import { If, Then, Else } from '../if/if';
 import Image from 'react-bootstrap/Image';
 
+
+
 import './search.scss';
+import products from '../../store/reducers/products';
 import ProductCard from '../product/card';
 
 function Results(props) {

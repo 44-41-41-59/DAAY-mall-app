@@ -17,7 +17,7 @@ function Stores(props) {
   },[dipatch]);
 
   return (
-    <div style={{height:'90vh' }} >  
+    <div style={{height:'auto',minHeight:'90vh' }} >  
       <h3 id='title' >Our Stores</h3>
       <div id='pagetitle'><span id='storenote' >Want to join us? you are one click away   </span>
         <Link to='/user/applystore'>
@@ -26,7 +26,7 @@ function Stores(props) {
          
       <hr/>
       <MDBCol>
-        <div  style={{display:'flex'}}>
+        <div  style={{display:'flex',flexWrap: 'wrap'}}>
           {props.stores.results.map((store)=>{
             if(store.reviews){
             }
@@ -52,7 +52,7 @@ function Stores(props) {
               }
             }
             return(
-              <div >
+              <div id='cardsContainer' >
                 <MDBCard id='storeCard'>
                   <MDBCardImage id='storeImage' src={store.logo} alt={store.name} />
                   <MDBCardBody>
@@ -75,12 +75,14 @@ function Stores(props) {
                         </Else>
                       </If>
                     </div>
-                    <Link to={`/store/${store._id}`} >
-                      <MDBBtn id='viewstorebutton'>View Store</MDBBtn>
-                    </Link> <br/>
-                    <Link  >
-                      <MDBBtn id='addtofavbutton'>Add to favorite</MDBBtn>
-                    </Link>
+                    <div id='storesbuttons' >
+                      <Link to={`/store/${store._id}`} >
+                        <MDBBtn id='viewstorebutton'>View Store</MDBBtn>
+                      </Link> <br/>
+                      <Link  >
+                        <MDBBtn id='addtofavbutton'>Add to favorite</MDBBtn>
+                      </Link>
+                    </div>
                   </MDBCardBody>
                 </MDBCard>
               </div>

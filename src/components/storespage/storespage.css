@@ -5,8 +5,8 @@
 } 
 
 #storeCard{
- margin-left: 5vw;
- margin-top: 3vh;
+    margin-left: 2vw;
+    margin-top: 2vh;
 }
 
 #title{
@@ -35,10 +35,20 @@
 
 #viewstorebutton{
     background-color: #5254AF !important;
-    margin-left: 4.5vw;
 }
 
 #addtofavbutton{
-    margin-left: 3.2vw;
     background-color: #EC9F05 !important;
+    margin-top: -3vh;
+}
+
+#storesbuttons{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+#cardsContainer{
+    display: flex;
+    flex-wrap: wrap;
 }
