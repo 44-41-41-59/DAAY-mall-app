@@ -38,7 +38,7 @@ function Login(props) {
           {/* <Form.Check required type="checkbox" label="Check me out" /> */}
         </Form.Group>
         <Button id='loginbutton' type="submit">
-          Submit
+          Login
         </Button>
       </Form>
     </Card>

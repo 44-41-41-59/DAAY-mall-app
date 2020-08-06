@@ -57,7 +57,7 @@ function Signup(props) {
           />
         </Form.Group>
         <Button id='signupbutton' variant="primary" type="submit">
-          Submit
+          Signup
         </Button>
       </Form>
     </Card>
