@@ -29,7 +29,7 @@ function Storepage(props) {
       <div style={{ display: 'flex', flexDirection: 'row', minHeight: '100vh' }}>
 
         <div style={{ width: '20vw', height: '90vh', marginTop: '10vh' }}>
-          <div style={{ width: '20vw', height: '80vh', backgroundColor: '#f5f5f5', marginLeft: '20vh' }}>
+          <div style={{ width: '20vw', height: '90vh', backgroundColor: '#f5f5f5', marginLeft: '20vh' }}>
             <StoreInfo store={props.store} user={props.user} />
           </div>
         </div>
