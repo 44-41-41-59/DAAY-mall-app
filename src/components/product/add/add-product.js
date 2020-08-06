@@ -225,6 +225,17 @@ function AddProduct(props) {
         </form>
 
       </div>
+      <MDBModal isOpen={
+        props.fetching.fetchAddProductSuccesses } toggle='' side position="top-right">
+          <MDBModalHeader >SUCCESS</MDBModalHeader>
+          <MDBModalBody>
+           the product has been Added successfully to the store 📦🎁
+          </MDBModalBody>
+          <MDBModalFooter>
+            <MDBBtn color="secondary" >UNDO</MDBBtn>
+            <MDBBtn color="primary">DONE</MDBBtn>
+          </MDBModalFooter>
+        </MDBModal>
     </div >
 
   );
@@ -234,7 +245,7 @@ function AddProduct(props) {
 
 const mapStateToProps = (state) => {
   console.log('inside apply comp', state);
-  return { user: state.user, images: state.files.images };
+  return { user: state.user, images: state.files.images,fetching:state.fetching };
 };
 
 const mapDispatchToProps = (dispatch) => ({

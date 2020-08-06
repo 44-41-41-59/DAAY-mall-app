@@ -40,7 +40,7 @@ export default function Cart(props) {
               <StripeCeckout
                 stripeKey="pk_test_51Gw6p5DCWnftj01CHDFox6ZFihtNyZ0EkHqOxR8uTnYB0jeLLTPfZBPtuRQXcFBSd4McXulw456Dl1Cp6mq3t6lR00booR4E8t"
                 token={makePayment}
-                name="test"
+                name="DAAY-mall"
                 amount={cost * 100}>
                 {props.fetch.paymentFailed && alert('Some information are missing')}
                 <button onClick={()=>dispatch(checkout())}>Check Out</button>
