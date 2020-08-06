@@ -53,7 +53,6 @@ function Storepage(props) {
                 }}>
                 <AllProducts products={props.store.products} user={props.user} />
               </Tab>
-
               <Tab tabClassName={(!props.owner) ? 'd-none' : ''} eventKey="orders" title="Orders">
                 <Orders orders={props.orders} />
               </Tab>

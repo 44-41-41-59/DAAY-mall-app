@@ -3,6 +3,7 @@ import Table from 'react-bootstrap/Table';
 import { If, Then, Else } from '../if/if';
 import { MDBIcon, MDBBtn } from 'mdbreact';
 import Show from '../show/index';
+import {Link} from 'react-router-dom';
 
 function StoreInfo(props) {
   let sum = 0;
@@ -56,7 +57,9 @@ function StoreInfo(props) {
           </div>
         </div>
         <Show condition={props.user.role === 'owner'}>
-          <MDBBtn style={{ alignSelf: 'left' }} id='addtofavbuttonStore'>Add a product</MDBBtn>
+          <Link to='/add/product' exact >
+            <MDBBtn style={{ alignSelf: 'left' }} id='addtofavbuttonStore'>Add a product</MDBBtn>
+          </Link>
         </Show>
       </div>
       {/* <div id="tablelong">

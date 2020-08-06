@@ -47,7 +47,7 @@ function Reviews(props) {
     props.addReview(formData);
   };
   return (
-    <div>
+    <div style={{marginTop:'10vh'}}>
       {props.product.reviews.map(review => {
         return (
           <MDBCard

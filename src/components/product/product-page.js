@@ -203,7 +203,7 @@ function OneProduct(props) {
               }}
             >
               <img
-                src={props.product.images}
+                src={props.product.images[0]}
                 alt='product'
                 style={{
                   width: '25vw',
@@ -218,9 +218,9 @@ function OneProduct(props) {
                 justifyContent: 'space-between',
               }}
             >
-              <img src={props.product.images} style={{ width: '7vw', marginTop: '1vw' }} alt='product' />
-              <img src={props.product.images} style={{ width: '7vw', marginTop: '1vw' }} alt='product' />
-              <img src={props.product.images} style={{ width: '7vw', marginTop: '1vw' }} alt='product' />
+              <img src={props.product.images[1]} style={{ width: '7vw', marginTop: '1vw' }} alt='product' />
+              <img src={props.product.images[2]} style={{ width: '7vw', marginTop: '1vw' }} alt='product' />
+              <img src={props.product.images[3]} style={{ width: '7vw', marginTop: '1vw' }} alt='product' />
             </div>
           </div>
         </div>
