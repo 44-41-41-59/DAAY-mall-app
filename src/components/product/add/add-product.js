@@ -91,7 +91,7 @@ function AddProduct(props) {
 
           <li class={step.active === 3 ? 'active' : ''} onClick={() => setStep({ section: 3, active: 3 })}>
             <Link>
-              <span class="circle">2</span>
+              <span class="circle">3</span>
               <span class="label">Add more products!</span>
             </Link>
           </li>
