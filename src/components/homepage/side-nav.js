@@ -18,7 +18,7 @@ function SideNav(props) {
         </SubMenu>
 
         <SubMenu title="Women's Fashion" >
-          <MenuItem>Dresses</MenuItem>
+          <MenuItem >  <Link to="/products?category=Dresses" /> Dresses</MenuItem>
           <MenuItem>Tees</MenuItem>
           <MenuItem>Blouses & Shirts</MenuItem>
           <MenuItem>Hoodies & Sweatshirts</MenuItem>
@@ -100,7 +100,7 @@ function SideNav(props) {
           <MenuItem>Mobile Phones</MenuItem>
           <MenuItem>Mobile Phone Accessories</MenuItem>
         </SubMenu>
-        
+
       </Menu>
     </ProSidebar>
   );
