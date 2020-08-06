@@ -29,7 +29,7 @@ function StoreInfo(props) {
   }
 
   return (
-    <div style={{ padding: '3vw 1vw 1vw 1vw', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+    <div style={{ paddingTop: '1vw', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
       <img src={props.store.logo} alt={props.store.name} style={{ width: '15vw' }} />
       <div>
         <div style={{ marginTop: '5vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
