@@ -1,15 +1,14 @@
 import axios from 'axios';
 import getHeader from '../header';
-const api = 'http://localhost:3001';
-// const api = 'https://daaymall-401-project.herokuapp.com';
+// const api = 'http://localhost:3001';
+const api = 'https://daaymall-401-project.herokuapp.com';
 // const api = 'https://backup-app-daaymall.herokuapp.com/';
 
-// const api = 'https://daaymall-401-project.herokuapp.com';
 
 export const getOrders = function (id){
   
   return (dispatch) => {
-  console.log('from action store')
+    console.log('from action store');
     return axios({
       method: 'get',
       url: `${api}/order/store/${id}`,
@@ -17,13 +16,13 @@ export const getOrders = function (id){
       // data: formData,
     })
       .then(function (response) {
-        console.log(response.data,'from the store')
+        console.log(response.data,'from the store');
         dispatch({type:'GET STORE ORDERS',payload:response.data.results});
         // dispatch({type:'ADD STORE MODAL', payload:response.data.results._id})
       })
       .catch((err) => console.log(err.response));
   };
-}
+};
 
 export const addStore = function (storeData, logo) {
   console.log('ooooooooooooooooooooooo', logo);
@@ -46,21 +45,24 @@ export const addStore = function (storeData, logo) {
       data: formData,
     })
       .then(function (response) {
-        console.log(response.data)
+        console.log(response.data);
         dispatch(addStoreAction(  response.data ));
-        dispatch({type:'ADD STORE MODAL', payload:response.data.results._id})
+        dispatch({type:'ADD STORE MODAL', payload:response.data.results._id});
       })
       .catch((err) => console.log(err.response));
   };
 };
 
 export const getStore = function (id) {
+  
   return (dispatch) => {
     return axios({
       method: 'get',
       url: `${api}/store/${id}`, //make it dynamic by getting from params
       headers: getHeader(),
     }).then(function (response) {
+      console.log('yaaa', response);
+
       dispatch(getStoreAction(response.data[0]));
     });
   };
