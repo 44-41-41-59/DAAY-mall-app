@@ -4,7 +4,8 @@
 
 ## Deployed Link
 
-[DAAY-mall website](https://daaymall-401-project.herokuapp.com/)
+[DAAY-mall Frontend website](https://daay-mall-app.netlify.app/)
+[DAAY-mall Backend Server](https://daaymall-401-project.herokuapp.com/)
 
 ---
 
