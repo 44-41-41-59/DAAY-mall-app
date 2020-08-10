@@ -55,7 +55,7 @@ function Profilepage(props) {
           </Tab>
           <Tab tabClassName={!props.isUserSame ? 'd-none' : ''} eventKey="Viewed Products" title="Viewed Products" >
             <hr/>
-            <ViewedProducts/>
+            {/* <ViewedProducts/> */}
           </Tab>
           <Tab tabClassName={!props.isUserSame ? 'd-none' : ''} eventKey="Settings" title="Settings" >
             <hr/>

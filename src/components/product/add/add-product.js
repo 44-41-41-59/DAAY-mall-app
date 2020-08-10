@@ -62,7 +62,7 @@ function AddProduct(props) {
       price: e.target.price.value,
       sale: e.target.sale.value,
       hidden: (e.target.hidden.value === 'hidden') ? true : false,
-      storeID: props.user._id,
+      storeID: props.user.stores,
     };
 
     console.log('adding products', formData);
