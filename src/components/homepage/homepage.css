@@ -257,3 +257,7 @@
   -o-animation: flickerAnimation 1s infinite;
   animation: flickerAnimation 1s infinite;
 }
+
+#sideNavSubMenu:hover {
+  color: #ec9f1d;
+}

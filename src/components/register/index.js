@@ -6,6 +6,8 @@ import SignUp from './signup';
 import Button from 'react-bootstrap/Button';
 import './auth.css';
 import { useHistory, Redirect } from 'react-router-dom';
+import { MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
+
 
 function Auth(props) {
   const logedin = useSelector((state) => state.user.logedin);
@@ -45,14 +47,14 @@ function Auth(props) {
       </div>
       <hr></hr>
       <div  >
-        <h3 id="or">OR <br/> Sign with</h3>
+        <h3 id="or">OR <br /> Sign with</h3>
         {/* <hr></hr> */}
         <div id="authbuttons">
           <Button id='loginbuttonfacebook' className="authbuttons" variant="primary">
-          FACEBOOK
+            FACEBOOK
           </Button>{' '}
           <Button id='authbuttonsgoogle' className="authbuttons" variant="danger">
-          GOOGLE
+            GOOGLE
           </Button>
         </div>
       </div>
@@ -60,7 +62,10 @@ function Auth(props) {
   );
 }
 const mapStateToProps = (state) => {
-  return { user: state.user, fetch: state.fetching };
+  return {
+    user: state.user,
+    fetch: state.fetching,
+  };
 };
 const actionCreater = (dispatch) => ({
   loginRemoteUser: (email, password, history) =>
