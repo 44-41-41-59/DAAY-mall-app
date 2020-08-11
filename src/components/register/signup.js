@@ -33,8 +33,8 @@ function Signup(props) {
         </Form.Group>
 
         <Form.Group id='radioButtons'>
-          <Form.Check type="radio" inline label="User" id='user' name="role" value="user" />
-          <Form.Check type="radio" inline label="Owner" id='owner' name="role" value="owner" />
+          <Form.Check type="radio" inline label="User" id='user' name="role" value="user" onChange={props.handelChange} />
+          <Form.Check type="radio" inline label="Owner" id='owner' name="role" value="owner" onChange={props.handelChange} />
           {/* <Form.Check type="radio" inline label="customer service agent" id='customerServiceAgent' name="role" value="customer service agent" /> */}
         </Form.Group>
 

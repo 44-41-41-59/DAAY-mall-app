@@ -14,7 +14,7 @@ function Auth(props) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    props.signUpRemoteUser(body.username, body.email, body.password, history);
+    props.signUpRemoteUser(body.username, body.email, body.password, body.role, history);
   }
   async function handleSubmitLogin(e) {
     e.preventDefault();
@@ -65,7 +65,7 @@ const mapStateToProps = (state) => {
 const actionCreater = (dispatch) => ({
   loginRemoteUser: (email, password, history) =>
     dispatch(actions.loginRemoteUser(email, password, history)),
-  signUpRemoteUser: (username, email, password, history) =>
-    dispatch(actions.signUpRemoteUser(username, email, password, history)),
+  signUpRemoteUser: (username, email, password, role, history) =>
+    dispatch(actions.signUpRemoteUser(username, email, password, role, history)),
 });
 export default connect(mapStateToProps, actionCreater)(Auth);

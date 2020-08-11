@@ -56,13 +56,13 @@ export const loginRemoteUser = function (email, password, history) {
       });
   };
 };
-export const signUpRemoteUser = function (username, email, password, history) {
+export const signUpRemoteUser = function (username, email, password, role, history) {
   return (dispatch) => {
     dispatch(fetchSignup({ fetchSignup: true }));
     return axios
       .post(
         api + '/auth',
-        { username, email, password },
+        { username, email, password, role },
         { headers: getHeader() },
       )
       .then((response) => {
