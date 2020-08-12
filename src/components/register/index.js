@@ -6,7 +6,6 @@ import SignUp from './signup';
 import Button from 'react-bootstrap/Button';
 import './auth.css';
 import { useHistory, Redirect } from 'react-router-dom';
-import { MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 
 
 function Auth(props) {

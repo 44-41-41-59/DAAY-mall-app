@@ -51,8 +51,8 @@ function ProductPage(props) {
            the card has been Added successfully to the {props.fetching.fetchAddCardSuccesses?'Cart':'wishlist'} 📦🎁
         </MDBModalBody>
         <MDBModalFooter>
-          <MDBBtn color="secondary" >UNDO</MDBBtn>
-          <MDBBtn color="primary">DONE</MDBBtn>
+          <MDBBtn id='bluebtnpr' >UNDO</MDBBtn>
+          <MDBBtn id='orangebtnpr'>DONE</MDBBtn>
         </MDBModalFooter>
       </MDBModal>}
       
@@ -62,8 +62,8 @@ function ProductPage(props) {
            you need to login or signup
         </MDBModalBody>
         <MDBModalFooter>
-          <MDBBtn color="secondary" >CANCEL</MDBBtn>
-          <MDBBtn color="primary">Go to register</MDBBtn>
+          <MDBBtn id='bluebtnpr' >CANCEL</MDBBtn>
+          <MDBBtn id='orangebtnpr'>Go to register</MDBBtn>
         </MDBModalFooter>
       </MDBModal>}
     </div>
@@ -75,11 +75,11 @@ function Modal(){
     <MDBModal isOpen={this.state.modal6} toggle={this.toggle(6)} side position="top-right">
       <MDBModalHeader toggle={this.toggle(6)}>MDBModal title</MDBModalHeader>
       <MDBModalBody>
-           the // has been Added successfully 📦🎁
+           the // has been Added successfully 
       </MDBModalBody>
       <MDBModalFooter>
-        <MDBBtn color="secondary" onClick={this.toggle(6)}>Close</MDBBtn>
-        <MDBBtn color="primary">Save changes</MDBBtn>
+        <MDBBtn id='bluebtnpr' onClick={this.toggle(6)}>Close</MDBBtn>
+        <MDBBtn id='orangebtnpr'>Save changes</MDBBtn>
       </MDBModalFooter>
     </MDBModal>
   );

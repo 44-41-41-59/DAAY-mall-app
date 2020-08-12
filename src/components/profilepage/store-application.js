@@ -130,7 +130,7 @@ function ApplyStore(props) {
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for='country'>Country</label>
-                  <select onClick={getCountries} class="form-control">
+                  <select onClick={getCountries} class="form-control" name='country'>
                     <option>Select country</option>
                     {countries.map(country => {
                       return <option value={country}>{country}</option>;
@@ -175,8 +175,8 @@ function ApplyStore(props) {
               your store has been added successfully but you need to wait for your store to be approved.
             </MDBModalBody>
             <MDBModalFooter>
-              <MDBBtn color="secondary" onClick={() => history.push('/')}>Back to main page</MDBBtn>
-              <MDBBtn color="primary" onClick={() => history.push(`/store/${props.store.results ? props.store.results._id : props.store._id}`)}>see my store page</MDBBtn>
+              <MDBBtn id='bluebtnpr' onClick={() => history.push('/')}>Back to main page</MDBBtn>
+              <MDBBtn id='orangebtnpr' onClick={() => history.push(`/store/${props.store.results ? props.store.results._id : props.store._id}`)}>see my store page</MDBBtn>
             </MDBModalFooter>
           </MDBModal>
 
@@ -199,16 +199,3 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ApplyStore);
-// name: '',
-// logo: '',
-// category: ['general', 'food'],
-// closing: { type: String },
-// opening: { type: String },
-// images: { type: Array },
-// products: {type: Array},
-// products: [product],
-// status:   type: String,  default: 'pending', enum: ['pending', 'rejected', 'approved'],
-// country: { type: String, toLowerCase: true, required: true },
-// city: { type: String, toLowerCase: true, required: true },
-// contactNumber: { type: Number, required: true },
-// ownerID: { type: String, required: true },

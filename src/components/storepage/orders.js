@@ -23,7 +23,7 @@ function Orders(props) {
                   );
                 })}
                 <p>Status: {order.status}</p>
-                <p>User id: {order.userID}</p>
+                <p>User id: {order.userID._id}</p>
               </ListGroup.Item>
             );
           })}

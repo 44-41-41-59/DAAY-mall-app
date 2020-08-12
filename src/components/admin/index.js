@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import './admin.scss';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import {
   getStorePending,
   resposeToStore,
   addComplaint,
 } from '../../store/actions/admin';
+import { MDBBtn } from 'mdbreact';
 export default function Dashboard() {
   const user = useSelector((state) => state.user);
   const admin = useSelector((state) => state.admin);
@@ -30,7 +31,7 @@ export default function Dashboard() {
   // if (user.role !== 'admin') return <Redirect to="/" />;
   return (
     <div id="adminDashboard">
-      <Table striped bordered hover>
+      <Table striped bordered hover style={{ maxWidth: '80vw' }}>
         <thead>
           <tr>
             <th colSpan="13"> Pending stores</th>
@@ -63,12 +64,12 @@ export default function Dashboard() {
                 <td id="citytd"><span class="fixing">{item.city}</span></td>
                 <td><span class="fixing">{item.country}</span></td>
                 <td><span class="fixing">{item._id}</span></td>
-                <td><img src={item.ownerID.avatar} alt=""/></td>
+                <td><img src={item.ownerID.avatar} alt="" /></td>
                 <td><span class="fixing">{item.ownerID.email}</span></td>
                 <td><span class="fixing">{item.ownerID.username}</span></td>
                 <td><span class="fixing">{item.ownerID._id}</span></td>
-                <td><button class="ApproveAndReject" onClick={() => dispatch(resposeToStore('approved', item._id))}>Approvel</button></td>
-                <td><button class="ApproveAndReject" id="Reject" onClick={() => dispatch(resposeToStore('rejected', item._id))}>Reject</button></td>
+                <td><MDBBtn id='orangebtnpr' style={{ width: '6vw', fontSize: '11px', padding: '1vw' }} onClick={() => dispatch(resposeToStore('approved', item._id))}>Approve</MDBBtn></td>
+                <td><MDBBtn id='bluebtnpr'  style={{ width: '6vw', fontSize: '11px', padding: '1vw' }} onClick={() => dispatch(resposeToStore('rejected', item._id))}>Reject</MDBBtn></td>
               </tr>
             );
           })}
