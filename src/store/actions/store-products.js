@@ -1,10 +1,8 @@
 import axios from 'axios';
 import getHeader from '../header';
 // const api = 'http://localhost:3001';
-const api = 'https://daaymall-401-project.herokuapp.com';
-// const api = 'https://backup-app-daaymall.herokuapp.com/';
-
 // const api = 'https://daaymall-401-project.herokuapp.com';
+const api = 'https://daaymall.herokuapp.com';
 
 
 export const addProduct = function (formData) {
@@ -16,11 +14,12 @@ export const addProduct = function (formData) {
       data: formData,
     })
       .then(function (response) {
+        console.log('dddddddddddddddddddd', response);
         dispatch(addProductAction({ results: response.data.results }));
-        dispatch({type:'ADD PRODUCT SUCCESS'})
+        dispatch({type:'ADD PRODUCT SUCCESS'});
         setTimeout(()=>{
-          dispatch({type:'ADD PRODUCT SUCCESS CLOSE THE MODAL'})
-        },2000)
+          dispatch({type:'ADD PRODUCT SUCCESS CLOSE THE MODAL'});
+        },2000);
       })
       .catch((err) => console.log(err.response));
   };
@@ -34,7 +33,7 @@ export const closeModal = function (formData) {
       data: formData,
     })
       .then(function (response) {
-          dispatch({type:'ADD PRODUCT SUCCESS CLOSE THE MODAL'})
+        dispatch({type:'ADD PRODUCT SUCCESS CLOSE THE MODAL'});
       })
       .catch((err) => console.log(err.response));
   };

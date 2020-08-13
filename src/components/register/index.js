@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import './auth.css';
 import { useHistory, Redirect } from 'react-router-dom';
 
+
 function Auth(props) {
   const logedin = useSelector((state) => state.user.logedin);
   const history = useHistory();
@@ -14,7 +15,7 @@ function Auth(props) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    props.signUpRemoteUser(body.username, body.email, body.password, history);
+    props.signUpRemoteUser(body.username, body.email, body.password, body.role, history);
   }
   async function handleSubmitLogin(e) {
     e.preventDefault();
@@ -45,14 +46,14 @@ function Auth(props) {
       </div>
       <hr></hr>
       <div  >
-        <h3 id="or">OR <br/> Sign with</h3>
+        <h3 id="or">OR <br /> Sign with</h3>
         {/* <hr></hr> */}
         <div id="authbuttons">
           <Button id='loginbuttonfacebook' className="authbuttons" variant="primary">
-          FACEBOOK
+            FACEBOOK
           </Button>{' '}
           <Button id='authbuttonsgoogle' className="authbuttons" variant="danger">
-          GOOGLE
+            GOOGLE
           </Button>
         </div>
       </div>
@@ -60,12 +61,15 @@ function Auth(props) {
   );
 }
 const mapStateToProps = (state) => {
-  return { user: state.user, fetch: state.fetching };
+  return {
+    user: state.user,
+    fetch: state.fetching,
+  };
 };
 const actionCreater = (dispatch) => ({
   loginRemoteUser: (email, password, history) =>
     dispatch(actions.loginRemoteUser(email, password, history)),
-  signUpRemoteUser: (username, email, password, history) =>
-    dispatch(actions.signUpRemoteUser(username, email, password, history)),
+  signUpRemoteUser: (username, email, password, role, history) =>
+    dispatch(actions.signUpRemoteUser(username, email, password, role, history)),
 });
 export default connect(mapStateToProps, actionCreater)(Auth);

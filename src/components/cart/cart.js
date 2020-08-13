@@ -25,7 +25,7 @@ export default function Cart(props) {
   };
 
   return (
-    <div class="myBody">
+    <div class="myBody" style={{minHeight:'80vh'}}>
       <div id="cartsHeader">
         <MDBNavbar color='white'  expand="md" scrolling fixed="top">
           <div className="collapse navbar-collapse" id="navbarsExampleDefault">

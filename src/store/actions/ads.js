@@ -1,7 +1,8 @@
 import axios from 'axios';
 // const api = 'http://localhost:3001';
-const api = 'https://daaymall-401-project.herokuapp.com'
-// const api = 'https://backup-app-daaymall.herokuapp.com/';
+// const api = 'https://daaymall-401-project.herokuapp.com';
+const api = 'https://daaymall.herokuapp.com';
+
 
 export const getAdvertising = function () {
   return (dispatch) => {

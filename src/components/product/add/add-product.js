@@ -166,8 +166,54 @@ function AddProduct(props) {
 
                 <Form.Control as="select" custom name='category' style={{ marginBottom: '6vh' }}> {/*make it dynamic*/}
                   <option>Choose category</option>
-                  <option>General</option>
-                  <option>Food</option>
+                  <option value="general">General</option>
+                  <option value="Bottoms">Bottoms</option>
+                  <option value="T-shirts">T-shirts</option>
+                  <option value="Outerwear & Jackets">Outerwear & Jackets</option>
+                  <option value="Dresses">Dresses</option>
+                  <option value="Tees">Tees</option>
+                  <option value="Blouses & Shirts">Blouses & Shirts</option>
+                  <option value="Hoodies & Sweatshirts">Hoodies & Sweatshirts</option>
+                  <option value="Suits & Blazers">Suits & Blazers</option>
+                  <option value="Coats & Jackets">Coats & Jackets</option>
+                  <option value="Leggings">Leggings</option>
+                  <option value="Skirts">Skirts</option>
+                  <option value="Jeans">Jeans</option>
+                  <option value="Cosplay Costumes">Cosplay Costumes</option>
+                  <option value="Pajama Sets">Pajama Sets</option>
+                  <option value="Accessories">Accessories</option>
+                  <option value="Bucket Hats">Bucket Hats</option>
+                  <option value="Sunglasses">Sunglasses</option>
+                  <option value="Women's Luggage & Bags">Women's Luggage & Bags</option>
+                  <option value="Women's Shoes">Women's Shoes</option>
+                  <option value="Men's Luggage & Bags">Men's Luggage & Bags</option>
+                  <option value="Men's Shoes">Men's Shoes</option>
+                  <option value="Women's Watches">Women's Watches</option>
+                  <option value="Men's Watches">Men's Watches</option>
+                  <option value="Wedding & Engagement">Wedding & Engagement</option>
+                  <option value="Mother & Baby Items">Mother & Baby Items</option>
+                  <option value="Baby Clothing & Shoes">Baby Clothing & Shoes</option>
+                  <option value="Makeup">Makeup</option>
+                  <option value="Nail Art & Tools">Nail Art & Tools</option>
+                  <option value="Household Items">Household Items</option>
+                  <option value="Pet Products">Pet Products</option>
+                  <option value="Garden Supplies">Garden Supplies</option>
+                  <option value="Home Improvment Tools">Home Improvment Tools</option>
+                  <option value="Indoor Lightin">Indoor Lightin</option>
+                  <option value="Outdoor Lighting">Outdoor Lighting</option>
+                  <option value="Sportswear">Sportswear</option>
+                  <option value="Sneakers">Sneakers</option>
+                  <option value="Other Sports Equipment">Other Sports Equipment</option>
+                  <option value="Interior Accessories">Interior Accessories</option>
+                  <option value="Exterior Accessories">Exterior Accessories</option>
+                  <option value="Smart Electronics">Smart Electronics</option>
+                  <option value="Home Audio&Video">Home Audio&Video</option>
+                  <option value="Video Games">Video Games</option>
+                  <option value="Laptops">Laptops</option>
+                  <option value="Office Electronics">Office Electronics</option>
+                  <option value="Storage Devices">Storage Devices</option>
+                  <option value="Mobile Phones">Mobile Phones</option>
+                  <option value="Mobile Phone Accessories">Mobile Phone Accessories</option>
                 </Form.Control>
                 {/* <Form.Label>Description</Form.Label> */}
 
@@ -226,16 +272,16 @@ function AddProduct(props) {
 
       </div>
       <MDBModal isOpen={
-        props.fetching.fetchAddProductSuccesses } toggle='' side position="top-right">
-          <MDBModalHeader >SUCCESS</MDBModalHeader>
-          <MDBModalBody>
-           the product has been Added successfully to the store 📦🎁
+        props.fetching.fetchAddProductSuccesses} toggle='' side position="top-right">
+        <MDBModalHeader >SUCCESS</MDBModalHeader>
+        <MDBModalBody>
+          the product has been Added successfully to the store 📦🎁
           </MDBModalBody>
-          <MDBModalFooter>
-            <MDBBtn color="secondary" >UNDO</MDBBtn>
-            <MDBBtn color="primary">DONE</MDBBtn>
-          </MDBModalFooter>
-        </MDBModal>
+        <MDBModalFooter>
+          <MDBBtn id='bluebtnpr' >UNDO</MDBBtn>
+          <MDBBtn id='orangebtnpr'>DONE</MDBBtn>
+        </MDBModalFooter>
+      </MDBModal>
     </div >
 
   );
@@ -245,7 +291,7 @@ function AddProduct(props) {
 
 const mapStateToProps = (state) => {
   console.log('inside apply comp', state);
-  return { user: state.user, images: state.files.images,fetching:state.fetching };
+  return { user: state.user, images: state.files.images, fetching: state.fetching };
 };
 
 const mapDispatchToProps = (dispatch) => ({

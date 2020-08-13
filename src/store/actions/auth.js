@@ -13,7 +13,9 @@ import {
 } from '../actions/fetch';
 
 // const api = 'http://localhost:3001';
-const api = 'https://daaymall-401-project.herokuapp.com';
+// const api = 'https://daaymall-401-project.herokuapp.com';
+const api = 'https://daaymall.herokuapp.com';
+
 export const auth = (userInfo) => ({
   type: 'LOGIN',
   payload: userInfo,
@@ -56,13 +58,13 @@ export const loginRemoteUser = function (email, password, history) {
       });
   };
 };
-export const signUpRemoteUser = function (username, email, password, history) {
+export const signUpRemoteUser = function (username, email, password, role, history) {
   return (dispatch) => {
     dispatch(fetchSignup({ fetchSignup: true }));
     return axios
       .post(
         api + '/auth',
-        { username, email, password },
+        { username, email, password, role },
         { headers: getHeader() },
       )
       .then((response) => {

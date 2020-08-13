@@ -6,7 +6,9 @@ import {
   paymentFailed,
 } from '../../store/actions/fetch';
 // const api = 'http://localhost:3001';
-const api = 'https://daaymall-401-project.herokuapp.com';
+// const api = 'https://daaymall-401-project.herokuapp.com';
+const api = 'https://daaymall.herokuapp.com';
+
 
 export const getProducts = function () {
   return (dispatch) => {
@@ -31,10 +33,10 @@ export const addCart = function (data) {
         dispatch(addCartAction({ cart: response.data }));
         dispatch({ type: 'ADD CART MODAL' });
         setTimeout(()=>{
-          dispatch({type:'ADD CART CLOSE MODAL'})
-        },2000)
+          dispatch({type:'ADD CART CLOSE MODAL'});
+        },2000);
       })
-      .catch(err=>{console.log(err.response);dispatch({type:'ADD MODAL ERROR'})});
+      .catch(err=>{console.log(err.response);dispatch({type:'ADD MODAL ERROR'});});
   };
 };
 export const addLike = function (data) {
@@ -66,10 +68,10 @@ export const addWishlist = function (data) {
         setTimeout(()=>{
           dispatch({type:'ADD WISH LIST CLOSE MODAL'});
           
-        },2000)
+        },2000);
       }).catch(err=>{console.log(err.response);
-        new Audio('./Funny.mp3').play()
-        dispatch({type:'ADD MODAL ERROR'})
+        new Audio('./Funny.mp3').play();
+        dispatch({type:'ADD MODAL ERROR'});
       });
   };
 };
@@ -147,16 +149,16 @@ export const getSearchedProducts = function (searchTerm) {
   };
 };
 export const checkout = function(){
-  return (dispatch) => dispatch({type:'CHECKOUT PAYMENT'})
-}
+  return (dispatch) => dispatch({type:'CHECKOUT PAYMENT'});
+};
 export const deleteCardFromCart = function (id) {
   return (dispatch) => {
     return axios({
       method: 'delete',
       url: `${api}/cart/${id}`,
-      headers:getHeader()
+      headers:getHeader(),
     }).then(function (response) {
-      dispatch({type:'DELETE CARD FROM CART',payload:id})
+      dispatch({type:'DELETE CARD FROM CART',payload:id});
     }).catch(err=>err.response);
   };
 };
@@ -201,6 +203,7 @@ export const payedUserCart = function (data) {
         // );
       })
       .catch((err) => {
+        console.log(err.response);
         dispatch(
           paymentFailed({
             paymentFailed: true,

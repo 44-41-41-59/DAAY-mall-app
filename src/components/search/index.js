@@ -118,8 +118,8 @@ function SearchResults(props) {
           the card has been Added successfully to the {props.fetching.fetchAddCardSuccesses ? 'Cart' : 'wishlist'} 📦🎁
         </MDBModalBody>
         <MDBModalFooter>
-          <MDBBtn color="secondary" >UNDO</MDBBtn>
-          <MDBBtn color="primary">DONE</MDBBtn>
+          <MDBBtn id='bluebtnpr' >UNDO</MDBBtn>
+          <MDBBtn id='orangebtnpr'>DONE</MDBBtn>
         </MDBModalFooter>
       </MDBModal>}
 
@@ -129,8 +129,8 @@ function SearchResults(props) {
           you need to login or signup
         </MDBModalBody>
         <MDBModalFooter>
-          <MDBBtn color="secondary" >CANCEL</MDBBtn>
-          <MDBBtn color="primary">Go to register</MDBBtn>
+          <MDBBtn id='bluebtnpr' >CANCEL</MDBBtn>
+          <MDBBtn id='orangebtnpr'>Go to register</MDBBtn>
         </MDBModalFooter>
       </MDBModal>}
     </div>

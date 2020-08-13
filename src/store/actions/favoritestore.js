@@ -1,7 +1,9 @@
 import axios from 'axios';
 import getHeader from '../header';
-const api = 'https://daaymall-401-project.herokuapp.com';
 // const api = 'http://localhost:3001';
+// const api = 'https://daaymall-401-project.herokuapp.com';
+const api = 'https://daaymall.herokuapp.com';
+
 
 export const getFavoriteStores = function () {
   console.log('helloooooooooooo from favorite stores');
